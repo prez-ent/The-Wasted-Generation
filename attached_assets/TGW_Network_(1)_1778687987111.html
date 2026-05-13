@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TGW Network — The Wasted Generation</title>
+<meta name="description" content="A governed network of proven practitioners, deployed against defined outcomes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1E2D40;--amber:#B87028;--teal:#085041;--blue:#0C447C;
+  --ink:#2C2C2C;--paper:#FFFFFF;--offwhite:#F7F7F7;
+  --muted:#666666;--rule:rgba(30,45,64,0.12);
+  --l-amber:#FFF8F0;--l-teal:#F0FAF6;--l-blue:#EEF5FC;--l-coral:#FDF0ED;
+  --serif:'Fraunces',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-size:17px;line-height:1.65;font-weight:300;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+.container{max-width:980px;margin:0 auto;padding:0 2rem}
+.container-w{max-width:1120px;margin:0 auto;padding:0 2rem}
+.container-n{max-width:720px;margin:0 auto;padding:0 2rem}
+section{padding:5.5rem 0}
+section.tight{padding:3.5rem 0}
+h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.1}
+h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1.5rem;letter-spacing:-0.01em}
+h3{font-size:1.35rem;margin-bottom:0.6rem;font-weight:400}
+p{margin-bottom:1.1rem}
+p:last-child{margin-bottom:0}
+.label{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1.25rem;display:block}
+hr.rule{border:none;border-top:1px solid var(--rule)}
+
+.btn{display:inline-block;font-family:var(--sans);font-size:.82rem;font-weight:500;letter-spacing:.06em;text-decoration:none;padding:.85rem 2rem;cursor:pointer;border:none;transition:opacity .18s,background .18s,color .18s}
+.btn:hover{opacity:.85}
+.btn-amber{background:var(--amber);color:#fff}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-outline-white{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+.btn-outline-navy{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.btn-outline-amber{background:transparent;color:var(--amber);border:1.5px solid var(--amber)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:88px}
+.nav-logo{cursor:pointer;white-space:nowrap;display:flex;align-items:center;height:88px}
+.nav-logo svg{height:54px;width:auto;display:block}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{display:block;padding:0 1.1rem;font-size:.78rem;font-weight:400;letter-spacing:.06em;color:rgba(255,255,255,.65);text-decoration:none;cursor:pointer;transition:color .2s;line-height:88px;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-cta{display:flex;gap:.6rem}
+.nav-cta .btn{padding:.5rem 1.2rem;font-size:.75rem}
+.nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:1.4rem}
+
+.page{display:none;padding-top:88px}
+.page.active{display:block}
+
+.home-hero{background:linear-gradient(150deg,#1E2D40 0%,#14202E 100%);padding:7rem 0 6rem;position:relative;overflow:hidden}
+.home-hero::before{content:'';position:absolute;bottom:-1px;left:0;right:0;height:60px;background:linear-gradient(to bottom right,var(--navy) 49%,var(--paper) 50%)}
+.home-hero .container{position:relative;z-index:1}
+.hero-eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:2rem}
+.home-hero h1{font-size:clamp(2.6rem,6vw,4.5rem);font-weight:300;color:#fff;line-height:1.05;max-width:780px;margin-bottom:1.5rem;letter-spacing:-.02em}
+.home-hero h1 em{font-style:italic;color:rgba(255,255,255,.55)}
+.home-hero .sub{color:rgba(255,255,255,.68);max-width:600px;font-size:1.05rem;line-height:1.75;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.what-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;padding-top:1rem}
+.what-col{border-top:3px solid var(--amber);padding-top:1.5rem}
+.what-col h3{font-size:1.15rem;color:var(--navy);margin-bottom:.75rem}
+.what-col p{font-size:.95rem;opacity:.8}
+.pathways{background:var(--offwhite)}
+.pathway-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.pathway-card{background:var(--paper);box-shadow:0 2px 16px rgba(30,45,64,.07)}
+.pathway-body{padding:2rem 2rem 2.5rem}
+.pathway-body h3{font-size:1.3rem;color:var(--navy);margin-bottom:1rem}
+.pathway-body ul{list-style:none;margin-bottom:1.5rem}
+.pathway-body ul li{font-size:.95rem;padding:.55rem 0;border-bottom:1px solid var(--rule);display:flex;gap:.75rem}
+.pathway-body ul li::before{content:'—';color:var(--amber);flex-shrink:0}
+.six-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+.six-item{padding:1.75rem;border:1px solid var(--rule)}
+.six-item .num{font-family:var(--serif);font-size:2rem;color:var(--amber);font-weight:300;font-style:italic;margin-bottom:.75rem;display:block}
+.six-item h3{font-size:1rem;color:var(--navy)}
+.six-item p{font-size:.88rem;margin-top:.4rem;opacity:.75}
+.stats-row{background:var(--navy)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-block{padding:3rem 2rem;border-right:1px solid rgba(255,255,255,.1);text-align:center}
+.stat-block:last-child{border-right:none}
+.stat-num{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--amber);display:block;line-height:1;margin-bottom:.5rem}
+.stat-label{font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.4}
+.principles-list{margin-top:2rem}
+.principle-row{display:flex;gap:2rem;align-items:start;padding:1.5rem 0;border-bottom:1px solid var(--rule)}
+.principle-row:first-child{border-top:1px solid var(--rule)}
+.principle-num{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--amber);flex-shrink:0;width:28px;padding-top:.1rem}
+.principle-name{font-weight:500;color:var(--navy);margin-bottom:.2rem;font-size:1rem}
+.principle-desc{font-size:.9rem;opacity:.75}
+.home-cta{background:var(--navy);text-align:center}
+.home-cta h2{color:#fff;margin-bottom:.75rem}
+.home-cta .sub{color:rgba(255,255,255,.6);max-width:500px;margin:0 auto 2.5rem;font-size:1rem}
+
+.prac-hero{background:var(--offwhite);padding:6rem 0 5rem}
+.prac-hero h1{font-size:clamp(2.2rem,5vw,3.8rem);color:var(--navy);max-width:680px}
+.prac-hero .sub{max-width:580px;opacity:.75;margin-top:1rem;font-size:1.05rem}
+.econ-stats{display:flex;gap:0;background:var(--amber)}
+.econ-stat{flex:1;padding:2.5rem 2rem;text-align:center;border-right:1px solid rgba(255,255,255,.25)}
+.econ-stat:last-child{border-right:none}
+.econ-num{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1;margin-bottom:.4rem}
+.econ-label{font-size:.82rem;color:rgba(255,255,255,.85);line-height:1.4}
+.econ-explainer{background:var(--paper)}
+.econ-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+.econ-box{background:var(--offwhite);padding:2rem;border-left:3px solid var(--amber)}
+.econ-box h3{color:var(--navy);margin-bottom:.75rem;font-size:1.05rem}
+.econ-box p{font-size:.9rem;opacity:.8}
+.membership{background:var(--offwhite)}
+.membership-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+.membership-col h3{font-size:1.1rem;color:var(--navy);border-bottom:2px solid var(--amber);padding-bottom:.5rem;margin-bottom:1rem}
+.membership-col ul{list-style:none}
+.membership-col ul li{font-size:.9rem;padding:.65rem 0;border-bottom:1px solid var(--rule);display:flex;gap:.75rem;opacity:.85}
+.membership-col ul li::before{content:'✓';color:var(--teal);font-weight:600;flex-shrink:0}
+.membership-col.protect ul li::before{content:'✕';color:#888}
+.entry{background:var(--paper)}
+.entry-list{counter-reset:entry;margin-top:2rem}
+.entry-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--rule)}
+.entry-item:first-child{border-top:1px solid var(--rule)}
+.entry-num{font-family:var(--serif);font-size:1.4rem;font-weight:300;font-style:italic;color:var(--amber);flex-shrink:0;width:32px}
+.entry-text h4{font-size:.95rem;font-weight:500;color:var(--navy);margin-bottom:.25rem}
+.entry-text p{font-size:.88rem;opacity:.75}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--navy)}
+.process-step{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,.1)}
+.process-step:last-child{border-right:none}
+.step-n{font-family:var(--serif);font-size:2rem;font-weight:300;font-style:italic;color:var(--amber);display:block;margin-bottom:.75rem}
+.process-step h4{font-size:.95rem;font-weight:500;color:#fff;margin-bottom:.5rem}
+.process-step p{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.55}
+.prac-cta{background:var(--teal);padding:4rem 0;text-align:center}
+.prac-cta h2{color:#fff;max-width:560px;margin:0 auto .75rem}
+.prac-cta .sub{color:rgba(255,255,255,.72);max-width:460px;margin:0 auto 2rem}
+
+.client-hero{background:linear-gradient(150deg,#0C447C 0%,#083260 100%);padding:6rem 0 5rem}
+.client-hero h1{font-size:clamp(2.2rem,5vw,3.8rem);color:#fff;max-width:680px}
+.client-hero .sub{max-width:580px;color:rgba(255,255,255,.72);margin-top:1rem;font-size:1.05rem}
+.commercial{background:var(--paper)}
+.commercial-inner{display:grid;grid-template-columns:200px 1fr;gap:4rem;align-items:start;padding-top:1rem}
+.big-stat{font-family:var(--serif);font-size:4rem;font-weight:300;color:var(--amber);display:block;line-height:1}
+.big-stat-label{font-size:.85rem;color:var(--ink);opacity:.6;margin-top:.4rem}
+.how-steps{background:var(--offwhite)}
+.how-list{margin-top:2rem}
+.how-item{display:flex;gap:2rem;padding:1.75rem 0;border-bottom:1px solid var(--rule)}
+.how-item:first-child{border-top:1px solid var(--rule)}
+.how-n{font-family:var(--serif);font-size:2rem;font-weight:300;font-style:italic;color:var(--blue);flex-shrink:0;width:36px}
+.how-text h4{font-size:1rem;font-weight:500;color:var(--navy);margin-bottom:.3rem}
+.how-text p{font-size:.9rem;opacity:.75}
+.client-360{background:var(--offwhite);position:relative}
+.client-360::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--amber)}
+.client-360 .container{padding-left:3rem}
+.client-cta{background:var(--navy);padding:4rem 0;text-align:center}
+.client-cta h2{color:#fff;margin-bottom:.75rem}
+.client-cta .sub{color:rgba(255,255,255,.65);max-width:460px;margin:0 auto 2rem}
+
+.network-hero{background:var(--offwhite);padding:6rem 0 5rem}
+.network-hero h1{font-size:clamp(2.2rem,5vw,3.5rem);color:var(--navy);max-width:680px}
+.network-hero .sub{max-width:560px;opacity:.75;margin-top:1rem;font-size:1.05rem}
+.governance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+.gov-card{background:var(--paper);padding:2.25rem;border-top:3px solid var(--navy)}
+.gov-card h3{color:var(--navy);margin-bottom:.75rem}
+.gov-card p{font-size:.9rem;opacity:.78}
+
+.pricing-hero{background:linear-gradient(150deg,#1E2D40 0%,#0f1820 100%);padding:6rem 0 5rem}
+.pricing-hero h1{color:#fff;font-size:clamp(2.4rem,5vw,4rem);max-width:620px}
+.pricing-hero .sub{color:rgba(255,255,255,.65);max-width:520px;margin-top:1rem;font-size:1.05rem}
+.fee-cards{background:var(--paper)}
+.fee-grid{display:grid;gap:1.5rem;margin-top:2rem}
+.fee-card{display:grid;grid-template-columns:100px 1fr 1fr;gap:2rem;padding:2.25rem;border:1px solid var(--rule);align-items:start}
+.fee-pct{font-family:var(--serif);font-size:3rem;font-weight:300;color:var(--amber);line-height:1}
+.fee-pct span{font-size:1.2rem}
+.fee-name{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem}
+.fee-card h3{color:var(--navy);margin-bottom:.5rem;font-size:1.05rem}
+.fee-card p{font-size:.9rem;opacity:.75}
+.fee-who{font-size:.82rem;opacity:.7;margin-top:.4rem}
+.fee-example{background:var(--offwhite);padding:1.25rem;font-size:.85rem;border-left:3px solid var(--amber)}
+.fee-example strong{color:var(--navy);display:block;margin-bottom:.3rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+.cap-floor{background:var(--offwhite)}
+.cap-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.cap-box{background:var(--paper);padding:2.25rem;border:1px solid var(--rule)}
+.cap-num{font-family:var(--serif);font-size:2.5rem;color:var(--navy);font-weight:300;display:block;margin-bottom:.5rem}
+.cap-box h3{color:var(--navy);margin-bottom:.75rem;font-size:1rem}
+.cap-box p{font-size:.9rem;opacity:.75}
+.cma-inner{padding:3rem 2rem;max-width:820px;margin:0 auto}
+.cma-flag{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem;display:block}
+.cma-inner h3{color:var(--navy);margin-bottom:1rem}
+.cma-inner p{font-size:.92rem;opacity:.8}
+
+.about-hero{background:var(--paper);padding:6rem 0 4rem;border-bottom:1px solid var(--rule)}
+.about-body p{font-size:1.05rem;line-height:1.8;opacity:.82;max-width:680px}
+.contact-section{background:var(--offwhite)}
+.contact-email{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--amber);display:block;margin:1.5rem 0 .5rem;text-decoration:none}
+.contact-email:hover{text-decoration:underline}
+
+.form-page-hero{padding:5rem 0 3.5rem}
+.form-page-hero.amber-bg{background:var(--amber)}
+.form-page-hero.blue-bg{background:var(--blue)}
+.form-page-hero h1{color:#fff;font-size:clamp(2rem,4vw,3rem)}
+.form-page-hero .sub{color:rgba(255,255,255,.72);margin-top:.75rem;max-width:560px}
+.form-section{background:var(--paper)}
+.form-wrap{max-width:640px}
+.form-intro{background:var(--offwhite);padding:1.75rem 2rem;border-left:3px solid var(--amber);margin-bottom:2.5rem;font-size:.92rem;opacity:.85}
+.form-group{margin-bottom:1.5rem}
+.form-group label{display:block;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:.4rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;font-family:var(--sans);font-size:.95rem;padding:.8rem 1rem;border:1px solid rgba(30,45,64,.25);color:var(--ink);background:var(--paper);outline:none;transition:border-color .2s;appearance:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--amber)}
+.form-group textarea{min-height:110px;resize:vertical}
+.form-group .hint{font-size:.78rem;color:var(--amber);margin-top:.3rem}
+.success-msg{display:none}
+.success-msg.show{display:block}
+.success-box{background:#EFF7F4;border:1px solid #085041;padding:2.5rem 2rem;max-width:560px}
+.success-box h3{color:var(--teal);margin-bottom:.75rem}
+.success-box p{font-size:.92rem;opacity:.8}
+
+footer{background:var(--ink);padding:3rem 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap}
+.footer-logo{display:flex;align-items:center}
+.footer-logo svg{height:54px;width:auto;display:block;opacity:1}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-links a{font-size:.78rem;color:rgba(255,255,255,.85);text-decoration:none;cursor:pointer;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-tagline{font-size:.78rem;color:rgba(255,255,255,.75);text-align:right;line-height:1.6}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* widget styles */
+input[type=range]{width:100%;height:4px;-webkit-appearance:none;appearance:none;background:var(--rule);border-radius:2px;outline:none;margin-bottom:.75rem;cursor:pointer;display:block}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--amber);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--amber);border:none;cursor:pointer}
+.w-slider-label{font-size:.82rem;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:.4rem}
+.w-slider-label strong{color:var(--navy)}
+
+.ec-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2.5rem}
+.ec-results{background:var(--paper);border:1px solid var(--rule);padding:2rem}
+.ec-total{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--navy);line-height:1;margin-bottom:.25rem}
+.ec-total-lbl{font-size:.82rem;color:var(--muted);margin-bottom:1.5rem}
+.ec-row{display:flex;justify-content:space-between;padding:.65rem 0;border-bottom:1px solid var(--rule);font-size:.88rem}
+.ec-row:last-child{border-bottom:none}
+.ec-lbl{color:var(--muted)}
+.ec-val{font-weight:500}
+.ec-toggle{border:1px solid var(--rule);padding:1rem;margin-bottom:.75rem}
+.ec-toggle-hdr{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:.88rem;font-weight:500;color:var(--navy)}
+.toggle-sw{position:relative;width:40px;height:22px;flex-shrink:0}
+.toggle-sw input{opacity:0;width:0;height:0;position:absolute}
+.t-track{position:absolute;inset:0;background:var(--rule);border-radius:11px;cursor:pointer;transition:.2s}
+.toggle-sw input:checked+.t-track{background:var(--amber)}
+.t-thumb{position:absolute;top:3px;left:3px;width:16px;height:16px;background:white;border-radius:50%;transition:.2s;pointer-events:none}
+.toggle-sw input:checked~.t-thumb{transform:translateX(18px)}
+.ec-toggle-body{display:none;margin-top:.75rem}
+.ec-toggle-body.open{display:block}
+.ec-vs{background:var(--l-teal);padding:.75rem 1rem;font-size:.82rem;color:var(--teal);margin-top:1rem}
+
+.es-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1rem}
+.es-card{border:1.5px solid var(--rule);padding:1rem;cursor:pointer;transition:border-color .15s}
+.es-card.active{border-width:2px}
+.es-type{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+.es-name{font-size:.95rem;font-weight:600;color:var(--navy);margin-bottom:4px}
+.es-dur{font-size:.78rem;color:var(--muted)}
+.es-detail{padding:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:.5rem}
+.es-detail-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.es-item{font-size:.85rem;color:var(--ink);line-height:1.55;padding-left:14px;position:relative;margin-bottom:5px}
+.es-item::before{content:'→';position:absolute;left:0;color:var(--muted)}
+
+.pc-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem}
+.pc-pill{padding:7px 16px;border-radius:20px;font-size:.78rem;font-weight:500;cursor:pointer;border:1.5px solid var(--rule);background:var(--paper);color:var(--muted);transition:all .15s}
+.pc-pill.active{color:white;border-color:transparent;background:var(--amber)}
+.pc-num-tag{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:6px;color:var(--amber)}
+.pc-pname{font-family:var(--serif);font-size:2rem;font-weight:300;margin-bottom:.75rem;color:var(--navy)}
+.pc-statement{font-size:.95rem;line-height:1.75;max-width:600px;margin-bottom:1.25rem;opacity:.8}
+.pc-three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.25rem}
+.pc-col{padding:1rem;background:var(--offwhite)}
+.pc-col-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;color:var(--navy)}
+.pc-item{font-size:.82rem;line-height:1.65;padding-left:12px;position:relative;margin-bottom:5px}
+.pc-item::before{content:'—';position:absolute;left:0;color:var(--muted)}
+.pc-site-box{padding:1rem 1.25rem;margin-top:.5rem;background:var(--l-amber);border-left:3px solid var(--amber)}
+.pc-site-hl{font-family:var(--serif);font-size:1.4rem;font-weight:300;margin-bottom:4px;color:var(--navy)}
+.pc-site-sub{font-size:.88rem;line-height:1.65;opacity:.85}
+.pc-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem;border-top:1px solid var(--rule);padding-top:1.25rem}
+.pc-nav-btn{padding:.6rem 1.5rem;border:1.5px solid var(--rule);background:var(--paper);font-size:.82rem;font-weight:500;cursor:pointer;color:var(--ink);transition:border-color .15s;font-family:var(--sans)}
+.pc-nav-btn:hover{border-color:var(--amber);color:var(--amber)}
+.pc-nav-btn:disabled{opacity:.3;cursor:default}
+.pc-progress{display:flex;gap:6px}
+.pc-dot{width:7px;height:7px;border-radius:50%;background:var(--rule);cursor:pointer;transition:all .2s}
+.pc-dot.active{width:22px;border-radius:4px;background:var(--amber)}
+
+.cm-wrap{overflow-x:auto;margin-top:2rem}
+.cm-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:600px}
+.cm-table th{padding:9px 10px;text-align:left;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);background:var(--offwhite);border-bottom:1.5px solid var(--rule)}
+.cm-table th.us{color:var(--amber);background:var(--l-amber)}
+.cm-table td{padding:9px 10px;border-bottom:1px solid var(--rule);color:var(--muted);vertical-align:top;line-height:1.4}
+.cm-table td.feat{color:var(--navy);font-weight:600;font-size:.88rem}
+.cm-table td.us{background:#FFFCF8;color:var(--ink);font-weight:500}
+.cm-table tr:last-child td{border-bottom:none}
+.cm-tick{color:var(--teal);font-weight:700}
+.cm-cross{color:#c0392b}
+.cm-part{color:var(--amber)}
+.cm-source{font-size:.78rem;color:var(--muted);margin-top:1rem;font-style:italic}
+
+.ps-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
+.ps-chip{padding:6px 14px;border-radius:20px;font-size:.78rem;font-weight:500;border:1.5px solid var(--rule);cursor:pointer;background:var(--paper);color:var(--muted);transition:all .15s}
+.ps-chip.active{background:var(--l-amber);color:var(--amber);border-color:var(--amber)}
+.ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1.5rem}
+.ps-card{border:1.5px solid var(--rule);padding:1.25rem;cursor:pointer;transition:border-color .15s;background:var(--paper)}
+.ps-card:hover{border-color:var(--amber)}
+.ps-top{display:flex;gap:12px;margin-bottom:12px}
+.ps-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;color:#fff}
+.ps-name{font-size:.95rem;font-weight:600;color:var(--navy);margin-bottom:2px}
+.ps-role{font-size:.78rem;color:var(--muted);margin-bottom:4px}
+.ps-avail{display:flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600}
+.ps-avail-dot{width:7px;height:7px;border-radius:50%}
+.ps-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.ps-tag{padding:2px 8px;background:var(--offwhite);font-size:.72rem;color:var(--muted)}
+.ps-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);padding-top:10px}
+.ps-stat{text-align:center}
+.ps-sv{font-size:.88rem;font-weight:700;color:var(--navy)}
+.ps-star{color:var(--amber);font-size:.7rem}
+.ps-sl{font-size:.68rem;color:var(--muted);margin-top:1px}
+.ps-gate{background:var(--navy);padding:2rem;text-align:center;margin-top:1.5rem}
+.ps-gate p{font-size:.9rem;color:rgba(255,255,255,.65);margin-bottom:1.25rem}
+
+.fw-tabs{display:flex;gap:2px;border-bottom:2px solid var(--rule);margin-bottom:1.5rem;flex-wrap:wrap}
+.fw-tab{padding:8px 16px;font-size:.78rem;font-weight:500;color:var(--muted);cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .15s;font-family:var(--sans)}
+.fw-tab.active{color:var(--navy);border-bottom-color:var(--amber)}
+.fw-panel{display:none}
+.fw-panel.active{display:block}
+.fw-table{width:100%;border-collapse:collapse;font-size:.85rem;margin-bottom:1.5rem}
+.fw-table th{padding:8px 10px;text-align:left;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);border-bottom:1.5px solid var(--rule);background:var(--offwhite)}
+.fw-table td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5}
+.fw-table tr:last-child td{border-bottom:none}
+.fw-dim{font-weight:600;color:var(--navy);width:150px;font-size:.88rem}
+.fw-wt-bar{height:4px;background:var(--rule);border-radius:2px;margin-top:4px}
+.fw-wt-fill{height:4px;border-radius:2px}
+.fw-score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:1.5rem}
+.fw-sc{padding:12px 10px;text-align:center}
+.fw-sc-val{font-family:var(--serif);font-size:1.5rem;font-weight:300;margin-bottom:4px}
+.fw-sc-lbl{font-size:.72rem;font-weight:700;margin-bottom:6px}
+.fw-sc-desc{font-size:.72rem;line-height:1.5}
+.fw-thresh{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--rule)}
+.fw-thresh:last-child{border-bottom:none}
+.fw-badge{font-size:.78rem;font-weight:700;padding:3px 10px;flex-shrink:0}
+.fw-thresh-text{font-size:.88rem;line-height:1.55}
+.fw-ind{background:var(--l-coral);padding:10px 14px;font-size:.82rem;color:#712B13;line-height:1.5;margin-bottom:1.25rem}
+
+.it-tabs{display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap}
+.it-tab{padding:8px 18px;border-radius:20px;font-size:.78rem;font-weight:500;border:1.5px solid var(--rule);cursor:pointer;background:var(--paper);color:var(--muted);transition:all .15s;font-family:var(--sans)}
+.it-tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+.it-card{border:1.5px solid var(--rule);padding:1.25rem;margin-bottom:12px;background:var(--paper)}
+.it-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;gap:1rem}
+.it-title{font-size:.95rem;font-weight:600;color:var(--navy);margin-bottom:3px}
+.it-sub{font-size:.78rem;color:var(--muted)}
+.it-earn{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--amber)}
+.it-earn-lbl{font-size:.72rem;color:var(--muted);text-align:right}
+.it-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.it-stat{background:var(--offwhite);padding:10px;text-align:center}
+.it-sv{font-size:1rem;font-weight:700;color:var(--navy)}
+.it-sl{font-size:.72rem;color:var(--muted);margin-top:2px}
+.it-prog{height:6px;background:var(--rule);border-radius:3px;overflow:hidden}
+.it-prog-fill{height:6px;border-radius:3px;background:var(--amber)}
+.it-compound{background:var(--l-amber);padding:1.25rem;margin-top:1rem}
+.it-cb-title{font-size:.85rem;font-weight:600;color:var(--navy);margin-bottom:8px}
+.it-cb-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.08);font-size:.85rem}
+.it-cb-row:last-child{border-bottom:none}
+
+.ld-disclaimer{background:#FEF0F0;border:1.5px solid #F7C1C1;padding:12px 14px;font-size:.82rem;color:#A32D2D;line-height:1.6;margin-bottom:1.5rem}
+.ld-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem}
+.ld-result{background:var(--offwhite);padding:1.5rem}
+.ld-total{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:var(--navy);margin-bottom:.25rem}
+.ld-total-lbl{font-size:.82rem;color:var(--muted);margin-bottom:1.25rem}
+.ld-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--rule);font-size:.85rem}
+.ld-row:last-child{border-bottom:none}
+.ld-lbl{opacity:.65}
+.ld-val{font-weight:500}
+.ld-formula{background:var(--l-amber);padding:12px 14px;margin-top:1rem;font-size:.8rem;color:#633806;line-height:1.65}
+
+.ps-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300;align-items:center;justify-content:center;padding:1rem}
+.ps-modal-overlay.open{display:flex}
+.ps-modal{background:var(--paper);padding:1.75rem;width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
+.ps-m-hdr{display:flex;gap:14px;margin-bottom:1.25rem;align-items:flex-start}
+.ps-m-close{margin-left:auto;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted)}
+.ps-m-section{margin-bottom:1rem}
+.ps-m-section-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px}
+.ps-m-bio{font-size:.88rem;line-height:1.65}
+.ps-kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ps-kpi{background:var(--offwhite);padding:10px;text-align:center}
+.ps-kpi-val{font-size:1rem;font-weight:700;color:var(--navy)}
+.ps-kpi-lbl{font-size:.72rem;color:var(--muted);margin-top:2px}
+.ps-m-actions{display:flex;gap:8px;margin-top:1.25rem}
+
+#page-manifesto .container-n p{margin-bottom:1.25rem}
+
+@media(max-width:1100px){
+  .what-grid,.pathway-grid,.econ-grid,.membership-grid,.cap-grid,.commercial-inner,.governance-grid,.fee-card{grid-template-columns:1fr}
+  .six-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .process-steps{grid-template-columns:1fr 1fr}
+  .ec-wrap,.ld-grid{grid-template-columns:1fr}
+  .es-grid{grid-template-columns:1fr 1fr}
+  .es-detail{grid-template-columns:1fr}
+  .pc-three{grid-template-columns:1fr}
+  .ps-grid{grid-template-columns:1fr}
+  .fw-score-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{flex-direction:column;gap:1.5rem;text-align:center}
+  .footer-tagline{text-align:center}
+  .nav-links,.nav-cta{display:none}
+  .nav-mobile-toggle{display:block}
+}
+@media(max-width:540px){
+  .six-grid,.stats-grid,.process-steps,.es-grid{grid-template-columns:1fr}
+  .fw-score-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo" onclick="showPage('home')" aria-label="The Wasted Generation">
+    <svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <text x="0" y="58" font-family="DM Sans, system-ui, sans-serif" font-size="44" font-weight="500" letter-spacing="6" fill="#ffffff">THE</text>
+      <text x="0" y="175" font-family="DM Sans, system-ui, sans-serif" font-size="150" font-weight="800" letter-spacing="-2" fill="#ffffff">WASTED</text>
+      <text x="0" y="242" font-family="DM Sans, system-ui, sans-serif" font-size="44" font-weight="500" letter-spacing="6" fill="#ffffff">GENERATION</text>
+      <line x1="-10" y1="110" x2="760" y2="160" stroke="#B87028" stroke-width="10" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('practitioners')">For Practitioners</a></li>
+    <li><a onclick="showPage('clients')">For Organisations</a></li>
+    <li><a onclick="showPage('network')">The Network</a></li>
+    <li><a onclick="showPage('pricing')">Pricing</a></li>
+    <li><a onclick="showPage('manifesto')">The Manifesto</a></li>
+    <li><a onclick="showPage('about')">About</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a class="btn btn-outline-white" onclick="showPage('apply')">Apply</a>
+    <a class="btn btn-amber" onclick="showPage('register')">Register a Company</a>
+  </div>
+  <button class="nav-mobile-toggle" onclick="toggleMobileNav()">☰</button>
+</nav>
+
+<!-- HOME -->
+<div class="page active" id="page-home" data-screen-label="Home">
+  <div class="home-hero">
+    <div class="container">
+      <div class="hero-eyebrow">TGW Network</div>
+      <h1>Every problem has been<br>solved before.<br><em>We connect you with the people<br>who have already solved it.</em></h1>
+      <p class="sub">A governed network of proven practitioners, deployed against defined outcomes.</p>
+      <div class="hero-btns">
+        <a class="btn btn-amber" onclick="showPage('clients')">My organisation has a problem</a>
+        <a class="btn btn-outline-white" onclick="showPage('practitioners')">I am a practitioner</a>
+      </div>
+    </div>
+  </div>
+  <section style="background:var(--paper)">
+    <div class="container">
+      <span class="label reveal">What this is</span>
+      <div class="what-grid">
+        <div class="what-col reveal">
+          <h3>We match. We introduce. We deploy.</h3>
+          <p>Tell us what you are trying to fix. We identify the practitioner who has solved it before and introduce you directly. No marketplace to browse. No CVs to filter. TGW does the work.</p>
+        </div>
+        <div class="what-col reveal">
+          <h3>Outcomes defined before anyone starts</h3>
+          <p>Every engagement begins with a signed Statement of Work — agreed KPIs, timeline, deliverables. You know exactly what you are getting before the first day is billed. No surprises on either side.</p>
+        </div>
+        <div class="what-col reveal">
+          <h3>Accountability runs both ways</h3>
+          <p>Every practitioner carries a verified 360 score built from real engagements. So does every client organisation. Both sides are held to the same standard. That is what makes the outcomes real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="pathways">
+    <div class="container">
+      <span class="label reveal">Two pathways</span>
+      <div class="pathway-grid">
+        <div class="pathway-card reveal">
+          <div style="height:4px;background:var(--teal)"></div>
+          <div class="pathway-body">
+            <h3>For practitioners</h3>
+            <p style="font-size:.92rem;opacity:.8;margin-bottom:1rem">You have done the work. You have earned the right to work on your terms.</p>
+            <ul>
+              <li>Earn 90% of every day rate you bill</li>
+              <li>Earn when you introduce colleagues and clients</li>
+              <li>See a client's rating before you commit</li>
+              <li>A community that works for you, not the platform</li>
+            </ul>
+            <a class="btn btn-teal" onclick="showPage('practitioners')">Find out more</a>
+          </div>
+        </div>
+        <div class="pathway-card reveal">
+          <div style="height:4px;background:var(--blue)"></div>
+          <div class="pathway-body">
+            <h3>For organisations</h3>
+            <p style="font-size:.92rem;opacity:.8;margin-bottom:1rem">You have a problem that needs solving. The person who has already solved it is in this network.</p>
+            <ul>
+              <li>We match you — no browsing, no filtering</li>
+              <li>Senior capability from day one, no ramp-up</li>
+              <li>Outcome agreed before anyone starts</li>
+              <li>10% — published on this page, not hidden in an invoice</li>
+            </ul>
+            <a class="btn btn-blue" onclick="showPage('clients')">See how we work</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--paper);padding:3rem 0">
+    <div class="container">
+      <div style="max-width:720px;margin:0 auto;border-left:4px solid var(--amber);padding:1.75rem 2.5rem;background:var(--l-amber)">
+        <p style="font-family:var(--serif);font-size:1.2rem;font-weight:300;line-height:1.65;color:var(--navy);margin-bottom:1rem">"Many of us share a desire to simply solve problems without the need for huge fanfare or long-term commitments."</p>
+        <p style="font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);font-weight:500;margin:0">Pat Butler · Founding cohort member</p>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--paper)">
+    <div class="container-w">
+      <span class="label reveal">Why TGW is different</span>
+      <h2 class="reveal">Six things no other<br>network offers.</h2>
+      <div class="six-grid">
+        <div class="six-item reveal"><span class="num">01</span><h3>Clients are rated too</h3><p>Nobody else does this. A practitioner sees a client's 360 score before accepting an engagement.</p></div>
+        <div class="six-item reveal"><span class="num">02</span><h3>Every engagement starts with agreed KPIs</h3><p>Not optional guidance. A signed Statement of Work is required before any engagement begins.</p></div>
+        <div class="six-item reveal"><span class="num">03</span><h3>Fee published. Not hidden in an invoice.</h3><p>10%. Charged to the client on top of the practitioner's rate — not deducted from their earnings. Traditional firms charge 20–35% and never disclose it.</p></div>
+        <div class="six-item reveal"><span class="num">04</span><h3>Practitioners keep their full rate</h3><p>The network fee is added on top for the client. The practitioner receives every pound of their day rate. Plus a 5% override when they introduce a colleague or a client.</p></div>
+        <div class="six-item reveal"><span class="num">05</span><h3>Collaborative by design</h3><p>Peer introduction economics mean helping a colleague find work earns income. Collaboration is profitable, not just principled.</p></div>
+        <div class="six-item reveal"><span class="num">06</span><h3>Verified entry, portable 360 reputation</h3><p>Quality gate on entry makes the 360 score meaningful. Your track record travels with you.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="stats-row tight">
+    <div class="container-w">
+      <div class="stats-grid">
+        <div class="stat-block reveal"><span class="stat-num">£5.7bn</span><div class="stat-label">Global fractional executive market</div></div>
+        <div class="stat-block reveal"><span class="stat-num">74%</span><div class="stat-label">Of fractional engagements come from referrals</div></div>
+        <div class="stat-block reveal"><span class="stat-num">68%</span><div class="stat-label">Growth in demand for fractional executives 2023–24</div></div>
+        <div class="stat-block reveal"><span class="stat-num">10%</span><div class="stat-label">What we charge. Most firms charge 20–35% and won't tell you.</div></div>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--paper)">
+    <div class="container">
+      <span class="label reveal">The foundation</span>
+      <h2 class="reveal">Built on five principles<br>of character.</h2>
+      <p class="reveal" style="max-width:580px;opacity:.75;margin-bottom:2rem">These are not policies. They are how every decision gets made.</p>
+      <div class="principles-list">
+        <div class="principle-row reveal"><div class="principle-num">1</div><div><div class="principle-name">Collaboration</div><p class="principle-desc">We actively make each other better. The economics are designed so that helping someone else succeed means you succeed too.</p></div></div>
+        <div class="principle-row reveal"><div class="principle-num">2</div><div><div class="principle-name">Approachability</div><p class="principle-desc">No hierarchy, no gatekeeping. The network team is reachable as people, not a brand voice.</p></div></div>
+        <div class="principle-row reveal"><div class="principle-num">3</div><div><div class="principle-name">Mutual benefit</div><p class="principle-desc">This only works if it works for everyone. Not mostly for the platform, not mostly for clients — for every party, fairly.</p></div></div>
+        <div class="principle-row reveal"><div class="principle-num">4</div><div><div class="principle-name">Transparency</div><p class="principle-desc">Fees published. Ratings visible. Process explained. If you have to ask, we have already failed.</p></div></div>
+        <div class="principle-row reveal"><div class="principle-num">5</div><div><div class="principle-name">Openness</div><p class="principle-desc">We are building this with the people in it, not for them. Your challenge is welcome.</p></div></div>
+      </div>
+      <div style="margin-top:2rem"><a class="btn btn-outline-amber" onclick="showPage('network')">Read more about how we work</a></div>
+    </div>
+  </section>
+  <section class="home-cta tight">
+    <div class="container">
+      <h2 class="reveal">Ready to be part<br>of something different?</h2>
+      <p class="sub reveal">Whether you are a practitioner who has earned the right to better terms, or a company that wants outcomes not just resources — this is where you start.</p>
+      <div class="hero-btns" style="justify-content:center">
+        <a class="btn btn-amber" onclick="showPage('clients')">My organisation has a problem</a>
+        <a class="btn btn-outline-white" onclick="showPage('apply')">Apply as a practitioner</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PRACTITIONERS -->
+<div class="page" id="page-practitioners" data-screen-label="Practitioners">
+  <div class="prac-hero">
+    <div class="container">
+      <span class="label">For practitioners</span>
+      <h1>You have earned the right<br>to work on your terms.</h1>
+      <p class="sub">TGW is a network for practitioners who have genuinely done the thing — not people looking for their next job. You bring the expertise. We bring the structure, the clients, the protection, and the economics.</p>
+      <div class="hero-btns" style="margin-top:2rem"><a class="btn btn-teal" onclick="showPage('apply')">Apply to join</a></div>
+    </div>
+  </div>
+  <div class="econ-stats">
+    <div class="econ-stat"><span class="econ-num" style="font-size:1.5rem;line-height:1.3">Your rate.<br>In full.</span><div class="econ-label">The 10% fee is charged to the client on top — it is never deducted from your earnings</div></div>
+    <div class="econ-stat"><span class="econ-num">5%</span><div class="econ-label">Per day when you introduce a colleague into an engagement</div></div>
+    <div class="econ-stat"><span class="econ-num">5%</span><div class="econ-label">Lifetime override on all activity at any company you introduce</div></div>
+    <div class="econ-stat"><span class="econ-num">£500</span><div class="econ-label">The minimum day rate</div></div>
+  </div>
+
+  <section style="background:var(--offwhite)">
+    <div class="container">
+      <span class="label reveal">Transparent economics</span>
+      <h2 class="reveal">Your annual network<br>earnings.</h2>
+      <p class="reveal" style="max-width:560px;opacity:.75">Adjust the sliders to see what you could earn — including introduction overrides.</p>
+      <div class="ec-wrap">
+        <div>
+          <div class="w-slider-label">Day rate <strong id="ec-rate-out">£900</strong></div>
+          <input type="range" id="ec-rate" min="500" max="2000" step="50" value="900" oninput="EC.calc()">
+          <div class="w-slider-label">Days per engagement <strong id="ec-days-out">35</strong></div>
+          <input type="range" id="ec-days" min="5" max="120" step="5" value="35" oninput="EC.calc()">
+          <div class="w-slider-label">Engagements per year <strong id="ec-engs-out">3</strong></div>
+          <input type="range" id="ec-engs" min="1" max="8" step="1" value="3" oninput="EC.calc()">
+          <div class="ec-toggle">
+            <label class="ec-toggle-hdr">
+              <span>I introduce a colleague</span>
+              <span class="toggle-sw"><input type="checkbox" id="ec-tog-peer" onchange="EC.calc()"><span class="t-track"></span><span class="t-thumb"></span></span>
+            </label>
+            <div class="ec-toggle-body" id="ec-peer-body">
+              <div class="w-slider-label" style="margin-top:.5rem">Their engagement days <strong id="ec-pdays-out">35</strong></div>
+              <input type="range" id="ec-pdays" min="5" max="120" step="5" value="35" oninput="EC.calc()">
+            </div>
+          </div>
+          <div class="ec-toggle">
+            <label class="ec-toggle-hdr">
+              <span>I introduce a company</span>
+              <span class="toggle-sw"><input type="checkbox" id="ec-tog-co" onchange="EC.calc()"><span class="t-track"></span><span class="t-thumb"></span></span>
+            </label>
+            <div class="ec-toggle-body" id="ec-co-body">
+              <div class="w-slider-label" style="margin-top:.5rem">Days billed to that company/year <strong id="ec-cdays-out">80</strong></div>
+              <input type="range" id="ec-cdays" min="10" max="300" step="10" value="80" oninput="EC.calc()">
+            </div>
+          </div>
+        </div>
+        <div class="ec-results">
+          <div class="ec-total" id="ec-total">£0</div>
+          <div class="ec-total-lbl">Total annual network income</div>
+          <div class="ec-row"><span class="ec-lbl">Your earnings (day rate, in full)</span><span class="ec-val" style="color:var(--teal)" id="ec-eng">£0</span></div>
+          <div class="ec-row"><span class="ec-lbl">Peer introduction override</span><span class="ec-val" style="color:var(--amber)" id="ec-peer">—</span></div>
+          <div class="ec-row"><span class="ec-lbl">Company introduction override</span><span class="ec-val" style="color:var(--blue)" id="ec-co">—</span></div>
+          <div class="ec-row"><span class="ec-lbl">What your client pays (rate + 10%)</span><span class="ec-val" style="color:var(--muted)" id="ec-client">£0</span></div>
+          <div class="ec-vs" id="ec-vs"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="econ-explainer">
+    <div class="container">
+      <span class="label reveal">The base model explained</span>
+      <h2 class="reveal">No surprises.</h2>
+      <p class="reveal" style="max-width:560px;opacity:.75;margin-bottom:2.5rem">A client engages you at £1,000 per day. They pay £1,100 — the 10% network fee is additive to your rate, charged to the client on top. You receive £1,000. The network receives £100. Your earnings are never touched. Published on our website before you join.</p>
+      <div class="econ-grid">
+        <div class="econ-box reveal"><h3>When you introduce a colleague</h3><p>You introduce a fellow practitioner into an engagement. The client pays an additional 5% directly to you. For a 40-day engagement at £900/day, that is £1,800 for a single introduction. Your colleague's rate is unaffected.</p></div>
+        <div class="econ-box reveal"><h3>When you introduce a company</h3><p>You earn 5% on every day billed to that company — by any practitioner, across all contracts — for as long as the company engages through the network. The economics reward the people who build the network.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--paper)">
+    <div class="container">
+      <span class="label reveal">Introduction overrides</span>
+      <h2 class="reveal">How your introductions<br>compound.</h2>
+      <p class="reveal" style="max-width:560px;opacity:.75;margin-bottom:1.5rem">Register every introduction before making contact to protect your override. The examples below are illustrative — your portal tracks live data.</p>
+      <div style="margin-top:1.5rem">
+        <div class="it-tabs">
+          <div class="it-tab active" onclick="IT.show(0,this)">Peer introductions</div>
+          <div class="it-tab" onclick="IT.show(1,this)">Company introductions</div>
+          <div class="it-tab" onclick="IT.show(2,this)">The compound effect</div>
+        </div>
+        <div id="it-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="membership">
+    <div class="container">
+      <span class="label reveal">Membership includes</span>
+      <h2 class="reveal">What you receive.<br>What you are protected from.</h2>
+      <div class="membership-grid">
+        <div class="membership-col reveal"><h3>What you receive</h3><ul>
+          <li>90% of every day rate, paid within 7 days of client payment</li>
+          <li>Platform invoices clients on your behalf — you never chase payment</li>
+          <li>Introduction overrides tracked automatically and paid monthly</li>
+          <li>IR35-safe Statement of Work template for every engagement</li>
+          <li>The client's 360 score and payment record before you commit</li>
+          <li>A genuine community of peers — not a Slack channel nobody uses</li>
+          <li>Non-circumvention protection with an automatic audit trail</li>
+          <li>A network team that is reachable as people, not a brand voice</li>
+        </ul></div>
+        <div class="membership-col protect reveal"><h3>What you are protected from</h3><ul>
+          <li>Unilateral scope expansion — a signed amendment is required before it happens</li>
+          <li>Rate coordination risk — the network is CMA-compliant by design</li>
+          <li>Opaque fee structures that erode what you earn</li>
+          <li>Clients you know nothing about — their 360 score is visible to you</li>
+          <li>Late payment — the network escalates on your behalf at day 15</li>
+          <li>IR35 misclassification — every SOW has the right provisions built in</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+  <section class="entry">
+    <div class="container">
+      <span class="label reveal">Entry criteria</span>
+      <h2 class="reveal">Is this network for you?</h2>
+      <p class="reveal" style="max-width:580px;opacity:.75;margin-bottom:.5rem">The entry standard is high because the network's reputation rests on it.</p>
+      <div class="entry-list">
+        <div class="entry-item reveal"><div class="entry-num">1</div><div class="entry-text"><h4>At least 8 years in a senior functional role</h4><p>At a level where you owned outcomes, not contributed to them.</p></div></div>
+        <div class="entry-item reveal"><div class="entry-num">2</div><div class="entry-text"><h4>A minimum of two independent or project-based engagements</h4><p>Where success was defined upfront and you can evidence the delivery.</p></div></div>
+        <div class="entry-item reveal"><div class="entry-num">3</div><div class="entry-text"><h4>At least one verifiable reference from a decision-maker</h4><p>Someone who commissioned or sponsored your work — not a peer.</p></div></div>
+        <div class="entry-item reveal"><div class="entry-num">4</div><div class="entry-text"><h4>A completed profile describing the problems you solve</h4><p>In the client's language, not a job title.</p></div></div>
+        <div class="entry-item reveal"><div class="entry-num">5</div><div class="entry-text"><h4>Professional indemnity insurance of at least £500,000 per claim</h4><p>Required before any engagement commences.</p></div></div>
+        <div class="entry-item reveal"><div class="entry-num">6</div><div class="entry-text"><h4>A signed membership agreement</h4><p>Covering non-circumvention, rate discussion prohibition, and 360 participation.</p></div></div>
+      </div>
+      <p class="reveal" style="margin-top:2rem;font-size:.9rem;font-style:italic;opacity:.6">No age requirement. No institution requirement. No specific sector requirement. The standard is seniority of experience and evidence of delivery.</p>
+    </div>
+  </section>
+  <section style="padding:0;background:var(--offwhite)">
+    <div class="container" style="padding-top:3.5rem;padding-bottom:3rem"><span class="label reveal">The process</span><h2 class="reveal">Four steps. No surprises.</h2></div>
+    <div class="process-steps">
+      <div class="process-step reveal"><span class="step-n">One</span><h4>Express interest</h4><p>A short form. Name, specialism, experience level, how you heard about the network. No CV. Takes five minutes.</p></div>
+      <div class="process-step reveal"><span class="step-n">Two</span><h4>Full application</h4><p>If the initial screen passes, we send you the profile template and reference guidance. You complete both.</p></div>
+      <div class="process-step reveal"><span class="step-n">Three</span><h4>Assessment call</h4><p>30 minutes. A conversation, not an interview. We talk about your best engagement to date and whether the network is right for you.</p></div>
+      <div class="process-step reveal"><span class="step-n">Four</span><h4>Activation</h4><p>If the answer is yes on both sides, your profile is live within 48 hours. We make your first introductions to relevant members.</p></div>
+    </div>
+  </section>
+  <section class="prac-cta">
+    <div class="container">
+      <h2>If this sounds like the network<br>you have been looking for, it probably is.</h2>
+      <p class="sub">Applications are assessed individually. There is no rush and no pressure — but there is a quality bar, and we apply it consistently.</p>
+      <a class="btn btn-amber" onclick="showPage('apply')">Apply to join</a>
+    </div>
+  </section>
+</div>
+
+<!-- CLIENTS -->
+<div class="page" id="page-clients" data-screen-label="Clients">
+  <div class="client-hero">
+    <div class="container">
+      <span class="label" style="color:rgba(255,255,255,.4)">For organisations</span>
+      <h1>Every consultant will tell you<br>they can solve your problem.<br><em>TGW finds the person<br>who already has.</em></h1>
+      <p class="sub" style="font-family:var(--serif);font-style:italic;font-size:1.15rem;margin-top:1.5rem">Senior capability. Defined outcomes. No surprises.</p>
+      <div class="hero-btns" style="margin-top:2.5rem">
+        <a class="btn btn-amber" onclick="showPage('register')">Tell us what you are trying to fix</a>
+      </div>
+    </div>
+  </div>
+
+  <section style="background:var(--paper)">
+    <div class="container">
+      <span class="label reveal">Does this sound familiar?</span>
+      <h2 class="reveal">The situations we<br>hear most often.</h2>
+      <p class="reveal" style="max-width:560px;opacity:.72;margin-bottom:3rem">These are not generic problems. They are the specific situations coming up in early conversations. If yours looks different, tell us — that is where we start.</p>
+      <div class="how-list">
+        <div class="how-item reveal">
+          <div class="how-n" style="color:var(--amber);font-size:1.5rem">01</div>
+          <div class="how-text">
+            <h4>You have hired for the same role twice</h4>
+            <p>You have spent the money. The problem is still there. The issue probably is not your hiring process — it is that permanent employment is the wrong structure for what you actually need. Someone who has solved this specific problem before, with defined outcomes and a defined end date, is a different proposition entirely.</p>
+          </div>
+        </div>
+        <div class="how-item reveal">
+          <div class="how-n" style="color:var(--amber);font-size:1.5rem">02</div>
+          <div class="how-text">
+            <h4>Your business has grown past what the current team can carry</h4>
+            <p>Another permanent head is not the answer — not the cost, not the commitment, not the time it takes to find the right person and hope they work out. You need senior capability now. Someone who can step in, contribute from day one, and leave the function stronger than they found it.</p>
+          </div>
+        </div>
+        <div class="how-item reveal">
+          <div class="how-n" style="color:var(--amber);font-size:1.5rem">03</div>
+          <div class="how-text">
+            <h4>You need senior resource now and do not have six months</h4>
+            <p>You have a board to answer to, a timeline that does not move, and a gap that needs filling. A six-month recruitment process is not an option. A consultant who needs three months to understand your business is not an option. You need someone who has been here before.</p>
+          </div>
+        </div>
+      </div>
+      <p class="reveal" style="font-size:.88rem;opacity:.5;margin-top:2rem;font-style:italic">These three are where the early conversations are pointing. As the network grows, we will be specific about what we have seen and what we have solved. This is a journey.</p>
+    </div>
+  </section>
+
+  <section style="background:var(--navy);padding:5rem 0">
+    <div class="container">
+      <div style="max-width:700px;margin:0 auto;text-align:center">
+        <div style="font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:300;color:#fff;line-height:1.3;margin-bottom:1.5rem">You are not buying a consultant.<br>You are buying the end of a problem<br><em style="color:var(--amber)">you have probably already tried<br>and failed to fix once.</em></div>
+        <p style="color:rgba(255,255,255,.6);font-size:.95rem;line-height:1.8;max-width:520px;margin:0 auto">Every business owner has a bad consultant story. Scope creep. Vague deliverables. Invoices that keep coming. TGW offers what that market has never reliably delivered: certainty. The outcome is agreed before anyone starts. The person delivering it has done it before.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-steps">
+    <div class="container">
+      <span class="label reveal">How we work</span>
+      <h2 class="reveal">Tell us what you are trying to fix.<br>We take it from there.</h2>
+      <div class="how-list">
+        <div class="how-item reveal"><div class="how-n">1</div><div class="how-text"><h4>Describe your problem</h4><p>Not a job description. Not a person spec. The situation — what is broken, what you have already tried, what success looks like. The brief is where the match begins, and a clear brief produces a better outcome every time.</p></div></div>
+        <div class="how-item reveal"><div class="how-n">2</div><div class="how-text"><h4>We introduce you to the right person</h4><p>TGW matches your brief against the network and introduces you to one or two practitioners who have solved this type of problem before. Verified track record. Real 360 score. Available to start. You meet them before you commit to anything.</p></div></div>
+        <div class="how-item reveal"><div class="how-n">3</div><div class="how-text"><h4>Agree the outcome before anyone starts</h4><p>A Statement of Work is completed together — defined deliverables, agreed KPIs, timeline. Nothing begins without it. This replaces the vague engagement letter and the open-ended billing cycle.</p></div></div>
+        <div class="how-item reveal"><div class="how-n">4</div><div class="how-text"><h4>Delivery and mutual accountability</h4><p>The engagement runs against what was agreed. At completion, both the practitioner and your organisation are evaluated. The 360 score is permanent, honest, and visible to future engagements on both sides.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--paper)">
+    <div class="container-w">
+      <span class="label reveal">Engagement formats</span>
+      <h2 class="reveal">The right format<br>for the problem.</h2>
+      <p class="reveal" style="opacity:.72;max-width:540px;margin-bottom:1.5rem">Four formats are available — each with different timelines, cadence, and SOW requirements. Not sure which fits? We advise as part of the brief conversation.</p>
+      <div class="es-grid" id="es-grid" style="margin-bottom:1rem"></div>
+      <div id="es-detail"></div>
+    </div>
+  </section>
+
+  <section style="background:var(--offwhite)">
+    <div class="container">
+      <div class="commercial-inner reveal">
+        <div><span class="big-stat">10%</span><div class="big-stat-label">Published on this page</div></div>
+        <div>
+          <span class="label">The commercial case</span>
+          <h2 style="margin-bottom:1rem">Less than a third of<br>what you are probably paying.</h2>
+          <p>Traditional interim firms charge between 20 and 35 percent above the day rate. They do not publish it. You find out when you see the invoice. TGW charges 10%. For a practitioner at £1,000 per day over a 40-day engagement, that is a saving of up to £10,000 on a single brief compared with standard market rates.</p>
+          <p style="margin-top:.75rem">That saving does not come from a lower calibre of practitioner. It comes from a model that does not need a large sales operation or a recruitment margin to sustain itself.</p>
+          <div style="margin-top:1.5rem"><a class="btn btn-outline-navy" onclick="showPage('pricing')">See the full fee structure</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="client-360">
+    <div class="container">
+      <span class="label reveal">Mutual accountability</span>
+      <h2 class="reveal">You are rated too.<br><em style="color:var(--amber)">That is what makes this different.</em></h2>
+      <p class="reveal" style="max-width:600px;opacity:.8;margin-bottom:1rem">Every practitioner in the network carries a 360 score built from real engagements, visible before any brief is accepted. So does every client organisation.</p>
+      <p class="reveal" style="max-width:600px;opacity:.75">Your score reflects how clearly you defined the outcome at the start, how responsive you were, how you treated the practitioner, and whether you paid on time. A strong score means better practitioners choose to work with you. No other network holds organisations accountable in this way.</p>
+    </div>
+  </section>
+
+  <section style="background:var(--offwhite)">
+    <div class="container">
+      <span class="label reveal">Where we operate</span>
+      <h2 class="reveal">Across the functions<br>where problems live.</h2>
+      <p class="reveal" style="max-width:580px;opacity:.72;margin-bottom:2rem">TGW practitioners have operated at senior level across these functions. As the network grows we will be specific about what we have seen and what we have solved. Tell us your problem — that is where we start.</p>
+      <div class="six-grid" style="margin-top:0">
+        <div class="six-item reveal"><span class="num" style="font-size:1.4rem">→</span><h3>Finance</h3><p>CFO advisory, restructuring, M&amp;A support, FP&amp;A, cash management.</p></div>
+        <div class="six-item reveal"><span class="num" style="font-size:1.4rem">→</span><h3>Operations</h3><p>Transformation, cost reduction, supply chain, process design, P&amp;L ownership.</p></div>
+        <div class="six-item reveal"><span class="num" style="font-size:1.4rem">→</span><h3>Technology</h3><p>Fractional CTO, platform strategy, architecture, digital transformation.</p></div>
+        <div class="six-item reveal"><span class="num" style="font-size:1.4rem">→</span><h3>Commercial</h3><p>Revenue growth, GTM strategy, sales leadership, commercial structure.</p></div>
+        <div class="six-item reveal"><span class="num" style="font-size:1.4rem">→</span><h3>People</h3><p>HR transformation, organisational design, leadership capability.</p></div>
+        <div class="six-item reveal" style="background:var(--navy);border-color:var(--navy)"><span class="num" style="font-size:1.4rem;color:var(--amber)">?</span><h3 style="color:#fff">Something else</h3><p style="color:rgba(255,255,255,.6)">Tell us. The most interesting matches often start here.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="client-cta tight">
+    <div class="container">
+      <div style="background:var(--offwhite);padding:2.5rem;margin-bottom:3rem;border-left:3px solid var(--rule)">
+        <span class="label" style="color:var(--muted)">Coming soon</span>
+        <h3 style="color:var(--navy);margin-bottom:.5rem;font-size:1.15rem">What clients say</h3>
+        <p style="font-size:.9rem;opacity:.65">Case studies and client perspectives will be published here once the first engagements are complete. If you would like to speak to someone before committing, we will make that introduction directly.</p>
+      </div>
+      <h2>Tell us what you are trying to fix.</h2>
+      <p class="sub">Describe the situation. We will tell you whether we have the person and how quickly we can introduce you.</p>
+      <a class="btn btn-amber" onclick="showPage('register')">Send us a brief</a>
+    </div>
+  </section>
+</div>
+
+<!-- NETWORK -->
+<div class="page" id="page-network" data-screen-label="Network">
+  <div class="network-hero">
+    <div class="container">
+      <span class="label">The Network</span>
+      <h1>A network built on principles,<br>not just promises.</h1>
+      <p class="sub">Governance that applies to both sides, economics that share value fairly, and a character that is explicit about what it will and will not do.</p>
+    </div>
+  </div>
+
+  <section style="background:var(--paper)">
+    <div class="container">
+      <span class="label reveal">Five principles of character</span>
+      <h2 class="reveal">Not policies on a wall.<br>How every decision gets made.</h2>
+      <p class="reveal" style="max-width:580px;opacity:.75;margin-bottom:2rem">When something feels uncertain, the answer is here.</p>
+      <div style="margin-top:1rem">
+        <div class="pc-pills" id="pc-pills"></div>
+        <div id="pc-body"></div>
+        <div class="pc-nav">
+          <button class="pc-nav-btn" id="pc-prev" onclick="PC.move(-1)">← Previous</button>
+          <div class="pc-progress" id="pc-progress"></div>
+          <button class="pc-nav-btn" id="pc-next" onclick="PC.move(1)">Next →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--offwhite)">
+    <div class="container-w">
+      <span class="label reveal">Governance</span>
+      <h2 class="reveal">Governance that<br>means something.</h2>
+      <div class="governance-grid">
+        <div class="gov-card reveal"><h3>The bilateral 360</h3><p>Every practitioner is evaluated after every engagement. So is every client. Scores are visible to both parties before they commit. A bad client does not get access to great practitioners. A practitioner with a strong score earns priority access to the best engagements.</p></div>
+        <div class="gov-card reveal"><h3>The mandatory SOW</h3><p>Every engagement begins with a Statement of Work. Not optional guidance — a hard requirement. Defined deliverables, agreed KPIs, timeline, and what access the client commits to providing. The 360 is scored against this document.</p></div>
+        <div class="gov-card reveal"><h3>The entry standard</h3><p>Practitioners are assessed before they join. Minimum eight years senior functional experience. At least two verified outcome-led engagements. A reference from a decision-maker. And a 30-minute panel conversation to assess whether the Principles of Character resonate.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--paper)">
+    <div class="container">
+      <span class="label reveal">The 360 evaluation framework</span>
+      <h2 class="reveal">Both sides are evaluated.<br>Scores are permanent and portable.</h2>
+      <div style="margin-top:1rem">
+        <div class="fw-tabs">
+          <button class="fw-tab active" onclick="FW.sw('prac',this)">Practitioner evaluation</button>
+          <button class="fw-tab" onclick="FW.sw('client',this)">Client evaluation</button>
+          <button class="fw-tab" onclick="FW.sw('scale',this)">What scores mean</button>
+          <button class="fw-tab" onclick="FW.sw('thresh',this)">Thresholds</button>
+        </div>
+        <div class="fw-panel active" id="fw-prac">
+          <table class="fw-table"><thead><tr><th>Dimension</th><th>Weight</th><th>Rated by</th><th>What it measures</th></tr></thead><tbody>
+            <tr><td class="fw-dim">KPI delivery</td><td><strong style="color:var(--navy)">35%</strong><div class="fw-wt-bar"><div class="fw-wt-fill" style="width:35%;background:var(--navy)"></div></div></td><td style="color:var(--muted)">Client</td><td>Were the agreed outcomes in the SOW delivered? This is the primary signal — everything else is context.</td></tr>
+            <tr><td class="fw-dim">Communication</td><td><strong style="color:var(--amber)">20%</strong><div class="fw-wt-bar"><div class="fw-wt-fill" style="width:20%;background:var(--amber)"></div></div></td><td style="color:var(--muted)">Client</td><td>Clear, proactive, honest. Did they flag problems early? Did they keep the right people informed?</td></tr>
+            <tr><td class="fw-dim">Collaboration</td><td><strong style="color:var(--amber)">20%</strong><div class="fw-wt-bar"><div class="fw-wt-fill" style="width:20%;background:var(--amber)"></div></div></td><td style="color:var(--muted)">Client + peer</td><td>Did they work with the client's team, not around them? Did they bring in the right people when needed?</td></tr>
+            <tr><td class="fw-dim">Network citizenship</td><td><strong style="color:var(--teal)">15%</strong><div class="fw-wt-bar"><div class="fw-wt-fill" style="width:15%;background:var(--teal)"></div></div></td><td style="color:var(--muted)">Peer (anon)</td><td>Did they uphold network principles and support other members? Anonymous peer rating.</td></tr>
+            <tr><td class="fw-dim">Integrity</td><td><strong style="color:var(--muted)">10%</strong><div class="fw-wt-bar"><div class="fw-wt-fill" style="width:10%;background:var(--muted)"></div></div></td><td style="color:var(--muted)">Client + network</td><td>Operated within agreed terms, avoided conflicts, represented themselves honestly throughout.</td></tr>
+          </tbody></table>
+        </div>
+        <div class="fw-panel" id="fw-client">
+          <div class="fw-ind"><strong>Industry first:</strong> No other network rates client companies. A practitioner sees a client's 360 score before accepting an engagement.</div>
+          <table class="fw-table"><thead><tr><th>Dimension</th><th>Weight</th><th>Rated by</th><th>What it measures</th></tr></thead><tbody>
+            <tr><td class="fw-dim">KPI clarity</td><td><strong style="color:var(--blue)">30%</strong><div class="fw-wt-bar"><div class="fw-wt-fill" style="width:30%;background:var(--blue)"></div></div></td><td style="color:var(--muted)">Practitioner</td><td>Did the client provide clear, measurable outcomes at the start? Ambiguous briefs are the single biggest cause of failed engagements.</td></tr>
+            <tr><td class="fw-dim">Responsiveness</td><td><strong style="color:var(--blue)">25%</strong><div class="fw-wt-bar"><div class="fw-wt-fill" style="width:25%;background:var(--blue)"></div></div></td><td style="color:var(--muted)">Practitioner</td><td>Did they provide access, information, and decisions in a timely manner? Did they remove blockers?</td></tr>
+            <tr><td class="fw-dim">Respect</td><td><strong style="color:var(--blue)">25%</strong><div class="fw-wt-bar"><div class="fw-wt-fill" style="width:25%;background:var(--blue)"></div></div></td><td style="color:var(--muted)">Practitioner</td><td>Were practitioners treated as expert peers, not managed as contractors?</td></tr>
+            <tr><td class="fw-dim">Payment integrity</td><td><strong style="color:var(--teal)">20%</strong><div class="fw-wt-bar"><div class="fw-wt-fill" style="width:20%;background:var(--teal)"></div></div></td><td style="color:var(--muted)">Platform (data)</td><td>Hard data — not a rating. Were invoices paid on agreed terms? Late payment recorded automatically at day 15.</td></tr>
+          </tbody></table>
+        </div>
+        <div class="fw-panel" id="fw-scale">
+          <div class="fw-score-grid">
+            <div class="fw-sc" style="background:var(--l-teal)"><div class="fw-sc-val" style="color:var(--teal)">5</div><div class="fw-sc-lbl" style="color:var(--teal)">Exceptional</div><div class="fw-sc-desc" style="color:var(--teal)">Delivered beyond KPIs. Would engage again without hesitation.</div></div>
+            <div class="fw-sc" style="background:#EDF7E6"><div class="fw-sc-val" style="color:#27500A">4</div><div class="fw-sc-lbl" style="color:#27500A">Strong</div><div class="fw-sc-desc" style="color:#27500A">Delivered all agreed KPIs. No significant issues.</div></div>
+            <div class="fw-sc" style="background:var(--l-amber)"><div class="fw-sc-val" style="color:#633806">3</div><div class="fw-sc-lbl" style="color:#633806">Acceptable</div><div class="fw-sc-desc" style="color:#633806">Delivered most KPIs. Some gaps. Would engage with different scope.</div></div>
+            <div class="fw-sc" style="background:var(--l-coral)"><div class="fw-sc-val" style="color:#712B13">2</div><div class="fw-sc-lbl" style="color:#712B13">Below standard</div><div class="fw-sc-desc" style="color:#712B13">Material failure. Triggers governance review automatically.</div></div>
+            <div class="fw-sc" style="background:#FEF0F0"><div class="fw-sc-val" style="color:#A32D2D">1</div><div class="fw-sc-lbl" style="color:#A32D2D">Serious concern</div><div class="fw-sc-desc" style="color:#A32D2D">Genuine misconduct. Immediate profile suspension.</div></div>
+          </div>
+        </div>
+        <div class="fw-panel" id="fw-thresh">
+          <div class="fw-thresh"><span class="fw-badge" style="background:var(--l-teal);color:var(--teal)">4.5+</span><div class="fw-thresh-text"><strong>Elevated status.</strong> Featured in search results. First access to premium engagements. Fast-track introduction rights.</div></div>
+          <div class="fw-thresh"><span class="fw-badge" style="background:var(--l-blue);color:var(--blue)">3.5–4.4</span><div class="fw-thresh-text"><strong>Good standing.</strong> Full network access. No restrictions. Standard matching.</div></div>
+          <div class="fw-thresh"><span class="fw-badge" style="background:var(--l-amber);color:#633806">3.0–3.4</span><div class="fw-thresh-text"><strong>Review triggered.</strong> Private conversation with network team within 5 days. Development conversation offered. Score visible — profile not hidden.</div></div>
+          <div class="fw-thresh"><span class="fw-badge" style="background:#FEF0F0;color:#A32D2D">Below 3.0</span><div class="fw-thresh-text"><strong>Profile suspended.</strong> Formal investigation begins within 24 hours. Right of appeal preserved. One independent appeal per 12 months.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-row tight">
+    <div class="container-w">
+      <div class="stats-grid">
+        <div class="stat-block reveal"><span class="stat-num">£5.7bn</span><div class="stat-label">Global fractional executive market, growing at 14% annually</div></div>
+        <div class="stat-block reveal"><span class="stat-num">74%</span><div class="stat-label">Of fractional engagements come from referrals — the core of how this network works</div></div>
+        <div class="stat-block reveal"><span class="stat-num">68%</span><div class="stat-label">Growth in demand for fractional executives 2023–24</div></div>
+        <div class="stat-block reveal"><span class="stat-num">31%</span><div class="stat-label">Of failed fractional projects traced to unclear scope — solved by the mandatory SOW</div></div>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--offwhite);padding:3rem 0">
+    <div class="container">
+      <p class="reveal" style="max-width:680px;margin:0 auto;text-align:center;font-family:var(--serif);font-size:1.15rem;font-weight:300;line-height:1.65;color:var(--navy)">The fractional market is not a trend. It is a structural shift in how organisations access expertise. The question is not whether to engage fractional practitioners — it is whether to do it with accountability infrastructure or without it.</p>
+    </div>
+  </section>
+  <section style="background:var(--offwhite)">
+    <div class="container-w">
+      <span class="label reveal">How TGW compares</span>
+      <h2 class="reveal">The fractional market has grown.<br>So has the gap.</h2>
+      <p class="reveal" style="opacity:.72;max-width:560px">Between what most platforms offer and what practitioners and clients actually need.</p>
+      <div class="cm-wrap">
+        <table class="cm-table">
+          <thead><tr>
+            <th style="min-width:190px">Feature</th>
+            <th class="us" style="min-width:130px">TGW Network</th>
+            <th style="min-width:120px">Traditional interim</th>
+            <th style="min-width:100px">Free directory</th>
+            <th style="min-width:110px">Fractional Jobs</th>
+            <th style="min-width:90px">Toptal</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="feat">Published fee structure</td><td class="us"><span class="cm-tick">✓</span> 10% — on website</td><td><span class="cm-cross">✗</span> Never disclosed</td><td><span class="cm-tick">✓</span> Free / no fee</td><td class="cm-part">~ One-time fee</td><td><span class="cm-cross">✗</span> Undisclosed %</td></tr>
+            <tr><td class="feat">Clients rated / 360'd</td><td class="us"><span class="cm-tick">✓</span> Full 360, visible</td><td><span class="cm-cross">✗</span> Never</td><td><span class="cm-cross">✗</span> Never</td><td><span class="cm-cross">✗</span> Never</td><td><span class="cm-cross">✗</span> Never</td></tr>
+            <tr><td class="feat">Mandatory SOW / KPIs</td><td class="us"><span class="cm-tick">✓</span> Required, templated</td><td class="cm-part">~ Optional</td><td><span class="cm-cross">✗</span> None</td><td><span class="cm-cross">✗</span> None</td><td class="cm-part">~ Encouraged</td></tr>
+            <tr><td class="feat">Practitioner earns on introductions</td><td class="us"><span class="cm-tick">✓</span> 5% override, ongoing</td><td><span class="cm-cross">✗</span> None</td><td><span class="cm-cross">✗</span> None</td><td><span class="cm-cross">✗</span> None</td><td><span class="cm-cross">✗</span> None</td></tr>
+            <tr><td class="feat">Company intro lifetime override</td><td class="us"><span class="cm-tick">✓</span> 5% life of contracts</td><td><span class="cm-cross">✗</span> None</td><td><span class="cm-cross">✗</span> None</td><td><span class="cm-cross">✗</span> None</td><td><span class="cm-cross">✗</span> None</td></tr>
+            <tr><td class="feat">Quality gate on entry</td><td class="us"><span class="cm-tick">✓</span> 8yr min, verified</td><td><span class="cm-tick">✓</span> Varies</td><td><span class="cm-cross">✗</span> Self-reported</td><td class="cm-part">~ Light vetting</td><td><span class="cm-tick">✓</span> Strong vetting</td></tr>
+            <tr><td class="feat">360 score travels with practitioner</td><td class="us"><span class="cm-tick">✓</span> Portable, permanent</td><td><span class="cm-cross">✗</span> None</td><td><span class="cm-cross">✗</span> None</td><td><span class="cm-cross">✗</span> None</td><td class="cm-part">~ Client feedback only</td></tr>
+            <tr><td class="feat">Non-circumvention protection</td><td class="us"><span class="cm-tick">✓</span> 24 months, damages</td><td><span class="cm-tick">✓</span> Standard clause</td><td><span class="cm-cross">✗</span> None</td><td><span class="cm-cross">✗</span> None</td><td><span class="cm-tick">✓</span> Yes</td></tr>
+            <tr><td class="feat">Typical client fee above day rate</td><td class="us">10% (+5% where applicable)</td><td>20–35%</td><td>Zero</td><td>One-time flat</td><td>15–25%</td></tr>
+          </tbody>
+        </table>
+        <div class="cm-source">Source: Market research and published pricing, April 2026. ✓ Standard &nbsp;~ Partial or optional &nbsp;✗ Not offered</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--paper)">
+    <div class="container-w">
+      <span class="label reveal">The network</span>
+      <h2 class="reveal">Curated, not collected.</h2>
+      <p class="reveal" style="opacity:.72;max-width:560px">Every practitioner below has been verified on entry. Their 360 score is real — built across completed engagements. Register to see full profiles.</p>
+      <div style="margin-top:1.5rem">
+        <div class="ps-filters" id="ps-filters"></div>
+        <div class="ps-grid" id="ps-grid"></div>
+        <div class="ps-gate">
+          <p>Full profiles — including verified outcomes, engagement history, and 360 score detail — are available to registered clients.</p>
+          <a class="btn btn-amber" onclick="showPage('register')">Register to view full profiles</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PRICING -->
+<div class="page" id="page-pricing" data-screen-label="Pricing">
+  <div class="pricing-hero">
+    <div class="container">
+      <span class="label" style="color:rgba(255,255,255,.4)">Pricing</span>
+      <h1>The fees. All of them.<br>On this page.</h1>
+      <p class="sub">No small print. No 'rates on application'. No discovery that the fee was 30% when you see the invoice.</p>
+    </div>
+  </div>
+  <section class="fee-cards">
+    <div class="container">
+      <span class="label reveal">The three fee elements</span>
+      <div class="fee-grid">
+        <div class="fee-card reveal"><div><div class="fee-pct">10<span>%</span></div><div class="fee-name">Network fee</div></div><div><h3>The network fee</h3><p class="fee-who">Client pays · Additive on top of practitioner's rate · Received by TGW Network</p><p style="font-size:.9rem;margin-top:.75rem;opacity:.75">A practitioner charges £1,000 per day. The client pays £1,100. The practitioner receives £1,000 — their full rate, untouched. The network receives £100. The fee is charged to the client on top. It is never deducted from the practitioner.</p></div><div class="fee-example"><strong>Worked example</strong>40-day engagement at £1,000/day<br>Client pays: £44,000<br>Practitioner receives: £40,000<br>Network receives: £4,000</div></div>
+        <div class="fee-card reveal"><div><div class="fee-pct">5<span>%</span></div><div class="fee-name">Peer introduction override</div></div><div><h3>The peer introduction override</h3><p class="fee-who">Client pays · Additive to network fee · Received by the introducing practitioner</p><p style="font-size:.9rem;margin-top:.75rem;opacity:.75">Practitioner A introduces Practitioner B into a £1,000/day engagement. Practitioner B receives their full £1,000/day rate. Practitioner A receives £50 per day for the life of the engagement. The client pays £1,150/day total.</p></div><div class="fee-example"><strong>Worked example</strong>40-day engagement at £1,000/day<br>Introduced practitioner receives: £40,000<br>Introducing practitioner earns: £2,000<br>Client pays: £46,000 total</div></div>
+        <div class="fee-card reveal"><div><div class="fee-pct">5<span>%</span></div><div class="fee-name">Company introduction (lifetime)</div></div><div><h3>The company introduction override</h3><p class="fee-who">Client pays · Additive · Lifetime · Received by introducing practitioner</p><p style="font-size:.9rem;margin-top:.75rem;opacity:.75">Every day billed to an introduced company — by any practitioner, across all contracts — earns the introducing practitioner 5% of that day rate.</p></div><div class="fee-example"><strong>Worked example</strong>Company bills 200 days at £1,000/day in year 1<br>Introducing practitioner earns: £10,000<br>Ongoing for all future contracts</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="cap-floor">
+    <div class="container">
+      <span class="label reveal">The cap and the floor</span>
+      <div class="cap-grid">
+        <div class="cap-box reveal"><span class="cap-num">15%</span><h3>Maximum total client fee above day rate</h3><p>Where both a peer introduction and a company introduction apply to the same engagement, overrides are split so the total never exceeds 15%. This is a hard cap with no exceptions.</p></div>
+        <div class="cap-box reveal"><span class="cap-num">£500</span><h3>Minimum day rate</h3><p>The network minimum is £500 per day. Below this threshold, the 10% fee does not generate enough to fund the governance infrastructure that gives the network its value.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--offwhite)">
+    <div class="container">
+      <span class="label reveal">Non-circumvention</span>
+      <h2 class="reveal">What the NCA means<br>in practice.</h2>
+      <p class="reveal" style="max-width:560px;opacity:.75">The membership agreement includes a 24-month non-circumvention clause with pre-agreed liquidated damages. The calculator below is illustrative only.</p>
+      <div style="margin-top:1rem">
+        <div class="ld-disclaimer"><strong>Important:</strong> This calculator is for illustration only. It shows how the pre-agreed liquidated damages formula works. Actual damages in any specific case are determined by the terms of the signed membership agreement and are subject to legal process. This tool does not constitute legal advice.</div>
+        <div class="ld-grid">
+          <div>
+            <div class="w-slider-label">Days worked outside the network <strong id="ld-d-out">40</strong></div>
+            <input type="range" id="ld-days" min="5" max="150" step="5" value="40" oninput="LD.calc()">
+            <div class="w-slider-label">Day rate of the practitioner <strong id="ld-r-out">£900</strong></div>
+            <input type="range" id="ld-rate" min="500" max="2000" step="50" value="900" oninput="LD.calc()">
+          </div>
+          <div class="ld-result">
+            <div class="ld-total" id="ld-total">£0</div>
+            <div class="ld-total-lbl">Illustrative liquidated damages</div>
+            <div class="ld-row"><span class="ld-lbl">Days outside network</span><span class="ld-val" id="ld-r-days">0</span></div>
+            <div class="ld-row"><span class="ld-lbl">Day rate</span><span class="ld-val" id="ld-r-rate">£0</span></div>
+            <div class="ld-row"><span class="ld-lbl">Lost network fee (10%)</span><span class="ld-val" style="color:var(--amber)" id="ld-r-fee">£0</span></div>
+            <div class="ld-row"><span class="ld-lbl">Administration premium (20%)</span><span class="ld-val" style="color:var(--amber)" id="ld-r-admin">£0</span></div>
+            <div class="ld-formula"><strong>The formula:</strong> Days × Day rate × 10% = lost fee. Lost fee × 20% = administration premium. Pre-agreed in the membership agreement — no need to prove actual loss in court.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0">
+    <div style="background:#FFF8F0;border:1px solid rgba(184,112,40,.3)">
+      <div class="cma-inner">
+        <span class="cma-flag">CMA Compliance Notice</span>
+        <h3>Rate discussion prohibition</h3>
+        <p>Following the Competition and Markets Authority's guidance on labour market competition law, TGW Network explicitly prohibits any discussion of day rates between members.</p>
+        <p style="margin-top:.75rem">Individual practitioners publishing their own rates on their profiles is permitted — that is transparency, not coordination. Any discussion of rates between members in any network channel, at any network event, or through any network communication is prohibited and is grounds for immediate removal from the network.</p>
+        <p style="margin-top:.75rem">This rule is in the membership agreement. It is stated here for the same reason everything else is: because transparency is not selective.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about" data-screen-label="About">
+  <div class="about-hero"><div class="container-n"><span class="label">About</span><h1>Why this exists.</h1></div></div>
+  <section class="about-body"><div class="container-n">
+    <p class="reveal" style="font-family:var(--serif);font-size:1.3rem;font-weight:300;line-height:1.6;color:var(--navy);margin-bottom:2rem">TGW exists for two reasons. Because a generation of experienced professionals deserves a market that recognises what they are worth. And because the organisations ignoring that market are the ones paying the price.</p>
+    <p class="reveal">This is not a platform. It is a correction. A governed network built on the belief that the most experienced operators in the market should not have to choose between their expertise and their terms — and that organisations should not have to choose between senior capability and certainty of outcome.</p>
+    <p class="reveal">TGW is a journey, not a launch. The founding cohort is forming now. The first briefs are coming in. The network will learn what problems it can solve, which sectors it serves best, and where the model works hardest. That knowledge will shape everything that comes next.</p>
+    <p class="reveal">Right now, the two things that will not change are the people TGW is for — the practitioners the market keeps underestimating, and the organisations smart enough to know what they are missing — and the principle that both sides deserve better terms than the market has offered them.</p>
+    <p class="reveal">Three problems have existed in the fractional and interim market for a long time. Organisations have no reliable way to assess practitioner quality before committing. Practitioners have no protection from the practices that damage their work. And the market has no accountability mechanism that applies to both parties.</p>
+    <p class="reveal">TGW addresses all three. Not with another directory. Not with better matching technology. With the infrastructure that makes expert deployment work properly — for everyone involved.</p>
+  </div></section>
+  <section class="contact-section"><div class="container-n">
+    <span class="label reveal">The founder</span>
+    <h2 class="reveal" style="font-size:1.8rem">Andrew Engledow</h2>
+    <div class="reveal" style="max-width:580px">
+      <p>Thirty years of senior commercial experience across regulated technology markets in EMEA, APAC, and North America. Deals closed north of £29 million. The kind of career that looks impressive on paper and that the market decided, at a certain point, to overlook.</p>
+      <p>TGW was built from that experience — and from the recognition that the problem was not personal. It was structural. A generation of professionals like Andrew were being filtered out not because their capability had diminished but because the systems doing the filtering were not designed to see it.</p>
+      <p>The network exists to correct that. Andrew can be reached directly at the address below.</p>
+    </div>
+  </div></section>
+  <section class="contact-section"><div class="container-n">
+    <span class="label reveal">Contact</span>
+    <h2 class="reveal" style="font-size:1.8rem">Get in touch.</h2>
+    <div class="reveal">
+      <p>The network team is available by email and — where helpful — by call. We do not have a ticketing system.</p>
+      <a class="contact-email" href="mailto:andrew@engledow.co.uk">andrew@engledow.co.uk</a>
+      <p style="font-size:.88rem;opacity:.65">We aim to respond within one working day. If something is urgent, say so in the subject line.</p>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a class="btn btn-amber" onclick="showPage('apply')">Apply as a practitioner</a>
+        <a class="btn btn-outline-navy" onclick="showPage('register')">Register a company</a>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- APPLY -->
+<div class="page" id="page-apply" data-screen-label="Apply">
+  <div class="form-page-hero amber-bg"><div class="container"><span class="label" style="color:rgba(255,255,255,.5)">For practitioners</span><h1>Apply to join the network</h1><p class="sub">A two-stage process. Stage one is a short expression of interest — it takes about five minutes.</p></div></div>
+  <section class="form-section"><div class="container"><div class="form-wrap">
+    <div class="form-intro">If the initial information suggests a fit with the entry standard, we will send you the full profile template and reference guidance. If not, we will tell you honestly and explain what would need to be different. There is no automated rejection here.</div>
+    <div id="apply-form">
+      <div class="form-group"><label>Your name</label><input type="text" placeholder="Full name"></div>
+      <div class="form-group"><label>Your email address</label><input type="email" placeholder="you@example.com"></div>
+      <div class="form-group"><label>Your primary specialism</label><input type="text" placeholder="e.g. Operations, Finance, Technology, Commercial, People — or describe your own"></div>
+      <div class="form-group"><label>Approximate years of senior functional experience</label><select><option value="">Select—</option><option>8–10 years</option><option>10–15 years</option><option>15–20 years</option><option>20+ years</option></select></div>
+      <div class="form-group"><label>Your approximate day rate range</label><select><option value="">Select—</option><option>£500–£700</option><option>£700–£1,000</option><option>£1,000–£1,500</option><option>£1,500+</option></select></div>
+      <div class="form-group"><label>Were you referred by a network member? If yes, their name.</label><input type="text" placeholder="Optional — referred applications are prioritised"><div class="hint">Referrals are prioritised in the review process.</div></div>
+      <div class="form-group"><label>In two or three sentences: what problems do you solve?</label><textarea placeholder="Not your job title — the client's problem in the client's language."></textarea></div>
+      <button class="btn btn-amber" onclick="submitForm('apply')">Submit my application</button>
+    </div>
+    <div class="success-msg" id="apply-success"><div class="success-box"><h3>Received.</h3><p>We will review your application and respond within two working days. If we want to take things forward, we will send you the profile template and let you know what happens next. If we do not think there is a fit right now, we will explain why — honestly and specifically.</p></div></div>
+  </div></div></section>
+</div>
+
+<!-- REGISTER -->
+<div class="page" id="page-register" data-screen-label="Register">
+  <div class="form-page-hero blue-bg"><div class="container"><span class="label" style="color:rgba(255,255,255,.5)">For organisations</span><h1>Tell us what you are trying to fix.</h1><p class="sub">Describe the situation in your own words. That is where the right match begins.</p></div></div>
+  <section class="form-section"><div class="container"><div class="form-wrap">
+    <div class="form-intro" style="border-left-color:var(--blue)">Start with the problem — not the person spec. The more clearly you describe the situation, what you have already tried, and what success looks like, the faster and more accurately we can match you. Someone from the TGW team will respond within one working day.</div>
+    <div id="register-form">
+      <div class="form-group"><label>Describe the problem in your own words</label><textarea placeholder="What is broken, how long it has been that way, what you have already tried — and what a good outcome looks like." style="min-height:140px"></textarea></div>
+      <div class="form-group"><label>Your name and role</label><input type="text" placeholder="Name, Job Title"></div>
+      <div class="form-group"><label>Company name</label><input type="text" placeholder="Company name"></div>
+      <div class="form-group"><label>Your email address</label><input type="email" placeholder="you@company.com"></div>
+      <div class="form-group"><label>How urgently do you need this?</label><select><option value="">Select—</option><option>This week — it is urgent</option><option>Within the next month</option><option>Planning ahead — no immediate pressure</option></select></div>
+      <div class="form-group"><label>Were you referred by a TGW practitioner?</label><input type="text" placeholder="Their name — important for the referral record"><div class="hint" style="color:var(--blue)">If a practitioner introduced you, capturing their name activates their referral income.</div></div>
+      <button class="btn btn-blue" onclick="submitForm('register')">Send us your brief</button>
+    </div>
+    <div class="success-msg" id="register-success"><div class="success-box" style="border-color:var(--blue);background:#EFF4F9"><h3 style="color:var(--blue)">Received.</h3><p>We will review your situation and be in touch within one working day. If we believe we have the right person, we will say so directly — and tell you how quickly we can make the introduction.</p></div></div>
+  </div></div></section>
+</div>
+
+<!-- MANIFESTO -->
+<div class="page" id="page-manifesto" data-screen-label="Manifesto">
+  <div style="background:var(--navy);padding:5rem 0 4rem">
+    <div class="container-n">
+      <span class="label" style="color:rgba(255,255,255,.4)">The Manifesto</span>
+      <h1 style="color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);max-width:640px;line-height:1.15">Why businesses are throwing away their most valuable asset — and what it is costing them.</h1>
+      <p style="color:rgba(255,255,255,.5);margin-top:1.5rem;font-size:.9rem">Andrew Engledow, Founder · The Wasted Generation</p>
+    </div>
+  </div>
+  <section style="background:var(--paper)">
+    <div class="container-n">
+      <div style="max-width:660px;font-size:1.05rem;line-height:1.85;color:var(--ink)">
+        <p style="font-size:1.15rem;font-family:var(--serif);font-weight:300;line-height:1.65;color:var(--navy);margin-bottom:2rem">In 2015 Hollywood made a film about this problem. <em>The Intern</em> starred Robert De Niro as a 70-year-old retired executive who becomes a senior intern at a fast-growing startup. He wins over the entire company with his wisdom, his calm, and his complete absence of agenda. It grossed $195 million. People loved it because it felt true.</p>
+        <p>Then the credits rolled. And business went back to doing exactly what the film was quietly criticising.</p>
+        <p>This is not a feel-good story. This is a systemic failure. And it is costing businesses far more than they realise.</p>
+        <h2 style="font-size:1.5rem;color:var(--navy);margin:2.5rem 0 1rem;font-weight:400">What is actually happening</h2>
+        <p>There is a generation of professionals in their sixties right now with 30, 35, sometimes 40 years of hard-won, battle-tested commercial experience. They have navigated recessions, restructures, failed product launches, hostile clients, and broken pipelines. They have made the big calls. They have lived with the consequences. They know what they don't know — which is the most commercially valuable form of knowledge there is.</p>
+        <p>And businesses are filtering them out before they even get to the room.</p>
+        <p>78 percent of older workers have seen or experienced age discrimination in the workplace. That is not a fringe complaint. That is the majority. And the code words are always the same. <em>Overqualified. Looking for someone with more growth potential. Needs someone who will grow into the role.</em></p>
+        <p>What that actually means is: your experience makes us uncomfortable.</p>
+        <div style="border-left:3px solid var(--amber);padding:1.5rem 2rem;margin:2.5rem 0;background:var(--l-amber)">
+          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:300;line-height:1.65;color:var(--navy);margin:0">The most experienced operators available are being filtered out in favour of the least experienced options. And the businesses doing the filtering are paying for it in slower decisions, wrong turns, and missed growth.</p>
+        </div>
+        <h2 style="font-size:1.5rem;color:var(--navy);margin:2.5rem 0 1rem;font-weight:400">The data is unambiguous</h2>
+        <p>A 2021 systematic review of 74 independent research studies found no difference in productivity between older and younger workers. Not marginal. No difference.</p>
+        <p>Research from AARP and the OECD shows that a 10-percentage-point increase in workers over 50 is associated with roughly 1.1 percent higher productivity across the firm.</p>
+        <p>AARP and The Economist Intelligence Unit estimate age discrimination cost the US economy $850 billion in lost productivity in 2018 alone. That figure is projected to reach $3.9 trillion by 2050.</p>
+        <p>McKinsey estimates a $6.2 trillion annual global GDP opportunity from keeping experienced workers active and engaged.</p>
+        <p>Companies with age-diverse management teams generate 19 percent higher innovation profits.</p>
+        <p>Workers aged 50 to 60 average 15 years of tenure. 65 percent of Gen Z leave within 12 months.</p>
+        <p>This is not a marginal issue. This is one of the most expensive structural mistakes businesses make. And they keep making it.</p>
+        <h2 style="font-size:1.5rem;color:var(--navy);margin:2.5rem 0 1rem;font-weight:400">What this generation actually offers</h2>
+        <p>The pattern recognition that comes from 30 or 40 years in the room cannot be replicated by enthusiasm, a good degree, or an AI tool. It comes from having seen the same problem six times, in three sectors, across two continents. Knowing not just what to do but what not to do. Knowing where the shortcuts lead.</p>
+        <p>Crucially, this generation is not building empires. They are not chasing titles. They have already had the career. What they want now is a hard problem, a business that is serious about solving it, and the satisfaction of leaving something running better than they found it.</p>
+        <p>Businesses will spend six figures on a consultancy that sends in a 28-year-old with a framework learned in a classroom. But they will hesitate to bring in someone who has actually lived through the problem, solved it at scale, and can start contributing on day one without a discovery phase.</p>
+        <div style="border-left:3px solid var(--teal);padding:1.25rem 2rem;margin:2.5rem 0;background:var(--l-teal)">
+          <p style="font-size:.95rem;color:var(--teal);font-style:italic;margin:0">"Many of us share a desire to simply solve problems without the need for huge fanfare or long-term commitments." — Pat Butler, founding cohort member</p>
+        </div>
+        <h2 style="font-size:1.5rem;color:var(--navy);margin:2.5rem 0 1rem;font-weight:400">The cost of getting it wrong</h2>
+        <p>SHRM estimates the cost of a bad hire at between 50 and 200 percent of annual salary. For a senior role, that is a six-figure mistake, plus lost time, lost momentum, and the cost of starting again.</p>
+        <p>The businesses most at risk are the ones that keep hiring the same profile and wondering why the same problems persist. They are not short of talent. They are short of the right kind of experience applied to the right kind of problem.</p>
+        <p>And the solution is sitting right in front of them, being filtered out by the same hiring systems that are causing the problem.</p>
+        <h2 style="font-size:1.5rem;color:var(--navy);margin:2.5rem 0 1rem;font-weight:400">This is not just a business story</h2>
+        <p>Age-related professional exclusion has a human cost that extends well beyond the P&amp;L. Skilled people who built careers, led teams, and created real commercial value are being rendered invisible almost overnight. The mental health consequences are significant. The social isolation is real. The loss of identity that comes from arbitrary exclusion from the workforce is one of the least-discussed public health challenges in the UK.</p>
+        <p>Younger professionals have a stake in this too. When the knowledge transfer breaks down — when the generation that has seen everything stops being asked — it is the next generation that pays the price in avoidable mistakes and repeated lessons.</p>
+        <h2 style="font-size:1.5rem;color:var(--navy);margin:2.5rem 0 1rem;font-weight:400">What the right model looks like</h2>
+        <p>The Wasted Generation is a governed network that connects businesses with experienced professionals to provide value that younger people simply cannot yet provide.</p>
+        <p>The register is curated. Professionals are vetted by track record, sector, and the type of problem they have solved — not by age, tenure dates, or job titles.</p>
+        <p>Engagements are fixed-term. Clean in, clean out. No permanent headcount implications. No empire building. Typically two to three months with a defined problem, agreed deliverables, and knowledge transfer built in from day one.</p>
+        <p>Matching is done on the basis of the problem, not the profile. What does the business actually need fixed? Who has solved that before?</p>
+        <p>The review system is mutual. Businesses review the professional. The professional reviews the business. Both reviews are transparent. This is not a recruitment agency. It is not a job board. It is a platform built on openness, transparency, and fairness to both sides — with collective good as the governing principle.</p>
+        <div style="background:var(--navy);padding:2.5rem;margin:3rem 0">
+          <h3 style="color:var(--amber);font-family:var(--serif);font-size:1.3rem;font-weight:300;margin-bottom:1rem">A call to businesses</h3>
+          <p style="color:rgba(255,255,255,.8);font-size:.95rem;margin-bottom:0">If you are leading a business with a problem the standard playbook has not fixed — a stalled pipeline, a relationship breakdown, a strategic pivot that keeps losing momentum — you may already have the answer available to you. You are just not looking in the right place. The founding cohort is forming now. Available for fixed-term engagements. Ready to start.</p>
+        </div>
+        <div style="background:var(--offwhite);padding:2.5rem;margin-bottom:3rem">
+          <h3 style="color:var(--teal);font-family:var(--serif);font-size:1.3rem;font-weight:300;margin-bottom:1rem">A call to experienced professionals</h3>
+          <p style="font-size:.95rem;margin-bottom:0">If you recognise this story — if you have found yourself filtered out before you got to the room, told you are overqualified for problems you have solved before — this platform is being built for you. The founding cohort is forming now. One paragraph. What problem do you solve. What did it cost the business that ignored you.</p>
+        </div>
+        <hr style="border:none;border-top:1px solid var(--rule);margin-bottom:2rem">
+        <p style="font-size:.88rem;opacity:.6">Andrew Engledow is the founder of The Wasted Generation. Thirty years of senior commercial experience across regulated technology markets in EMEA, APAC, and North America. Deals closed north of £29 million.</p>
+        <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+          <a class="btn btn-amber" onclick="showPage('apply')">Apply as a practitioner</a>
+          <a class="btn btn-outline-navy" onclick="showPage('register')">Register your company</a>
+          <a class="btn btn-outline-navy" onclick="showPage('network')">About the network</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer style="color: rgb(30, 45, 64)">
+  <div class="container-w">
+    <div class="footer-inner">
+      <div class="footer-logo" aria-label="The Wasted Generation">
+        <svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <text x="0" y="58" font-family="DM Sans, system-ui, sans-serif" font-size="44" font-weight="500" letter-spacing="6" fill="#ffffff">THE</text>
+          <text x="0" y="175" font-family="DM Sans, system-ui, sans-serif" font-size="150" font-weight="800" letter-spacing="-2" fill="#ffffff">WASTED</text>
+          <text x="0" y="242" font-family="DM Sans, system-ui, sans-serif" font-size="44" font-weight="500" letter-spacing="6" fill="#ffffff">GENERATION</text>
+          <line x1="-10" y1="110" x2="760" y2="160" stroke="#B87028" stroke-width="10" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="footer-links">
+        <a onclick="showPage('practitioners')">Practitioners</a>
+        <a onclick="showPage('clients')">Organisations</a>
+        <a onclick="showPage('pricing')">Pricing</a>
+        <a onclick="showPage('manifesto')">The Manifesto</a>
+        <a onclick="showPage('about')">About</a>
+        <a onclick="showPage('apply')">Apply</a>
+      </div>
+      <div class="footer-tagline">Open. Transparent. Fair. Collaborative.<br><span style="color:rgba(255,255,255,.6)">#TheWastedGeneration</span><br><span style="color:rgba(255,255,255,.5)">tgw.network · andrew@engledow.co.uk</span></div>
+    </div>
+  </div>
+</footer>
+
+<!-- Practitioner Search Modal -->
+<div class="ps-modal-overlay" id="ps-modal" onclick="PS.closeModal(event)">
+  <div class="ps-modal" onclick="event.stopPropagation()">
+    <div class="ps-m-hdr">
+      <div class="ps-avatar" id="ps-m-avatar" style="width:56px;height:56px;font-size:16px"></div>
+      <div style="flex:1">
+        <div style="font-size:1rem;font-weight:600;color:var(--navy)" id="ps-m-name"></div>
+        <div style="font-size:.85rem;color:var(--muted);margin-top:2px" id="ps-m-role"></div>
+        <div id="ps-m-avail" style="margin-top:4px"></div>
+      </div>
+      <button class="ps-m-close" onclick="document.getElementById('ps-modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="ps-m-section"><div class="ps-m-section-title">Profile</div><div class="ps-m-bio" id="ps-m-bio"></div></div>
+    <div class="ps-m-section"><div class="ps-m-section-title">360 performance snapshot</div><div class="ps-kpi-grid" id="ps-m-kpis"></div></div>
+    <div class="ps-m-section"><div class="ps-m-section-title">Engagement terms</div><div class="ps-tags" id="ps-m-terms"></div></div>
+    <div class="ps-m-actions">
+      <a class="btn btn-amber" style="flex:1;text-align:center" onclick="showPage('register')">Register to engage</a>
+      <button class="btn btn-outline-navy" style="flex:1" onclick="document.getElementById('ps-modal').classList.remove('open')">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const PAGES=['home','practitioners','clients','network','pricing','manifesto','about','apply','register'];
+
+function showPage(name){
+  PAGES.forEach(p=>{const el=document.getElementById('page-'+p);if(el)el.classList.remove('active')});
+  const page=document.getElementById('page-'+name);
+  if(!page)return;
+  page.classList.add('active');
+  window.scrollTo(0,0);
+  const reveals=Array.from(page.querySelectorAll('.reveal'));
+  reveals.forEach(el=>el.classList.remove('visible'));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    reveals.forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),Math.min(i*65,900)));
+  }));
+  if(name==='practitioners'){ EC.calc(); IT.show(0,page.querySelector('.it-tab')); }
+  if(name==='clients'){ ES.render(); }
+  if(name==='network'){ PS.render(); PC.render(); }
+  if(name==='pricing'){ LD.calc(); }
+}
+
+function submitForm(w){
+  const form=document.getElementById(w+'-form');
+  const suc=document.getElementById(w+'-success');
+  if(form)form.style.display='none';
+  if(suc)suc.classList.add('show');
+}
+
+function toggleMobileNav(){
+  const l=document.querySelector('.nav-links');
+  const c=document.querySelector('.nav-cta');
+  const open=l.style.display==='flex';
+  if(open){ l.style.display='none'; if(c)c.style.display='none'; }
+  else {
+    l.style.cssText='display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--navy);padding:1rem 2.5rem 2rem;gap:0;z-index:199';
+    l.querySelectorAll('a').forEach(a=>{ a.style.cssText='padding:.85rem 0;line-height:1.4;color:rgba(255,255,255,.75);border-bottom:1px solid rgba(255,255,255,.08);font-size:.9rem'; });
+    if(c){ c.style.cssText='display:flex;flex-direction:column;position:absolute;left:0;right:0;top:calc(64px + 220px);background:var(--navy);padding:0 2.5rem 2rem;gap:.5rem;z-index:199'; }
+  }
+}
+
+window.addEventListener('scroll',()=>{
+  document.querySelectorAll('.page.active .reveal:not(.visible)').forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-60) el.classList.add('visible');
+  });
+},{passive:true});
+
+/* W1: EARNINGS CALCULATOR */
+const EC={
+  fmt(n){ return '£'+Math.round(n).toLocaleString('en-GB'); },
+  calc(){
+    const r=+(document.getElementById('ec-rate')||{value:900}).value;
+    const d=+(document.getElementById('ec-days')||{value:35}).value;
+    const e=+(document.getElementById('ec-engs')||{value:3}).value;
+    const peer=document.getElementById('ec-tog-peer')?.checked;
+    const co=document.getElementById('ec-tog-co')?.checked;
+    const pd=+(document.getElementById('ec-pdays')||{value:35}).value;
+    const cd=+(document.getElementById('ec-cdays')||{value:80}).value;
+    const set=(id,v)=>{ const el=document.getElementById(id); if(el)el.textContent=v; };
+    set('ec-rate-out','£'+r); set('ec-days-out',d); set('ec-engs-out',e);
+    set('ec-pdays-out',pd); set('ec-cdays-out',cd);
+    document.getElementById('ec-peer-body').className='ec-toggle-body'+(peer?' open':'');
+    document.getElementById('ec-co-body').className='ec-toggle-body'+(co?' open':'');
+    const eng=r*d*e;
+    const pEarn=peer?r*0.05*pd:0;
+    const cEarn=co?r*0.05*cd:0;
+    const total=eng+pEarn+cEarn;
+    const clientPays=(r*1.1*d*e)+(peer?r*0.05*pd:0)+(co?r*0.05*cd:0);
+    set('ec-total',this.fmt(total));
+    set('ec-eng',this.fmt(eng));
+    set('ec-peer',peer?this.fmt(pEarn):'—');
+    set('ec-co',co?this.fmt(cEarn):'—');
+    set('ec-client',this.fmt(clientPays));
+    document.getElementById('ec-vs').textContent='Your client pays '+this.fmt(r*1.1)+'/day. A traditional firm charging 25% on top would cost them '+this.fmt(r*1.25)+'/day — for the same rate.';
+  }
+};
+
+/* W2: ENGAGEMENT SELECTOR */
+const ES={
+  sel:0,
+  types:[
+    { id:'sprint', color:'#0C447C', bg:'#EEF5FC', tc:'#0C447C', name:'Sprint', dur:'15–30 days',
+      desc:'Defined deliverable. Tight timeline. Best when the problem is clear and speed matters.',
+      r:['Problem is clearly defined before you start','Outcome is measurable and agreed','Client has urgency — speed matters','Internal team can act once diagnosis is done'],
+      f:['Single SOW with 3–5 KPIs maximum','Daily or every-other-day check-in cadence','Single deliverable at end — not phased','360 evaluation at completion only'] },
+    { id:'project', color:'#085041', bg:'#F0FAF6', tc:'#085041', name:'Project', dur:'30–90 days',
+      desc:'Phased delivery across a broader scope. Diagnosis, implementation, and internal handover.',
+      r:['Problem spans multiple areas or functions','Implementation as well as diagnosis required','Internal capability needs building alongside delivery','Phased milestones make sense for the scope'],
+      f:['SOW with defined phase milestones','Mid-point review at day 30–45','Weekly update to internal champion','360 review at each major milestone'] },
+    { id:'ongoing', color:'#3C3489', bg:'#F5F4FE', tc:'#3C3489', name:'Ongoing', dur:'90+ days',
+      desc:'Sustained fractional leadership. SOW refreshed quarterly. Exit criteria defined from day one.',
+      r:['Sustained senior presence needed over time','Role is genuinely fractional — not disguised employment','Outcome evolves across quarters','Internal capability does not yet exist to absorb the role'],
+      f:['SOW refreshed every 90 days','Quarterly 360 reviews','Monthly day allocation agreed in advance','Exit-ready internal owner defined from the start'] },
+    { id:'advisory', color:'#B87028', bg:'#FFF8F0', tc:'#7A4A12', name:'Advisory', dur:'Retained part-time',
+      desc:'Regular strategic input at board or senior team level. Fortnightly or monthly cadence.',
+      r:['Strategic input required — not operational delivery','Low day commitment, high-frequency contact','Board-level or senior leadership guidance needed','Specific expertise required on a recurring basis'],
+      f:['Retainer with agreed days per month','SOW based on outputs — not duties or presence','Fortnightly or monthly structured sessions','360 evaluation at 90-day intervals'] }
+  ],
+  render(){
+    const grid=document.getElementById('es-grid');
+    const detail=document.getElementById('es-detail');
+    if(!grid||!detail)return;
+    grid.innerHTML=this.types.map((t,i)=>`
+      <div class="es-card${i===this.sel?' active':''}" onclick="ES.sel=${i};ES.render()"
+        style="${i===this.sel?`background:${t.bg};border-color:${t.color}`:``}">
+        <div class="es-type" style="color:${i===this.sel?t.color:'var(--muted)'}">${t.name}</div>
+        <div class="es-name" style="color:${i===this.sel?t.tc:'var(--navy)'}">${t.dur}</div>
+      </div>`).join('');
+    const t=this.types[this.sel];
+    detail.innerHTML=`
+      <div class="es-detail" style="background:${t.bg};border-top:3px solid ${t.color};margin-top:1rem;padding:2rem">
+        <div style="grid-column:1/-1;margin-bottom:.5rem">
+          <div style="font-family:var(--serif);font-size:1.6rem;font-weight:300;color:${t.tc};line-height:1.1;margin-bottom:.4rem">${t.name} <span style="color:var(--muted);font-size:1rem;font-style:italic;margin-left:.5rem">${t.dur}</span></div>
+          <div style="font-size:.92rem;color:var(--ink);opacity:.85;max-width:560px">${t.desc}</div>
+        </div>
+        <div>
+          <div class="es-detail-title" style="color:${t.tc}">Right when</div>
+          ${t.r.map(x=>`<div class="es-item">${x}</div>`).join('')}
+        </div>
+        <div>
+          <div class="es-detail-title" style="color:${t.tc}">Format requirements</div>
+          ${t.f.map(x=>`<div class="es-item">${x}</div>`).join('')}
+        </div>
+      </div>`;
+  }
+};
+
+/* W3: PRINCIPLES STEPPER */
+const PC={
+  sel:0,
+  principles:[
+    { num:'01', name:'Collaboration', color:'#085041', bg:'#F0FAF6',
+      statement:'We actively make each other better. The economics of the network are designed so that helping someone else succeed means you succeed too.',
+      i:['Peer introduction overrides — paid','Company introduction overrides — lifetime','Reputation built across the network'],
+      a:['Self-promotion at the cost of peers','Hoarding clients or knowledge','Treating colleagues as competition'],
+      d:['No fees on internal peer referrals','5% override paid to introducers','Public recognition of strong contributors'],
+      hl:'Helping someone else succeed earns you income.',
+      sub:'Most networks pay lip service. This one writes it into the fee schedule.' },
+    { num:'02', name:'Approachability', color:'#0C447C', bg:'#EEF5FC',
+      statement:'No hierarchy, no gatekeeping. The network team is reachable as people, not a brand voice. Practitioners and clients are addressable directly.',
+      i:['Direct contact with the network team','Practitioners contactable through profile','First-name basis — internal and external'],
+      a:['Ticketing systems and queue numbers','Hiding behind a brand voice','Slow scripted replies'],
+      d:['Email reply within one working day','Calls offered when useful','Founder reachable directly'],
+      hl:'No ticket numbers. No bots. Andrew picks up the phone.',
+      sub:'If you have to ask who to talk to, we have already failed.' },
+    { num:'03', name:'Mutual benefit', color:'#B87028', bg:'#FFF8F0',
+      statement:'This only works if it works for everyone. Not mostly for the platform, not mostly for clients, not mostly for practitioners — for every party, fairly.',
+      i:['Practitioner keeps 100% of rate','Client pays a published, modest fee','Network funded by transparent margin'],
+      a:['Extracting value at one side\'s expense','Hidden fees on either party','Bidding wars or rate suppression'],
+      d:['Fee additive — never deducted from practitioner','Fee published on the website','Caps on total override to protect clients'],
+      hl:'Practitioner. Client. Network. Three winners — or no deal.',
+      sub:'The economics are designed so no party loses for another to gain.' },
+    { num:'04', name:'Transparency', color:'#1E2D40', bg:'#F7F7F7',
+      statement:'Fees published. Ratings visible. Process explained. If you have to ask, we have already failed.',
+      i:['Fees on the pricing page','360 scores visible before engagement','Match reasoning shared with both sides'],
+      a:['Rates "on application"','Hidden commission structures','Vague engagement letters'],
+      d:['Pricing page lists every fee and example','Both sides see scores before commitment','Audit trail on every introduction'],
+      hl:'10%. Not "rates on application". Not "depends".',
+      sub:'Published in the same place for every visitor. Forever.' },
+    { num:'05', name:'Openness', color:'#3C3489', bg:'#F5F4FE',
+      statement:'We are building this with the people in it, not for them. Your challenge is welcome. The model evolves with the network.',
+      i:['Founding cohort shapes the model','Quarterly member forums','Network team open to scrutiny'],
+      a:['"Take it or leave it" platform terms','Closed-door governance','Members as passive consumers'],
+      d:['Public roadmap','Member-elected representation as cohort grows','Annual review of every governance rule'],
+      hl:'You are not a user. You are a member.',
+      sub:'The platform is built with the cohort, not deployed onto them.' }
+  ],
+  render(){
+    const pills=document.getElementById('pc-pills');
+    const body=document.getElementById('pc-body');
+    const prog=document.getElementById('pc-progress');
+    if(!pills||!body)return;
+    pills.innerHTML=this.principles.map((p,i)=>`<div class="pc-pill${i===this.sel?' active':''}" onclick="PC.sel=${i};PC.render()" ${i===this.sel?`style="background:${p.color};color:#fff;border-color:${p.color}"`:''}>${p.name}</div>`).join('');
+    const p=this.principles[this.sel];
+    body.innerHTML=`
+      <div style="background:${p.bg};padding:2rem;border-left:3px solid ${p.color}">
+        <div class="pc-num-tag" style="color:${p.color}">${p.num} — Principle</div>
+        <div class="pc-pname">${p.name}</div>
+        <div class="pc-statement">${p.statement}</div>
+        <div class="pc-three">
+          <div class="pc-col"><div class="pc-col-title" style="color:${p.color}">It looks like</div>${p.i.map(x=>`<div class="pc-item">${x}</div>`).join('')}</div>
+          <div class="pc-col"><div class="pc-col-title" style="color:#A32D2D">It does not look like</div>${p.a.map(x=>`<div class="pc-item">${x}</div>`).join('')}</div>
+          <div class="pc-col"><div class="pc-col-title" style="color:${p.color}">How we operationalise it</div>${p.d.map(x=>`<div class="pc-item">${x}</div>`).join('')}</div>
+        </div>
+        <div class="pc-site-box" style="background:#fff;border-left-color:${p.color}">
+          <div class="pc-site-hl" style="color:${p.color}">"${p.hl}"</div>
+          <div class="pc-site-sub">${p.sub}</div>
+        </div>
+      </div>`;
+    prog.innerHTML=this.principles.map((_,i)=>`<div class="pc-dot${i===this.sel?' active':''}" onclick="PC.sel=${i};PC.render()" ${i===this.sel?`style="background:${p.color}"`:''}></div>`).join('');
+    document.getElementById('pc-prev').disabled=this.sel===0;
+    document.getElementById('pc-next').disabled=this.sel===this.principles.length-1;
+  },
+  move(d){ this.sel=Math.max(0,Math.min(this.principles.length-1,this.sel+d)); this.render(); }
+};
+
+/* W5: PRACTITIONER SEARCH */
+const PS={
+  filter:'All',
+  practitioners:[
+    { initials:'JM', color:'#0C447C', name:'J. Marshall', role:'Fractional CFO · Regulated industries', avail:'now', tags:['Finance','Restructuring','M&A'], spec:'Finance',
+      stars:4.8, eng:23, kpi:96, repeat:87,
+      bio:'30 years senior finance leadership in regulated technology and financial services. Specialises in cash management, restructuring, and M&A support for businesses between £20m and £200m revenue.',
+      terms:['Project · 30–90 days','£1,200–£1,800 / day','Remote + onsite London/SE'] },
+    { initials:'PR', color:'#085041', name:'P. Rashid', role:'Operations Director · Manufacturing & supply chain', avail:'2 weeks', tags:['Operations','Supply chain'], spec:'Operations',
+      stars:4.9, eng:18, kpi:94, repeat:78,
+      bio:'Built and turned around operations functions across automotive, FMCG, and industrial manufacturing in EMEA and APAC. Track record of cost reduction without compromising service.',
+      terms:['Sprint or Project','£1,000–£1,400 / day','EMEA / APAC available'] },
+    { initials:'SK', color:'#3C3489', name:'S. Khan', role:'Fractional CTO · Platform & scale', avail:'now', tags:['Technology','Architecture','Scale-up'], spec:'Technology',
+      stars:4.7, eng:14, kpi:91, repeat:71,
+      bio:'Scaled engineering organisations from 10 to 200+ across two unicorns. Pragmatic about architecture trade-offs. Particularly strong on technology strategy at Series B/C inflection points.',
+      terms:['Ongoing 2–3 days/week','£1,400–£2,000 / day','UK + US time zones'] },
+    { initials:'EH', color:'#B87028', name:'E. Hartley', role:'Commercial Director · GTM transformation', avail:'now', tags:['Commercial','GTM','SaaS'], spec:'Commercial',
+      stars:4.8, eng:21, kpi:93, repeat:81,
+      bio:'25 years building and turning around commercial functions. Specialises in GTM redesign, sales leadership in transition, and quota model overhauls. Strongest with £10m–£80m ARR businesses.',
+      terms:['Sprint or Project','£1,100–£1,600 / day','UK / EMEA'] },
+    { initials:'MD', color:'#0C447C', name:'M. Donnelly', role:'Fractional CFO · PE & growth', avail:'4 weeks', tags:['Finance','Private equity'], spec:'Finance',
+      stars:4.9, eng:31, kpi:97, repeat:89,
+      bio:'Former Big Four partner with 15 years on the operator side. Specialises in CFO support during PE ownership transitions, exit preparation, and integration finance.',
+      terms:['Project · 60–120 days','£1,500–£2,200 / day','UK / US'] },
+    { initials:'LN', color:'#085041', name:'L. Nakamura', role:'Operations · Transformation lead', avail:'now', tags:['Operations','Transformation'], spec:'Operations',
+      stars:4.6, eng:12, kpi:90, repeat:66,
+      bio:'Specialises in operational transformation at the £20m–£150m revenue band — particularly post-acquisition integrations and process redesign in services businesses.',
+      terms:['Project · 45–90 days','£900–£1,300 / day','Remote + 2 days/week onsite'] }
+  ],
+  render(){
+    const filters=document.getElementById('ps-filters');
+    const grid=document.getElementById('ps-grid');
+    if(!filters||!grid)return;
+    const opts=['All','Operations','Technology','Finance','Commercial','Available now'];
+    filters.innerHTML=opts.map(o=>`<div class="ps-chip${o===this.filter?' active':''}" onclick="PS.filter='${o}';PS.render()">${o}</div>`).join('');
+    const list=this.practitioners.filter(p=>{
+      if(this.filter==='All')return true;
+      if(this.filter==='Available now')return p.avail==='now';
+      return p.spec===this.filter;
+    });
+    grid.innerHTML=list.map((p,i)=>`
+      <div class="ps-card" onclick="PS.openModal(${this.practitioners.indexOf(p)})">
+        <div class="ps-top">
+          <div class="ps-avatar" style="background:${p.color}">${p.initials}</div>
+          <div style="flex:1">
+            <div class="ps-name">${p.name}</div>
+            <div class="ps-role">${p.role}</div>
+            <div class="ps-avail" style="color:${p.avail==='now'?'var(--teal)':'var(--amber)'}">
+              <span class="ps-avail-dot" style="background:${p.avail==='now'?'var(--teal)':'var(--amber)'}"></span>
+              ${p.avail==='now'?'Available now':'Available in '+p.avail}
+            </div>
+          </div>
+        </div>
+        <div class="ps-tags">${p.tags.map(t=>`<div class="ps-tag">${t}</div>`).join('')}</div>
+        <div class="ps-stats">
+          <div class="ps-stat"><div class="ps-sv">${p.stars} <span class="ps-star">★</span></div><div class="ps-sl">360 score</div></div>
+          <div class="ps-stat"><div class="ps-sv">${p.eng}</div><div class="ps-sl">Engagements</div></div>
+          <div class="ps-stat"><div class="ps-sv">${p.kpi}%</div><div class="ps-sl">KPI hit</div></div>
+          <div class="ps-stat"><div class="ps-sv">${p.repeat}%</div><div class="ps-sl">Repeat</div></div>
+        </div>
+      </div>`).join('') || '<div style="grid-column:1/-1;padding:2rem;text-align:center;color:var(--muted)">No practitioners match this filter.</div>';
+  },
+  openModal(i){
+    const p=this.practitioners[i];
+    const m=document.getElementById('ps-modal');
+    document.getElementById('ps-m-avatar').style.background=p.color;
+    document.getElementById('ps-m-avatar').textContent=p.initials;
+    document.getElementById('ps-m-name').textContent=p.name;
+    document.getElementById('ps-m-role').textContent=p.role;
+    document.getElementById('ps-m-avail').innerHTML=`<div class="ps-avail" style="color:${p.avail==='now'?'var(--teal)':'var(--amber)'}"><span class="ps-avail-dot" style="background:${p.avail==='now'?'var(--teal)':'var(--amber)'}"></span>${p.avail==='now'?'Available now':'Available in '+p.avail}</div>`;
+    document.getElementById('ps-m-bio').textContent=p.bio;
+    document.getElementById('ps-m-kpis').innerHTML=`
+      <div class="ps-kpi"><div class="ps-kpi-val">${p.stars} ★</div><div class="ps-kpi-lbl">360 score</div></div>
+      <div class="ps-kpi"><div class="ps-kpi-val">${p.kpi}%</div><div class="ps-kpi-lbl">KPI delivery</div></div>
+      <div class="ps-kpi"><div class="ps-kpi-val">${p.repeat}%</div><div class="ps-kpi-lbl">Repeat clients</div></div>`;
+    document.getElementById('ps-m-terms').innerHTML=p.terms.map(t=>`<div class="ps-tag" style="padding:6px 12px">${t}</div>`).join('');
+    m.classList.add('open');
+  },
+  closeModal(e){ if(e.target.id==='ps-modal') document.getElementById('ps-modal').classList.remove('open'); }
+};
+
+/* W6: 360 FRAMEWORK */
+const FW={
+  sw(id,btn){
+    document.querySelectorAll('.fw-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.fw-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('fw-'+id).classList.add('active');
+  }
+};
+
+/* W7: INTRODUCTION TRACKER */
+const IT={
+  show(i,btn){
+    document.querySelectorAll('.it-tab').forEach(t=>t.classList.remove('active'));
+    if(btn)btn.classList.add('active');
+    const body=document.getElementById('it-body');
+    if(!body)return;
+    if(i===0){
+      body.innerHTML=`
+        <div class="it-card">
+          <div class="it-hdr">
+            <div><div class="it-title">Sprint introduction · M. Donnelly into Acme Retail</div><div class="it-sub">Introduced May 2026 · 28 of 40 days delivered</div></div>
+            <div><div class="it-earn">£1,260</div><div class="it-earn-lbl">Earned to date</div></div>
+          </div>
+          <div class="it-detail">
+            <div class="it-stat"><div class="it-sv">£900</div><div class="it-sl">Day rate</div></div>
+            <div class="it-stat"><div class="it-sv">5%</div><div class="it-sl">Override</div></div>
+            <div class="it-stat"><div class="it-sv">£1,800</div><div class="it-sl">Projected total</div></div>
+          </div>
+          <div class="it-prog"><div class="it-prog-fill" style="width:70%"></div></div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:6px">70% complete · paid monthly in arrears</div>
+        </div>
+        <div class="it-card">
+          <div class="it-hdr">
+            <div><div class="it-title">Project introduction · E. Hartley into Nordic SaaS Co.</div><div class="it-sub">Introduced Feb 2026 · completed 12 weeks · paid in full</div></div>
+            <div><div class="it-earn">£3,300</div><div class="it-earn-lbl">Earned total</div></div>
+          </div>
+          <div class="it-detail">
+            <div class="it-stat"><div class="it-sv">£1,100</div><div class="it-sl">Day rate</div></div>
+            <div class="it-stat"><div class="it-sv">60</div><div class="it-sl">Days billed</div></div>
+            <div class="it-stat"><div class="it-sv">★ 4.9</div><div class="it-sl">360 outcome</div></div>
+          </div>
+          <div class="it-prog"><div class="it-prog-fill" style="width:100%;background:var(--teal)"></div></div>
+          <div style="font-size:.78rem;color:var(--teal);margin-top:6px">Complete · client renewed for second project</div>
+        </div>`;
+    } else if(i===1){
+      body.innerHTML=`
+        <div class="it-card">
+          <div class="it-hdr">
+            <div><div class="it-title">Acme Retail · introduced Jan 2026</div><div class="it-sub">3 practitioners deployed · 4 contracts to date · ongoing lifetime override</div></div>
+            <div><div class="it-earn">£14,800</div><div class="it-earn-lbl">Earned year 1</div></div>
+          </div>
+          <div class="it-detail">
+            <div class="it-stat"><div class="it-sv">296</div><div class="it-sl">Days billed</div></div>
+            <div class="it-stat"><div class="it-sv">5%</div><div class="it-sl">Lifetime override</div></div>
+            <div class="it-stat"><div class="it-sv">£1,000</div><div class="it-sl">Avg day rate</div></div>
+          </div>
+          <div class="it-compound" style="margin-top:.5rem">
+            <div class="it-cb-title">Projected accumulation</div>
+            <div class="it-cb-row"><span>Year 1 (actual)</span><strong>£14,800</strong></div>
+            <div class="it-cb-row"><span>Year 2 (est.)</span><strong>£22,500</strong></div>
+            <div class="it-cb-row"><span>Year 3 (est.)</span><strong>£28,000</strong></div>
+            <div class="it-cb-row" style="color:var(--amber)"><span>5-year projection</span><strong>£140,000+</strong></div>
+          </div>
+        </div>`;
+    } else {
+      body.innerHTML=`
+        <div class="it-card">
+          <div class="it-hdr">
+            <div><div class="it-title">Your compound trajectory · all introductions</div><div class="it-sub">Modelled on current run-rate and average retention</div></div>
+            <div><div class="it-earn">£18,100</div><div class="it-earn-lbl">Year-to-date</div></div>
+          </div>
+          <div class="it-detail">
+            <div class="it-stat"><div class="it-sv">2</div><div class="it-sl">Peer intros</div></div>
+            <div class="it-stat"><div class="it-sv">1</div><div class="it-sl">Company intros</div></div>
+            <div class="it-stat"><div class="it-sv">£42k</div><div class="it-sl">Run-rate</div></div>
+          </div>
+          <div class="it-compound">
+            <div class="it-cb-title">Why this compounds</div>
+            <div class="it-cb-row"><span>Peer overrides</span><span>End with the engagement they ran</span></div>
+            <div class="it-cb-row"><span>Company overrides</span><span>Continue across all future contracts</span></div>
+            <div class="it-cb-row"><span>Practical implication</span><span>Two strong company introductions can equal a fractional engagement of your own</span></div>
+          </div>
+        </div>`;
+    }
+  }
+};
+
+/* W8: LIQUIDATED DAMAGES */
+const LD={
+  fmt(n){ return '£'+Math.round(n).toLocaleString('en-GB'); },
+  calc(){
+    const d=+(document.getElementById('ld-days')||{value:40}).value;
+    const r=+(document.getElementById('ld-rate')||{value:900}).value;
+    const set=(id,v)=>{ const el=document.getElementById(id); if(el)el.textContent=v; };
+    set('ld-d-out',d); set('ld-r-out','£'+r);
+    set('ld-r-days',d); set('ld-r-rate','£'+r);
+    const fee=d*r*0.10;
+    const admin=fee*0.20;
+    const total=fee+admin;
+    set('ld-r-fee',this.fmt(fee));
+    set('ld-r-admin',this.fmt(admin));
+    set('ld-total',this.fmt(total));
+  }
+};
+
+/* ════════════════════════════
+   TWEAKS PANEL
+════════════════════════════ */
+const TWEAK_DEFAULTS=/*EDITMODE-BEGIN*/{
+  "accent": "#B87028",
+  "navy": "#1E2D40",
+  "headlineFont": "Fraunces",
+  "bodyFont": "DM Sans",
+  "denseLayout": false,
+  "hideManifesto": false
+}/*EDITMODE-END*/;
+
+let tweaks={...TWEAK_DEFAULTS};
+
+function applyTweaks(){
+  const r=document.documentElement;
+  r.style.setProperty('--amber',tweaks.accent);
+  r.style.setProperty('--l-amber', tweaks.accent==='#B87028'?'#FFF8F0':tweaks.accent+'15');
+  r.style.setProperty('--navy',tweaks.navy);
+  r.style.setProperty('--serif',`'${tweaks.headlineFont}',Georgia,serif`);
+  r.style.setProperty('--sans',`'${tweaks.bodyFont}',system-ui,sans-serif`);
+  document.body.style.fontSize=tweaks.denseLayout?'15px':'17px';
+  document.querySelectorAll('section').forEach(s=>{
+    if(!s.classList.contains('tight'))s.style.padding=tweaks.denseLayout?'3.5rem 0':'';
+  });
+  const manifestoLink=document.querySelector('.nav-links a[onclick*="manifesto"]')?.parentElement;
+  if(manifestoLink)manifestoLink.style.display=tweaks.hideManifesto?'none':'';
+  // load google font for headline if not default
+  const fonts=['Fraunces','DM Sans','Playfair Display','Cormorant Garamond','Inter','Manrope','Söhne','Spectral','Crimson Pro'];
+  const need=[tweaks.headlineFont,tweaks.bodyFont].filter(f=>!['Fraunces','DM Sans'].includes(f));
+  need.forEach(f=>{
+    const id='font-'+f.replace(/\s+/g,'-');
+    if(document.getElementById(id))return;
+    const l=document.createElement('link');l.id=id;l.rel='stylesheet';
+    l.href=`https://fonts.googleapis.com/css2?family=${encodeURIComponent(f)}:wght@300;400;500;600&display=swap`;
+    document.head.appendChild(l);
+  });
+}
+
+function persistTweaks(edits){
+  Object.assign(tweaks,edits);
+  applyTweaks();
+  try{ window.parent.postMessage({type:'__edit_mode_set_keys',edits},'*'); }catch(e){}
+}
+
+let tweaksOpen=false;
+function buildTweaksPanel(){
+  if(document.getElementById('tweaks-panel'))return;
+  const panel=document.createElement('div');
+  panel.id='tweaks-panel';
+  panel.style.cssText=`position:fixed;bottom:24px;right:24px;width:300px;background:#fff;border:1px solid var(--rule);box-shadow:0 12px 40px rgba(0,0,0,.18);z-index:500;display:none;font-family:var(--sans);font-size:.85rem;max-height:calc(100vh - 48px);overflow-y:auto`;
+  panel.innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--navy);color:#fff">
+      <div style="font-weight:600;letter-spacing:.04em;font-size:.78rem;text-transform:uppercase">Tweaks</div>
+      <button id="tweaks-close" style="background:none;border:none;color:#fff;font-size:1.1rem;cursor:pointer;line-height:1">✕</button>
+    </div>
+    <div style="padding:16px">
+      <div style="margin-bottom:14px">
+        <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px">Accent colour</div>
+        <div id="tw-accent" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      </div>
+      <div style="margin-bottom:14px">
+        <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px">Brand dark</div>
+        <div id="tw-navy" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      </div>
+      <div style="margin-bottom:14px">
+        <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px">Headline font</div>
+        <select id="tw-headline" style="width:100%;padding:7px 10px;border:1px solid var(--rule);font-family:inherit;font-size:.85rem;background:#fff"></select>
+      </div>
+      <div style="margin-bottom:14px">
+        <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px">Body font</div>
+        <select id="tw-body" style="width:100%;padding:7px 10px;border:1px solid var(--rule);font-family:inherit;font-size:.85rem;background:#fff"></select>
+      </div>
+      <label style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;cursor:pointer">
+        <span>Dense layout</span>
+        <input type="checkbox" id="tw-dense">
+      </label>
+      <label style="display:flex;justify-content:space-between;align-items:center;cursor:pointer">
+        <span>Hide manifesto link</span>
+        <input type="checkbox" id="tw-hide-manifesto">
+      </label>
+    </div>`;
+  document.body.appendChild(panel);
+
+  const accents=['#B87028','#085041','#0C447C','#3C3489','#A32D2D','#1E2D40'];
+  const navys=['#1E2D40','#0E1620','#10241B','#0A2944','#231933','#1A1A1A'];
+  const headlines=['Fraunces','Playfair Display','Cormorant Garamond','Spectral','Crimson Pro'];
+  const bodies=['DM Sans','Inter','Manrope','Fraunces'];
+
+  const swatch=(c,sel,onclick)=>`<button onclick="${onclick}" style="width:28px;height:28px;border-radius:50%;border:${c===sel?'3px solid #fff':'2px solid transparent'};outline:${c===sel?'2px solid '+c:'1px solid var(--rule)'};background:${c};cursor:pointer;padding:0"></button>`;
+  document.getElementById('tw-accent').innerHTML=accents.map(c=>swatch(c,tweaks.accent,`persistTweaks({accent:'${c}'});buildTweaksPanel.refresh()`)).join('');
+  document.getElementById('tw-navy').innerHTML=navys.map(c=>swatch(c,tweaks.navy,`persistTweaks({navy:'${c}'});buildTweaksPanel.refresh()`)).join('');
+  const headlineSel=document.getElementById('tw-headline');
+  headlineSel.innerHTML=headlines.map(f=>`<option ${f===tweaks.headlineFont?'selected':''}>${f}</option>`).join('');
+  headlineSel.onchange=e=>persistTweaks({headlineFont:e.target.value});
+  const bodySel=document.getElementById('tw-body');
+  bodySel.innerHTML=bodies.map(f=>`<option ${f===tweaks.bodyFont?'selected':''}>${f}</option>`).join('');
+  bodySel.onchange=e=>persistTweaks({bodyFont:e.target.value});
+  const dense=document.getElementById('tw-dense'); dense.checked=tweaks.denseLayout;
+  dense.onchange=e=>persistTweaks({denseLayout:e.target.checked});
+  const hm=document.getElementById('tw-hide-manifesto'); hm.checked=tweaks.hideManifesto;
+  hm.onchange=e=>persistTweaks({hideManifesto:e.target.checked});
+
+  document.getElementById('tweaks-close').onclick=()=>{
+    panel.style.display='none'; tweaksOpen=false;
+    try{ window.parent.postMessage({type:'__edit_mode_dismissed'},'*'); }catch(e){}
+  };
+}
+buildTweaksPanel.refresh=()=>{
+  const p=document.getElementById('tweaks-panel');
+  if(!p)return;
+  const wasOpen=p.style.display==='block';
+  p.remove(); buildTweaksPanel();
+  if(wasOpen){ document.getElementById('tweaks-panel').style.display='block'; }
+};
+
+window.addEventListener('message',e=>{
+  const d=e.data; if(!d||!d.type)return;
+  if(d.type==='__activate_edit_mode'){
+    buildTweaksPanel();
+    document.getElementById('tweaks-panel').style.display='block';
+    tweaksOpen=true;
+  } else if(d.type==='__deactivate_edit_mode'){
+    const p=document.getElementById('tweaks-panel'); if(p)p.style.display='none';
+    tweaksOpen=false;
+  }
+});
+
+/* Initial render */
+applyTweaks();
+EC.calc();
+ES.render();
+PC.render();
+PS.render();
+LD.calc();
+IT.show(0,document.querySelector('.it-tab'));
+
+// Trigger reveals on initial page
+document.querySelectorAll('.page.active .reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),100+Math.min(i*60,800)));
+
+try{ window.parent.postMessage({type:'__edit_mode_available'},'*'); }catch(e){}
+</script>
+</body>
+</html>
