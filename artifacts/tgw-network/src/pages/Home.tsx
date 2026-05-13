@@ -7,75 +7,132 @@ export default function Home() {
     <div id="page-home">
       <div className="home-hero">
         <div className="container">
-          <div className="hero-eyebrow">The Wasted Generation</div>
-          <h1>A governed network of proven practitioners, deployed against <em>defined outcomes.</em></h1>
-          <p className="sub">When a business needs senior capability, the market forces a choice: commit to a permanent hire, pay the premium of a consultancy, or take a gamble on an unverified interim. TGW Network exists to provide a fourth option.</p>
+          <div className="hero-eyebrow">TGW Network</div>
+          <h1>Every problem has been<br />solved before.<br /><em>We connect you with the people<br />who have already solved it.</em></h1>
+          <p className="sub">A governed network of proven practitioners, deployed against defined outcomes.</p>
           <div className="hero-btns">
-            <Link href="/clients" className="btn btn-amber">For organisations</Link>
-            <Link href="/practitioners" className="btn btn-outline-white">For practitioners</Link>
+            <Link href="/clients" className="btn btn-amber" data-testid="link-org-problem">My organisation has a problem</Link>
+            <Link href="/practitioners" className="btn btn-outline-white" data-testid="link-practitioner">I am a practitioner</Link>
           </div>
         </div>
       </div>
-      <section>
+
+      <section style={{ background: "var(--paper)" }}>
         <div className="container">
-          <span className="label reveal">The Proposition</span>
-          <h2 className="reveal">The experience you need.<br />Without the structural debt.</h2>
+          <span className="label reveal">What this is</span>
           <div className="what-grid">
             <div className="what-col reveal">
-              <h3>For Organisations</h3>
-              <p>Direct access to operators who have solved your problem before. No discovery phases. No junior teams. Just the exact capability you need, deployed cleanly for exactly as long as you need it.</p>
+              <h3>We match. We introduce. We deploy.</h3>
+              <p>Tell us what you are trying to fix. We identify the practitioner who has solved it before and introduce you directly. No marketplace to browse. No CVs to filter. TGW does the work.</p>
             </div>
             <div className="what-col reveal">
-              <h3>For Practitioners</h3>
-              <p>A structure that protects your terms and rewards your network. Full day rate retained. Paid overrides on introductions. A mutual 360 review system that makes your track record visible and bankable.</p>
+              <h3>Outcomes defined before anyone starts</h3>
+              <p>Every engagement begins with a signed Statement of Work — agreed KPIs, timeline, deliverables. You know exactly what you are getting before the first day is billed. No surprises on either side.</p>
             </div>
             <div className="what-col reveal">
-              <h3>The Network</h3>
-              <p>Not a job board. Not an agency. A governed ecosystem where every member is referenced, every engagement is evaluated, and the economics are completely transparent.</p>
+              <h3>Accountability runs both ways</h3>
+              <p>Every practitioner carries a verified 360 score built from real engagements. So does every client organisation. Both sides are held to the same standard. That is what makes the outcomes real.</p>
             </div>
           </div>
         </div>
       </section>
+
       <section className="pathways">
         <div className="container">
-          <span className="label reveal">The Architecture</span>
-          <h2 className="reveal">How it actually works.</h2>
+          <span className="label reveal">Two pathways</span>
           <div className="pathway-grid">
             <div className="pathway-card reveal">
+              <div style={{ height: "4px", background: "var(--teal)" }}></div>
               <div className="pathway-body">
-                <h3>The Practitioner Standard</h3>
+                <h3>For practitioners</h3>
+                <p style={{ fontSize: ".92rem", opacity: ".8", marginBottom: "1rem" }}>You have done the work. You have earned the right to work on your terms.</p>
                 <ul>
-                  <li>Minimum 8 years senior functional experience</li>
-                  <li>Referenced specifically against outcomes, not tenure</li>
-                  <li>Committed to the network's code of conduct</li>
-                  <li>Evaluated by clients post-engagement</li>
+                  <li>Earn 100% of every day rate you bill</li>
+                  <li>Earn when you introduce colleagues and clients</li>
+                  <li>See a client's rating before you commit</li>
+                  <li>A community that works for you, not the platform</li>
                 </ul>
-                <Link href="/network" className="btn btn-outline-navy" style={{ width: "100%", textAlign: "center", marginTop: "1rem" }}>View the network standard</Link>
+                <Link href="/practitioners" className="btn btn-teal" data-testid="link-practitioners-more">Find out more</Link>
               </div>
             </div>
             <div className="pathway-card reveal">
+              <div style={{ height: "4px", background: "var(--blue)" }}></div>
               <div className="pathway-body">
-                <h3>The Client Standard</h3>
+                <h3>For organisations</h3>
+                <p style={{ fontSize: ".92rem", opacity: ".8", marginBottom: "1rem" }}>You have a problem that needs solving. The person who has already solved it is in this network.</p>
                 <ul>
-                  <li>Clear, documented problem statement</li>
-                  <li>Agreed deliverables before engagement begins</li>
-                  <li>Direct access to the practitioner — no intermediaries</li>
-                  <li>Evaluated by practitioners post-engagement</li>
+                  <li>We match you — no browsing, no filtering</li>
+                  <li>Senior capability from day one, no ramp-up</li>
+                  <li>Outcome agreed before anyone starts</li>
+                  <li>10% — published on this page, not hidden in an invoice</li>
                 </ul>
-                <Link href="/clients" className="btn btn-outline-navy" style={{ width: "100%", textAlign: "center", marginTop: "1rem" }}>See how clients engage</Link>
+                <Link href="/clients" className="btn btn-blue" data-testid="link-clients-more">See how we work</Link>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="home-cta">
-        <div className="container-n">
-          <span className="label reveal" style={{ color: "rgba(255,255,255,.5)" }}>Join the network</span>
-          <h2 className="reveal">The founding cohort is forming.</h2>
-          <p className="sub reveal">We are actively onboarding our first practitioners and engaging with organisations looking for an alternative to the traditional consultancy model.</p>
-          <div className="hero-btns reveal" style={{ justifyContent: "center" }}>
-            <Link href="/apply" className="btn btn-amber">Apply as a practitioner</Link>
-            <Link href="/register" className="btn btn-outline-white">Register a company</Link>
+
+      <section style={{ background: "var(--paper)", padding: "3rem 0" }}>
+        <div className="container">
+          <div style={{ maxWidth: "720px", margin: "0 auto", borderLeft: "4px solid var(--amber)", padding: "1.75rem 2.5rem", background: "var(--l-amber)" }}>
+            <p style={{ fontFamily: "var(--serif)", fontSize: "1.2rem", fontWeight: 300, lineHeight: "1.65", color: "var(--navy)", marginBottom: "1rem" }}>"Many of us share a desire to simply solve problems without the need for huge fanfare or long-term commitments."</p>
+            <p style={{ fontSize: ".82rem", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--amber)", fontWeight: 500, margin: 0 }}>Pat Butler · Founding cohort member</p>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ background: "var(--paper)" }}>
+        <div className="container-w">
+          <span className="label reveal">Why TGW is different</span>
+          <h2 className="reveal">Six things no other<br />network offers.</h2>
+          <div className="six-grid">
+            <div className="six-item reveal"><span className="num">01</span><h3>Clients are rated too</h3><p>Nobody else does this. A practitioner sees a client's 360 score before accepting an engagement.</p></div>
+            <div className="six-item reveal"><span className="num">02</span><h3>Every engagement starts with agreed KPIs</h3><p>Not optional guidance. A signed Statement of Work is required before any engagement begins.</p></div>
+            <div className="six-item reveal"><span className="num">03</span><h3>Fee published. Not hidden in an invoice.</h3><p>10%. Charged to the client on top of the practitioner's rate — not deducted from their earnings. Traditional firms charge 20–35% and never disclose it.</p></div>
+            <div className="six-item reveal"><span className="num">04</span><h3>Practitioners keep their full rate</h3><p>The network fee is added on top for the client. The practitioner receives every pound of their day rate. Plus a 5% override when they introduce a colleague or a client.</p></div>
+            <div className="six-item reveal"><span className="num">05</span><h3>Collaborative by design</h3><p>Peer introduction economics mean helping a colleague find work earns income. Collaboration is profitable, not just principled.</p></div>
+            <div className="six-item reveal"><span className="num">06</span><h3>Verified entry, portable 360 reputation</h3><p>Quality gate on entry makes the 360 score meaningful. Your track record travels with you.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="stats-row tight">
+        <div className="container-w">
+          <div className="stats-grid">
+            <div className="stat-block reveal"><span className="stat-num">£5.7bn</span><div className="stat-label">Global fractional executive market</div></div>
+            <div className="stat-block reveal"><span className="stat-num">74%</span><div className="stat-label">Of fractional engagements come from referrals</div></div>
+            <div className="stat-block reveal"><span className="stat-num">68%</span><div className="stat-label">Growth in demand for fractional executives 2023–24</div></div>
+            <div className="stat-block reveal"><span className="stat-num">10%</span><div className="stat-label">What we charge. Most firms charge 20–35% and won't tell you.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ background: "var(--paper)" }}>
+        <div className="container">
+          <span className="label reveal">The foundation</span>
+          <h2 className="reveal">Built on five principles<br />of character.</h2>
+          <p className="reveal" style={{ maxWidth: "580px", opacity: ".75", marginBottom: "2rem" }}>These are not policies. They are how every decision gets made.</p>
+          <div className="principles-list">
+            <div className="principle-row reveal"><div className="principle-num">1</div><div><div className="principle-name">Collaboration</div><p className="principle-desc">We actively make each other better. The economics are designed so that helping someone else succeed means you succeed too.</p></div></div>
+            <div className="principle-row reveal"><div className="principle-num">2</div><div><div className="principle-name">Approachability</div><p className="principle-desc">No hierarchy, no gatekeeping. The network team is reachable as people, not a brand voice.</p></div></div>
+            <div className="principle-row reveal"><div className="principle-num">3</div><div><div className="principle-name">Mutual benefit</div><p className="principle-desc">This only works if it works for everyone. Not mostly for the platform, not mostly for clients — for every party, fairly.</p></div></div>
+            <div className="principle-row reveal"><div className="principle-num">4</div><div><div className="principle-name">Transparency</div><p className="principle-desc">Fees published. Ratings visible. Process explained. If you have to ask, we have already failed.</p></div></div>
+            <div className="principle-row reveal"><div className="principle-num">5</div><div><div className="principle-name">Openness</div><p className="principle-desc">We are building this with the people in it, not for them. Your challenge is welcome.</p></div></div>
+          </div>
+          <div style={{ marginTop: "2rem" }}>
+            <Link href="/network" className="btn btn-outline-amber" data-testid="link-network-principles">Read more about how we work</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-cta tight">
+        <div className="container">
+          <h2 className="reveal">Ready to be part<br />of something different?</h2>
+          <p className="sub reveal">Whether you are a practitioner who has earned the right to better terms, or a company that wants outcomes not just resources — this is where you start.</p>
+          <div className="hero-btns" style={{ justifyContent: "center" }}>
+            <Link href="/clients" className="btn btn-amber" data-testid="link-cta-org">My organisation has a problem</Link>
+            <Link href="/apply" className="btn btn-outline-white" data-testid="link-cta-apply">Apply as a practitioner</Link>
           </div>
         </div>
       </section>
