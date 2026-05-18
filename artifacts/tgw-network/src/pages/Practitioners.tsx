@@ -42,6 +42,86 @@ export default function Practitioners() {
         <div className="econ-stat"><span className="econ-num">£500</span><div className="econ-label">The minimum day rate</div></div>
       </div>
 
+      {/* 1. The process */}
+      <section style={{ padding: 0, background: "var(--offwhite)" }}>
+        <div className="container" style={{ paddingTop: "3.5rem", paddingBottom: "3rem" }}>
+          <span className="label reveal">The process</span>
+          <h2 className="reveal">Four steps. No surprises.</h2>
+        </div>
+        <div className="process-steps">
+          <div className="process-step reveal"><span className="step-n">One</span><h4>Express interest</h4><p>A short form. Name, specialism, experience level, how you heard about the network. No CV. Takes five minutes.</p></div>
+          <div className="process-step reveal"><span className="step-n">Two</span><h4>Full application</h4><p>If the initial screen passes, we send you the profile template and reference guidance. You complete both.</p></div>
+          <div className="process-step reveal"><span className="step-n">Three</span><h4>Assessment call</h4><p>30 minutes. A conversation, not an interview. We talk about your best engagement to date and whether the network is right for you.</p></div>
+          <div className="process-step reveal"><span className="step-n">Four</span><h4>Activation</h4><p>If the answer is yes on both sides, your profile is live within 48 hours. We make your first introductions to relevant members.</p></div>
+        </div>
+      </section>
+
+      {/* 2. The base model explained */}
+      <section className="econ-explainer">
+        <div className="container">
+          <span className="label reveal">The base model explained</span>
+          <h2 className="reveal">No surprises.</h2>
+          <p className="reveal" style={{ maxWidth: "560px", opacity: ".75", marginBottom: "2.5rem" }}>A client engages you at £1,000 per day. They pay £1,100 — the 10% network fee is additive to your rate, charged to the client on top. You receive £1,000. The network receives £100. Your earnings are never touched. Published on our website before you join.</p>
+          <div className="econ-grid">
+            <div className="econ-box reveal"><h3>When you introduce a colleague</h3><p>You introduce a fellow practitioner into an engagement. The client pays an additional 5% directly to you. For a 40-day engagement at £900/day, that is £1,800 for a single introduction. Your colleague's rate is unaffected.</p></div>
+            <div className="econ-box reveal"><h3>When you introduce a company</h3><p>You earn 5% on every day billed to that company — by any practitioner, across all contracts — for as long as the company engages through the network. The economics reward the people who build the network.</p></div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Entry criteria */}
+      <section className="entry">
+        <div className="container">
+          <span className="label reveal">Entry criteria</span>
+          <h2 className="reveal">Is this network for you?</h2>
+          <p className="reveal" style={{ maxWidth: "580px", opacity: ".75", marginBottom: ".5rem" }}>The entry standard is high because the network's reputation rests on it.</p>
+          <div className="entry-list">
+            <div className="entry-item reveal"><div className="entry-num">1</div><div className="entry-text"><h4>At least 8 years in a senior functional role</h4><p>At a level where you owned outcomes, not contributed to them.</p></div></div>
+            <div className="entry-item reveal"><div className="entry-num">2</div><div className="entry-text"><h4>A minimum of two independent or project-based engagements</h4><p>Where success was defined upfront and you can evidence the delivery.</p></div></div>
+            <div className="entry-item reveal"><div className="entry-num">3</div><div className="entry-text"><h4>At least one verifiable reference from a decision-maker</h4><p>Someone who commissioned or sponsored your work — not a peer.</p></div></div>
+            <div className="entry-item reveal"><div className="entry-num">4</div><div className="entry-text"><h4>A completed profile describing the problems you solve</h4><p>In the client's language, not a job title.</p></div></div>
+            <div className="entry-item reveal"><div className="entry-num">5</div><div className="entry-text"><h4>Professional indemnity insurance of at least £500,000 per claim</h4><p>Required before any engagement commences.</p></div></div>
+            <div className="entry-item reveal"><div className="entry-num">6</div><div className="entry-text"><h4>A signed membership agreement</h4><p>Covering non-circumvention, rate discussion prohibition, and 360 participation.</p></div></div>
+          </div>
+          <p className="reveal" style={{ marginTop: "2rem", fontSize: ".9rem", fontStyle: "italic", opacity: ".6" }}>No age requirement. No institution requirement. No specific sector requirement. The standard is seniority of experience and evidence of delivery.</p>
+        </div>
+      </section>
+
+      {/* 4. Membership includes */}
+      <section className="membership">
+        <div className="container">
+          <span className="label reveal">Membership includes</span>
+          <h2 className="reveal">What you receive.<br />What you are protected from.</h2>
+          <div className="membership-grid">
+            <div className="membership-col reveal">
+              <h3>What you receive</h3>
+              <ul>
+                <li>100% of your day rate, paid within 7 days of client payment</li>
+                <li>Platform invoices clients on your behalf — you never chase payment</li>
+                <li>Introduction overrides tracked automatically and paid monthly</li>
+                <li>IR35-safe Statement of Work template for every engagement</li>
+                <li>The client's 360 score and payment record before you commit</li>
+                <li>A genuine community of peers — not a Slack channel nobody uses</li>
+                <li>Non-circumvention protection with an automatic audit trail</li>
+                <li>A network team that is reachable as people, not a brand voice</li>
+              </ul>
+            </div>
+            <div className="membership-col protect reveal">
+              <h3>What you are protected from</h3>
+              <ul>
+                <li>Unilateral scope expansion — a signed amendment is required before it happens</li>
+                <li>Rate coordination risk — the network is CMA-compliant by design</li>
+                <li>Opaque fee structures that erode what you earn</li>
+                <li>Clients you know nothing about — their 360 score is visible to you</li>
+                <li>Late payment — the network escalates on your behalf at day 15</li>
+                <li>IR35 misclassification — every SOW has the right provisions built in</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Transparent economics */}
       <section style={{ background: "var(--offwhite)" }}>
         <div className="container">
           <span className="label reveal">Transparent economics</span>
@@ -103,18 +183,7 @@ export default function Practitioners() {
         </div>
       </section>
 
-      <section className="econ-explainer">
-        <div className="container">
-          <span className="label reveal">The base model explained</span>
-          <h2 className="reveal">No surprises.</h2>
-          <p className="reveal" style={{ maxWidth: "560px", opacity: ".75", marginBottom: "2.5rem" }}>A client engages you at £1,000 per day. They pay £1,100 — the 10% network fee is additive to your rate, charged to the client on top. You receive £1,000. The network receives £100. Your earnings are never touched. Published on our website before you join.</p>
-          <div className="econ-grid">
-            <div className="econ-box reveal"><h3>When you introduce a colleague</h3><p>You introduce a fellow practitioner into an engagement. The client pays an additional 5% directly to you. For a 40-day engagement at £900/day, that is £1,800 for a single introduction. Your colleague's rate is unaffected.</p></div>
-            <div className="econ-box reveal"><h3>When you introduce a company</h3><p>You earn 5% on every day billed to that company — by any practitioner, across all contracts — for as long as the company engages through the network. The economics reward the people who build the network.</p></div>
-          </div>
-        </div>
-      </section>
-
+      {/* 6. Introduction overrides */}
       <section style={{ background: "var(--paper)" }}>
         <div className="container">
           <span className="label reveal">Introduction overrides</span>
@@ -179,69 +248,6 @@ export default function Practitioners() {
               )}
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="membership">
-        <div className="container">
-          <span className="label reveal">Membership includes</span>
-          <h2 className="reveal">What you receive.<br />What you are protected from.</h2>
-          <div className="membership-grid">
-            <div className="membership-col reveal">
-              <h3>What you receive</h3>
-              <ul>
-                <li>100% of your day rate, paid within 7 days of client payment</li>
-                <li>Platform invoices clients on your behalf — you never chase payment</li>
-                <li>Introduction overrides tracked automatically and paid monthly</li>
-                <li>IR35-safe Statement of Work template for every engagement</li>
-                <li>The client's 360 score and payment record before you commit</li>
-                <li>A genuine community of peers — not a Slack channel nobody uses</li>
-                <li>Non-circumvention protection with an automatic audit trail</li>
-                <li>A network team that is reachable as people, not a brand voice</li>
-              </ul>
-            </div>
-            <div className="membership-col protect reveal">
-              <h3>What you are protected from</h3>
-              <ul>
-                <li>Unilateral scope expansion — a signed amendment is required before it happens</li>
-                <li>Rate coordination risk — the network is CMA-compliant by design</li>
-                <li>Opaque fee structures that erode what you earn</li>
-                <li>Clients you know nothing about — their 360 score is visible to you</li>
-                <li>Late payment — the network escalates on your behalf at day 15</li>
-                <li>IR35 misclassification — every SOW has the right provisions built in</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="entry">
-        <div className="container">
-          <span className="label reveal">Entry criteria</span>
-          <h2 className="reveal">Is this network for you?</h2>
-          <p className="reveal" style={{ maxWidth: "580px", opacity: ".75", marginBottom: ".5rem" }}>The entry standard is high because the network's reputation rests on it.</p>
-          <div className="entry-list">
-            <div className="entry-item reveal"><div className="entry-num">1</div><div className="entry-text"><h4>At least 8 years in a senior functional role</h4><p>At a level where you owned outcomes, not contributed to them.</p></div></div>
-            <div className="entry-item reveal"><div className="entry-num">2</div><div className="entry-text"><h4>A minimum of two independent or project-based engagements</h4><p>Where success was defined upfront and you can evidence the delivery.</p></div></div>
-            <div className="entry-item reveal"><div className="entry-num">3</div><div className="entry-text"><h4>At least one verifiable reference from a decision-maker</h4><p>Someone who commissioned or sponsored your work — not a peer.</p></div></div>
-            <div className="entry-item reveal"><div className="entry-num">4</div><div className="entry-text"><h4>A completed profile describing the problems you solve</h4><p>In the client's language, not a job title.</p></div></div>
-            <div className="entry-item reveal"><div className="entry-num">5</div><div className="entry-text"><h4>Professional indemnity insurance of at least £500,000 per claim</h4><p>Required before any engagement commences.</p></div></div>
-            <div className="entry-item reveal"><div className="entry-num">6</div><div className="entry-text"><h4>A signed membership agreement</h4><p>Covering non-circumvention, rate discussion prohibition, and 360 participation.</p></div></div>
-          </div>
-          <p className="reveal" style={{ marginTop: "2rem", fontSize: ".9rem", fontStyle: "italic", opacity: ".6" }}>No age requirement. No institution requirement. No specific sector requirement. The standard is seniority of experience and evidence of delivery.</p>
-        </div>
-      </section>
-
-      <section style={{ padding: 0, background: "var(--offwhite)" }}>
-        <div className="container" style={{ paddingTop: "3.5rem", paddingBottom: "3rem" }}>
-          <span className="label reveal">The process</span>
-          <h2 className="reveal">Four steps. No surprises.</h2>
-        </div>
-        <div className="process-steps">
-          <div className="process-step reveal"><span className="step-n">One</span><h4>Express interest</h4><p>A short form. Name, specialism, experience level, how you heard about the network. No CV. Takes five minutes.</p></div>
-          <div className="process-step reveal"><span className="step-n">Two</span><h4>Full application</h4><p>If the initial screen passes, we send you the profile template and reference guidance. You complete both.</p></div>
-          <div className="process-step reveal"><span className="step-n">Three</span><h4>Assessment call</h4><p>30 minutes. A conversation, not an interview. We talk about your best engagement to date and whether the network is right for you.</p></div>
-          <div className="process-step reveal"><span className="step-n">Four</span><h4>Activation</h4><p>If the answer is yes on both sides, your profile is live within 48 hours. We make your first introductions to relevant members.</p></div>
         </div>
       </section>
 
