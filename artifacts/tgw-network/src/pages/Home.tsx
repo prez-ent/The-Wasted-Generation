@@ -74,7 +74,7 @@ export default function Home() {
       </section>
 
       <section className="pullquote-section">
-        <div className="container-n">
+        <div className="container-w">
           <div className="pullquote-block">
             <span className="pullquote-mark">&ldquo;</span>
             <p className="pullquote-text">Many of us share a desire to simply solve problems without the need for huge fanfare or long-term commitments.</p>
