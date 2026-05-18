@@ -83,7 +83,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ background: "var(--paper)" }}>
+      <section className="home-six-things">
         <div className="container-w">
           <span className="label reveal">Why TGW is different</span>
           <h2 className="reveal">Six things no other<br />network offers.</h2>
