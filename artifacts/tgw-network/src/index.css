@@ -250,12 +250,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .home-six-things::after{content:'';position:absolute;bottom:0;left:0;right:0;height:72px;background:var(--navy);clip-path:polygon(0 0,0 100%,100% 100%);z-index:0}
 .stats-row{background:var(--navy);position:relative}
 .stats-row .container-w{position:relative;z-index:1}
-.stats-row::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:var(--paper);clip-path:polygon(100% 0,100% 100%,0 100%);z-index:0}
-
 /* Five principles — paper background (light) */
-.home-five-principles{background:var(--paper);position:relative;padding:7rem 0 4rem}
-.home-five-principles .container{position:relative;z-index:1}
-.home-five-principles::after{content:'';position:absolute;bottom:0;left:0;right:0;height:72px;background:var(--navy);clip-path:polygon(0 0,0 100%,100% 100%);z-index:0}
+.home-five-principles{background:var(--paper);padding:5rem 0 4rem}
 .pathway-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 .pathway-card{background:var(--paper);box-shadow:0 2px 16px rgba(30,45,64,.07)}
 .pathway-body{padding:2rem 2rem 2.5rem}
@@ -264,7 +260,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .pathway-body ul li{font-size:.95rem;padding:.55rem 0;border-bottom:1px solid var(--rule);display:flex;gap:.75rem}
 .pathway-body ul li::before{content:'—';color:var(--amber);flex-shrink:0}
 .six-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
-.six-item{padding:1.75rem;border:1px solid var(--rule)}
+.six-item{padding:1.75rem}
 .six-item .num{font-family:var(--serif);font-size:2rem;color:var(--amber);font-weight:300;font-style:italic;margin-bottom:.75rem;display:block}
 .six-item h3{font-size:1rem;color:var(--navy)}
 .six-item p{font-size:.88rem;margin-top:.4rem;opacity:.75}
@@ -278,7 +274,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .principle-row{display:flex;gap:2rem;align-items:start;padding:1.5rem 0;border-bottom:1px solid var(--rule)}
 .principle-row:first-child{border-top:1px solid var(--rule)}
 .five-principles-row{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;margin-top:1rem}
-.five-pr-item{padding:1.5rem 0;border-top:2px solid rgba(30,45,64,.12)}
+.five-pr-item{padding:1.5rem 0}
 .five-pr-n{font-size:.72rem;letter-spacing:.12em;font-weight:700;margin-bottom:.5rem}
 .five-pr-name{font-family:var(--serif);font-size:1.15rem;font-weight:300;color:var(--navy);margin-bottom:.5rem;line-height:1.2}
 .five-pr-line{font-size:.82rem;color:rgba(30,45,64,.55);line-height:1.55}
