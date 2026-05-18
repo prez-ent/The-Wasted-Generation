@@ -74,7 +74,7 @@ export default function Home() {
       </section>
 
       <section className="pullquote-section">
-        <div className="container-w">
+        <div className="container-n">
           <div className="pullquote-block">
             <span className="pullquote-mark">&ldquo;</span>
             <p className="pullquote-text">Many of us share a desire to simply solve problems without the need for huge fanfare or long-term commitments.</p>
@@ -83,7 +83,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="home-six-things">
+      <section style={{ background: "var(--paper)" }}>
         <div className="container-w">
           <span className="label reveal">Why TGW is different</span>
           <h2 className="reveal">Six things no other<br />network offers.</h2>
@@ -109,11 +109,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="home-five-principles">
+      <section style={{ background: "var(--navy)", padding: "4rem 0" }}>
         <div className="container">
-          <span className="label reveal">The foundation</span>
-          <h2 className="reveal" style={{ marginBottom: "0.5rem" }}>Five principles of character.</h2>
-          <p className="reveal" style={{ maxWidth: "520px", marginBottom: "2.5rem", opacity: ".65" }}>Every decision — on governance, economics, matching, and membership — is tested against these. Not policies on a wall. How it actually works.</p>
+          <span className="label reveal" style={{ color: "rgba(255,255,255,.4)" }}>The foundation</span>
+          <h2 className="reveal" style={{ color: "#fff", marginBottom: "0.5rem" }}>Five principles of character.</h2>
+          <p className="reveal" style={{ color: "rgba(255,255,255,.55)", maxWidth: "520px", marginBottom: "2.5rem" }}>Every decision — on governance, economics, matching, and membership — is tested against these. Not policies on a wall. How it actually works.</p>
           <div className="five-principles-row">
             {[
               { n: "01", name: "Collaboration", line: "Helping someone else succeed earns you income." },
@@ -130,7 +130,7 @@ export default function Home() {
             ))}
           </div>
           <div style={{ marginTop: "2.5rem" }}>
-            <Link href="/network" className="btn btn-teal" data-testid="link-network-principles">Read the full principles</Link>
+            <Link href="/network" className="btn btn-outline-amber" data-testid="link-network-principles">Read the full principles</Link>
           </div>
         </div>
       </section>
