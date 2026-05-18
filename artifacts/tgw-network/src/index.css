@@ -195,7 +195,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .nav-links a:hover,.nav-links a.active{color:#fff}
 .nav-cta{display:flex;gap:.6rem}
 .nav-cta .btn{padding:.5rem 1.2rem;font-size:.75rem}
-.nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:1.4rem}
+.nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:1.4rem;padding:.5rem;line-height:1;z-index:201;position:relative}
+
+/* Mobile drawer — fixed panel below the nav, shown via React state */
+.mobile-drawer{position:fixed;top:72px;left:0;right:0;bottom:0;background:var(--navy);z-index:198;overflow-y:auto;display:flex;flex-direction:column;padding:0 0 2rem}
+.mobile-drawer-links{list-style:none;border-top:1px solid rgba(255,255,255,.08)}
+.mobile-drawer-links li a,.mobile-drawer-links li a:visited{display:block;padding:1.1rem 1.5rem;font-size:.95rem;font-weight:400;letter-spacing:.04em;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);transition:color .15s}
+.mobile-drawer-links li a:hover,.mobile-drawer-links li a.active{color:#fff}
+.mobile-drawer-cta{display:flex;flex-direction:column;gap:.75rem;padding:1.75rem 1.5rem 0}
+.mobile-drawer-cta .btn{text-align:center;width:100%;padding:1rem 1.5rem;font-size:.9rem}
+@media (max-width:640px){
+  .mobile-drawer{top:64px}
+}
 
 .page{display:none;padding-top:88px}
 .page.active{display:block}
@@ -532,18 +543,73 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted)}
 .modal-close:hover{color:var(--navy)}
 
-@media (max-width:768px){
-  nav{padding:0 1.5rem}
+/* ── Tablet: hamburger nav + 2-col grids (641px–1023px) ── */
+@media (max-width:1023px){
+  nav{padding:0 1.5rem;height:72px}
+  .page{padding-top:72px}
   .nav-links{display:none}
   .nav-cta{display:none}
   .nav-mobile-toggle{display:block}
-  .what-grid,.pathway-grid,.six-grid,.stats-grid,.econ-grid,.membership-grid,.process-steps,.commercial-inner,.governance-grid,.fee-grid,.cap-grid,.ec-wrap,.es-grid,.es-detail,.ps-grid,.ld-grid,.five-principles-row{grid-template-columns:1fr}
+  .nav-logo svg{height:44px}
+  section{padding:4rem 0}
+  section.tight{padding:2.5rem 0}
+  h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+  .home-hero{padding:5rem 0 4rem}
+  .home-hero h1{font-size:clamp(2.2rem,5vw,3.5rem)}
+  /* 3-col → 2-col at tablet */
+  .what-grid{grid-template-columns:1fr 1fr}
+  .six-grid{grid-template-columns:1fr 1fr}
+  .governance-grid{grid-template-columns:1fr 1fr}
+  .five-principles-row{grid-template-columns:repeat(3,1fr)}
+  /* Stats → 2×2 */
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-block{padding:2.25rem 1.5rem;border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .stat-block:nth-child(odd){border-right:1px solid rgba(255,255,255,.1)}
+  .stat-block:last-child{border-bottom:none}
+  .stat-num{font-size:2.2rem}
+  /* Keep 2-col where already 2-col */
+  .pathway-grid{grid-template-columns:1fr 1fr}
+  /* Items that should go 1-col at tablet */
+  .fee-grid,.ec-wrap,.ld-grid,.membership-grid,.commercial-inner,.es-detail{grid-template-columns:1fr}
   .commercial-inner{gap:2rem}
-  .stats-grid,.process-steps{border-bottom:1px solid rgba(255,255,255,.1)}
-  .stat-block,.process-step{border-right:none;border-top:1px solid rgba(255,255,255,.1)}
   .fee-card{grid-template-columns:1fr;gap:1rem}
-  .footer-inner{flex-direction:column;align-items:flex-start}
+  /* Process steps: 2-col at tablet */
+  .process-steps{grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(255,255,255,.1)}
+  .process-step{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  /* Framework */
+  .pc-three{grid-template-columns:1fr 1fr}
+  .fw-score-grid{grid-template-columns:1fr 1fr 1fr}
+  .fw-table{font-size:.8rem}
+  /* Comparison table: scroll */
+  .cm-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  /* Practitioner grid: 2-col */
+  .ps-grid{grid-template-columns:1fr 1fr}
+  .es-grid{grid-template-columns:repeat(2,1fr)}
+  /* Footer */
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:2rem}
   .footer-tagline{text-align:left}
+}
+
+/* ── Mobile: full 1-col stack (≤640px) ── */
+@media (max-width:640px){
+  nav{height:64px}
+  .page{padding-top:64px}
+  .nav-logo svg{height:38px}
+  section{padding:3rem 0}
+  section.tight{padding:2rem 0}
+  h2{font-size:clamp(1.6rem,5vw,2.2rem)}
+  .home-hero{padding:4rem 0 3rem}
+  .what-grid,.pathway-grid,.six-grid,.stats-grid,.econ-grid,.membership-grid,.process-steps,.commercial-inner,.governance-grid,.fee-grid,.cap-grid,.ec-wrap,.es-grid,.es-detail,.ps-grid,.ld-grid,.five-principles-row{grid-template-columns:1fr}
+  .stat-block{border-right:none!important;border-bottom:1px solid rgba(255,255,255,.1)!important;padding:2rem 1.5rem}
+  .stat-block:nth-child(odd){border-right:none!important}
+  .stat-block:last-child{border-bottom:none!important}
+  .process-step{border-right:none;border-top:1px solid rgba(255,255,255,.1);border-bottom:none}
+  .fee-card{grid-template-columns:1fr;gap:1rem}
   .pc-three{grid-template-columns:1fr}
   .fw-score-grid{grid-template-columns:1fr 1fr}
+  .cm-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .entry-item{gap:1rem}
+  .hero-btns{flex-direction:column}
+  .hero-btns .btn{width:100%;text-align:center}
+  .five-principles-row{grid-template-columns:1fr 1fr}
 }

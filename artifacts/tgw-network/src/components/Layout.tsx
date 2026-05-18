@@ -6,10 +6,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
-  // Close mobile nav when location changes
   useEffect(() => {
     setMobileNavOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileNavOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileNavOpen]);
+
+  const navLinks = [
+    { href: "/practitioners", label: "For Practitioners", testId: "link-practitioners" },
+    { href: "/clients",       label: "For Organisations", testId: "link-clients" },
+    { href: "/network",       label: "The Network",       testId: "link-network" },
+    { href: "/pricing",       label: "Pricing",           testId: "link-pricing" },
+    { href: "/manifesto",     label: "Manifesto",         testId: "link-manifesto" },
+    { href: "/about",         label: "About",             testId: "link-about" },
+  ];
 
   return (
     <>
@@ -17,57 +30,60 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Link href="/" className="nav-logo" data-testid="link-home">
           <Logo />
         </Link>
-        <ul
-          className="nav-links"
-          style={mobileNavOpen ? {
-            display: "flex",
-            flexDirection: "column",
-            position: "absolute",
-            top: "64px",
-            left: 0,
-            right: 0,
-            background: "var(--navy)",
-            padding: "0.5rem 0 1.5rem",
-            gap: 0,
-            zIndex: 199,
-            borderTop: "1px solid rgba(255,255,255,0.08)"
-          } : {}}
-        >
-          <li><Link href="/practitioners" className={location === "/practitioners" ? "active" : ""} data-testid="link-practitioners">For Practitioners</Link></li>
-          <li><Link href="/clients" className={location === "/clients" ? "active" : ""} data-testid="link-clients">For Organisations</Link></li>
-          <li><Link href="/network" className={location === "/network" ? "active" : ""} data-testid="link-network">The Network</Link></li>
-          <li><Link href="/pricing" className={location === "/pricing" ? "active" : ""} data-testid="link-pricing">Pricing</Link></li>
-          <li><Link href="/manifesto" className={location === "/manifesto" ? "active" : ""} data-testid="link-manifesto">Manifesto</Link></li>
-          <li><Link href="/about" className={location === "/about" ? "active" : ""} data-testid="link-about">About</Link></li>
+
+        {/* Desktop links — hidden below 1024px by CSS */}
+        <ul className="nav-links">
+          {navLinks.map(l => (
+            <li key={l.href}>
+              <Link href={l.href} className={location === l.href ? "active" : ""} data-testid={l.testId}>
+                {l.label}
+              </Link>
+            </li>
+          ))}
         </ul>
-        <div
-          className="nav-cta"
-          style={mobileNavOpen ? {
-            display: "flex",
-            flexDirection: "column",
-            position: "absolute",
-            top: "calc(64px + 288px)",
-            left: 0,
-            right: 0,
-            background: "var(--navy)",
-            padding: "0 1.5rem 2rem",
-            gap: "0.5rem",
-            zIndex: 199
-          } : {}}
-        >
-          <Link href="/apply" className="btn btn-outline-white" data-testid="link-apply">Apply</Link>
-          <Link href="/register" className="btn btn-amber" data-testid="link-register">Find an expert</Link>
+
+        {/* Desktop CTA — hidden below 1024px by CSS */}
+        <div className="nav-cta">
+          <Link href="/apply"    className="btn btn-outline-white" data-testid="link-apply">Apply</Link>
+          <Link href="/register" className="btn btn-amber"         data-testid="link-register">Find an expert</Link>
         </div>
+
+        {/* Hamburger — shown below 1024px by CSS */}
         <button
           className="nav-mobile-toggle"
-          onClick={() => setMobileNavOpen(!mobileNavOpen)}
+          onClick={() => setMobileNavOpen(o => !o)}
           aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileNavOpen}
           data-testid="button-mobile-nav"
         >
           {mobileNavOpen ? "✕" : "☰"}
         </button>
       </nav>
-      
+
+      {/* Mobile drawer — rendered outside <nav> so it sits below it */}
+      {mobileNavOpen && (
+        <div className="mobile-drawer" data-testid="mobile-drawer">
+          <ul className="mobile-drawer-links">
+            {navLinks.map(l => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className={location === l.href ? "active" : ""}
+                  data-testid={`mob-${l.testId}`}
+                  onClick={() => setMobileNavOpen(false)}
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="mobile-drawer-cta">
+            <Link href="/apply"    className="btn btn-outline-white" onClick={() => setMobileNavOpen(false)}>Apply as a practitioner</Link>
+            <Link href="/register" className="btn btn-amber"         onClick={() => setMobileNavOpen(false)}>Find an expert</Link>
+          </div>
+        </div>
+      )}
+
       <main className="page active">
         {children}
       </main>
@@ -79,12 +95,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <Logo />
             </Link>
             <div className="footer-links">
-              <Link href="/practitioners">For Practitioners</Link>
-              <Link href="/clients">For Organisations</Link>
-              <Link href="/network">The Network</Link>
-              <Link href="/pricing">Pricing</Link>
-              <Link href="/manifesto">Manifesto</Link>
-              <Link href="/about">About</Link>
+              {navLinks.map(l => (
+                <Link key={l.href} href={l.href}>{l.label}</Link>
+              ))}
             </div>
             <div className="footer-tagline">
               The Wasted Generation<br />A governed professional network.
