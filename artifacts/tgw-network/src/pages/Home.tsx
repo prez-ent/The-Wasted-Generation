@@ -73,11 +73,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ background: "var(--paper)", padding: "3rem 0" }}>
-        <div className="container">
-          <div style={{ maxWidth: "720px", margin: "0 auto", borderLeft: "4px solid var(--amber)", padding: "1.75rem 2.5rem", background: "var(--l-amber)" }}>
-            <p style={{ fontFamily: "var(--serif)", fontSize: "1.2rem", fontWeight: 300, lineHeight: "1.65", color: "var(--navy)", marginBottom: "1rem" }}>"Many of us share a desire to simply solve problems without the need for huge fanfare or long-term commitments."</p>
-            <p style={{ fontSize: ".82rem", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--amber)", fontWeight: 500, margin: 0 }}>Pat Butler · Founding cohort member</p>
+      <section className="pullquote-section">
+        <div className="container-n">
+          <div className="pullquote-block">
+            <span className="pullquote-mark">&ldquo;</span>
+            <p className="pullquote-text">Many of us share a desire to simply solve problems without the need for huge fanfare or long-term commitments.</p>
+            <p className="pullquote-attr">Pat Butler &middot; Founding cohort member</p>
           </div>
         </div>
       </section>

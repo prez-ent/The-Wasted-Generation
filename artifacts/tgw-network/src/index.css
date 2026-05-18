@@ -167,6 +167,23 @@ body{font-family:var(--sans);font-size:17px;line-height:1.65;font-weight:300;col
 .container{max-width:980px;margin:0 auto;padding:0 2rem}
 .container-w{max-width:1120px;margin:0 auto;padding:0 2rem}
 .container-n{max-width:720px;margin:0 auto;padding:0 2rem}
+
+/* Pullquote */
+.pullquote-section{background:var(--paper);padding:5rem 0}
+.pullquote-block{border-left:5px solid var(--amber);background:var(--l-amber);padding:3rem 3.5rem;position:relative}
+.pullquote-mark{display:block;font-family:var(--serif);font-size:7rem;line-height:.6;color:var(--amber);opacity:.35;margin-bottom:1rem;user-select:none}
+.pullquote-text{font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1.5;color:var(--navy);margin:0 0 1.75rem}
+.pullquote-attr{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:500;margin:0}
+@media (max-width:1023px){
+  .pullquote-section{padding:4rem 0}
+  .pullquote-text{font-size:1.65rem}
+}
+@media (max-width:640px){
+  .pullquote-section{padding:3rem 0}
+  .pullquote-block{padding:2rem 1.75rem}
+  .pullquote-mark{font-size:5rem}
+  .pullquote-text{font-size:1.35rem}
+}
 section{padding:5.5rem 0}
 section.tight{padding:3.5rem 0}
 h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.1}
