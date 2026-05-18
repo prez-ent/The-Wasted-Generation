@@ -17,7 +17,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Link href="/" className="nav-logo" data-testid="link-home">
           <Logo />
         </Link>
-        <ul className="nav-links" style={{ display: mobileNavOpen ? "flex" : "" }}>
+        <ul
+          className="nav-links"
+          style={mobileNavOpen ? {
+            display: "flex",
+            flexDirection: "column",
+            position: "absolute",
+            top: "64px",
+            left: 0,
+            right: 0,
+            background: "var(--navy)",
+            padding: "0.5rem 0 1.5rem",
+            gap: 0,
+            zIndex: 199,
+            borderTop: "1px solid rgba(255,255,255,0.08)"
+          } : {}}
+        >
           <li><Link href="/practitioners" className={location === "/practitioners" ? "active" : ""} data-testid="link-practitioners">For Practitioners</Link></li>
           <li><Link href="/clients" className={location === "/clients" ? "active" : ""} data-testid="link-clients">For Organisations</Link></li>
           <li><Link href="/network" className={location === "/network" ? "active" : ""} data-testid="link-network">The Network</Link></li>
@@ -25,16 +40,31 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <li><Link href="/manifesto" className={location === "/manifesto" ? "active" : ""} data-testid="link-manifesto">Manifesto</Link></li>
           <li><Link href="/about" className={location === "/about" ? "active" : ""} data-testid="link-about">About</Link></li>
         </ul>
-        <div className="nav-cta" style={{ display: mobileNavOpen ? "flex" : "" }}>
+        <div
+          className="nav-cta"
+          style={mobileNavOpen ? {
+            display: "flex",
+            flexDirection: "column",
+            position: "absolute",
+            top: "calc(64px + 288px)",
+            left: 0,
+            right: 0,
+            background: "var(--navy)",
+            padding: "0 1.5rem 2rem",
+            gap: "0.5rem",
+            zIndex: 199
+          } : {}}
+        >
           <Link href="/apply" className="btn btn-outline-white" data-testid="link-apply">Apply</Link>
           <Link href="/register" className="btn btn-amber" data-testid="link-register">Find an expert</Link>
         </div>
-        <button 
-          className="nav-mobile-toggle" 
+        <button
+          className="nav-mobile-toggle"
           onClick={() => setMobileNavOpen(!mobileNavOpen)}
+          aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
           data-testid="button-mobile-nav"
         >
-          ☰
+          {mobileNavOpen ? "✕" : "☰"}
         </button>
       </nav>
       

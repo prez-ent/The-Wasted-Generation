@@ -108,20 +108,28 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ background: "var(--paper)" }}>
+      <section style={{ background: "var(--navy)", padding: "4rem 0" }}>
         <div className="container">
-          <span className="label reveal">The foundation</span>
-          <h2 className="reveal">Built on five principles<br />of character.</h2>
-          <p className="reveal" style={{ maxWidth: "580px", opacity: ".75", marginBottom: "2rem" }}>These are not policies. They are how every decision gets made.</p>
-          <div className="principles-list">
-            <div className="principle-row reveal"><div className="principle-num">1</div><div><div className="principle-name">Collaboration</div><p className="principle-desc">We actively make each other better. The economics are designed so that helping someone else succeed means you succeed too.</p></div></div>
-            <div className="principle-row reveal"><div className="principle-num">2</div><div><div className="principle-name">Approachability</div><p className="principle-desc">No hierarchy, no gatekeeping. The network team is reachable as people, not a brand voice.</p></div></div>
-            <div className="principle-row reveal"><div className="principle-num">3</div><div><div className="principle-name">Mutual benefit</div><p className="principle-desc">This only works if it works for everyone. Not mostly for the platform, not mostly for clients — for every party, fairly.</p></div></div>
-            <div className="principle-row reveal"><div className="principle-num">4</div><div><div className="principle-name">Transparency</div><p className="principle-desc">Fees published. Ratings visible. Process explained. If you have to ask, we have already failed.</p></div></div>
-            <div className="principle-row reveal"><div className="principle-num">5</div><div><div className="principle-name">Openness</div><p className="principle-desc">We are building this with the people in it, not for them. Your challenge is welcome.</p></div></div>
+          <span className="label reveal" style={{ color: "rgba(255,255,255,.4)" }}>The foundation</span>
+          <h2 className="reveal" style={{ color: "#fff", marginBottom: "0.5rem" }}>Five principles of character.</h2>
+          <p className="reveal" style={{ color: "rgba(255,255,255,.55)", maxWidth: "520px", marginBottom: "2.5rem" }}>Every decision — on governance, economics, matching, and membership — is tested against these. Not policies on a wall. How it actually works.</p>
+          <div className="five-principles-row">
+            {[
+              { n: "01", name: "Collaboration", line: "Helping someone else succeed earns you income." },
+              { n: "02", name: "Approachability", line: "The network team is reachable as people, not a brand voice." },
+              { n: "03", name: "Mutual benefit", line: "Practitioner. Client. Network. Three winners — or no deal." },
+              { n: "04", name: "Transparency", line: "Fees published. Ratings visible. Process explained." },
+              { n: "05", name: "Openness", line: "We are building this with the people in it, not for them." },
+            ].map(pr => (
+              <div key={pr.n} className="five-pr-item reveal">
+                <div className="five-pr-n" style={{ color: "var(--amber)" }}>{pr.n}</div>
+                <div className="five-pr-name">{pr.name}</div>
+                <div className="five-pr-line">{pr.line}</div>
+              </div>
+            ))}
           </div>
-          <div style={{ marginTop: "2rem" }}>
-            <Link href="/network" className="btn btn-outline-amber" data-testid="link-network-principles">Read more about how we work</Link>
+          <div style={{ marginTop: "2.5rem" }}>
+            <Link href="/network" className="btn btn-outline-amber" data-testid="link-network-principles">Read the full principles</Link>
           </div>
         </div>
       </section>
