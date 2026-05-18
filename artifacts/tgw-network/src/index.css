@@ -197,15 +197,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .nav-cta .btn{padding:.5rem 1.2rem;font-size:.75rem}
 .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:1.4rem;padding:.5rem;line-height:1;z-index:201;position:relative}
 
-/* Mobile drawer — fixed panel below the nav, shown via React state */
-.mobile-drawer{position:fixed;top:72px;left:0;right:0;bottom:0;background:var(--navy);z-index:198;overflow-y:auto;display:flex;flex-direction:column;padding:0 0 2rem}
-.mobile-drawer-links{list-style:none;border-top:1px solid rgba(255,255,255,.08)}
-.mobile-drawer-links li a,.mobile-drawer-links li a:visited{display:block;padding:1.1rem 1.5rem;font-size:.95rem;font-weight:400;letter-spacing:.04em;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);transition:color .15s}
-.mobile-drawer-links li a:hover,.mobile-drawer-links li a.active{color:#fff}
-.mobile-drawer-cta{display:flex;flex-direction:column;gap:.75rem;padding:1.75rem 1.5rem 0}
-.mobile-drawer-cta .btn{text-align:center;width:100%;padding:1rem 1.5rem;font-size:.9rem}
+/* Mobile drawer — block-level panel, no flex column to avoid Tailwind interference */
+.mob-drawer{position:fixed;top:72px;left:0;right:0;bottom:0;background:var(--navy);z-index:198;overflow-y:auto}
+.mob-drawer-links{border-top:1px solid rgba(255,255,255,.08)}
+.mob-drawer-link{display:block;padding:1rem 1.5rem;font-family:var(--sans);font-size:.95rem;font-weight:400;letter-spacing:.04em;color:rgba(255,255,255,.72);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);transition:color .15s}
+.mob-drawer-link:hover,.mob-drawer-link.active{color:#fff}
+.mob-drawer-cta{padding:1.5rem 1.5rem .25rem}
+.mob-btn{display:block;text-align:center;width:100%;box-sizing:border-box;padding:.9rem 1.5rem;font-size:.88rem;margin-bottom:.75rem}
+.mob-drawer-close-wrap{padding:.5rem 1.5rem 2rem;text-align:center}
+.mob-drawer-close-btn{display:inline-flex;align-items:center;gap:.5rem;background:none;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.6);font-family:var(--sans);font-size:.8rem;letter-spacing:.06em;padding:.6rem 1.4rem;border-radius:2px;cursor:pointer;transition:color .15s,border-color .15s}
+.mob-drawer-close-btn:hover{color:#fff;border-color:rgba(255,255,255,.6)}
+.mob-drawer-close-icon{font-size:.9rem}
 @media (max-width:640px){
-  .mobile-drawer{top:64px}
+  .mob-drawer{top:64px}
 }
 
 .page{display:none;padding-top:88px}

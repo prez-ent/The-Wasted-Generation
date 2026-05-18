@@ -6,6 +6,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
+  const close = () => setMobileNavOpen(false);
+
   useEffect(() => {
     setMobileNavOpen(false);
   }, [location]);
@@ -48,7 +50,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <Link href="/register" className="btn btn-amber"         data-testid="link-register">Find an expert</Link>
         </div>
 
-        {/* Hamburger — shown below 1024px by CSS */}
+        {/* Hamburger toggle — shown below 1024px by CSS */}
         <button
           className="nav-mobile-toggle"
           onClick={() => setMobileNavOpen(o => !o)}
@@ -60,26 +62,36 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </button>
       </nav>
 
-      {/* Mobile drawer — rendered outside <nav> so it sits below it */}
+      {/* Mobile drawer — block-level, no flex interference */}
       {mobileNavOpen && (
-        <div className="mobile-drawer" data-testid="mobile-drawer">
-          <ul className="mobile-drawer-links">
+        <div className="mob-drawer" data-testid="mobile-drawer">
+          {/* Nav links — plain block divs, no ul/li */}
+          <div className="mob-drawer-links">
             {navLinks.map(l => (
-              <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className={location === l.href ? "active" : ""}
-                  data-testid={`mob-${l.testId}`}
-                  onClick={() => setMobileNavOpen(false)}
-                >
-                  {l.label}
-                </Link>
-              </li>
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`mob-drawer-link${location === l.href ? " active" : ""}`}
+                data-testid={`mob-${l.testId}`}
+                onClick={close}
+              >
+                {l.label}
+              </Link>
             ))}
-          </ul>
-          <div className="mobile-drawer-cta">
-            <Link href="/apply"    className="btn btn-outline-white" onClick={() => setMobileNavOpen(false)}>Apply as a practitioner</Link>
-            <Link href="/register" className="btn btn-amber"         onClick={() => setMobileNavOpen(false)}>Find an expert</Link>
+          </div>
+
+          {/* CTA buttons */}
+          <div className="mob-drawer-cta">
+            <Link href="/apply"    className="btn btn-outline-white mob-btn" onClick={close} data-testid="mob-link-apply">Apply as a practitioner</Link>
+            <Link href="/register" className="btn btn-amber mob-btn"         onClick={close} data-testid="mob-link-register">Find an expert</Link>
+          </div>
+
+          {/* Explicit close button */}
+          <div className="mob-drawer-close-wrap">
+            <button className="mob-drawer-close-btn" onClick={close} data-testid="button-close-drawer">
+              <span className="mob-drawer-close-icon">✕</span>
+              Close menu
+            </button>
           </div>
         </div>
       )}
