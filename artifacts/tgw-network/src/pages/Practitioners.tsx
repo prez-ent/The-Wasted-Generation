@@ -42,21 +42,7 @@ export default function Practitioners() {
         <div className="econ-stat"><span className="econ-num">£500</span><div className="econ-label">The minimum day rate</div></div>
       </div>
 
-      {/* 1. The process */}
-      <section style={{ padding: 0, background: "var(--offwhite)" }}>
-        <div className="container" style={{ paddingTop: "3.5rem", paddingBottom: "3rem" }}>
-          <span className="label reveal">The process</span>
-          <h2 className="reveal">Four steps. No surprises.</h2>
-        </div>
-        <div className="process-steps">
-          <div className="process-step reveal"><span className="step-n">One</span><h4>Express interest</h4><p>A short form. Name, specialism, experience level, how you heard about the network. No CV. Takes five minutes.</p></div>
-          <div className="process-step reveal"><span className="step-n">Two</span><h4>Full application</h4><p>If the initial screen passes, we send you the profile template and reference guidance. You complete both.</p></div>
-          <div className="process-step reveal"><span className="step-n">Three</span><h4>Assessment call</h4><p>30 minutes. A conversation, not an interview. We talk about your best engagement to date and whether the network is right for you.</p></div>
-          <div className="process-step reveal"><span className="step-n">Four</span><h4>Activation</h4><p>If the answer is yes on both sides, your profile is live within 48 hours. We make your first introductions to relevant members.</p></div>
-        </div>
-      </section>
-
-      {/* 2. The base model explained */}
+      {/* 1. The base model explained */}
       <section className="econ-explainer">
         <div className="container">
           <span className="label reveal">The base model explained</span>
@@ -248,6 +234,20 @@ export default function Practitioners() {
               )}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 6. The process */}
+      <section style={{ padding: 0, background: "var(--offwhite)" }}>
+        <div className="container" style={{ paddingTop: "3.5rem", paddingBottom: "3rem" }}>
+          <span className="label reveal">The process</span>
+          <h2 className="reveal">Four steps. No surprises.</h2>
+        </div>
+        <div className="process-steps">
+          <div className="process-step reveal"><span className="step-n">One</span><h4>Express interest</h4><p>A short form. Name, specialism, experience level, how you heard about the network. No CV. Takes five minutes.</p></div>
+          <div className="process-step reveal"><span className="step-n">Two</span><h4>Full application</h4><p>If the initial screen passes, we send you the profile template and reference guidance. You complete both.</p></div>
+          <div className="process-step reveal"><span className="step-n">Three</span><h4>Assessment call</h4><p>30 minutes. A conversation, not an interview. We talk about your best engagement to date and whether the network is right for you.</p></div>
+          <div className="process-step reveal"><span className="step-n">Four</span><h4>Activation</h4><p>If the answer is yes on both sides, your profile is live within 48 hours. We make your first introductions to relevant members.</p></div>
         </div>
       </section>
 
