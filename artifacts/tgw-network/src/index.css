@@ -245,9 +245,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .what-col h3{font-size:1.15rem;color:var(--navy);margin-bottom:.75rem}
 .what-col p{font-size:.95rem;opacity:.8}
 .pathways{background:var(--offwhite)}
-.home-six-things{background:var(--paper);position:relative;padding-bottom:7rem}
-.home-six-things .container-w{position:relative;z-index:1}
-.home-six-things::after{content:'';position:absolute;bottom:0;left:0;right:0;height:72px;background:var(--navy);clip-path:polygon(0 0,0 100%,100% 100%);z-index:0}
+.home-six-things{background:var(--paper)}
 .stats-row{background:var(--navy);position:relative}
 .stats-row .container-w{position:relative;z-index:1}
 /* Five principles — paper background (light) */
