@@ -109,11 +109,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ background: "var(--navy)", padding: "4rem 0" }}>
+      <section className="home-five-principles">
         <div className="container">
-          <span className="label reveal" style={{ color: "rgba(255,255,255,.4)" }}>The foundation</span>
-          <h2 className="reveal" style={{ color: "#fff", marginBottom: "0.5rem" }}>Five principles of character.</h2>
-          <p className="reveal" style={{ color: "rgba(255,255,255,.55)", maxWidth: "520px", marginBottom: "2.5rem" }}>Every decision — on governance, economics, matching, and membership — is tested against these. Not policies on a wall. How it actually works.</p>
+          <span className="label reveal">The foundation</span>
+          <h2 className="reveal" style={{ marginBottom: "0.5rem" }}>Five principles of character.</h2>
+          <p className="reveal" style={{ maxWidth: "520px", marginBottom: "2.5rem", opacity: ".65" }}>Every decision — on governance, economics, matching, and membership — is tested against these. Not policies on a wall. How it actually works.</p>
           <div className="five-principles-row">
             {[
               { n: "01", name: "Collaboration", line: "Helping someone else succeed earns you income." },
@@ -130,7 +130,7 @@ export default function Home() {
             ))}
           </div>
           <div style={{ marginTop: "2.5rem" }}>
-            <Link href="/network" className="btn btn-outline-amber" data-testid="link-network-principles">Read the full principles</Link>
+            <Link href="/network" className="btn btn-teal" data-testid="link-network-principles">Read the full principles</Link>
           </div>
         </div>
       </section>
