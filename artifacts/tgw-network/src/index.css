@@ -274,7 +274,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .principle-num{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--amber);flex-shrink:0;width:28px;padding-top:.1rem}
 .principle-name{font-weight:500;color:var(--navy);margin-bottom:.2rem;font-size:1rem}
 .principle-desc{font-size:.9rem;opacity:.75}
-.home-cta{background:var(--navy);text-align:center}
+.home-cta{background:var(--teal);text-align:center}
 .home-cta h2{color:#fff;margin-bottom:.75rem}
 .home-cta .sub{color:rgba(255,255,255,.6);max-width:500px;margin:0 auto 2.5rem;font-size:1rem}
 
@@ -395,7 +395,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .success-box h3{color:var(--teal);margin-bottom:.75rem}
 .success-box p{font-size:.92rem;opacity:.8}
 
-footer{background:var(--ink);padding:3rem 0}
+footer{background:var(--navy);padding:3rem 0}
 .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap}
 .footer-logo{display:flex;align-items:center}
 .footer-logo svg{height:54px;width:auto;display:block;opacity:1}
