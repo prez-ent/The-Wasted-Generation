@@ -261,7 +261,7 @@ export default function Practitioners() {
       {/* CTA */}
       <section className="prac-cta">
         <div className="container">
-          <h2>If this sounds like the network<br />you have been looking for, it probably is.</h2>
+          <h2>If this sounds like the network you have been looking for, it probably is.</h2>
           <p className="sub">Applications are assessed individually. There is no rush and no pressure — but there is a quality bar, and we apply it consistently.</p>
           <Link href="/apply" className="btn btn-amber" data-testid="link-apply-cta">Apply to join</Link>
         </div>
