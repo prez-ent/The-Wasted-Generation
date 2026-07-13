@@ -1,6 +1,7 @@
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
+import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
@@ -38,6 +39,7 @@ function Router() {
 }
 
 function App() {
+  useSmoothScroll();
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
