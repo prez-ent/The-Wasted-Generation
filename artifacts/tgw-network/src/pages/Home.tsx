@@ -7,7 +7,7 @@ export default function Home() {
     <div id="page-home">
       <div className="home-hero">
         <div className="container">
-          <div className="hero-eyebrow">TGW Network</div>
+          <div className="hero-eyebrow">TWG Network</div>
           <h1>Every problem has been<br />solved before.<br /><em>We connect you with the people<br />who have already solved it.</em></h1>
           <p className="sub">A governed network of proven practitioners, deployed against defined outcomes.</p>
           <div className="hero-btns">
@@ -23,7 +23,7 @@ export default function Home() {
           <div className="what-grid">
             <div className="what-col reveal">
               <h3>We match. We introduce. We deploy.</h3>
-              <p>Tell us what you are trying to fix. We identify the practitioner who has solved it before and introduce you directly. No marketplace to browse. No CVs to filter. TGW does the work.</p>
+              <p>Tell us what you are trying to fix. We identify the practitioner who has solved it before and introduce you directly. No marketplace to browse. No CVs to filter. TWG does the work.</p>
             </div>
             <div className="what-col reveal">
               <h3>Outcomes defined before anyone starts</h3>
@@ -85,7 +85,7 @@ export default function Home() {
 
       <section style={{ background: "var(--paper)" }}>
         <div className="container-w">
-          <span className="label reveal">Why TGW is different</span>
+          <span className="label reveal">Why TWG is different</span>
           <h2 className="reveal">Six things no other<br />network offers.</h2>
           <div className="six-grid">
             <div className="six-item reveal"><span className="num">01</span><h3>Clients are rated too</h3><p>Nobody else does this. A practitioner sees a client's 360 score before accepting an engagement.</p></div>

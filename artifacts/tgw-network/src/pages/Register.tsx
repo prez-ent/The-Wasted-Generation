@@ -48,7 +48,7 @@ export default function Register() {
         <div className="container">
           <div className="form-wrap">
             <div className="form-intro" style={{ borderLeftColor: "var(--blue)" }}>
-              Start with the problem — not the person spec. The more clearly you describe the situation, what you have already tried, and what success looks like, the faster and more accurately we can match you. Someone from the TGW team will respond within one working day.
+              Start with the problem — not the person spec. The more clearly you describe the situation, what you have already tried, and what success looks like, the faster and more accurately we can match you. Someone from the TWG team will respond within one working day.
             </div>
 
             {!submitted ? (
@@ -121,7 +121,7 @@ export default function Register() {
                     name="referredBy"
                     render={({ field }) => (
                       <FormItem className="form-group">
-                        <FormLabel>Were you referred by a TGW practitioner?</FormLabel>
+                        <FormLabel>Were you referred by a TWG practitioner?</FormLabel>
                         <FormControl><input type="text" placeholder="Their name — important for the referral record" {...field} /></FormControl>
                         <div className="hint" style={{ color: "var(--blue)" }}>If a practitioner introduced you, capturing their name activates their referral income.</div>
                       </FormItem>

@@ -1,0 +1,1 @@
+- [TWG brand naming](twg-brand-naming.md) — brand is "TWG" not "TGW"; artifact slug/dir stays "tgw-network", do not rename it.

@@ -15,22 +15,22 @@ export default function About() {
       <section className="about-body">
         <div className="container-n">
           <p className="reveal" style={{ fontFamily: "var(--serif)", fontSize: "1.3rem", fontWeight: "300", lineHeight: "1.6", color: "var(--navy)", marginBottom: "2rem" }}>
-            TGW exists for two reasons. Because a generation of experienced professionals deserves a market that recognises what they are worth. And because the organisations ignoring that market are the ones paying the price.
+            TWG exists for two reasons. Because a generation of experienced professionals deserves a market that recognises what they are worth. And because the organisations ignoring that market are the ones paying the price.
           </p>
           <p className="reveal">
             This is not a platform. It is a correction. A governed network built on the belief that the most experienced operators in the market should not have to choose between their expertise and their terms — and that organisations should not have to choose between senior capability and certainty of outcome.
           </p>
           <p className="reveal">
-            TGW is a journey, not a launch. The founding cohort is forming now. The first briefs are coming in. The network will learn what problems it can solve, which sectors it serves best, and where the model works hardest. That knowledge will shape everything that comes next.
+            TWG is a journey, not a launch. The founding cohort is forming now. The first briefs are coming in. The network will learn what problems it can solve, which sectors it serves best, and where the model works hardest. That knowledge will shape everything that comes next.
           </p>
           <p className="reveal">
-            Right now, the two things that will not change are the people TGW is for — the practitioners the market keeps underestimating, and the organisations smart enough to know what they are missing — and the principle that both sides deserve better terms than the market has offered them.
+            Right now, the two things that will not change are the people TWG is for — the practitioners the market keeps underestimating, and the organisations smart enough to know what they are missing — and the principle that both sides deserve better terms than the market has offered them.
           </p>
           <p className="reveal">
             Three problems have existed in the fractional and interim market for a long time. Organisations have no reliable way to assess practitioner quality before committing. Practitioners have no protection from the practices that damage their work. And the market has no accountability mechanism that applies to both parties.
           </p>
           <p className="reveal">
-            TGW addresses all three. Not with another directory. Not with better matching technology. With the infrastructure that makes expert deployment work properly — for everyone involved.
+            TWG addresses all three. Not with another directory. Not with better matching technology. With the infrastructure that makes expert deployment work properly — for everyone involved.
           </p>
         </div>
       </section>
@@ -40,7 +40,7 @@ export default function About() {
           <h2 className="reveal" style={{ fontSize: "1.8rem" }}>Andrew Engledow</h2>
           <div className="reveal" style={{ maxWidth: "580px" }}>
             <p>Thirty years of senior commercial experience across regulated technology markets in EMEA, APAC, and North America. Deals closed north of £29 million. The kind of career that looks impressive on paper and that the market decided, at a certain point, to overlook.</p>
-            <p>TGW was built from that experience — and from the recognition that the problem was not personal. It was structural. A generation of professionals like Andrew were being filtered out not because their capability had diminished but because the systems doing the filtering were not designed to see it.</p>
+            <p>TWG was built from that experience — and from the recognition that the problem was not personal. It was structural. A generation of professionals like Andrew were being filtered out not because their capability had diminished but because the systems doing the filtering were not designed to see it.</p>
             <p>The network exists to correct that. Andrew can be reached directly at the address below.</p>
           </div>
         </div>

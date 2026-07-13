@@ -34,7 +34,7 @@ export default function Pricing() {
               </div>
               <div>
                 <h3>The network fee</h3>
-                <p className="fee-who">Client pays · Additive on top of practitioner's rate · Received by TGW Network</p>
+                <p className="fee-who">Client pays · Additive on top of practitioner's rate · Received by TWG Network</p>
                 <p style={{ fontSize: ".9rem", marginTop: ".75rem", opacity: ".75" }}>A practitioner charges £1,000 per day. The client pays £1,100. The practitioner receives £1,000 — their full rate, untouched. The network receives £100. The fee is charged to the client on top. It is never deducted from the practitioner.</p>
               </div>
               <div className="fee-example">
@@ -137,7 +137,7 @@ export default function Pricing() {
           <div className="cma-inner">
             <span className="cma-flag">CMA Compliance Notice</span>
             <h3>Rate discussion prohibition</h3>
-            <p>Following the Competition and Markets Authority's guidance on labour market competition law, TGW Network explicitly prohibits any discussion of day rates between members.</p>
+            <p>Following the Competition and Markets Authority's guidance on labour market competition law, TWG Network explicitly prohibits any discussion of day rates between members.</p>
             <p style={{ marginTop: ".75rem" }}>Individual practitioners publishing their own rates on their profiles is permitted — that is transparency, not coordination. Any discussion of rates between members in any network channel, at any network event, or through any network communication is prohibited and is grounds for immediate removal from the network.</p>
             <p style={{ marginTop: ".75rem" }}>This rule is in the membership agreement. It is stated here for the same reason everything else is: because transparency is not selective.</p>
           </div>

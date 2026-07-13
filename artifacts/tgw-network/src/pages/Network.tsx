@@ -268,14 +268,14 @@ export default function Network() {
 
       <section style={{ background: "var(--offwhite)" }}>
         <div className="container-w">
-          <span className="label reveal">How TGW compares</span>
+          <span className="label reveal">How TWG compares</span>
           <h2 className="reveal">The fractional market has grown.<br />So has the gap.</h2>
           <p className="reveal" style={{ opacity: ".72", maxWidth: "560px" }}>Between what most platforms offer and what practitioners and clients actually need.</p>
           <div className="cm-wrap">
             <table className="cm-table">
               <thead><tr>
                 <th style={{ minWidth: "190px" }}>Feature</th>
-                <th className="us" style={{ minWidth: "130px" }}>TGW Network</th>
+                <th className="us" style={{ minWidth: "130px" }}>TWG Network</th>
                 <th style={{ minWidth: "120px" }}>Traditional interim</th>
                 <th style={{ minWidth: "100px" }}>Free directory</th>
                 <th style={{ minWidth: "110px" }}>Fractional Jobs</th>

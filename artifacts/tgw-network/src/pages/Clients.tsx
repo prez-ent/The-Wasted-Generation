@@ -39,7 +39,7 @@ export default function Clients() {
       <div className="client-hero">
         <div className="container">
           <span className="label" style={{ color: "rgba(255,255,255,.4)" }}>For organisations</span>
-          <h1>Every consultant will tell you<br />they can solve your problem.<br /><em>TGW finds the person<br />who already has.</em></h1>
+          <h1>Every consultant will tell you<br />they can solve your problem.<br /><em>TWG finds the person<br />who already has.</em></h1>
           <p className="sub" style={{ fontFamily: "var(--serif)", fontStyle: "italic", fontSize: "1.15rem", marginTop: "1.5rem" }}>Senior capability. Defined outcomes. No surprises.</p>
           <div className="hero-btns" style={{ marginTop: "2.5rem" }}>
             <Link href="/register" className="btn btn-amber" data-testid="link-register-hero">Tell us what you are trying to fix</Link>
@@ -85,7 +85,7 @@ export default function Clients() {
             <div style={{ fontFamily: "var(--serif)", fontSize: "clamp(1.4rem,3vw,2.2rem)", fontWeight: 300, color: "#fff", lineHeight: "1.3", marginBottom: "1.5rem" }}>
               You are not buying a consultant.<br />You are buying the end of a problem<br /><em style={{ color: "var(--amber)" }}>you have probably already tried<br />and failed to fix once.</em>
             </div>
-            <p style={{ color: "rgba(255,255,255,.6)", fontSize: ".95rem", lineHeight: "1.8", maxWidth: "520px", margin: "0 auto" }}>Every business owner has a bad consultant story. Scope creep. Vague deliverables. Invoices that keep coming. TGW offers what that market has never reliably delivered: certainty. The outcome is agreed before anyone starts. The person delivering it has done it before.</p>
+            <p style={{ color: "rgba(255,255,255,.6)", fontSize: ".95rem", lineHeight: "1.8", maxWidth: "520px", margin: "0 auto" }}>Every business owner has a bad consultant story. Scope creep. Vague deliverables. Invoices that keep coming. TWG offers what that market has never reliably delivered: certainty. The outcome is agreed before anyone starts. The person delivering it has done it before.</p>
           </div>
         </div>
       </section>
@@ -96,7 +96,7 @@ export default function Clients() {
           <h2 className="reveal">Tell us what you are trying to fix.<br />We take it from there.</h2>
           <div className="how-list">
             <div className="how-item reveal"><div className="how-n">1</div><div className="how-text"><h4>Describe your problem</h4><p>Not a job description. Not a person spec. The situation — what is broken, what you have already tried, what success looks like. The brief is where the match begins, and a clear brief produces a better outcome every time.</p></div></div>
-            <div className="how-item reveal"><div className="how-n">2</div><div className="how-text"><h4>We introduce you to the right person</h4><p>TGW matches your brief against the network and introduces you to one or two practitioners who have solved this type of problem before. Verified track record. Real 360 score. Available to start. You meet them before you commit to anything.</p></div></div>
+            <div className="how-item reveal"><div className="how-n">2</div><div className="how-text"><h4>We introduce you to the right person</h4><p>TWG matches your brief against the network and introduces you to one or two practitioners who have solved this type of problem before. Verified track record. Real 360 score. Available to start. You meet them before you commit to anything.</p></div></div>
             <div className="how-item reveal"><div className="how-n">3</div><div className="how-text"><h4>Agree the outcome before anyone starts</h4><p>A Statement of Work is completed together — defined deliverables, agreed KPIs, timeline. Nothing begins without it. This replaces the vague engagement letter and the open-ended billing cycle.</p></div></div>
             <div className="how-item reveal"><div className="how-n">4</div><div className="how-text"><h4>Delivery and mutual accountability</h4><p>The engagement runs against what was agreed. At completion, both the practitioner and your organisation are evaluated. The 360 score is permanent, honest, and visible to future engagements on both sides.</p></div></div>
           </div>
@@ -148,7 +148,7 @@ export default function Clients() {
             <div>
               <span className="label">The commercial case</span>
               <h2 style={{ marginBottom: "1rem" }}>Less than a third of<br />what you are probably paying.</h2>
-              <p>Traditional interim firms charge between 20 and 35 percent above the day rate. They do not publish it. You find out when you see the invoice. TGW charges 10%. For a practitioner at £1,000 per day over a 40-day engagement, that is a saving of up to £10,000 on a single brief compared with standard market rates.</p>
+              <p>Traditional interim firms charge between 20 and 35 percent above the day rate. They do not publish it. You find out when you see the invoice. TWG charges 10%. For a practitioner at £1,000 per day over a 40-day engagement, that is a saving of up to £10,000 on a single brief compared with standard market rates.</p>
               <p style={{ marginTop: ".75rem" }}>That saving does not come from a lower calibre of practitioner. It comes from a model that does not need a large sales operation or a recruitment margin to sustain itself.</p>
               <div style={{ marginTop: "1.5rem" }}>
                 <Link href="/pricing" className="btn btn-outline-navy" data-testid="link-pricing">See the full fee structure</Link>
@@ -171,7 +171,7 @@ export default function Clients() {
         <div className="container">
           <span className="label reveal">Where we operate</span>
           <h2 className="reveal">Across the functions<br />where problems live.</h2>
-          <p className="reveal" style={{ maxWidth: "580px", opacity: ".72", marginBottom: "2rem" }}>TGW practitioners have operated at senior level across these functions. As the network grows we will be specific about what we have seen and what we have solved. Tell us your problem — that is where we start.</p>
+          <p className="reveal" style={{ maxWidth: "580px", opacity: ".72", marginBottom: "2rem" }}>TWG practitioners have operated at senior level across these functions. As the network grows we will be specific about what we have seen and what we have solved. Tell us your problem — that is where we start.</p>
           <div className="six-grid" style={{ marginTop: 0 }}>
             <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>Finance</h3><p>CFO advisory, restructuring, M&amp;A support, FP&amp;A, cash management.</p></div>
             <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>Operations</h3><p>Transformation, cost reduction, supply chain, process design, P&amp;L ownership.</p></div>
