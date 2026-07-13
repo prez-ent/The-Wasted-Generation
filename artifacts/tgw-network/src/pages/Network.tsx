@@ -111,7 +111,7 @@ export default function Network() {
       <div className="network-hero">
         <div className="container">
           <span className="label">The Network</span>
-          <h1>A network built on principles,<br />not just promises.</h1>
+          <h1>A network built<br />on principles,<br />not just promises.</h1>
           <p className="sub">Governance that applies to both sides, economics that share value fairly, and a character that is explicit about what it will and will not do.</p>
         </div>
       </div>
