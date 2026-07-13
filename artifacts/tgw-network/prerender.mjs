@@ -1,27 +1,23 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
+import { build } from "vite";
+import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import path from "path";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
-import type { Plugin } from "vite";
+import { fileURLToPath } from "url";
 
-const rawPort = process.env.PORT;
-const port = rawPort ? Number(rawPort) : 5173;
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
-if (Number.isNaN(port) || port <= 0) {
-  throw new Error(`Invalid PORT value: "${rawPort}"`);
-}
+const ROUTES = [
+  "/",
+  "/practitioners",
+  "/clients",
+  "/network",
+  "/pricing",
+  "/manifesto",
+  "/about",
+  "/apply",
+  "/register",
+];
 
-const basePath = process.env.BASE_PATH ?? "/";
-
-const SITE_URL = (process.env.VITE_SITE_URL ?? "https://twgnetwork.com").replace(/\/$/, "");
-
-interface RouteMeta {
-  title: string;
-  description: string;
-}
-
-const ROUTE_META: Record<string, RouteMeta> = {
+const ROUTE_META = {
   "/": {
     title: "The Wasted Generation (TWG Network) | Fractional Consultants & Interim Experts",
     description: "TWG Network connects businesses with senior fractional consultants and interim experts who have already solved the problem you're facing. 10% transparent fee, no markups.",
@@ -60,17 +56,11 @@ const ROUTE_META: Record<string, RouteMeta> = {
   },
 };
 
-function resolveRoute(rawUrl: string, base: string): string {
-  const withoutBase = rawUrl.startsWith(base)
-    ? rawUrl.slice(base.length - 1)
-    : rawUrl;
-  const withoutQuery = withoutBase.split("?")[0].split("#")[0];
-  const normalized = withoutQuery.replace(/\/$/, "") || "/";
-  return normalized;
-}
+const SITE_URL = (process.env.VITE_SITE_URL ?? "https://twgnetwork.com").replace(/\/$/, "");
+const BASE_PATH = process.env.BASE_PATH ?? "/";
 
-function injectMeta(html: string, meta: RouteMeta): string {
-  return html
+function injectHead(html, meta, canonical) {
+  let result = html
     .replace(/<title>[^<]*<\/title>/, `<title>${meta.title}</title>`)
     .replace(
       /(<meta\s+name="description"\s+content=")[^"]*"/,
@@ -92,71 +82,90 @@ function injectMeta(html: string, meta: RouteMeta): string {
       /(<meta\s+name="twitter:description"\s+content=")[^"]*"/,
       `$1${meta.description}"`,
     );
+
+  result = result
+    .replace(/<link\s+rel="canonical"[^>]*>/g, "")
+    .replace(/<meta\s+property="og:url"[^>]*>/g, "")
+    .replace(
+      "</head>",
+      `  <link rel="canonical" href="${canonical}" />\n  <meta property="og:url" content="${canonical}" />\n</head>`,
+    );
+
+  return result;
 }
 
-function perRouteMetaPlugin(base: string): Plugin {
-  return {
-    name: "per-route-meta",
-    transformIndexHtml: {
-      order: "post",
-      handler(html, ctx) {
-        const rawUrl = ctx?.originalUrl ?? "/";
-        const route = resolveRoute(rawUrl, base);
-        const meta = ROUTE_META[route] ?? ROUTE_META["/"];
-        return injectMeta(html, meta);
-      },
-    },
-  };
-}
+console.log(`[prerender] Building SSR bundle…`);
 
-export default defineConfig({
-  base: basePath,
-  define: {
-    "import.meta.env.VITE_SITE_URL": JSON.stringify(SITE_URL),
-  },
+await build({
+  root: __dirname,
+  base: BASE_PATH,
+  configFile: false,
   plugins: [
-    react(),
-    tailwindcss(),
-    runtimeErrorOverlay(),
-    perRouteMetaPlugin(basePath),
-    ...(process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID !== undefined
-      ? [
-          await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer({
-              root: path.resolve(import.meta.dirname, ".."),
-            }),
-          ),
-          await import("@replit/vite-plugin-dev-banner").then((m) =>
-            m.devBanner(),
-          ),
-        ]
-      : []),
+    (await import("@vitejs/plugin-react")).default(),
   ],
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "src"),
-      "@assets": path.resolve(import.meta.dirname, "..", "..", "attached_assets"),
+      "@": path.resolve(__dirname, "src"),
     },
     dedupe: ["react", "react-dom"],
   },
-  root: path.resolve(import.meta.dirname),
-  build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
-    emptyOutDir: true,
+  define: {
+    "import.meta.env.VITE_SITE_URL": JSON.stringify(SITE_URL),
+    "import.meta.env.BASE_URL": JSON.stringify(BASE_PATH),
+    "import.meta.env.MODE": JSON.stringify("production"),
+    "import.meta.env.DEV": "false",
+    "import.meta.env.PROD": "true",
+    "import.meta.env.SSR": "true",
+    "process.env.NODE_ENV": JSON.stringify("production"),
   },
-  server: {
-    port,
-    strictPort: true,
-    host: "0.0.0.0",
-    allowedHosts: true,
-    fs: {
-      strict: true,
+  build: {
+    ssr: "src/entry-server.tsx",
+    outDir: "dist/server",
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        format: "esm",
+      },
     },
   },
-  preview: {
-    port,
-    host: "0.0.0.0",
-    allowedHosts: true,
+  ssr: {
+    noExternal: ["react-helmet-async", "wouter"],
   },
+  logLevel: "warn",
 });
+
+console.log(`[prerender] SSR bundle ready. Rendering routes…`);
+
+const { render } = await import(path.join(__dirname, "dist/server/entry-server.js"));
+
+const outDir = path.join(__dirname, "dist/public");
+const baseHtml = readFileSync(path.join(outDir, "index.html"), "utf-8");
+
+function stripHelmetBodyTags(html) {
+  return html.replace(
+    /^(\s*(<title>[^<]*<\/title>|<meta(\s[^>]*)?\/>|<meta(\s[^>]*)?>|<link(\s[^>]*)?\/>|<link(\s[^>]*)?>)\s*)*/i,
+    "",
+  );
+}
+
+for (const route of ROUTES) {
+  const { html } = render(route);
+  const meta = ROUTE_META[route] ?? ROUTE_META["/"];
+  const canonical = `${SITE_URL}${route === "/" ? "" : route}`;
+  const bodyHtml = stripHelmetBodyTags(html);
+
+  let routeHtml = injectHead(baseHtml, meta, canonical)
+    .replace('<div id="root"></div>', `<div id="root">${bodyHtml}</div>`);
+
+  if (route === "/") {
+    writeFileSync(path.join(outDir, "index.html"), routeHtml);
+  } else {
+    const dir = path.join(outDir, route);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(path.join(dir, "index.html"), routeHtml);
+  }
+
+  console.log(`[prerender] ✓ ${route}`);
+}
+
+console.log(`[prerender] Done — ${ROUTES.length} routes written to dist/public.`);
