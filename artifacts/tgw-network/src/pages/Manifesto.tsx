@@ -1,11 +1,16 @@
 import { Link } from "wouter";
 import { useReveal } from "@/hooks/useReveal";
+import { PageMeta } from "@/components/PageMeta";
 
 export default function Manifesto() {
   useReveal();
 
   return (
     <div id="page-manifesto">
+      <PageMeta
+        title="Manifesto | Why Businesses Are Wasting Their Most Valuable Asset"
+        description="The Wasted Generation manifesto: age discrimination is costing the economy trillions. Senior experience is not a liability — it's the correction businesses need."
+      />
       <div style={{ background: "var(--navy)", padding: "5rem 0 4rem" }}>
         <div className="container-n">
           <span className="label" style={{ color: "rgba(255,255,255,.4)" }}>The Manifesto</span>

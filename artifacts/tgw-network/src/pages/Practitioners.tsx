@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { useReveal } from "@/hooks/useReveal";
 import { useState } from "react";
+import { PageMeta } from "@/components/PageMeta";
 
 export default function Practitioners() {
   useReveal();
@@ -24,6 +25,10 @@ export default function Practitioners() {
 
   return (
     <div id="page-practitioners">
+      <PageMeta
+        title="For Practitioners | Join The Wasted Generation Network"
+        description="Keep 100% of your day rate. Join TWG Network as a senior fractional consultant or interim expert. 8+ years experience required. Earn peer introduction overrides."
+      />
       {/* Hero */}
       <div className="prac-hero">
         <div className="container">

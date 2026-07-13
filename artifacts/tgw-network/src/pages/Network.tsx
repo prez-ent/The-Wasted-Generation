@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { useReveal } from "@/hooks/useReveal";
 import { useState } from "react";
+import { PageMeta } from "@/components/PageMeta";
 
 const PRINCIPLES = [
   {
@@ -108,6 +109,10 @@ export default function Network() {
 
   return (
     <div id="page-network">
+      <PageMeta
+        title="The Network | Governance & 360 Evaluation Framework"
+        description="TWG Network is governed by five principles of character and a bilateral 360 evaluation framework that holds both practitioners and organisations accountable."
+      />
       <div className="network-hero">
         <div className="container">
           <span className="label">The Network</span>

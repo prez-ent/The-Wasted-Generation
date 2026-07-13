@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { useReveal } from "@/hooks/useReveal";
 import { useState } from "react";
+import { PageMeta } from "@/components/PageMeta";
 
 const ES_TYPES = [
   {
@@ -36,6 +37,10 @@ export default function Clients() {
 
   return (
     <div id="page-clients">
+      <PageMeta
+        title="For Organisations | Hire Fractional Experts via TWG Network"
+        description="Buy the end of a problem, not a consultant. TWG Network matches organisations with senior interim and fractional experts across four engagement formats. 10% transparent fee."
+      />
       <div className="client-hero">
         <div className="container">
           <span className="label" style={{ color: "rgba(255,255,255,.4)" }}>For organisations</span>

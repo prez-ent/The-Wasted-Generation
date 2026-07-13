@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { PageMeta } from "@/components/PageMeta";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useReveal } from "@/hooks/useReveal";
 import * as z from "zod";
@@ -38,6 +39,10 @@ export default function Apply() {
 
   return (
     <div id="page-apply">
+      <PageMeta
+        title="Apply to Join | Senior Practitioners — TWG Network"
+        description="Apply to join TWG Network as a senior practitioner. Tell us your specialism, experience, and the specific problems you solve. We respond to every application."
+      />
       <div className="form-page-hero amber-bg">
         <div className="container">
           <span className="label" style={{ color: "rgba(255,255,255,.5)" }}>For practitioners</span>

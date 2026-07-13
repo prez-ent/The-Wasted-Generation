@@ -1,11 +1,16 @@
 import { Link } from "wouter";
 import { useReveal } from "@/hooks/useReveal";
+import { PageMeta } from "@/components/PageMeta";
 
 export default function About() {
   useReveal();
 
   return (
     <div id="page-about">
+      <PageMeta
+        title="About | The Wasted Generation — Founded by Andrew Engledow"
+        description="TWG Network was founded by Andrew Engledow after a 30-year career revealed a structural market failure: businesses systematically undervalue senior expertise."
+      />
       <div className="about-hero">
         <div className="container-n">
           <span className="label">About</span>

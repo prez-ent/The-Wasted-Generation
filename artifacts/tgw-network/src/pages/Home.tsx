@@ -1,10 +1,15 @@
 import { Link } from "wouter";
 import { useReveal } from "@/hooks/useReveal";
+import { PageMeta } from "@/components/PageMeta";
 
 export default function Home() {
   useReveal();
   return (
     <div id="page-home">
+      <PageMeta
+        title="The Wasted Generation | Fractional Consultants & Interim Experts"
+        description="TWG Network connects businesses with senior fractional consultants and interim experts who have already solved the problem you're facing. 10% transparent fee, no markups."
+      />
       <div className="home-hero">
         <div className="container">
           <div className="hero-eyebrow">TWG Network</div>

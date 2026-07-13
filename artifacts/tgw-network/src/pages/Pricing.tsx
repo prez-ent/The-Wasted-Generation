@@ -1,5 +1,6 @@
 import { useReveal } from "@/hooks/useReveal";
 import { useState } from "react";
+import { PageMeta } from "@/components/PageMeta";
 
 export default function Pricing() {
   useReveal();
@@ -15,6 +16,10 @@ export default function Pricing() {
 
   return (
     <div id="page-pricing">
+      <PageMeta
+        title="Pricing | Transparent Fees — 10% Network, No Hidden Costs"
+        description="Complete fee transparency: 10% network fee, 5% peer introduction override, 5% lifetime company introduction. Cap of 15%. Minimum day rate £500. No invoice surprises."
+      />
       <div className="pricing-hero">
         <div className="container">
           <span className="label" style={{ color: "rgba(255,255,255,.4)" }}>Pricing</span>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { PageMeta } from "@/components/PageMeta";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useReveal } from "@/hooks/useReveal";
 import * as z from "zod";
@@ -36,6 +37,10 @@ export default function Register() {
 
   return (
     <div id="page-register">
+      <PageMeta
+        title="Submit a Brief | Find the Right Expert — TWG Network"
+        description="Start with the problem, not the person spec. Submit your brief to TWG Network and we'll match you with a senior expert who has already solved it. Response within one working day."
+      />
       <div className="form-page-hero blue-bg">
         <div className="container">
           <span className="label" style={{ color: "rgba(255,255,255,.5)" }}>For organisations</span>
