@@ -43,7 +43,7 @@ export default function Home() {
       <div className="home-hero">
         <div className="container">
           <div className="hero-eyebrow">TWG Network</div>
-          <h1>Every problem has been<br />solved before.<br /><em>We connect you with<br />the people who have<br />already solved it.</em></h1>
+          <h1>Every problem has been<br />solved before.<br />We connect you with<br />the people who have<br />already solved it.</h1>
           <p className="sub">A governed network of proven practitioners, deployed against defined outcomes.</p>
           <div className="hero-btns">
             <Link href="/clients" className="btn btn-amber" data-testid="link-org-problem">My organisation has a problem</Link>
