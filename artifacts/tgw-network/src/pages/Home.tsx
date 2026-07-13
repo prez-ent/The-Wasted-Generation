@@ -9,6 +9,36 @@ export default function Home() {
       <PageMeta
         title="The Wasted Generation | Fractional Consultants & Interim Experts"
         description="TWG Network connects businesses with senior fractional consultants and interim experts who have already solved the problem you're facing. 10% transparent fee, no markups."
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://twgnetwork.com/#organization",
+              "name": "The Wasted Generation",
+              "alternateName": "TWG Network",
+              "url": "https://twgnetwork.com",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://twgnetwork.com/opengraph.jpg"
+              },
+              "description": "TWG Network connects businesses with senior fractional consultants and interim experts who have already solved the problem you're facing. 10% transparent fee, no markups.",
+              "founder": {
+                "@type": "Person",
+                "name": "Andrew Engledow"
+              }
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://twgnetwork.com/#website",
+              "url": "https://twgnetwork.com",
+              "name": "TWG Network — The Wasted Generation",
+              "publisher": {
+                "@id": "https://twgnetwork.com/#organization"
+              }
+            }
+          ]
+        }}
       />
       <div className="home-hero">
         <div className="container">

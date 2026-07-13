@@ -10,6 +10,35 @@ export default function Manifesto() {
       <PageMeta
         title="Manifesto | Why Businesses Are Wasting Their Most Valuable Asset"
         description="The Wasted Generation manifesto: age discrimination is costing the economy trillions. Senior experience is not a liability — it's the correction businesses need."
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Why businesses are throwing away their most valuable asset — and what it is costing them.",
+          "description": "Age discrimination is costing the economy trillions. A generation of experienced professionals is being filtered out before they get to the room — and the businesses doing the filtering are paying for it in slower decisions, wrong turns, and missed growth.",
+          "author": {
+            "@type": "Person",
+            "@id": "https://twgnetwork.com/#andrew-engledow",
+            "name": "Andrew Engledow",
+            "jobTitle": "Founder",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "The Wasted Generation"
+            }
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://twgnetwork.com/#organization",
+            "name": "The Wasted Generation",
+            "url": "https://twgnetwork.com"
+          },
+          "url": "https://twgnetwork.com/manifesto",
+          "mainEntityOfPage": "https://twgnetwork.com/manifesto",
+          "about": [
+            { "@type": "Thing", "name": "Age discrimination" },
+            { "@type": "Thing", "name": "Fractional executives" },
+            { "@type": "Thing", "name": "Senior expertise" }
+          ]
+        }}
       />
       <div style={{ background: "var(--navy)", padding: "5rem 0 4rem" }}>
         <div className="container-n">

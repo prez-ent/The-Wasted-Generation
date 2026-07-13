@@ -5,9 +5,10 @@ interface PageMetaProps {
   title: string;
   description: string;
   image?: string;
+  jsonLd?: object;
 }
 
-export function PageMeta({ title, description, image = "/opengraph.jpg" }: PageMetaProps) {
+export function PageMeta({ title, description, image = "/opengraph.jpg", jsonLd }: PageMetaProps) {
   const fullTitle = `${title} | TWG Network`;
   const [location] = useLocation();
   const siteUrl = (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, "");
@@ -26,6 +27,11 @@ export function PageMeta({ title, description, image = "/opengraph.jpg" }: PageM
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      {jsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
+      )}
     </Helmet>
   );
 }

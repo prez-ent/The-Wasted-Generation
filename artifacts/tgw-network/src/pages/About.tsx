@@ -10,6 +10,41 @@ export default function About() {
       <PageMeta
         title="About | The Wasted Generation — Founded by Andrew Engledow"
         description="TWG Network was founded by Andrew Engledow after a 30-year career revealed a structural market failure: businesses systematically undervalue senior expertise."
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://twgnetwork.com/#organization",
+              "name": "The Wasted Generation",
+              "alternateName": "TWG Network",
+              "url": "https://twgnetwork.com",
+              "description": "A governed network of proven practitioners deployed against defined outcomes. TWG connects businesses with senior fractional consultants and interim experts.",
+              "founder": {
+                "@type": "Person",
+                "@id": "https://twgnetwork.com/#andrew-engledow",
+                "name": "Andrew Engledow",
+                "jobTitle": "Founder",
+                "description": "Thirty years of senior commercial experience across regulated technology markets in EMEA, APAC, and North America.",
+                "email": "andrew@engledow.co.uk",
+                "worksFor": {
+                  "@id": "https://twgnetwork.com/#organization"
+                }
+              }
+            },
+            {
+              "@type": "Person",
+              "@id": "https://twgnetwork.com/#andrew-engledow",
+              "name": "Andrew Engledow",
+              "jobTitle": "Founder",
+              "description": "Thirty years of senior commercial experience across regulated technology markets in EMEA, APAC, and North America. Deals closed north of £29 million.",
+              "email": "andrew@engledow.co.uk",
+              "worksFor": {
+                "@id": "https://twgnetwork.com/#organization"
+              }
+            }
+          ]
+        }}
       />
       <div className="about-hero">
         <div className="container-n">
