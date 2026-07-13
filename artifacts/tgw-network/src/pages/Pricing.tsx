@@ -23,7 +23,7 @@ export default function Pricing() {
       <div className="pricing-hero">
         <div className="container">
           <span className="label" style={{ color: "rgba(255,255,255,.4)" }}>Pricing</span>
-          <h1>The fees. All of them.<br />On this page.</h1>
+          <h1><span className="hero-line">The fees. All of them.</span>{" "}<span className="hero-line">On this page.</span></h1>
           <p className="sub">No small print. No 'rates on application'. No discovery that the fee was 30% when you see the invoice.</p>
         </div>
       </div>

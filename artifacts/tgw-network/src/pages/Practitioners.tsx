@@ -33,7 +33,7 @@ export default function Practitioners() {
       <div className="prac-hero">
         <div className="container">
           <span className="label">For practitioners</span>
-          <h1>You have earned the right<br />to work on your terms.</h1>
+          <h1><span className="hero-line">You have earned the right</span>{" "}<span className="hero-line">to work on your terms.</span></h1>
           <p className="sub">TWG is a network for practitioners who have genuinely done the thing — not people looking for their next job. You bring the expertise. We bring the structure, the clients, the protection, and the economics.</p>
           <div className="hero-btns" style={{ marginTop: "2rem" }}>
             <Link href="/apply" className="btn btn-teal" data-testid="link-apply-hero">Apply to join</Link>
