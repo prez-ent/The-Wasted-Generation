@@ -39,7 +39,7 @@ export default function Clients() {
       <div className="client-hero">
         <div className="container">
           <span className="label" style={{ color: "rgba(255,255,255,.4)" }}>For organisations</span>
-          <h1>Every consultant<br />will tell you they can<br />solve your problem.<br /><em>TWG finds the person<br />who already has.</em></h1>
+          <h1>Every consultant will tell you<br />they can solve your problem.<br /><em>TWG finds the person<br />who already has.</em></h1>
           <p className="sub" style={{ fontFamily: "var(--serif)", fontStyle: "italic", fontSize: "1.15rem", marginTop: "1.5rem" }}>Senior capability. Defined outcomes. No surprises.</p>
           <div className="hero-btns" style={{ marginTop: "2.5rem" }}>
             <Link href="/register" className="btn btn-amber" data-testid="link-register-hero">Tell us what you are trying to fix</Link>
