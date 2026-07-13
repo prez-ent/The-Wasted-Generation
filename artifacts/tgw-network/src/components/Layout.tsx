@@ -1,6 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Logo } from "./Logo";
 import { useState, useEffect } from "react";
+import { scrollToTop } from "../hooks/useSmoothScroll";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -8,8 +9,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   const close = () => setMobileNavOpen(false);
 
+  const handleNavClick = (href: string) => {
+    if (location === href) scrollToTop(false);
+  };
+
   useEffect(() => {
     setMobileNavOpen(false);
+  }, [location]);
+
+  useEffect(() => {
+    scrollToTop(true);
   }, [location]);
 
   useEffect(() => {
@@ -29,7 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <nav>
-        <Link href="/" className="nav-logo" data-testid="link-home">
+        <Link href="/" className="nav-logo" data-testid="link-home" onClick={() => handleNavClick("/")}>
           <Logo />
         </Link>
 
@@ -37,7 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <ul className="nav-links">
           {navLinks.map(l => (
             <li key={l.href}>
-              <Link href={l.href} className={location === l.href ? "active" : ""} data-testid={l.testId}>
+              <Link href={l.href} className={location === l.href ? "active" : ""} data-testid={l.testId} onClick={() => handleNavClick(l.href)}>
                 {l.label}
               </Link>
             </li>
@@ -73,7 +82,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 href={l.href}
                 className={`mob-drawer-link${location === l.href ? " active" : ""}`}
                 data-testid={`mob-${l.testId}`}
-                onClick={close}
+                onClick={() => { close(); handleNavClick(l.href); }}
               >
                 {l.label}
               </Link>
@@ -103,12 +112,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <footer>
         <div className="container">
           <div className="footer-inner">
-            <Link href="/" className="footer-logo">
+            <Link href="/" className="footer-logo" onClick={() => handleNavClick("/")}>
               <Logo />
             </Link>
             <div className="footer-links">
               {navLinks.map(l => (
-                <Link key={l.href} href={l.href}>{l.label}</Link>
+                <Link key={l.href} href={l.href} onClick={() => handleNavClick(l.href)}>{l.label}</Link>
               ))}
             </div>
             <div className="footer-tagline">
