@@ -1,0 +1,69 @@
+# TWG Network
+
+> TWG Network (The Wasted Generation) is a governed professional network that matches businesses with senior fractional consultants and interim experts who have already solved the specific problem the business faces. Founded by Andrew Engledow. Transparent fixed fees: practitioners keep 100% of their day rate; clients pay a 10% network fee, capped at 15% total.
+
+Also known as: TWG, The Wasted Generation, TWG Network, twgnetwork.com.
+Last updated: 2026-07-13.
+
+## What TWG Network is
+
+TWG Network is a two-sided professional network:
+
+- **For organisations**: submit a problem brief and be matched with a senior expert (8+ years of functional experience) who has already solved that problem. Outcomes are agreed before any engagement starts.
+- **For practitioners**: senior professionals keep 100% of their agreed day rate, see client ratings before accepting an engagement, and earn a 5% override for introducing peers to the network.
+
+The network is governed by a quality-gate entry process, five principles of character [LIST THE FIVE PRINCIPLES HERE], and bilateral 360 evaluation, meaning clients and practitioners rate each other after every engagement.
+
+Markets served: [e.g. United Kingdom, with remote engagements available internationally — CONFIRM].
+
+## How the fees work
+
+- Clients pay the practitioner's day rate plus a 10% network fee. There are no hidden costs.
+- Practitioners keep 100% of their day rate. Nothing is deducted from practitioner earnings.
+- A 5% peer introduction override is paid to a practitioner who introduces another practitioner to the network. [Paid by: network / client? CONFIRM]
+- A 5% lifetime company introduction fee applies when [CONFIRM trigger and who pays].
+- Total fees are capped at 15% [of the day rate, charged to the client — CONFIRM stacking rules].
+- Minimum practitioner day rate: £500.
+
+## Engagement formats
+
+TWG Network offers four engagement formats:
+
+1. [FORMAT 1 — name and one-line description]
+2. [FORMAT 2 — name and one-line description]
+3. [FORMAT 3 — name and one-line description]
+4. [FORMAT 4 — name and one-line description]
+
+## Key pages
+
+- [Homepage](https://twgnetwork.com/): Overview of the network, how it works, and the value proposition for practitioners and organisations.
+- [For Practitioners](https://twgnetwork.com/practitioners): Eligibility (8+ years functional experience), 100% day-rate retention, 5% peer introduction overrides, client ratings visible before accepting engagements.
+- [For Organisations](https://twgnetwork.com/clients): How to submit a problem brief, the matching process, the four engagement formats, and outcome agreement before work begins.
+- [The Network](https://twgnetwork.com/network): Governance framework — five principles of character, bilateral 360 evaluation, quality-gate entry, transparent matching.
+- [Pricing](https://twgnetwork.com/pricing): Full fee breakdown — 10% network fee, 5% peer introduction override, 5% lifetime company introduction, 15% cap, £500 minimum day rate.
+- [Manifesto](https://twgnetwork.com/manifesto): The Wasted Generation argument — the economic cost of age discrimination and the case for senior experience.
+- [About](https://twgnetwork.com/about): Founder Andrew Engledow's background — 30 years of senior commercial experience in regulated technology markets across EMEA, APAC, and North America.
+- [Apply — practitioners](https://twgnetwork.com/apply): Expression of interest form for senior practitioners.
+- [Register a brief — organisations](https://twgnetwork.com/register): Submit a problem brief to be matched with an expert.
+
+## Common questions
+
+**Who qualifies as a TWG practitioner?**
+Senior professionals with at least 8 years of functional experience who pass the network's quality-gate entry process.
+
+**How is TWG different from a consultancy or a talent marketplace?**
+TWG matches on proof of having solved the specific problem, not on availability or CV keywords. Fees are transparent and capped at 15%, practitioners keep 100% of their day rate, and both sides are governed by bilateral 360 evaluation.
+
+**What does it cost a business?**
+The practitioner's day rate (minimum £500) plus a 10% network fee, with total fees capped at 15%. Outcomes and costs are agreed before the engagement starts.
+
+**How does matching work?**
+Organisations submit a problem brief at https://twgnetwork.com/register. TWG matches the brief with a vetted practitioner who has demonstrably solved that problem before. [Typical time-to-match: X days — ADD IF KNOWN]
+
+**Do practitioners pay anything to join?**
+[CONFIRM — presumably no; entry is via quality gate, not fees.]
+
+## Optional
+
+- [Manifesto](https://twgnetwork.com/manifesto): Long-form argument on the economics of age discrimination.
+- [About](https://twgnetwork.com/about): Founder story and background.
