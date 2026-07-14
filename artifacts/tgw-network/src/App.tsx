@@ -16,6 +16,8 @@ import Manifesto from "./pages/Manifesto";
 import About from "./pages/About";
 import Apply from "./pages/Apply";
 import Register from "./pages/Register";
+import MembershipApplication from "./pages/MembershipApplication";
+import RegisterIntroduction from "./pages/RegisterIntroduction";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,8 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/apply" component={Apply} />
         <Route path="/register" component={Register} />
+        <Route path="/membership-application-k7x2v9q4mt" component={MembershipApplication} />
+        <Route path="/register-introduction-w8n3j6r2pf" component={RegisterIntroduction} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

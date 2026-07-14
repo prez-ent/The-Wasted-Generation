@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: submissions
+    description: Form submission operations
 paths:
   /healthz:
     get:
@@ -24,6 +26,102 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /submissions/practitioner-interest:
+    post:
+      operationId: submitPractitionerInterest
+      tags: [submissions]
+      summary: Submit a practitioner interest form
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PractitionerInterestInput"
+      responses:
+        "201":
+          description: Submission stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmissionReceipt"
+        "400":
+          description: Invalid submission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /submissions/membership-application:
+    post:
+      operationId: submitMembershipApplication
+      tags: [submissions]
+      summary: Submit a full membership application
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MembershipApplicationInput"
+      responses:
+        "201":
+          description: Submission stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmissionReceipt"
+        "400":
+          description: Invalid submission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /submissions/client-enquiry:
+    post:
+      operationId: submitClientEnquiry
+      tags: [submissions]
+      summary: Submit a client enquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClientEnquiryInput"
+      responses:
+        "201":
+          description: Submission stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmissionReceipt"
+        "400":
+          description: Invalid submission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /submissions/introduction-registration:
+    post:
+      operationId: submitIntroductionRegistration
+      tags: [submissions]
+      summary: Register an introduction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IntroductionRegistrationInput"
+      responses:
+        "201":
+          description: Registration stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IntroductionReceipt"
+        "400":
+          description: Invalid submission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +131,201 @@ components:
           type: string
       required:
         - status
-
+    ErrorMessage:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+    SubmissionReceipt:
+      type: object
+      properties:
+        id:
+          type: integer
+      required:
+        - id
+    IntroductionReceipt:
+      type: object
+      properties:
+        id:
+          type: integer
+        registeredAt:
+          type: string
+          format: date-time
+        registeredAtDisplay:
+          type: string
+      required:
+        - id
+        - registeredAt
+        - registeredAtDisplay
+    PractitionerInterestInput:
+      type: object
+      properties:
+        fullName:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          format: email
+        linkedin:
+          type: string
+          minLength: 1
+        location:
+          type: string
+          minLength: 1
+        specialism:
+          type: string
+          enum:
+            - Commercial
+            - Finance
+            - Operations
+            - Technology
+            - People
+            - Marketing
+            - Legal
+            - Other
+        yearsExperience:
+          type: string
+          enum:
+            - 8 to 12
+            - 13 to 20
+            - 21 to 30
+            - 30+
+        source:
+          type: string
+          enum:
+            - Member introduction
+            - LinkedIn
+            - Press
+            - Event
+            - Search
+            - Other
+        memberName:
+          type: string
+        problem:
+          type: string
+          minLength: 1
+          maxLength: 300
+      required:
+        - fullName
+        - email
+        - linkedin
+        - location
+        - specialism
+        - yearsExperience
+        - source
+        - problem
+    MembershipApplicationInput:
+      type: object
+      properties:
+        careerHistory:
+          type: string
+          minLength: 1
+        problemsSolved:
+          type: string
+          minLength: 1
+        dayRate:
+          type: integer
+          minimum: 500
+        referee1:
+          type: string
+          minLength: 1
+        referee2:
+          type: string
+          minLength: 1
+        contractingEntity:
+          type: string
+          minLength: 1
+      required:
+        - careerHistory
+        - problemsSolved
+        - dayRate
+        - referee1
+        - referee2
+        - contractingEntity
+    ClientEnquiryInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        role:
+          type: string
+          minLength: 1
+        company:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          format: email
+        companySize:
+          type: string
+          enum:
+            - Under £5m
+            - £5m to £25m
+            - £25m to £100m
+            - £100m to £250m
+            - Over £250m
+        problem:
+          type: string
+          minLength: 1
+        timeline:
+          type: string
+          enum:
+            - Urgent (weeks)
+            - This quarter
+            - This year
+            - Exploring
+        source:
+          type: string
+          enum:
+            - Referral from advisor
+            - Member introduction
+            - Press
+            - LinkedIn
+            - Event
+            - Search
+        referrerName:
+          type: string
+      required:
+        - name
+        - role
+        - company
+        - email
+        - companySize
+        - problem
+        - timeline
+        - source
+    IntroductionRegistrationInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          format: email
+        introductionType:
+          type: string
+          enum:
+            - Practitioner to the network
+            - Client company to the network
+        whoIntroducing:
+          type: string
+          minLength: 1
+        relationshipContext:
+          type: string
+          minLength: 1
+        contactMade:
+          type: string
+          enum:
+            - "No"
+            - "Yes"
+      required:
+        - name
+        - email
+        - introductionType
+        - whoIntroducing
+        - relationshipContext
+        - contactMade

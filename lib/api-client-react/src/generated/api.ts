@@ -5,18 +5,30 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import type {
+  MutationFunction,
   QueryFunction,
   QueryKey,
+  UseMutationOptions,
+  UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
 } from "@tanstack/react-query";
 
-import type { HealthStatus } from "./api.schemas";
+import type {
+  ClientEnquiryInput,
+  ErrorMessage,
+  HealthStatus,
+  IntroductionReceipt,
+  IntroductionRegistrationInput,
+  MembershipApplicationInput,
+  PractitionerInterestInput,
+  SubmissionReceipt,
+} from "./api.schemas";
 
 import { customFetch } from "../custom-fetch";
-import type { ErrorType } from "../custom-fetch";
+import type { ErrorType, BodyType } from "../custom-fetch";
 
 type AwaitedInput<T> = PromiseLike<T> | T;
 
@@ -99,3 +111,354 @@ export function useHealthCheck<
 
   return { ...query, queryKey: queryOptions.queryKey };
 }
+
+/**
+ * @summary Submit a practitioner interest form
+ */
+export const getSubmitPractitionerInterestUrl = () => {
+  return `/api/submissions/practitioner-interest`;
+};
+
+export const submitPractitionerInterest = async (
+  practitionerInterestInput: PractitionerInterestInput,
+  options?: RequestInit,
+): Promise<SubmissionReceipt> => {
+  return customFetch<SubmissionReceipt>(getSubmitPractitionerInterestUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(practitionerInterestInput),
+  });
+};
+
+export const getSubmitPractitionerInterestMutationOptions = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof submitPractitionerInterest>>,
+    TError,
+    { data: BodyType<PractitionerInterestInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof submitPractitionerInterest>>,
+  TError,
+  { data: BodyType<PractitionerInterestInput> },
+  TContext
+> => {
+  const mutationKey = ["submitPractitionerInterest"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof submitPractitionerInterest>>,
+    { data: BodyType<PractitionerInterestInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return submitPractitionerInterest(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type SubmitPractitionerInterestMutationResult = NonNullable<
+  Awaited<ReturnType<typeof submitPractitionerInterest>>
+>;
+export type SubmitPractitionerInterestMutationBody =
+  BodyType<PractitionerInterestInput>;
+export type SubmitPractitionerInterestMutationError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Submit a practitioner interest form
+ */
+export const useSubmitPractitionerInterest = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof submitPractitionerInterest>>,
+    TError,
+    { data: BodyType<PractitionerInterestInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof submitPractitionerInterest>>,
+  TError,
+  { data: BodyType<PractitionerInterestInput> },
+  TContext
+> => {
+  return useMutation(getSubmitPractitionerInterestMutationOptions(options));
+};
+
+/**
+ * @summary Submit a full membership application
+ */
+export const getSubmitMembershipApplicationUrl = () => {
+  return `/api/submissions/membership-application`;
+};
+
+export const submitMembershipApplication = async (
+  membershipApplicationInput: MembershipApplicationInput,
+  options?: RequestInit,
+): Promise<SubmissionReceipt> => {
+  return customFetch<SubmissionReceipt>(getSubmitMembershipApplicationUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(membershipApplicationInput),
+  });
+};
+
+export const getSubmitMembershipApplicationMutationOptions = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof submitMembershipApplication>>,
+    TError,
+    { data: BodyType<MembershipApplicationInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof submitMembershipApplication>>,
+  TError,
+  { data: BodyType<MembershipApplicationInput> },
+  TContext
+> => {
+  const mutationKey = ["submitMembershipApplication"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof submitMembershipApplication>>,
+    { data: BodyType<MembershipApplicationInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return submitMembershipApplication(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type SubmitMembershipApplicationMutationResult = NonNullable<
+  Awaited<ReturnType<typeof submitMembershipApplication>>
+>;
+export type SubmitMembershipApplicationMutationBody =
+  BodyType<MembershipApplicationInput>;
+export type SubmitMembershipApplicationMutationError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Submit a full membership application
+ */
+export const useSubmitMembershipApplication = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof submitMembershipApplication>>,
+    TError,
+    { data: BodyType<MembershipApplicationInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof submitMembershipApplication>>,
+  TError,
+  { data: BodyType<MembershipApplicationInput> },
+  TContext
+> => {
+  return useMutation(getSubmitMembershipApplicationMutationOptions(options));
+};
+
+/**
+ * @summary Submit a client enquiry
+ */
+export const getSubmitClientEnquiryUrl = () => {
+  return `/api/submissions/client-enquiry`;
+};
+
+export const submitClientEnquiry = async (
+  clientEnquiryInput: ClientEnquiryInput,
+  options?: RequestInit,
+): Promise<SubmissionReceipt> => {
+  return customFetch<SubmissionReceipt>(getSubmitClientEnquiryUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(clientEnquiryInput),
+  });
+};
+
+export const getSubmitClientEnquiryMutationOptions = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof submitClientEnquiry>>,
+    TError,
+    { data: BodyType<ClientEnquiryInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof submitClientEnquiry>>,
+  TError,
+  { data: BodyType<ClientEnquiryInput> },
+  TContext
+> => {
+  const mutationKey = ["submitClientEnquiry"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof submitClientEnquiry>>,
+    { data: BodyType<ClientEnquiryInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return submitClientEnquiry(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type SubmitClientEnquiryMutationResult = NonNullable<
+  Awaited<ReturnType<typeof submitClientEnquiry>>
+>;
+export type SubmitClientEnquiryMutationBody = BodyType<ClientEnquiryInput>;
+export type SubmitClientEnquiryMutationError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Submit a client enquiry
+ */
+export const useSubmitClientEnquiry = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof submitClientEnquiry>>,
+    TError,
+    { data: BodyType<ClientEnquiryInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof submitClientEnquiry>>,
+  TError,
+  { data: BodyType<ClientEnquiryInput> },
+  TContext
+> => {
+  return useMutation(getSubmitClientEnquiryMutationOptions(options));
+};
+
+/**
+ * @summary Register an introduction
+ */
+export const getSubmitIntroductionRegistrationUrl = () => {
+  return `/api/submissions/introduction-registration`;
+};
+
+export const submitIntroductionRegistration = async (
+  introductionRegistrationInput: IntroductionRegistrationInput,
+  options?: RequestInit,
+): Promise<IntroductionReceipt> => {
+  return customFetch<IntroductionReceipt>(
+    getSubmitIntroductionRegistrationUrl(),
+    {
+      ...options,
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...options?.headers },
+      body: JSON.stringify(introductionRegistrationInput),
+    },
+  );
+};
+
+export const getSubmitIntroductionRegistrationMutationOptions = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof submitIntroductionRegistration>>,
+    TError,
+    { data: BodyType<IntroductionRegistrationInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof submitIntroductionRegistration>>,
+  TError,
+  { data: BodyType<IntroductionRegistrationInput> },
+  TContext
+> => {
+  const mutationKey = ["submitIntroductionRegistration"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof submitIntroductionRegistration>>,
+    { data: BodyType<IntroductionRegistrationInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return submitIntroductionRegistration(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type SubmitIntroductionRegistrationMutationResult = NonNullable<
+  Awaited<ReturnType<typeof submitIntroductionRegistration>>
+>;
+export type SubmitIntroductionRegistrationMutationBody =
+  BodyType<IntroductionRegistrationInput>;
+export type SubmitIntroductionRegistrationMutationError =
+  ErrorType<ErrorMessage>;
+
+/**
+ * @summary Register an introduction
+ */
+export const useSubmitIntroductionRegistration = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof submitIntroductionRegistration>>,
+    TError,
+    { data: BodyType<IntroductionRegistrationInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof submitIntroductionRegistration>>,
+  TError,
+  { data: BodyType<IntroductionRegistrationInput> },
+  TContext
+> => {
+  return useMutation(getSubmitIntroductionRegistrationMutationOptions(options));
+};

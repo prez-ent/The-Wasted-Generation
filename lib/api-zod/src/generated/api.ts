@@ -14,3 +14,102 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * @summary Submit a practitioner interest form
+ */
+
+export const submitPractitionerInterestBodyProblemMax = 300;
+
+export const SubmitPractitionerInterestBody = zod.object({
+  fullName: zod.string().min(1),
+  email: zod.string().email(),
+  linkedin: zod.string().min(1),
+  location: zod.string().min(1),
+  specialism: zod.enum([
+    "Commercial",
+    "Finance",
+    "Operations",
+    "Technology",
+    "People",
+    "Marketing",
+    "Legal",
+    "Other",
+  ]),
+  yearsExperience: zod.enum(["8 to 12", "13 to 20", "21 to 30", "30+"]),
+  source: zod.enum([
+    "Member introduction",
+    "LinkedIn",
+    "Press",
+    "Event",
+    "Search",
+    "Other",
+  ]),
+  memberName: zod.string().optional(),
+  problem: zod.string().min(1).max(submitPractitionerInterestBodyProblemMax),
+});
+
+/**
+ * @summary Submit a full membership application
+ */
+
+export const submitMembershipApplicationBodyDayRateMin = 500;
+
+export const SubmitMembershipApplicationBody = zod.object({
+  careerHistory: zod.string().min(1),
+  problemsSolved: zod.string().min(1),
+  dayRate: zod.number().min(submitMembershipApplicationBodyDayRateMin),
+  referee1: zod.string().min(1),
+  referee2: zod.string().min(1),
+  contractingEntity: zod.string().min(1),
+});
+
+/**
+ * @summary Submit a client enquiry
+ */
+
+export const SubmitClientEnquiryBody = zod.object({
+  name: zod.string().min(1),
+  role: zod.string().min(1),
+  company: zod.string().min(1),
+  email: zod.string().email(),
+  companySize: zod.enum([
+    "Under £5m",
+    "£5m to £25m",
+    "£25m to £100m",
+    "£100m to £250m",
+    "Over £250m",
+  ]),
+  problem: zod.string().min(1),
+  timeline: zod.enum([
+    "Urgent (weeks)",
+    "This quarter",
+    "This year",
+    "Exploring",
+  ]),
+  source: zod.enum([
+    "Referral from advisor",
+    "Member introduction",
+    "Press",
+    "LinkedIn",
+    "Event",
+    "Search",
+  ]),
+  referrerName: zod.string().optional(),
+});
+
+/**
+ * @summary Register an introduction
+ */
+
+export const SubmitIntroductionRegistrationBody = zod.object({
+  name: zod.string().min(1),
+  email: zod.string().email(),
+  introductionType: zod.enum([
+    "Practitioner to the network",
+    "Client company to the network",
+  ]),
+  whoIntroducing: zod.string().min(1),
+  relationshipContext: zod.string().min(1),
+  contactMade: zod.enum(["No", "Yes"]),
+});

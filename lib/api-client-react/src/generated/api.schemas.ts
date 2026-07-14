@@ -8,3 +8,164 @@
 export interface HealthStatus {
   status: string;
 }
+
+export interface ErrorMessage {
+  error: string;
+}
+
+export interface SubmissionReceipt {
+  id: number;
+}
+
+export interface IntroductionReceipt {
+  id: number;
+  registeredAt: string;
+  registeredAtDisplay: string;
+}
+
+export type PractitionerInterestInputSpecialism =
+  (typeof PractitionerInterestInputSpecialism)[keyof typeof PractitionerInterestInputSpecialism];
+
+export const PractitionerInterestInputSpecialism = {
+  Commercial: "Commercial",
+  Finance: "Finance",
+  Operations: "Operations",
+  Technology: "Technology",
+  People: "People",
+  Marketing: "Marketing",
+  Legal: "Legal",
+  Other: "Other",
+} as const;
+
+export type PractitionerInterestInputYearsExperience =
+  (typeof PractitionerInterestInputYearsExperience)[keyof typeof PractitionerInterestInputYearsExperience];
+
+export const PractitionerInterestInputYearsExperience = {
+  "8_to_12": "8 to 12",
+  "13_to_20": "13 to 20",
+  "21_to_30": "21 to 30",
+  "30+": "30+",
+} as const;
+
+export type PractitionerInterestInputSource =
+  (typeof PractitionerInterestInputSource)[keyof typeof PractitionerInterestInputSource];
+
+export const PractitionerInterestInputSource = {
+  Member_introduction: "Member introduction",
+  LinkedIn: "LinkedIn",
+  Press: "Press",
+  Event: "Event",
+  Search: "Search",
+  Other: "Other",
+} as const;
+
+export interface PractitionerInterestInput {
+  /** @minLength 1 */
+  fullName: string;
+  email: string;
+  /** @minLength 1 */
+  linkedin: string;
+  /** @minLength 1 */
+  location: string;
+  specialism: PractitionerInterestInputSpecialism;
+  yearsExperience: PractitionerInterestInputYearsExperience;
+  source: PractitionerInterestInputSource;
+  memberName?: string;
+  /**
+   * @minLength 1
+   * @maxLength 300
+   */
+  problem: string;
+}
+
+export interface MembershipApplicationInput {
+  /** @minLength 1 */
+  careerHistory: string;
+  /** @minLength 1 */
+  problemsSolved: string;
+  /** @minimum 500 */
+  dayRate: number;
+  /** @minLength 1 */
+  referee1: string;
+  /** @minLength 1 */
+  referee2: string;
+  /** @minLength 1 */
+  contractingEntity: string;
+}
+
+export type ClientEnquiryInputCompanySize =
+  (typeof ClientEnquiryInputCompanySize)[keyof typeof ClientEnquiryInputCompanySize];
+
+export const ClientEnquiryInputCompanySize = {
+  "Under_£5m": "Under £5m",
+  "£5m_to_£25m": "£5m to £25m",
+  "£25m_to_£100m": "£25m to £100m",
+  "£100m_to_£250m": "£100m to £250m",
+  "Over_£250m": "Over £250m",
+} as const;
+
+export type ClientEnquiryInputTimeline =
+  (typeof ClientEnquiryInputTimeline)[keyof typeof ClientEnquiryInputTimeline];
+
+export const ClientEnquiryInputTimeline = {
+  "Urgent_(weeks)": "Urgent (weeks)",
+  This_quarter: "This quarter",
+  This_year: "This year",
+  Exploring: "Exploring",
+} as const;
+
+export type ClientEnquiryInputSource =
+  (typeof ClientEnquiryInputSource)[keyof typeof ClientEnquiryInputSource];
+
+export const ClientEnquiryInputSource = {
+  Referral_from_advisor: "Referral from advisor",
+  Member_introduction: "Member introduction",
+  Press: "Press",
+  LinkedIn: "LinkedIn",
+  Event: "Event",
+  Search: "Search",
+} as const;
+
+export interface ClientEnquiryInput {
+  /** @minLength 1 */
+  name: string;
+  /** @minLength 1 */
+  role: string;
+  /** @minLength 1 */
+  company: string;
+  email: string;
+  companySize: ClientEnquiryInputCompanySize;
+  /** @minLength 1 */
+  problem: string;
+  timeline: ClientEnquiryInputTimeline;
+  source: ClientEnquiryInputSource;
+  referrerName?: string;
+}
+
+export type IntroductionRegistrationInputIntroductionType =
+  (typeof IntroductionRegistrationInputIntroductionType)[keyof typeof IntroductionRegistrationInputIntroductionType];
+
+export const IntroductionRegistrationInputIntroductionType = {
+  Practitioner_to_the_network: "Practitioner to the network",
+  Client_company_to_the_network: "Client company to the network",
+} as const;
+
+export type IntroductionRegistrationInputContactMade =
+  (typeof IntroductionRegistrationInputContactMade)[keyof typeof IntroductionRegistrationInputContactMade];
+
+export const IntroductionRegistrationInputContactMade = {
+  No: "No",
+  Yes: "Yes",
+} as const;
+
+export interface IntroductionRegistrationInput {
+  /** @minLength 1 */
+  name: string;
+  email: string;
+  introductionType: IntroductionRegistrationInputIntroductionType;
+  /** @minLength 1 */
+  whoIntroducing: string;
+  /** @minLength 1 */
+  relationshipContext: string;
+  contactMade: IntroductionRegistrationInputContactMade;
+}
