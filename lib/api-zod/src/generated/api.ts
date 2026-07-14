@@ -113,3 +113,623 @@ export const SubmitIntroductionRegistrationBody = zod.object({
   relationshipContext: zod.string().min(1),
   contactMade: zod.enum(["No", "Yes"]),
 });
+
+/**
+ * @summary Get the signed-in user's profile, journey, documents, and submissions
+ */
+export const GetMeResponse = zod.object({
+  profile: zod.object({
+    id: zod.number(),
+    email: zod.string(),
+    name: zod.string().nullable(),
+    side: zod
+      .union([
+        zod.literal("practitioner"),
+        zod.literal("client"),
+        zod.literal(null),
+      ])
+      .nullable(),
+    isTeam: zod.boolean(),
+    verified: zod.boolean(),
+    verifiedAt: zod.coerce.date().nullable(),
+    currentStatus: zod.string(),
+    createdAt: zod.coerce.date(),
+  }),
+  gates: zod.array(
+    zod.object({
+      code: zod.string(),
+      name: zod.string(),
+      gateType: zod.enum(["WEBSITE-GATED", "TEAM-GATED", "LEGAL HOLD"]),
+      locks: zod.string(),
+      opensWhen: zod.string(),
+      openedBy: zod.string(),
+      state: zod.enum(["open", "current", "locked"]),
+    }),
+  ),
+  statuses: zod.array(
+    zod.object({
+      label: zod.string(),
+      state: zod.enum(["reached", "current", "upcoming"]),
+    }),
+  ),
+  documents: zod.array(
+    zod.object({
+      id: zod.number(),
+      label: zod.string(),
+      kind: zod.enum(["nda", "pack", "agreement", "signed-copy", "other"]),
+      objectPath: zod.string(),
+      uploadedByTeam: zod.boolean(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+  submissions: zod.array(
+    zod.object({
+      id: zod.number(),
+      formType: zod.enum([
+        "practitioner-interest",
+        "membership-application",
+        "client-enquiry",
+        "introduction-registration",
+      ]),
+      title: zod.string(),
+      submittedAt: zod.coerce.date(),
+      details: zod.array(
+        zod.object({
+          label: zod.string(),
+          value: zod.string(),
+        }),
+      ),
+    }),
+  ),
+  canApply: zod.boolean(),
+  applicationSubmitted: zod.boolean(),
+  showIntroductionForm: zod.boolean(),
+});
+
+/**
+ * @summary Choose which journey (practitioner or client) this account follows
+ */
+export const SelectSideBody = zod.object({
+  side: zod.enum(["practitioner", "client"]),
+});
+
+export const SelectSideResponse = zod.object({
+  profile: zod.object({
+    id: zod.number(),
+    email: zod.string(),
+    name: zod.string().nullable(),
+    side: zod
+      .union([
+        zod.literal("practitioner"),
+        zod.literal("client"),
+        zod.literal(null),
+      ])
+      .nullable(),
+    isTeam: zod.boolean(),
+    verified: zod.boolean(),
+    verifiedAt: zod.coerce.date().nullable(),
+    currentStatus: zod.string(),
+    createdAt: zod.coerce.date(),
+  }),
+  gates: zod.array(
+    zod.object({
+      code: zod.string(),
+      name: zod.string(),
+      gateType: zod.enum(["WEBSITE-GATED", "TEAM-GATED", "LEGAL HOLD"]),
+      locks: zod.string(),
+      opensWhen: zod.string(),
+      openedBy: zod.string(),
+      state: zod.enum(["open", "current", "locked"]),
+    }),
+  ),
+  statuses: zod.array(
+    zod.object({
+      label: zod.string(),
+      state: zod.enum(["reached", "current", "upcoming"]),
+    }),
+  ),
+  documents: zod.array(
+    zod.object({
+      id: zod.number(),
+      label: zod.string(),
+      kind: zod.enum(["nda", "pack", "agreement", "signed-copy", "other"]),
+      objectPath: zod.string(),
+      uploadedByTeam: zod.boolean(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+  submissions: zod.array(
+    zod.object({
+      id: zod.number(),
+      formType: zod.enum([
+        "practitioner-interest",
+        "membership-application",
+        "client-enquiry",
+        "introduction-registration",
+      ]),
+      title: zod.string(),
+      submittedAt: zod.coerce.date(),
+      details: zod.array(
+        zod.object({
+          label: zod.string(),
+          value: zod.string(),
+        }),
+      ),
+    }),
+  ),
+  canApply: zod.boolean(),
+  applicationSubmitted: zod.boolean(),
+  showIntroductionForm: zod.boolean(),
+});
+
+/**
+ * @summary Record a signed copy uploaded by the account owner
+ */
+
+export const CreateMyDocumentBody = zod.object({
+  label: zod.string().min(1),
+  kind: zod.enum(["nda", "pack", "agreement", "signed-copy", "other"]),
+  objectPath: zod.string().min(1),
+});
+
+/**
+ * @summary List all accounts with verification and journey state
+ */
+export const ListPeopleResponseItem = zod.object({
+  id: zod.number(),
+  email: zod.string(),
+  name: zod.string().nullable(),
+  side: zod
+    .union([
+      zod.literal("practitioner"),
+      zod.literal("client"),
+      zod.literal(null),
+    ])
+    .nullable(),
+  isTeam: zod.boolean(),
+  verified: zod.boolean(),
+  currentStatus: zod.string(),
+  createdAt: zod.coerce.date(),
+  submissionCount: zod.number(),
+  documentCount: zod.number(),
+});
+export const ListPeopleResponse = zod.array(ListPeopleResponseItem);
+
+/**
+ * @summary Get one person's full journey, documents, submissions, and history
+ */
+export const GetPersonParams = zod.object({
+  personId: zod.coerce.number(),
+});
+
+export const GetPersonResponse = zod.object({
+  profile: zod.object({
+    id: zod.number(),
+    email: zod.string(),
+    name: zod.string().nullable(),
+    side: zod
+      .union([
+        zod.literal("practitioner"),
+        zod.literal("client"),
+        zod.literal(null),
+      ])
+      .nullable(),
+    isTeam: zod.boolean(),
+    verified: zod.boolean(),
+    verifiedAt: zod.coerce.date().nullable(),
+    currentStatus: zod.string(),
+    createdAt: zod.coerce.date(),
+  }),
+  verifiedByName: zod.string().nullable(),
+  gates: zod.array(
+    zod.object({
+      code: zod.string(),
+      name: zod.string(),
+      gateType: zod.enum(["WEBSITE-GATED", "TEAM-GATED", "LEGAL HOLD"]),
+      locks: zod.string(),
+      opensWhen: zod.string(),
+      openedBy: zod.string(),
+      state: zod.enum(["open", "current", "locked"]),
+    }),
+  ),
+  statuses: zod.array(
+    zod.object({
+      label: zod.string(),
+      state: zod.enum(["reached", "current", "upcoming"]),
+    }),
+  ),
+  allowedStatusChanges: zod.array(
+    zod.object({
+      status: zod.string(),
+      gateCode: zod.string().nullable(),
+      enabled: zod.boolean(),
+      disabledReason: zod.string().nullable(),
+    }),
+  ),
+  documents: zod.array(
+    zod.object({
+      id: zod.number(),
+      label: zod.string(),
+      kind: zod.enum(["nda", "pack", "agreement", "signed-copy", "other"]),
+      objectPath: zod.string(),
+      uploadedByTeam: zod.boolean(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+  submissions: zod.array(
+    zod.object({
+      id: zod.number(),
+      formType: zod.enum([
+        "practitioner-interest",
+        "membership-application",
+        "client-enquiry",
+        "introduction-registration",
+      ]),
+      title: zod.string(),
+      submittedAt: zod.coerce.date(),
+      details: zod.array(
+        zod.object({
+          label: zod.string(),
+          value: zod.string(),
+        }),
+      ),
+    }),
+  ),
+  history: zod.array(
+    zod.object({
+      id: zod.number(),
+      gateCode: zod.string().nullable(),
+      status: zod.string(),
+      actorName: zod.string().nullable(),
+      note: zod.string().nullable(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+});
+
+/**
+ * @summary Mark an account as verified by the team
+ */
+export const VerifyPersonParams = zod.object({
+  personId: zod.coerce.number(),
+});
+
+export const VerifyPersonResponse = zod.object({
+  profile: zod.object({
+    id: zod.number(),
+    email: zod.string(),
+    name: zod.string().nullable(),
+    side: zod
+      .union([
+        zod.literal("practitioner"),
+        zod.literal("client"),
+        zod.literal(null),
+      ])
+      .nullable(),
+    isTeam: zod.boolean(),
+    verified: zod.boolean(),
+    verifiedAt: zod.coerce.date().nullable(),
+    currentStatus: zod.string(),
+    createdAt: zod.coerce.date(),
+  }),
+  verifiedByName: zod.string().nullable(),
+  gates: zod.array(
+    zod.object({
+      code: zod.string(),
+      name: zod.string(),
+      gateType: zod.enum(["WEBSITE-GATED", "TEAM-GATED", "LEGAL HOLD"]),
+      locks: zod.string(),
+      opensWhen: zod.string(),
+      openedBy: zod.string(),
+      state: zod.enum(["open", "current", "locked"]),
+    }),
+  ),
+  statuses: zod.array(
+    zod.object({
+      label: zod.string(),
+      state: zod.enum(["reached", "current", "upcoming"]),
+    }),
+  ),
+  allowedStatusChanges: zod.array(
+    zod.object({
+      status: zod.string(),
+      gateCode: zod.string().nullable(),
+      enabled: zod.boolean(),
+      disabledReason: zod.string().nullable(),
+    }),
+  ),
+  documents: zod.array(
+    zod.object({
+      id: zod.number(),
+      label: zod.string(),
+      kind: zod.enum(["nda", "pack", "agreement", "signed-copy", "other"]),
+      objectPath: zod.string(),
+      uploadedByTeam: zod.boolean(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+  submissions: zod.array(
+    zod.object({
+      id: zod.number(),
+      formType: zod.enum([
+        "practitioner-interest",
+        "membership-application",
+        "client-enquiry",
+        "introduction-registration",
+      ]),
+      title: zod.string(),
+      submittedAt: zod.coerce.date(),
+      details: zod.array(
+        zod.object({
+          label: zod.string(),
+          value: zod.string(),
+        }),
+      ),
+    }),
+  ),
+  history: zod.array(
+    zod.object({
+      id: zod.number(),
+      gateCode: zod.string().nullable(),
+      status: zod.string(),
+      actorName: zod.string().nullable(),
+      note: zod.string().nullable(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+});
+
+/**
+ * @summary Open a gate by hand by setting the person's journey status
+ */
+export const SetPersonStatusParams = zod.object({
+  personId: zod.coerce.number(),
+});
+
+export const SetPersonStatusBody = zod.object({
+  status: zod.string().min(1),
+  note: zod.string().optional(),
+});
+
+export const SetPersonStatusResponse = zod.object({
+  profile: zod.object({
+    id: zod.number(),
+    email: zod.string(),
+    name: zod.string().nullable(),
+    side: zod
+      .union([
+        zod.literal("practitioner"),
+        zod.literal("client"),
+        zod.literal(null),
+      ])
+      .nullable(),
+    isTeam: zod.boolean(),
+    verified: zod.boolean(),
+    verifiedAt: zod.coerce.date().nullable(),
+    currentStatus: zod.string(),
+    createdAt: zod.coerce.date(),
+  }),
+  verifiedByName: zod.string().nullable(),
+  gates: zod.array(
+    zod.object({
+      code: zod.string(),
+      name: zod.string(),
+      gateType: zod.enum(["WEBSITE-GATED", "TEAM-GATED", "LEGAL HOLD"]),
+      locks: zod.string(),
+      opensWhen: zod.string(),
+      openedBy: zod.string(),
+      state: zod.enum(["open", "current", "locked"]),
+    }),
+  ),
+  statuses: zod.array(
+    zod.object({
+      label: zod.string(),
+      state: zod.enum(["reached", "current", "upcoming"]),
+    }),
+  ),
+  allowedStatusChanges: zod.array(
+    zod.object({
+      status: zod.string(),
+      gateCode: zod.string().nullable(),
+      enabled: zod.boolean(),
+      disabledReason: zod.string().nullable(),
+    }),
+  ),
+  documents: zod.array(
+    zod.object({
+      id: zod.number(),
+      label: zod.string(),
+      kind: zod.enum(["nda", "pack", "agreement", "signed-copy", "other"]),
+      objectPath: zod.string(),
+      uploadedByTeam: zod.boolean(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+  submissions: zod.array(
+    zod.object({
+      id: zod.number(),
+      formType: zod.enum([
+        "practitioner-interest",
+        "membership-application",
+        "client-enquiry",
+        "introduction-registration",
+      ]),
+      title: zod.string(),
+      submittedAt: zod.coerce.date(),
+      details: zod.array(
+        zod.object({
+          label: zod.string(),
+          value: zod.string(),
+        }),
+      ),
+    }),
+  ),
+  history: zod.array(
+    zod.object({
+      id: zod.number(),
+      gateCode: zod.string().nullable(),
+      status: zod.string(),
+      actorName: zod.string().nullable(),
+      note: zod.string().nullable(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+});
+
+/**
+ * @summary Record a document uploaded by the team to a person's profile
+ */
+export const CreatePersonDocumentParams = zod.object({
+  personId: zod.coerce.number(),
+});
+
+export const CreatePersonDocumentBody = zod.object({
+  label: zod.string().min(1),
+  kind: zod.enum(["nda", "pack", "agreement", "signed-copy", "other"]),
+  objectPath: zod.string().min(1),
+});
+
+/**
+ * @summary Grant or remove the team role for an account
+ */
+export const SetPersonTeamRoleParams = zod.object({
+  personId: zod.coerce.number(),
+});
+
+export const SetPersonTeamRoleBody = zod.object({
+  isTeam: zod.boolean(),
+});
+
+export const SetPersonTeamRoleResponse = zod.object({
+  profile: zod.object({
+    id: zod.number(),
+    email: zod.string(),
+    name: zod.string().nullable(),
+    side: zod
+      .union([
+        zod.literal("practitioner"),
+        zod.literal("client"),
+        zod.literal(null),
+      ])
+      .nullable(),
+    isTeam: zod.boolean(),
+    verified: zod.boolean(),
+    verifiedAt: zod.coerce.date().nullable(),
+    currentStatus: zod.string(),
+    createdAt: zod.coerce.date(),
+  }),
+  verifiedByName: zod.string().nullable(),
+  gates: zod.array(
+    zod.object({
+      code: zod.string(),
+      name: zod.string(),
+      gateType: zod.enum(["WEBSITE-GATED", "TEAM-GATED", "LEGAL HOLD"]),
+      locks: zod.string(),
+      opensWhen: zod.string(),
+      openedBy: zod.string(),
+      state: zod.enum(["open", "current", "locked"]),
+    }),
+  ),
+  statuses: zod.array(
+    zod.object({
+      label: zod.string(),
+      state: zod.enum(["reached", "current", "upcoming"]),
+    }),
+  ),
+  allowedStatusChanges: zod.array(
+    zod.object({
+      status: zod.string(),
+      gateCode: zod.string().nullable(),
+      enabled: zod.boolean(),
+      disabledReason: zod.string().nullable(),
+    }),
+  ),
+  documents: zod.array(
+    zod.object({
+      id: zod.number(),
+      label: zod.string(),
+      kind: zod.enum(["nda", "pack", "agreement", "signed-copy", "other"]),
+      objectPath: zod.string(),
+      uploadedByTeam: zod.boolean(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+  submissions: zod.array(
+    zod.object({
+      id: zod.number(),
+      formType: zod.enum([
+        "practitioner-interest",
+        "membership-application",
+        "client-enquiry",
+        "introduction-registration",
+      ]),
+      title: zod.string(),
+      submittedAt: zod.coerce.date(),
+      details: zod.array(
+        zod.object({
+          label: zod.string(),
+          value: zod.string(),
+        }),
+      ),
+    }),
+  ),
+  history: zod.array(
+    zod.object({
+      id: zod.number(),
+      gateCode: zod.string().nullable(),
+      status: zod.string(),
+      actorName: zod.string().nullable(),
+      note: zod.string().nullable(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+});
+
+/**
+ * Returns a presigned GCS URL for direct upload. The client sends JSON
+metadata here, then uploads the file directly to the returned URL.
+
+ * @summary Request a presigned URL for file upload
+ */
+
+export const RequestUploadUrlBody = zod.object({
+  name: zod.string().min(1).describe("Original file name."),
+  size: zod.number().min(1).describe("File size in bytes."),
+  contentType: zod
+    .string()
+    .min(1)
+    .describe("MIME type of the file (e.g. `application\/pdf`)."),
+});
+
+export const RequestUploadUrlResponse = zod.object({
+  uploadURL: zod.string().url().describe("Presigned GCS URL for PUT upload."),
+  objectPath: zod
+    .string()
+    .describe(
+      "Normalized object path (e.g. `\/objects\/uploads\/uuid`). Store this in your database.",
+    ),
+  metadata: zod
+    .object({
+      name: zod.string().min(1).describe("Original file name."),
+      size: zod.number().min(1).describe("File size in bytes."),
+      contentType: zod
+        .string()
+        .min(1)
+        .describe("MIME type of the file (e.g. `application\/pdf`)."),
+    })
+    .optional(),
+});
+
+/**
+ * Serves documents uploaded via presigned URLs. Access is restricted to
+the verified owner of the document and team members.
+
+ * @summary Serve a private document from PRIVATE_OBJECT_DIR
+ */
+export const GetStorageObjectParams = zod.object({
+  objectPath: zod.coerce
+    .string()
+    .describe(
+      "Object path within the private object dir (e.g. `uploads\/some-uuid`).",
+    ),
+});

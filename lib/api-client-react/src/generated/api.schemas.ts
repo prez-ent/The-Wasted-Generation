@@ -169,3 +169,252 @@ export interface IntroductionRegistrationInput {
   relationshipContext: string;
   contactMade: IntroductionRegistrationInputContactMade;
 }
+
+export type SideSelectionSide =
+  (typeof SideSelectionSide)[keyof typeof SideSelectionSide];
+
+export const SideSelectionSide = {
+  practitioner: "practitioner",
+  client: "client",
+} as const;
+
+export interface SideSelection {
+  side: SideSelectionSide;
+}
+
+/**
+ * @nullable
+ */
+export type ProfileViewSide =
+  | (typeof ProfileViewSide)[keyof typeof ProfileViewSide]
+  | null;
+
+export const ProfileViewSide = {
+  practitioner: "practitioner",
+  client: "client",
+} as const;
+
+export interface ProfileView {
+  id: number;
+  email: string;
+  /** @nullable */
+  name: string | null;
+  /** @nullable */
+  side: ProfileViewSide;
+  isTeam: boolean;
+  verified: boolean;
+  /** @nullable */
+  verifiedAt: string | null;
+  currentStatus: string;
+  createdAt: string;
+}
+
+export type GateViewGateType =
+  (typeof GateViewGateType)[keyof typeof GateViewGateType];
+
+export const GateViewGateType = {
+  "WEBSITE-GATED": "WEBSITE-GATED",
+  "TEAM-GATED": "TEAM-GATED",
+  LEGAL_HOLD: "LEGAL HOLD",
+} as const;
+
+export type GateViewState = (typeof GateViewState)[keyof typeof GateViewState];
+
+export const GateViewState = {
+  open: "open",
+  current: "current",
+  locked: "locked",
+} as const;
+
+export interface GateView {
+  code: string;
+  name: string;
+  gateType: GateViewGateType;
+  locks: string;
+  opensWhen: string;
+  openedBy: string;
+  state: GateViewState;
+}
+
+export type StatusStepState =
+  (typeof StatusStepState)[keyof typeof StatusStepState];
+
+export const StatusStepState = {
+  reached: "reached",
+  current: "current",
+  upcoming: "upcoming",
+} as const;
+
+export interface StatusStep {
+  label: string;
+  state: StatusStepState;
+}
+
+export type DocumentRecordKind =
+  (typeof DocumentRecordKind)[keyof typeof DocumentRecordKind];
+
+export const DocumentRecordKind = {
+  nda: "nda",
+  pack: "pack",
+  agreement: "agreement",
+  "signed-copy": "signed-copy",
+  other: "other",
+} as const;
+
+export interface DocumentRecord {
+  id: number;
+  label: string;
+  kind: DocumentRecordKind;
+  objectPath: string;
+  uploadedByTeam: boolean;
+  createdAt: string;
+}
+
+export type DocumentInputKind =
+  (typeof DocumentInputKind)[keyof typeof DocumentInputKind];
+
+export const DocumentInputKind = {
+  nda: "nda",
+  pack: "pack",
+  agreement: "agreement",
+  "signed-copy": "signed-copy",
+  other: "other",
+} as const;
+
+export interface DocumentInput {
+  /** @minLength 1 */
+  label: string;
+  kind: DocumentInputKind;
+  /** @minLength 1 */
+  objectPath: string;
+}
+
+export type SubmissionSummaryFormType =
+  (typeof SubmissionSummaryFormType)[keyof typeof SubmissionSummaryFormType];
+
+export const SubmissionSummaryFormType = {
+  "practitioner-interest": "practitioner-interest",
+  "membership-application": "membership-application",
+  "client-enquiry": "client-enquiry",
+  "introduction-registration": "introduction-registration",
+} as const;
+
+export interface SubmissionField {
+  label: string;
+  value: string;
+}
+
+export interface SubmissionSummary {
+  id: number;
+  formType: SubmissionSummaryFormType;
+  title: string;
+  submittedAt: string;
+  details: SubmissionField[];
+}
+
+export interface MeResponse {
+  profile: ProfileView;
+  gates: GateView[];
+  statuses: StatusStep[];
+  documents: DocumentRecord[];
+  submissions: SubmissionSummary[];
+  canApply: boolean;
+  applicationSubmitted: boolean;
+  showIntroductionForm: boolean;
+}
+
+export interface GateEventView {
+  id: number;
+  /** @nullable */
+  gateCode: string | null;
+  status: string;
+  /** @nullable */
+  actorName: string | null;
+  /** @nullable */
+  note: string | null;
+  createdAt: string;
+}
+
+/**
+ * @nullable
+ */
+export type PersonSummarySide =
+  | (typeof PersonSummarySide)[keyof typeof PersonSummarySide]
+  | null;
+
+export const PersonSummarySide = {
+  practitioner: "practitioner",
+  client: "client",
+} as const;
+
+export interface PersonSummary {
+  id: number;
+  email: string;
+  /** @nullable */
+  name: string | null;
+  /** @nullable */
+  side: PersonSummarySide;
+  isTeam: boolean;
+  verified: boolean;
+  currentStatus: string;
+  createdAt: string;
+  submissionCount: number;
+  documentCount: number;
+}
+
+export interface StatusOption {
+  status: string;
+  /** @nullable */
+  gateCode: string | null;
+  enabled: boolean;
+  /** @nullable */
+  disabledReason: string | null;
+}
+
+export interface PersonDetail {
+  profile: ProfileView;
+  /** @nullable */
+  verifiedByName: string | null;
+  gates: GateView[];
+  statuses: StatusStep[];
+  allowedStatusChanges: StatusOption[];
+  documents: DocumentRecord[];
+  submissions: SubmissionSummary[];
+  history: GateEventView[];
+}
+
+export interface StatusUpdate {
+  /** @minLength 1 */
+  status: string;
+  note?: string;
+}
+
+export interface TeamRoleUpdate {
+  isTeam: boolean;
+}
+
+export interface UploadUrlRequest {
+  /**
+   * Original file name.
+   * @minLength 1
+   */
+  name: string;
+  /**
+   * File size in bytes.
+   * @minimum 1
+   */
+  size: number;
+  /**
+   * MIME type of the file (e.g. `application/pdf`).
+   * @minLength 1
+   */
+  contentType: string;
+}
+
+export interface UploadUrlResponse {
+  /** Presigned GCS URL for PUT upload. */
+  uploadURL: string;
+  /** Normalized object path (e.g. `/objects/uploads/uuid`). Store this in your database. */
+  objectPath: string;
+  metadata?: UploadUrlRequest;
+}

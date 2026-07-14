@@ -116,7 +116,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    tailwindcss(),
+    tailwindcss({ optimize: false }),
     runtimeErrorOverlay(),
     perRouteMetaPlugin(basePath),
     ...(process.env.NODE_ENV !== "production" &&

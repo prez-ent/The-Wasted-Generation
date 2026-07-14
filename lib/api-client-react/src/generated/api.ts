@@ -18,13 +18,23 @@ import type {
 
 import type {
   ClientEnquiryInput,
+  DocumentInput,
+  DocumentRecord,
   ErrorMessage,
   HealthStatus,
   IntroductionReceipt,
   IntroductionRegistrationInput,
+  MeResponse,
   MembershipApplicationInput,
+  PersonDetail,
+  PersonSummary,
   PractitionerInterestInput,
+  SideSelection,
+  StatusUpdate,
   SubmissionReceipt,
+  TeamRoleUpdate,
+  UploadUrlRequest,
+  UploadUrlResponse,
 } from "./api.schemas";
 
 import { customFetch } from "../custom-fetch";
@@ -462,3 +472,924 @@ export const useSubmitIntroductionRegistration = <
 > => {
   return useMutation(getSubmitIntroductionRegistrationMutationOptions(options));
 };
+
+/**
+ * @summary Get the signed-in user's profile, journey, documents, and submissions
+ */
+export const getGetMeUrl = () => {
+  return `/api/me`;
+};
+
+export const getMe = async (options?: RequestInit): Promise<MeResponse> => {
+  return customFetch<MeResponse>(getGetMeUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetMeQueryKey = () => {
+  return [`/api/me`] as const;
+};
+
+export const getGetMeQueryOptions = <
+  TData = Awaited<ReturnType<typeof getMe>>,
+  TError = ErrorType<ErrorMessage>,
+>(options?: {
+  query?: UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetMeQueryKey();
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getMe>>> = ({
+    signal,
+  }) => getMe({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getMe>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetMeQueryResult = NonNullable<Awaited<ReturnType<typeof getMe>>>;
+export type GetMeQueryError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Get the signed-in user's profile, journey, documents, and submissions
+ */
+
+export function useGetMe<
+  TData = Awaited<ReturnType<typeof getMe>>,
+  TError = ErrorType<ErrorMessage>,
+>(options?: {
+  query?: UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetMeQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Choose which journey (practitioner or client) this account follows
+ */
+export const getSelectSideUrl = () => {
+  return `/api/me/side`;
+};
+
+export const selectSide = async (
+  sideSelection: SideSelection,
+  options?: RequestInit,
+): Promise<MeResponse> => {
+  return customFetch<MeResponse>(getSelectSideUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(sideSelection),
+  });
+};
+
+export const getSelectSideMutationOptions = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof selectSide>>,
+    TError,
+    { data: BodyType<SideSelection> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof selectSide>>,
+  TError,
+  { data: BodyType<SideSelection> },
+  TContext
+> => {
+  const mutationKey = ["selectSide"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof selectSide>>,
+    { data: BodyType<SideSelection> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return selectSide(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type SelectSideMutationResult = NonNullable<
+  Awaited<ReturnType<typeof selectSide>>
+>;
+export type SelectSideMutationBody = BodyType<SideSelection>;
+export type SelectSideMutationError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Choose which journey (practitioner or client) this account follows
+ */
+export const useSelectSide = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof selectSide>>,
+    TError,
+    { data: BodyType<SideSelection> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof selectSide>>,
+  TError,
+  { data: BodyType<SideSelection> },
+  TContext
+> => {
+  return useMutation(getSelectSideMutationOptions(options));
+};
+
+/**
+ * @summary Record a signed copy uploaded by the account owner
+ */
+export const getCreateMyDocumentUrl = () => {
+  return `/api/me/documents`;
+};
+
+export const createMyDocument = async (
+  documentInput: DocumentInput,
+  options?: RequestInit,
+): Promise<DocumentRecord> => {
+  return customFetch<DocumentRecord>(getCreateMyDocumentUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(documentInput),
+  });
+};
+
+export const getCreateMyDocumentMutationOptions = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof createMyDocument>>,
+    TError,
+    { data: BodyType<DocumentInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof createMyDocument>>,
+  TError,
+  { data: BodyType<DocumentInput> },
+  TContext
+> => {
+  const mutationKey = ["createMyDocument"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof createMyDocument>>,
+    { data: BodyType<DocumentInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return createMyDocument(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type CreateMyDocumentMutationResult = NonNullable<
+  Awaited<ReturnType<typeof createMyDocument>>
+>;
+export type CreateMyDocumentMutationBody = BodyType<DocumentInput>;
+export type CreateMyDocumentMutationError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Record a signed copy uploaded by the account owner
+ */
+export const useCreateMyDocument = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof createMyDocument>>,
+    TError,
+    { data: BodyType<DocumentInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof createMyDocument>>,
+  TError,
+  { data: BodyType<DocumentInput> },
+  TContext
+> => {
+  return useMutation(getCreateMyDocumentMutationOptions(options));
+};
+
+/**
+ * @summary List all accounts with verification and journey state
+ */
+export const getListPeopleUrl = () => {
+  return `/api/admin/people`;
+};
+
+export const listPeople = async (
+  options?: RequestInit,
+): Promise<PersonSummary[]> => {
+  return customFetch<PersonSummary[]>(getListPeopleUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getListPeopleQueryKey = () => {
+  return [`/api/admin/people`] as const;
+};
+
+export const getListPeopleQueryOptions = <
+  TData = Awaited<ReturnType<typeof listPeople>>,
+  TError = ErrorType<ErrorMessage>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof listPeople>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getListPeopleQueryKey();
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof listPeople>>> = ({
+    signal,
+  }) => listPeople({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listPeople>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListPeopleQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listPeople>>
+>;
+export type ListPeopleQueryError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary List all accounts with verification and journey state
+ */
+
+export function useListPeople<
+  TData = Awaited<ReturnType<typeof listPeople>>,
+  TError = ErrorType<ErrorMessage>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof listPeople>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListPeopleQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Get one person's full journey, documents, submissions, and history
+ */
+export const getGetPersonUrl = (personId: number) => {
+  return `/api/admin/people/${personId}`;
+};
+
+export const getPerson = async (
+  personId: number,
+  options?: RequestInit,
+): Promise<PersonDetail> => {
+  return customFetch<PersonDetail>(getGetPersonUrl(personId), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetPersonQueryKey = (personId: number) => {
+  return [`/api/admin/people/${personId}`] as const;
+};
+
+export const getGetPersonQueryOptions = <
+  TData = Awaited<ReturnType<typeof getPerson>>,
+  TError = ErrorType<ErrorMessage>,
+>(
+  personId: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getPerson>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetPersonQueryKey(personId);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getPerson>>> = ({
+    signal,
+  }) => getPerson(personId, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!personId,
+    ...queryOptions,
+  } as UseQueryOptions<Awaited<ReturnType<typeof getPerson>>, TError, TData> & {
+    queryKey: QueryKey;
+  };
+};
+
+export type GetPersonQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getPerson>>
+>;
+export type GetPersonQueryError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Get one person's full journey, documents, submissions, and history
+ */
+
+export function useGetPerson<
+  TData = Awaited<ReturnType<typeof getPerson>>,
+  TError = ErrorType<ErrorMessage>,
+>(
+  personId: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getPerson>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetPersonQueryOptions(personId, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Mark an account as verified by the team
+ */
+export const getVerifyPersonUrl = (personId: number) => {
+  return `/api/admin/people/${personId}/verify`;
+};
+
+export const verifyPerson = async (
+  personId: number,
+  options?: RequestInit,
+): Promise<PersonDetail> => {
+  return customFetch<PersonDetail>(getVerifyPersonUrl(personId), {
+    ...options,
+    method: "POST",
+  });
+};
+
+export const getVerifyPersonMutationOptions = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof verifyPerson>>,
+    TError,
+    { personId: number },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof verifyPerson>>,
+  TError,
+  { personId: number },
+  TContext
+> => {
+  const mutationKey = ["verifyPerson"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof verifyPerson>>,
+    { personId: number }
+  > = (props) => {
+    const { personId } = props ?? {};
+
+    return verifyPerson(personId, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type VerifyPersonMutationResult = NonNullable<
+  Awaited<ReturnType<typeof verifyPerson>>
+>;
+
+export type VerifyPersonMutationError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Mark an account as verified by the team
+ */
+export const useVerifyPerson = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof verifyPerson>>,
+    TError,
+    { personId: number },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof verifyPerson>>,
+  TError,
+  { personId: number },
+  TContext
+> => {
+  return useMutation(getVerifyPersonMutationOptions(options));
+};
+
+/**
+ * @summary Open a gate by hand by setting the person's journey status
+ */
+export const getSetPersonStatusUrl = (personId: number) => {
+  return `/api/admin/people/${personId}/status`;
+};
+
+export const setPersonStatus = async (
+  personId: number,
+  statusUpdate: StatusUpdate,
+  options?: RequestInit,
+): Promise<PersonDetail> => {
+  return customFetch<PersonDetail>(getSetPersonStatusUrl(personId), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(statusUpdate),
+  });
+};
+
+export const getSetPersonStatusMutationOptions = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof setPersonStatus>>,
+    TError,
+    { personId: number; data: BodyType<StatusUpdate> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof setPersonStatus>>,
+  TError,
+  { personId: number; data: BodyType<StatusUpdate> },
+  TContext
+> => {
+  const mutationKey = ["setPersonStatus"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof setPersonStatus>>,
+    { personId: number; data: BodyType<StatusUpdate> }
+  > = (props) => {
+    const { personId, data } = props ?? {};
+
+    return setPersonStatus(personId, data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type SetPersonStatusMutationResult = NonNullable<
+  Awaited<ReturnType<typeof setPersonStatus>>
+>;
+export type SetPersonStatusMutationBody = BodyType<StatusUpdate>;
+export type SetPersonStatusMutationError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Open a gate by hand by setting the person's journey status
+ */
+export const useSetPersonStatus = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof setPersonStatus>>,
+    TError,
+    { personId: number; data: BodyType<StatusUpdate> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof setPersonStatus>>,
+  TError,
+  { personId: number; data: BodyType<StatusUpdate> },
+  TContext
+> => {
+  return useMutation(getSetPersonStatusMutationOptions(options));
+};
+
+/**
+ * @summary Record a document uploaded by the team to a person's profile
+ */
+export const getCreatePersonDocumentUrl = (personId: number) => {
+  return `/api/admin/people/${personId}/documents`;
+};
+
+export const createPersonDocument = async (
+  personId: number,
+  documentInput: DocumentInput,
+  options?: RequestInit,
+): Promise<DocumentRecord> => {
+  return customFetch<DocumentRecord>(getCreatePersonDocumentUrl(personId), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(documentInput),
+  });
+};
+
+export const getCreatePersonDocumentMutationOptions = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof createPersonDocument>>,
+    TError,
+    { personId: number; data: BodyType<DocumentInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof createPersonDocument>>,
+  TError,
+  { personId: number; data: BodyType<DocumentInput> },
+  TContext
+> => {
+  const mutationKey = ["createPersonDocument"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof createPersonDocument>>,
+    { personId: number; data: BodyType<DocumentInput> }
+  > = (props) => {
+    const { personId, data } = props ?? {};
+
+    return createPersonDocument(personId, data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type CreatePersonDocumentMutationResult = NonNullable<
+  Awaited<ReturnType<typeof createPersonDocument>>
+>;
+export type CreatePersonDocumentMutationBody = BodyType<DocumentInput>;
+export type CreatePersonDocumentMutationError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Record a document uploaded by the team to a person's profile
+ */
+export const useCreatePersonDocument = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof createPersonDocument>>,
+    TError,
+    { personId: number; data: BodyType<DocumentInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof createPersonDocument>>,
+  TError,
+  { personId: number; data: BodyType<DocumentInput> },
+  TContext
+> => {
+  return useMutation(getCreatePersonDocumentMutationOptions(options));
+};
+
+/**
+ * @summary Grant or remove the team role for an account
+ */
+export const getSetPersonTeamRoleUrl = (personId: number) => {
+  return `/api/admin/people/${personId}/team`;
+};
+
+export const setPersonTeamRole = async (
+  personId: number,
+  teamRoleUpdate: TeamRoleUpdate,
+  options?: RequestInit,
+): Promise<PersonDetail> => {
+  return customFetch<PersonDetail>(getSetPersonTeamRoleUrl(personId), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(teamRoleUpdate),
+  });
+};
+
+export const getSetPersonTeamRoleMutationOptions = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof setPersonTeamRole>>,
+    TError,
+    { personId: number; data: BodyType<TeamRoleUpdate> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof setPersonTeamRole>>,
+  TError,
+  { personId: number; data: BodyType<TeamRoleUpdate> },
+  TContext
+> => {
+  const mutationKey = ["setPersonTeamRole"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof setPersonTeamRole>>,
+    { personId: number; data: BodyType<TeamRoleUpdate> }
+  > = (props) => {
+    const { personId, data } = props ?? {};
+
+    return setPersonTeamRole(personId, data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type SetPersonTeamRoleMutationResult = NonNullable<
+  Awaited<ReturnType<typeof setPersonTeamRole>>
+>;
+export type SetPersonTeamRoleMutationBody = BodyType<TeamRoleUpdate>;
+export type SetPersonTeamRoleMutationError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Grant or remove the team role for an account
+ */
+export const useSetPersonTeamRole = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof setPersonTeamRole>>,
+    TError,
+    { personId: number; data: BodyType<TeamRoleUpdate> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof setPersonTeamRole>>,
+  TError,
+  { personId: number; data: BodyType<TeamRoleUpdate> },
+  TContext
+> => {
+  return useMutation(getSetPersonTeamRoleMutationOptions(options));
+};
+
+/**
+ * Returns a presigned GCS URL for direct upload. The client sends JSON
+metadata here, then uploads the file directly to the returned URL.
+
+ * @summary Request a presigned URL for file upload
+ */
+export const getRequestUploadUrlUrl = () => {
+  return `/api/storage/uploads/request-url`;
+};
+
+export const requestUploadUrl = async (
+  uploadUrlRequest: UploadUrlRequest,
+  options?: RequestInit,
+): Promise<UploadUrlResponse> => {
+  return customFetch<UploadUrlResponse>(getRequestUploadUrlUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(uploadUrlRequest),
+  });
+};
+
+export const getRequestUploadUrlMutationOptions = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof requestUploadUrl>>,
+    TError,
+    { data: BodyType<UploadUrlRequest> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof requestUploadUrl>>,
+  TError,
+  { data: BodyType<UploadUrlRequest> },
+  TContext
+> => {
+  const mutationKey = ["requestUploadUrl"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof requestUploadUrl>>,
+    { data: BodyType<UploadUrlRequest> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return requestUploadUrl(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type RequestUploadUrlMutationResult = NonNullable<
+  Awaited<ReturnType<typeof requestUploadUrl>>
+>;
+export type RequestUploadUrlMutationBody = BodyType<UploadUrlRequest>;
+export type RequestUploadUrlMutationError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Request a presigned URL for file upload
+ */
+export const useRequestUploadUrl = <
+  TError = ErrorType<ErrorMessage>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof requestUploadUrl>>,
+    TError,
+    { data: BodyType<UploadUrlRequest> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof requestUploadUrl>>,
+  TError,
+  { data: BodyType<UploadUrlRequest> },
+  TContext
+> => {
+  return useMutation(getRequestUploadUrlMutationOptions(options));
+};
+
+/**
+ * Serves documents uploaded via presigned URLs. Access is restricted to
+the verified owner of the document and team members.
+
+ * @summary Serve a private document from PRIVATE_OBJECT_DIR
+ */
+export const getGetStorageObjectUrl = (objectPath: string) => {
+  return `/api/storage/objects/${objectPath}`;
+};
+
+export const getStorageObject = async (
+  objectPath: string,
+  options?: RequestInit,
+): Promise<Blob> => {
+  return customFetch<Blob>(getGetStorageObjectUrl(objectPath), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetStorageObjectQueryKey = (objectPath: string) => {
+  return [`/api/storage/objects/${objectPath}`] as const;
+};
+
+export const getGetStorageObjectQueryOptions = <
+  TData = Awaited<ReturnType<typeof getStorageObject>>,
+  TError = ErrorType<ErrorMessage>,
+>(
+  objectPath: string,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getStorageObject>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getGetStorageObjectQueryKey(objectPath);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getStorageObject>>
+  > = ({ signal }) =>
+    getStorageObject(objectPath, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!objectPath,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof getStorageObject>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetStorageObjectQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getStorageObject>>
+>;
+export type GetStorageObjectQueryError = ErrorType<ErrorMessage>;
+
+/**
+ * @summary Serve a private document from PRIVATE_OBJECT_DIR
+ */
+
+export function useGetStorageObject<
+  TData = Awaited<ReturnType<typeof getStorageObject>>,
+  TError = ErrorType<ErrorMessage>,
+>(
+  objectPath: string,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getStorageObject>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetStorageObjectQueryOptions(objectPath, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}

@@ -12,6 +12,12 @@ tags:
     description: Health operations
   - name: submissions
     description: Form submission operations
+  - name: me
+    description: Signed-in user profile and journey
+  - name: admin
+    description: Team-only administration endpoints
+  - name: Storage
+    description: Object storage upload and serving endpoints.
 paths:
   /healthz:
     get:
@@ -118,6 +124,418 @@ paths:
                 $ref: "#/components/schemas/IntroductionReceipt"
         "400":
           description: Invalid submission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /me:
+    get:
+      operationId: getMe
+      tags: [me]
+      summary: Get the signed-in user's profile, journey, documents, and submissions
+      responses:
+        "200":
+          description: Current user state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MeResponse"
+        "401":
+          description: Not signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /me/side:
+    post:
+      operationId: selectSide
+      tags: [me]
+      summary: Choose which journey (practitioner or client) this account follows
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SideSelection"
+      responses:
+        "200":
+          description: Updated user state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MeResponse"
+        "400":
+          description: Invalid selection
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "401":
+          description: Not signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /me/documents:
+    post:
+      operationId: createMyDocument
+      tags: [me]
+      summary: Record a signed copy uploaded by the account owner
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentInput"
+      responses:
+        "201":
+          description: Document recorded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentRecord"
+        "400":
+          description: Invalid document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "401":
+          description: Not signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "403":
+          description: Account not verified
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /admin/people:
+    get:
+      operationId: listPeople
+      tags: [admin]
+      summary: List all accounts with verification and journey state
+      responses:
+        "200":
+          description: All people
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PersonSummary"
+        "401":
+          description: Not signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "403":
+          description: Team role required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /admin/people/{personId}:
+    get:
+      operationId: getPerson
+      tags: [admin]
+      summary: Get one person's full journey, documents, submissions, and history
+      parameters:
+        - name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Person detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PersonDetail"
+        "401":
+          description: Not signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "403":
+          description: Team role required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "404":
+          description: Person not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /admin/people/{personId}/verify:
+    post:
+      operationId: verifyPerson
+      tags: [admin]
+      summary: Mark an account as verified by the team
+      parameters:
+        - name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Person detail after verification
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PersonDetail"
+        "401":
+          description: Not signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "403":
+          description: Team role required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "404":
+          description: Person not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /admin/people/{personId}/status:
+    post:
+      operationId: setPersonStatus
+      tags: [admin]
+      summary: Open a gate by hand by setting the person's journey status
+      parameters:
+        - name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StatusUpdate"
+      responses:
+        "200":
+          description: Person detail after status change
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PersonDetail"
+        "400":
+          description: Invalid status change (including P-1 without an executed NDA on file)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "401":
+          description: Not signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "403":
+          description: Team role required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "404":
+          description: Person not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /admin/people/{personId}/documents:
+    post:
+      operationId: createPersonDocument
+      tags: [admin]
+      summary: Record a document uploaded by the team to a person's profile
+      parameters:
+        - name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentInput"
+      responses:
+        "201":
+          description: Document recorded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentRecord"
+        "400":
+          description: Invalid document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "401":
+          description: Not signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "403":
+          description: Team role required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "404":
+          description: Person not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /admin/people/{personId}/team:
+    post:
+      operationId: setPersonTeamRole
+      tags: [admin]
+      summary: Grant or remove the team role for an account
+      parameters:
+        - name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamRoleUpdate"
+      responses:
+        "200":
+          description: Person detail after role change
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PersonDetail"
+        "400":
+          description: Invalid role change
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "401":
+          description: Not signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "403":
+          description: Team role required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "404":
+          description: Person not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /storage/uploads/request-url:
+    post:
+      tags: [Storage]
+      operationId: requestUploadUrl
+      summary: Request a presigned URL for file upload
+      description: |
+        Returns a presigned GCS URL for direct upload. The client sends JSON
+        metadata here, then uploads the file directly to the returned URL.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UploadUrlRequest"
+      responses:
+        "200":
+          description: Presigned upload URL generated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UploadUrlResponse"
+        "400":
+          description: Missing or invalid required fields.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "401":
+          description: Not signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "500":
+          description: Failed to generate upload URL.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  /storage/objects/{objectPath}:
+    get:
+      tags: [Storage]
+      operationId: getStorageObject
+      summary: Serve a private document from PRIVATE_OBJECT_DIR
+      description: |
+        Serves documents uploaded via presigned URLs. Access is restricted to
+        the verified owner of the document and team members.
+      parameters:
+        - name: objectPath
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Object path within the private object dir (e.g. `uploads/some-uuid`).
+      responses:
+        "200":
+          description: Object content streamed with correct Content-Type.
+          content:
+            "*/*":
+              schema:
+                type: string
+                format: binary
+        "401":
+          description: Not signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "403":
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "404":
+          description: Object not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        "500":
+          description: Failed to serve object.
           content:
             application/json:
               schema:
@@ -329,3 +747,384 @@ components:
         - whoIntroducing
         - relationshipContext
         - contactMade
+    SideSelection:
+      type: object
+      properties:
+        side:
+          type: string
+          enum:
+            - practitioner
+            - client
+      required:
+        - side
+    ProfileView:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        name:
+          type: ["string", "null"]
+        side:
+          type: ["string", "null"]
+          enum:
+            - practitioner
+            - client
+            - null
+        isTeam:
+          type: boolean
+        verified:
+          type: boolean
+        verifiedAt:
+          type: ["string", "null"]
+          format: date-time
+        currentStatus:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - email
+        - name
+        - side
+        - isTeam
+        - verified
+        - verifiedAt
+        - currentStatus
+        - createdAt
+    GateView:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        gateType:
+          type: string
+          enum:
+            - WEBSITE-GATED
+            - TEAM-GATED
+            - LEGAL HOLD
+        locks:
+          type: string
+        opensWhen:
+          type: string
+        openedBy:
+          type: string
+        state:
+          type: string
+          enum:
+            - open
+            - current
+            - locked
+      required:
+        - code
+        - name
+        - gateType
+        - locks
+        - opensWhen
+        - openedBy
+        - state
+    StatusStep:
+      type: object
+      properties:
+        label:
+          type: string
+        state:
+          type: string
+          enum:
+            - reached
+            - current
+            - upcoming
+      required:
+        - label
+        - state
+    DocumentRecord:
+      type: object
+      properties:
+        id:
+          type: integer
+        label:
+          type: string
+        kind:
+          type: string
+          enum:
+            - nda
+            - pack
+            - agreement
+            - signed-copy
+            - other
+        objectPath:
+          type: string
+        uploadedByTeam:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - label
+        - kind
+        - objectPath
+        - uploadedByTeam
+        - createdAt
+    DocumentInput:
+      type: object
+      properties:
+        label:
+          type: string
+          minLength: 1
+        kind:
+          type: string
+          enum:
+            - nda
+            - pack
+            - agreement
+            - signed-copy
+            - other
+        objectPath:
+          type: string
+          minLength: 1
+      required:
+        - label
+        - kind
+        - objectPath
+    SubmissionSummary:
+      type: object
+      properties:
+        id:
+          type: integer
+        formType:
+          type: string
+          enum:
+            - practitioner-interest
+            - membership-application
+            - client-enquiry
+            - introduction-registration
+        title:
+          type: string
+        submittedAt:
+          type: string
+          format: date-time
+        details:
+          type: array
+          items:
+            $ref: "#/components/schemas/SubmissionField"
+      required:
+        - id
+        - formType
+        - title
+        - submittedAt
+        - details
+    SubmissionField:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+      required:
+        - label
+        - value
+    MeResponse:
+      type: object
+      properties:
+        profile:
+          $ref: "#/components/schemas/ProfileView"
+        gates:
+          type: array
+          items:
+            $ref: "#/components/schemas/GateView"
+        statuses:
+          type: array
+          items:
+            $ref: "#/components/schemas/StatusStep"
+        documents:
+          type: array
+          items:
+            $ref: "#/components/schemas/DocumentRecord"
+        submissions:
+          type: array
+          items:
+            $ref: "#/components/schemas/SubmissionSummary"
+        canApply:
+          type: boolean
+        applicationSubmitted:
+          type: boolean
+        showIntroductionForm:
+          type: boolean
+      required:
+        - profile
+        - gates
+        - statuses
+        - documents
+        - submissions
+        - canApply
+        - applicationSubmitted
+        - showIntroductionForm
+    GateEventView:
+      type: object
+      properties:
+        id:
+          type: integer
+        gateCode:
+          type: ["string", "null"]
+        status:
+          type: string
+        actorName:
+          type: ["string", "null"]
+        note:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - gateCode
+        - status
+        - actorName
+        - note
+        - createdAt
+    PersonSummary:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        name:
+          type: ["string", "null"]
+        side:
+          type: ["string", "null"]
+          enum:
+            - practitioner
+            - client
+            - null
+        isTeam:
+          type: boolean
+        verified:
+          type: boolean
+        currentStatus:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        submissionCount:
+          type: integer
+        documentCount:
+          type: integer
+      required:
+        - id
+        - email
+        - name
+        - side
+        - isTeam
+        - verified
+        - currentStatus
+        - createdAt
+        - submissionCount
+        - documentCount
+    PersonDetail:
+      type: object
+      properties:
+        profile:
+          $ref: "#/components/schemas/ProfileView"
+        verifiedByName:
+          type: ["string", "null"]
+        gates:
+          type: array
+          items:
+            $ref: "#/components/schemas/GateView"
+        statuses:
+          type: array
+          items:
+            $ref: "#/components/schemas/StatusStep"
+        allowedStatusChanges:
+          type: array
+          items:
+            $ref: "#/components/schemas/StatusOption"
+        documents:
+          type: array
+          items:
+            $ref: "#/components/schemas/DocumentRecord"
+        submissions:
+          type: array
+          items:
+            $ref: "#/components/schemas/SubmissionSummary"
+        history:
+          type: array
+          items:
+            $ref: "#/components/schemas/GateEventView"
+      required:
+        - profile
+        - verifiedByName
+        - gates
+        - statuses
+        - allowedStatusChanges
+        - documents
+        - submissions
+        - history
+    StatusOption:
+      type: object
+      properties:
+        status:
+          type: string
+        gateCode:
+          type: ["string", "null"]
+        enabled:
+          type: boolean
+        disabledReason:
+          type: ["string", "null"]
+      required:
+        - status
+        - gateCode
+        - enabled
+        - disabledReason
+    StatusUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          minLength: 1
+        note:
+          type: string
+      required:
+        - status
+    TeamRoleUpdate:
+      type: object
+      properties:
+        isTeam:
+          type: boolean
+      required:
+        - isTeam
+    UploadUrlRequest:
+      type: object
+      required: [name, size, contentType]
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Original file name.
+        size:
+          type: integer
+          minimum: 1
+          description: File size in bytes.
+        contentType:
+          type: string
+          minLength: 1
+          description: MIME type of the file (e.g. `application/pdf`).
+    UploadUrlResponse:
+      type: object
+      required: [uploadURL, objectPath]
+      properties:
+        uploadURL:
+          type: string
+          format: uri
+          description: Presigned GCS URL for PUT upload.
+        objectPath:
+          type: string
+          description: Normalized object path (e.g. `/objects/uploads/uuid`). Store this in your database.
+        metadata:
+          $ref: "#/components/schemas/UploadUrlRequest"

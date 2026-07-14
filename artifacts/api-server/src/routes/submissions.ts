@@ -20,6 +20,8 @@ import {
   TEAM_EMAIL,
   type EmailField,
 } from "../lib/mailer";
+import { requireAuth } from "../middlewares/auth";
+import { canSubmitApplication, type Side } from "../lib/journey";
 
 const router: IRouter = Router();
 
@@ -95,7 +97,15 @@ router.post("/submissions/practitioner-interest", async (req, res): Promise<void
   res.status(201).json({ id: row.id });
 });
 
-router.post("/submissions/membership-application", async (req, res): Promise<void> => {
+router.post("/submissions/membership-application", requireAuth, async (req, res): Promise<void> => {
+  const profile = req.profile!;
+  const verified = profile.verifiedAt !== null;
+  if (!verified || !canSubmitApplication(profile.side as Side | null, profile.currentStatus)) {
+    res.status(403).json({
+      error: "The membership application is not open to you yet.",
+    });
+    return;
+  }
   const rawRate = Number(req.body?.dayRate);
   if (Number.isFinite(rawRate) && rawRate < 500) {
     res.status(400).json({ error: MIN_RATE_MESSAGE });
@@ -111,6 +121,7 @@ router.post("/submissions/membership-application", async (req, res): Promise<voi
   const [row] = await db
     .insert(membershipApplicationsTable)
     .values({
+      profileId: profile.id,
       careerHistory: data.careerHistory,
       problemsSolved: data.problemsSolved,
       dayRate: data.dayRate,

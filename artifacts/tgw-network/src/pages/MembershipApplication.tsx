@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "wouter";
 import { PageMeta } from "@/components/PageMeta";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useReveal } from "@/hooks/useReveal";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useSubmitMembershipApplication } from "@workspace/api-client-react";
+import { useGetMe, getGetMeQueryKey, useSubmitMembershipApplication } from "@workspace/api-client-react";
 
 const MIN_RATE_MESSAGE = "The network minimum day rate is £500.";
 
@@ -31,10 +32,19 @@ const warnStyle: React.CSSProperties = {
   marginTop: ".4rem",
 };
 
+function GateNotice({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="success-msg show">
+      <div className="success-box">{children}</div>
+    </div>
+  );
+}
+
 export default function MembershipApplication() {
   useReveal();
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+  const me = useGetMe({ query: { queryKey: getGetMeQueryKey(), retry: false } });
   const mutation = useSubmitMembershipApplication();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -91,7 +101,40 @@ export default function MembershipApplication() {
       <section className="form-section">
         <div className="container">
           <div className="form-wrap">
-            {!submitted ? (
+            {me.isPending ? (
+              <p className="portal-empty">Checking your access…</p>
+            ) : me.isError ? (
+              <GateNotice>
+                <h3>Sign in to continue.</h3>
+                <p>
+                  This form is tied to your account, so we know which NDA it belongs to. Sign in — or
+                  create your account with the same email address you've been writing to us from.
+                </p>
+                <p style={{ marginTop: "1rem" }}>
+                  <Link href="/sign-in" className="btn btn-amber" data-testid="link-sign-in-to-apply">Sign in</Link>
+                </p>
+              </GateNotice>
+            ) : !me.data.canApply && !submitted ? (
+              <GateNotice>
+                {me.data.applicationSubmitted ? (
+                  <>
+                    <h3>You've already applied.</h3>
+                    <p>Your references will be contacted, and you will hear from your sponsor within ten working days.</p>
+                  </>
+                ) : (
+                  <>
+                    <h3>This gate isn't open for you yet.</h3>
+                    <p>
+                      The application opens once your signed NDA has come back and the team has moved
+                      your account forward. Your member area shows exactly where you are.
+                    </p>
+                  </>
+                )}
+                <p style={{ marginTop: "1rem" }}>
+                  <Link href="/dashboard" className="btn btn-navy" data-testid="link-dashboard-from-form">Go to your member area</Link>
+                </p>
+              </GateNotice>
+            ) : !submitted ? (
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} id="membership-application-form">
                   <FormField
