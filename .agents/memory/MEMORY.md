@@ -1,2 +1,3 @@
 - [TWG brand naming](twg-brand-naming.md) — brand is "TWG" not "TGW"; artifact slug/dir stays "tgw-network", do not rename it.
 - [TWG Lenis scrolling](tgw-lenis-scroll.md) — Lenis hijacks scroll; programmatic scroll must use scrollToTop()/lenis.scrollTo, not window.scrollTo.
+- [Resend email integration](resend-email-integration.md) — emails via Resend connector proxy; persist-first so email failures never lose submissions; debug key issues with GET /domains.
