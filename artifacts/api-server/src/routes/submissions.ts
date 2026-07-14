@@ -12,7 +12,14 @@ import {
   SubmitClientEnquiryBody,
   SubmitIntroductionRegistrationBody,
 } from "@workspace/api-zod";
-import { sendEmail, fieldsToText, fieldsToHtml, TEAM_EMAIL, type EmailField } from "../lib/mailer";
+import {
+  sendEmail,
+  fieldsToText,
+  fieldsToHtml,
+  escapeHtml,
+  TEAM_EMAIL,
+  type EmailField,
+} from "../lib/mailer";
 
 const router: IRouter = Router();
 
@@ -205,7 +212,7 @@ router.post("/submissions/introduction-registration", async (req, res): Promise<
 
   try {
     const confirmationText = `Registered. Your introduction is registered as of ${stamp}.\n\nIntroduction type: ${data.introductionType}\nWho you are introducing: ${data.whoIntroducing}\n\nThis timestamp is your entitlement record.\n\nTWG · The Wasted Generation`;
-    const confirmationHtml = `<div style="font-family:Arial,sans-serif;font-size:14px;color:#2C2C2C;"><p><strong>Registered.</strong> Your introduction is registered as of <strong>${stamp}</strong>.</p><p>Introduction type: ${data.introductionType}<br>Who you are introducing: ${data.whoIntroducing}</p><p>This timestamp is your entitlement record.</p><p>TWG · The Wasted Generation</p></div>`;
+    const confirmationHtml = `<div style="font-family:Arial,sans-serif;font-size:14px;color:#2C2C2C;"><p><strong>Registered.</strong> Your introduction is registered as of <strong>${stamp}</strong>.</p><p>Introduction type: ${escapeHtml(data.introductionType)}<br>Who you are introducing: ${escapeHtml(data.whoIntroducing)}</p><p>This timestamp is your entitlement record.</p><p>TWG · The Wasted Generation</p></div>`;
     await sendEmail({
       to: data.email,
       subject: `Your TWG introduction is registered — ${stamp}`,
