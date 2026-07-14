@@ -1,0 +1,112 @@
+Practitioner journey
+
+GATE P-1
+Interest → NDA WEBSITE-GATED
+›
+Locks
+All documentation. Nothing beyond the public website is visible before this gate.
+Opens when
+The interest form is submitted, the clean NDA goes out by email, and it comes back countersigned.
+Opened by
+Sponsoring team member files the executed NDA. Status: ENQUIRY → NDA SIGNED.
+
+GATE P-2
+NDA → Application WEBSITE-GATED
+›
+Locks
+The application form. It is never linked publicly; only the team sends the link, and only after the NDA.
+Opens when
+Documentation pack sent, applicant confirms they want to proceed.
+Opened by
+Automatic on pack despatch plus applicant confirmation. Status: PACK SENT → APPLICATION OPEN.
+
+GATE P-3
+Application → Review TEAM-GATED
+›
+Locks
+The founding team review. An incomplete or unverified application never reaches the team.
+Opens when
+Every mandatory field complete, day rate at or above £500, both references taken against T07, track record independently verified.
+Opened by
+Sponsoring team member confirms verification. Status: VERIFICATION → REVIEW READY. The heaviest gate in the system.
+
+GATE P-4
+Review → Offer TEAM-GATED
+›
+Locks
+The membership offer. Nobody self-admits to TWG, and money never buys entry.
+Opens when
+Founding team review held, sponsor presents, simple majority admits.
+Opened by
+The founding team collectively. Status: APPROVED or DECLINED, recorded with date.
+
+GATE P-5
+Offer → Member LEGAL HOLD
+›
+Locks
+Membership itself: profile, template library, community, briefs, introduction registration.
+Opens when
+L02 membership agreement countersigned AND fee resolved: £350 paid, or founding cohort waiver confirmed with contribution expectations stated.
+Opened by
+Sponsor, on signed agreement plus payment. This gate cannot operate until the solicitor signs off L02. Status: MEMBER.
+
+GATE P-6
+Member → Active TEAM-GATED
+›
+Locks
+Matching. No live profile, no briefs, no visibility to clients.
+Opens when
+Profile complete and published within 30 days of admission. The test: would a client reading it know exactly what problem this person ends?
+Opened by
+Sponsor approves the profile for publication. Status: ACTIVE.
+Client journey
+
+GATE C-1
+Contact → Conversation TEAM-GATED
+›
+Locks
+Any substantive discussion of the client's problem.
+Opens when
+Source recorded. If introduced, a T05 registration exists or is filed now, timestamping the override entitlement.
+Opened by
+Receiving team member. Five minutes that prevents every future argument about who introduced whom.
+
+GATE C-2
+Conversation → Brief TEAM-GATED
+›
+Locks
+The match process. No brief, no match, however promising the conversation.
+Opens when
+T02 brief complete: the problem, outcome, timeline, budget, client commitments, named owner, pillar.
+Opened by
+Receiving team member accepts the brief as matchable. Status: BRIEF COMPLETE.
+
+GATE C-3
+Brief → Match LEGAL HOLD
+›
+Locks
+The introduction of any practitioner.
+Opens when
+L03 client agreement countersigned AND the fee structure confirmed in writing: rate plus 10% plus overrides, capped at 15%. No client ever discovers a fee on an invoice.
+Opened by
+Receiving team member. Cannot operate until the solicitor signs off L03. Status: AGREED.
+
+GATE C-4
+Match → Meeting TEAM-GATED
+›
+Locks
+The introduction meeting.
+Opens when
+A practitioner matched on problem history has seen the brief AND the client's 360 record, and accepted.
+Opened by
+The practitioner, by accepting. Their right to decline is absolute. Status: MATCHED.
+
+GATE C-5
+Meeting → Work TEAM-GATED
+›
+Locks
+Day one. No work of any kind starts behind this gate.
+Opens when
+Meeting held, mutual yes, fee stack locked in writing, and the T01 SOW signed by practitioner, client, and TWG with KPIs, milestones, commitments, successor, and exit condition all present.
+Opened by
+All three signatures. Never yielded to urgency. Status: ENGAGED.
