@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)file:///D:/Downloads/TWG_Checkpoint_Mockup.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TWG Checkpoint Process | Website Mockup</title>
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-deep: #12203B;
+    --gold: #C9A84C;
+    --gold-soft: #E8D9A8;
+    --white: #FFFFFF;
+    --grey-bg: #F7F7F7;
+    --grey-line: #E2E2E2;
+    --body: #3A3A3A;
+    --mid: #7A7A7A;
+    --green: #1A6B3C;
+    --green-bg: #EAF7EF;
+    --warn: #7D5A00;
+    --warn-bg: #FFF6DC;
+    --locked: #B9BFC9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--body);
+    background: var(--grey-bg);
+    line-height: 1.55;
+  }
+  /* ── Masthead ── */
+  header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 34px 24px 0;
+  }
+  .mast-inner { max-width: 1080px; margin: 0 auto; }
+  .wordmark { font-size: 40px; font-weight: bold; letter-spacing: 2px; }
+  .wordmark span { color: var(--gold); }
+  .mast-sub { color: var(--gold-soft); font-size: 15px; margin-top: 4px; }
+  .mast-note {
+    background: var(--navy-deep);
+    border-left: 4px solid var(--gold);
+    font-size: 13px; color: #C9D2E3;
+    padding: 10px 14px; margin: 20px 0 0; border-radius: 4px 4px 0 0;
+    max-width: 1080px; margin-left: auto; margin-right: auto;
+  }
+  /* ── Tabs ── */
+  nav {
+    background: var(--navy);
+    padding: 14px 24px 0;
+    position: sticky; top: 0; z-index: 50;
+    box-shadow: 0 2px 8px rgba(18,32,59,.25);
+  }
+  .tabs { max-width: 1080px; margin: 0 auto; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tab {
+    background: transparent; color: #AEB9CC; border: none;
+    font-family: inherit; font-size: 14px; font-weight: bold;
+    padding: 12px 18px; cursor: pointer;
+    border-radius: 8px 8px 0 0;
+  }
+  .tab:hover { color: var(--white); }
+  .tab.active { background: var(--grey-bg); color: var(--navy); }
+  .tab:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
+  main { max-width: 1080px; margin: 0 auto; padding: 34px 24px 80px; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  h1 { color: var(--navy); font-size: 26px; margin-bottom: 6px; }
+  .lede { color: var(--mid); font-size: 15px; margin-bottom: 28px; max-width: 720px; }
+  h2 {
+    color: var(--navy); font-size: 19px; margin: 34px 0 14px;
+    padding-bottom: 8px; border-bottom: 3px solid var(--gold);
+    display: inline-block;
+  }
+  /* ── Gate rail ── */
+  .rail { position: relative; margin: 10px 0 40px; padding-left: 34px; }
+  .rail::before {
+    content: ""; position: absolute; left: 12px; top: 8px; bottom: 8px;
+    width: 3px; background: linear-gradient(var(--gold) 0 0) repeat-y;
+    background-size: 3px 100%;
+  }
+  .gate {
+    background: var(--white); border: 1px solid var(--grey-line);
+    border-radius: 10px; margin-bottom: 18px; overflow: hidden;
+    position: relative;
+    box-shadow: 0 1px 4px rgba(27,42,74,.06);
+  }
+  .gate::before {
+    content: ""; position: absolute; left: -28px; top: 26px;
+    width: 15px; height: 15px; border-radius: 50%;
+    background: var(--gold); border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+  .gate-head {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px; cursor: pointer; background: var(--white);
+    border: none; width: 100%; text-align: left; font-family: inherit;
+  }
+  .gate-head:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
+  .gate-id {
+    background: var(--navy); color: var(--gold);
+    font-weight: bold; font-size: 13px; letter-spacing: 1px;
+    padding: 6px 10px; border-radius: 6px; white-space: nowrap;
+  }
+  .gate-name { font-weight: bold; color: var(--navy); font-size: 16px; flex: 1; }
+  .gate-status { font-size: 12px; color: var(--mid); }
+  .chev { color: var(--gold); font-size: 18px; transition: transform .2s; }
+  .gate.open .chev { transform: rotate(90deg); }
+  .gate-body { display: none; padding: 0 18px 16px; }
+  .gate.open .gate-body { display: block; }
+  .gate-row { display: flex; gap: 12px; padding: 8px 0; border-top: 1px dashed var(--grey-line); font-size: 14px; }
+  .gate-row b { color: var(--gold); min-width: 130px; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; padding-top: 2px; }
+  .lockchip {
+    display: inline-block; font-size: 12px; font-weight: bold;
+    padding: 3px 10px; border-radius: 20px; margin-left: 6px;
+  }
+  .lockchip.locked { background: #ECEEF2; color: var(--locked); }
+  .lockchip.human { background: var(--green-bg); color: var(--green); }
+  .lockchip.legal { background: var(--warn-bg); color: var(--warn); }
+  /* ── Form mockups ── */
+  .screen {
+    background: var(--white); border: 1px solid var(--grey-line);
+    border-radius: 14px; max-width: 620px; margin: 0 0 34px;
+    box-shadow: 0 4px 18px rgba(27,42,74,.08); overflow: hidden;
+  }
+  .screen-chrome {
+    background: var(--navy); padding: 10px 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #44546F; }
+  .screen-url {
+    background: var(--navy-deep); color: #9FB0CB; font-size: 12px;
+    padding: 4px 12px; border-radius: 20px; margin-left: 8px; flex: 1;
+  }
+  .screen-body { padding: 26px 28px 30px; }
+  .screen-body h3 { color: var(--navy); font-size: 20px; margin-bottom: 4px; }
+  .screen-sub { color: var(--mid); font-size: 13px; margin-bottom: 20px; }
+  .fld { margin-bottom: 14px; }
+  .fld label { display: block; font-size: 13px; font-weight: bold; color: var(--navy); margin-bottom: 5px; }
+  .req { color: var(--gold); }
+  .fld input, .fld select, .fld textarea {
+    width: 100%; padding: 10px 12px; font-family: inherit; font-size: 14px;
+    border: 1px solid var(--grey-line); border-radius: 8px; background: var(--white);
+    color: var(--body);
+  }
+  .fld input:focus, .fld select:focus, .fld textarea:focus {
+    outline: 2px solid var(--gold); border-color: var(--gold);
+  }
+  .fld textarea { min-height: 84px; resize: vertical; }
+  .hint { font-size: 12px; color: var(--mid); margin-top: 4px; }
+  .validation {
+    background: var(--warn-bg); color: var(--warn); font-size: 13px;
+    padding: 9px 12px; border-radius: 8px; margin-top: 6px; display: none;
+  }
+  .validation.show { display: block; }
+  .conditional { display: none; }
+  .conditional.show { display: block; }
+  .btn {
+    background: var(--gold); color: var(--navy); font-weight: bold;
+    font-family: inherit; font-size: 15px; border: none;
+    padding: 13px 30px; border-radius: 8px; cursor: pointer; margin-top: 8px;
+  }
+  .btn:hover { background: #B6963E; }
+  .btn:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+  .success {
+    background: var(--green-bg); color: var(--green);
+    padding: 16px; border-radius: 10px; font-size: 14px; display: none; margin-top: 14px;
+  }
+  .success.show { display: block; }
+  .spec-note {
+    background: var(--warn-bg); border-left: 4px solid var(--gold);
+    padding: 10px 14px; font-size: 13px; color: var(--warn);
+    border-radius: 0 8px 8px 0; margin: -14px 0 34px; max-width: 620px;
+  }
+  /* ── Status board ── */
+  .board { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 16px 0 30px; }
+  .col {
+    background: var(--white); border: 1px solid var(--grey-line);
+    border-radius: 10px; padding: 10px; min-height: 130px;
+  }
+  .col h4 {
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--mid); border-bottom: 2px solid var(--gold);
+    padding-bottom: 6px; margin-bottom: 8px;
+  }
+  .card {
+    background: var(--grey-bg); border: 1px solid var(--grey-line);
+    border-radius: 8px; padding: 8px 10px; font-size: 12px; margin-bottom: 6px;
+  }
+  .card b { color: var(--navy); display: block; font-size: 13px; }
+  .card i { color: var(--mid); font-style: normal; font-size: 11px; }
+  .legend { font-size: 13px; color: var(--mid); margin-bottom: 8px; }
+  footer {
+    background: var(--navy); color: #8FA0BD; text-align: center;
+    font-size: 12px; padding: 22px;
+  }
+  footer span { color: var(--gold); }
+  @media (max-width: 640px) {
+    .wordmark { font-size: 30px; }
+    .gate-head { flex-wrap: wrap; }
+    .gate-row { flex-direction: column; gap: 2px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .chev { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="mast-inner">
+    <div class="wordmark">T<span>W</span>G</div>
+    <div class="mast-sub">The Wasted Generation · Checkpoint Process Mockup · v1.0 · July 2026</div>
+  </div>
+  <div class="mast-note"><strong>Joe:</strong> this page is the visual reference for the build. Three views: the gated journeys, the four forms exactly as they should work (try them, the validation is live), and the status board the team will keep by hand. Nothing decides anything automatically. If anything is unclear, ask before building.</div>
+</header>
+
+<nav>
+  <div class="tabs" role="tablist">
+    <button class="tab active" role="tab" onclick="show(event,&#39;journeys&#39;)">The Gated Journeys</button>
+    <button class="tab" role="tab" onclick="show(event,&#39;forms&#39;)">The Forms</button>
+    <button class="tab" role="tab" onclick="show(event,&#39;status&#39;)">Status Board</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════ JOURNEYS ═══════════ -->
+<section id="journeys" class="panel active">
+  <h1>Two journeys, eleven gates</h1>
+  <p class="lede">Nobody moves forward until the current gate opens. The website enforces the early gates by only showing forms to the right people at the right time; the team opens every other gate by hand. Click any gate to see what it locks and what opens it.</p>
+
+  <div class="legend">
+    <span class="lockchip locked">WEBSITE-GATED</span> enforced by the site &nbsp;
+    <span class="lockchip human">TEAM-GATED</span> a person decides &nbsp;
+    <span class="lockchip legal">LEGAL HOLD</span> needs solicitor sign-off first
+  </div>
+
+  <h2>Practitioner journey</h2>
+  <div class="rail">
+    <div class="gate">
+      <button class="gate-head" onclick="tog(this)"><span class="gate-id">GATE P-1</span><span class="gate-name">Interest → NDA <span class="lockchip locked">WEBSITE-GATED</span></span><span class="chev">›</span></button>
+      <div class="gate-body">
+        <div class="gate-row"><b>Locks</b><span>All documentation. Nothing beyond the public website is visible before this gate.</span></div>
+        <div class="gate-row"><b>Opens when</b><span>The interest form is submitted, the clean NDA goes out by email, and it comes back countersigned.</span></div>
+        <div class="gate-row"><b>Opened by</b><span>Sponsoring team member files the executed NDA. Status: ENQUIRY → NDA SIGNED.</span></div>
+      </div>
+    </div>
+    <div class="gate">
+      <button class="gate-head" onclick="tog(this)"><span class="gate-id">GATE P-2</span><span class="gate-name">NDA → Application <span class="lockchip locked">WEBSITE-GATED</span></span><span class="chev">›</span></button>
+      <div class="gate-body">
+        <div class="gate-row"><b>Locks</b><span>The application form. It is never linked publicly; only the team sends the link, and only after the NDA.</span></div>
+        <div class="gate-row"><b>Opens when</b><span>Documentation pack sent, applicant confirms they want to proceed.</span></div>
+        <div class="gate-row"><b>Opened by</b><span>Automatic on pack despatch plus applicant confirmation. Status: PACK SENT → APPLICATION OPEN.</span></div>
+      </div>
+    </div>
+    <div class="gate">
+      <button class="gate-head" onclick="tog(this)"><span class="gate-id">GATE P-3</span><span class="gate-name">Application → Review <span class="lockchip human">TEAM-GATED</span></span><span class="chev">›</span></button>
+      <div class="gate-body">
+        <div class="gate-row"><b>Locks</b><span>The founding team review. An incomplete or unverified application never reaches the team.</span></div>
+        <div class="gate-row"><b>Opens when</b><span>Every mandatory field complete, day rate at or above £500, both references taken against T07, track record independently verified.</span></div>
+        <div class="gate-row"><b>Opened by</b><span>Sponsoring team member confirms verification. Status: VERIFICATION → REVIEW READY. The heaviest gate in the system.</span></div>
+      </div>
+    </div>
+    <div class="gate">
+      <button class="gate-head" onclick="tog(this)"><span class="gate-id">GATE P-4</span><span class="gate-name">Review → Offer <span class="lockchip human">TEAM-GATED</span></span><span class="chev">›</span></button>
+      <div class="gate-body">
+        <div class="gate-row"><b>Locks</b><span>The membership offer. Nobody self-admits to TWG, and money never buys entry.</span></div>
+        <div class="gate-row"><b>Opens when</b><span>Founding team review held, sponsor presents, simple majority admits.</span></div>
+        <div class="gate-row"><b>Opened by</b><span>The founding team collectively. Status: APPROVED or DECLINED, recorded with date.</span></div>
+      </div>
+    </div>
+    <div class="gate">
+      <button class="gate-head" onclick="tog(this)"><span class="gate-id">GATE P-5</span><span class="gate-name">Offer → Member <span class="lockchip legal">LEGAL HOLD</span></span><span class="chev">›</span></button>
+      <div class="gate-body">
+        <div class="gate-row"><b>Locks</b><span>Membership itself: profile, template library, community, briefs, introduction registration.</span></div>
+        <div class="gate-row"><b>Opens when</b><span>L02 membership agreement countersigned AND fee resolved: £350 paid, or founding cohort waiver confirmed with contribution expectations stated.</span></div>
+        <div class="gate-row"><b>Opened by</b><span>Sponsor, on signed agreement plus payment. This gate cannot operate until the solicitor signs off L02. Status: MEMBER.</span></div>
+      </div>
+    </div>
+    <div class="gate">
+      <button class="gate-head" onclick="tog(this)"><span class="gate-id">GATE P-6</span><span class="gate-name">Member → Active <span class="lockchip human">TEAM-GATED</span></span><span class="chev">›</span></button>
+      <div class="gate-body">
+        <div class="gate-row"><b>Locks</b><span>Matching. No live profile, no briefs, no visibility to clients.</span></div>
+        <div class="gate-row"><b>Opens when</b><span>Profile complete and published within 30 days of admission. The test: would a client reading it know exactly what problem this person ends?</span></div>
+        <div class="gate-row"><b>Opened by</b><span>Sponsor approves the profile for publication. Status: ACTIVE.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Client journey</h2>
+  <div class="rail">
+    <div class="gate">
+      <button class="gate-head" onclick="tog(this)"><span class="gate-id">GATE C-1</span><span class="gate-name">Contact → Conversation <span class="lockchip human">TEAM-GATED</span></span><span class="chev">›</span></button>
+      <div class="gate-body">
+        <div class="gate-row"><b>Locks</b><span>Any substantive discussion of the client's problem.</span></div>
+        <div class="gate-row"><b>Opens when</b><span>Source recorded. If introduced, a T05 registration exists or is filed now, timestamping the override entitlement.</span></div>
+        <div class="gate-row"><b>Opened by</b><span>Receiving team member. Five minutes that prevents every future argument about who introduced whom.</span></div>
+      </div>
+    </div>
+    <div class="gate">
+      <button class="gate-head" onclick="tog(this)"><span class="gate-id">GATE C-2</span><span class="gate-name">Conversation → Brief <span class="lockchip human">TEAM-GATED</span></span><span class="chev">›</span></button>
+      <div class="gate-body">
+        <div class="gate-row"><b>Locks</b><span>The match process. No brief, no match, however promising the conversation.</span></div>
+        <div class="gate-row"><b>Opens when</b><span>T02 brief complete: the problem, outcome, timeline, budget, client commitments, named owner, pillar.</span></div>
+        <div class="gate-row"><b>Opened by</b><span>Receiving team member accepts the brief as matchable. Status: BRIEF COMPLETE.</span></div>
+      </div>
+    </div>
+    <div class="gate">
+      <button class="gate-head" onclick="tog(this)"><span class="gate-id">GATE C-3</span><span class="gate-name">Brief → Match <span class="lockchip legal">LEGAL HOLD</span></span><span class="chev">›</span></button>
+      <div class="gate-body">
+        <div class="gate-row"><b>Locks</b><span>The introduction of any practitioner.</span></div>
+        <div class="gate-row"><b>Opens when</b><span>L03 client agreement countersigned AND the fee structure confirmed in writing: rate plus 10% plus overrides, capped at 15%. No client ever discovers a fee on an invoice.</span></div>
+        <div class="gate-row"><b>Opened by</b><span>Receiving team member. Cannot operate until the solicitor signs off L03. Status: AGREED.</span></div>
+      </div>
+    </div>
+    <div class="gate">
+      <button class="gate-head" onclick="tog(this)"><span class="gate-id">GATE C-4</span><span class="gate-name">Match → Meeting <span class="lockchip human">TEAM-GATED</span></span><span class="chev">›</span></button>
+      <div class="gate-body">
+        <div class="gate-row"><b>Locks</b><span>The introduction meeting.</span></div>
+        <div class="gate-row"><b>Opens when</b><span>A practitioner matched on problem history has seen the brief AND the client's 360 record, and accepted.</span></div>
+        <div class="gate-row"><b>Opened by</b><span>The practitioner, by accepting. Their right to decline is absolute. Status: MATCHED.</span></div>
+      </div>
+    </div>
+    <div class="gate">
+      <button class="gate-head" onclick="tog(this)"><span class="gate-id">GATE C-5</span><span class="gate-name">Meeting → Work <span class="lockchip human">TEAM-GATED</span></span><span class="chev">›</span></button>
+      <div class="gate-body">
+        <div class="gate-row"><b>Locks</b><span>Day one. No work of any kind starts behind this gate.</span></div>
+        <div class="gate-row"><b>Opens when</b><span>Meeting held, mutual yes, fee stack locked in writing, and the T01 SOW signed by practitioner, client, and TWG with KPIs, milestones, commitments, successor, and exit condition all present.</span></div>
+        <div class="gate-row"><b>Opened by</b><span>All three signatures. Never yielded to urgency. Status: ENGAGED.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FORMS ═══════════ -->
+<section id="forms" class="panel">
+  <h1>The four forms</h1>
+  <p class="lede">Working mockups. The validation behaviours are live on this page: try picking under 8 years of experience on the first form, or a day rate below £500 on the second. Build these exactly as shown.</p>
+
+  <h2>Form 1 · Practitioner interest (public)</h2>
+  <div class="screen">
+    <div class="screen-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="screen-url">thewastedgeneration.co.uk/join</span></div>
+    <div class="screen-body">
+      <h3>Apply to join the network</h3>
+      <p class="screen-sub">Short by design. The full detail comes after the confidentiality agreement.</p>
+      <div class="fld"><label>Full name <span class="req">*</span></label><input type="text" placeholder="Your name"></div>
+      <div class="fld"><label>Email <span class="req">*</span></label><input type="email" placeholder="you@example.com"></div>
+      <div class="fld"><label>LinkedIn profile <span class="req">*</span></label><input type="text" placeholder="linkedin.com/in/yourname"></div>
+      <div class="fld"><label>Location <span class="req">*</span></label><input type="text" placeholder="City, country"></div>
+      <div class="fld"><label>Primary specialism <span class="req">*</span></label>
+        <select><option>Choose one</option><option>Commercial</option><option>Finance</option><option>Operations</option><option>Technology</option><option>People</option><option>Marketing</option><option>Legal</option><option>Other</option></select>
+      </div>
+      <div class="fld"><label>Years of senior experience <span class="req">*</span></label>
+        <select id="yrs" onchange="yrsCheck()"><option value="">Choose one</option><option value="low">Under 8</option><option>8 to 12</option><option>13 to 20</option><option>21 to 30</option><option>30+</option></select>
+        <div class="validation" id="yrsMsg">TWG entry criteria require a minimum of eight years at senior level. We would love to hear from you when you reach that point.</div>
+      </div>
+      <div class="fld"><label>How did you hear about TWG? <span class="req">*</span></label>
+        <select id="src1" onchange="srcCheck(&#39;src1&#39;,&#39;memName&#39;)"><option value="">Choose one</option><option value="member">Member introduction</option><option>LinkedIn</option><option>Press</option><option>Event</option><option>Search</option><option>Other</option></select>
+        <div class="fld conditional" id="memName" style="margin-top:10px"><label>Which member introduced you? <span class="req">*</span></label><input type="text" placeholder="Member name"><p class="hint">This feeds the introduction register, so the member's entitlement is protected.</p></div>
+      </div>
+      <div class="fld"><label>One problem you solve <span class="req">*</span></label><textarea maxlength="300" placeholder="In client language. 300 characters."></textarea></div>
+      <button class="btn" onclick="submitDemo(&#39;s1&#39;)">Apply to join</button>
+      <div class="success" id="s1"><strong>Thank you.</strong> The next step is a confidentiality agreement, which will be with you by email within one working day. Nothing more is shared until it is signed.</div>
+    </div>
+  </div>
+  <div class="spec-note"><strong>Build notes:</strong> under-8-years blocks submission with the message shown. Member introduction reveals the name field. On submit: the confirmation above plus an email to the team with every field.</div>
+
+  <h2>Form 2 · Full application (unlisted link, after NDA)</h2>
+  <div class="screen">
+    <div class="screen-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="screen-url">thewastedgeneration.co.uk/apply/[unique-link]</span></div>
+    <div class="screen-body">
+      <h3>Membership application</h3>
+      <p class="screen-sub">This page is never linked publicly. The team sends the link only after the NDA returns. That is the gate.</p>
+      <div class="fld"><label>Career history <span class="req">*</span></label><textarea placeholder="Last four roles minimum: organisation, title, dates, headline outcome for each."></textarea></div>
+      <div class="fld"><label>Problems you solve, with evidence <span class="req">*</span></label><textarea placeholder="Up to five, each in client language, each with the engagement where you solved it. Companies and outcomes named. These claims are verified."></textarea></div>
+      <div class="fld"><label>Proposed day rate (£) <span class="req">*</span></label>
+        <input type="number" id="rate" placeholder="Minimum 500" oninput="rateCheck()">
+        <div class="validation" id="rateMsg">The network minimum day rate is £500.</div>
+      </div>
+      <div class="fld"><label>Referee 1 <span class="req">*</span></label><input type="text" placeholder="Name, role, relationship, email, phone"></div>
+      <div class="fld"><label>Referee 2 <span class="req">*</span></label><input type="text" placeholder="Different organisation from referee 1"><p class="hint">Referees must speak to delivery, not character. Both are contacted.</p></div>
+      <div class="fld"><label>Contracting entity <span class="req">*</span></label><input type="text" placeholder="Ltd company name and number"></div>
+      <button class="btn" onclick="submitDemo(&#39;s2&#39;)">Submit application</button>
+      <div class="success" id="s2"><strong>Thank you.</strong> Your references will be contacted, and you will hear from your sponsor within ten working days.</div>
+    </div>
+  </div>
+  <div class="spec-note"><strong>Build notes:</strong> a rate below 500 cannot be submitted. The page lives at an address only the team shares. On submit: confirmation plus team email.</div>
+
+  <h2>Form 3 · Client enquiry (public)</h2>
+  <div class="screen">
+    <div class="screen-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="screen-url">thewastedgeneration.co.uk/organisations</span></div>
+    <div class="screen-body">
+      <h3>Tell us about the problem</h3>
+      <p class="screen-sub">No cost, no commitment. Our fees are published on this site.</p>
+      <div class="fld"><label>Your name <span class="req">*</span></label><input type="text"></div>
+      <div class="fld"><label>Role <span class="req">*</span></label><input type="text"></div>
+      <div class="fld"><label>Company <span class="req">*</span></label><input type="text"></div>
+      <div class="fld"><label>Email <span class="req">*</span></label><input type="email"></div>
+      <div class="fld"><label>Company size <span class="req">*</span></label>
+        <select><option>Choose one</option><option>Under £5m</option><option>£5m to £25m</option><option>£25m to £100m</option><option>£100m to £250m</option><option>Over £250m</option></select>
+      </div>
+      <div class="fld"><label>The problem <span class="req">*</span></label><textarea placeholder="Describe the problem, not the person you think you need. What is not working, how long has it been true, what has it cost?"></textarea></div>
+      <div class="fld"><label>When you need this solved <span class="req">*</span></label>
+        <select><option>Choose one</option><option>Urgent (weeks)</option><option>This quarter</option><option>This year</option><option>Exploring</option></select>
+      </div>
+      <div class="fld"><label>How did you find TWG? <span class="req">*</span></label>
+        <select id="src2" onchange="srcCheck(&#39;src2&#39;,&#39;refName&#39;)"><option value="">Choose one</option><option value="member">Referral from advisor</option><option value="member">Member introduction</option><option>Press</option><option>LinkedIn</option><option>Event</option><option>Search</option></select>
+        <div class="fld conditional" id="refName" style="margin-top:10px"><label>Who referred you? <span class="req">*</span></label><input type="text" placeholder="Advisor or member name"><p class="hint">Referrers earn on the introduction. Naming them protects their entitlement.</p></div>
+      </div>
+      <button class="btn" onclick="submitDemo(&#39;s3&#39;)">Send</button>
+      <div class="success" id="s3"><strong>Thank you.</strong> A member of the team will call you within two working days.</div>
+    </div>
+  </div>
+  <div class="spec-note"><strong>Build notes:</strong> referral or member introduction reveals the name field. On submit: confirmation plus team email. The team files the T05 registration by hand at Gate C-1.</div>
+
+  <h2>Form 4 · Introduction registration (unlisted link, members and partners)</h2>
+  <div class="screen">
+    <div class="screen-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="screen-url">thewastedgeneration.co.uk/register-introduction</span></div>
+    <div class="screen-body">
+      <h3>Register an introduction</h3>
+      <p class="screen-sub">Register before you make contact, always. The timestamp is your entitlement record.</p>
+      <div class="fld"><label>Your name <span class="req">*</span></label><input type="text"></div>
+      <div class="fld"><label>Introduction type <span class="req">*</span></label>
+        <select><option>Choose one</option><option>Practitioner to the network</option><option>Client company to the network</option></select>
+      </div>
+      <div class="fld"><label>Who you are introducing <span class="req">*</span></label><input type="text" placeholder="Name, company, role, email where known"></div>
+      <div class="fld"><label>Relationship and context <span class="req">*</span></label><textarea placeholder="How you know them and why they fit."></textarea></div>
+      <div class="fld"><label>Has contact been made yet? <span class="req">*</span></label>
+        <select><option>Choose one</option><option>No</option><option>Yes</option></select>
+        <p class="hint">The answer should be No. A Yes triggers a conversation with the team, not a rejection.</p>
+      </div>
+      <button class="btn" onclick="regDemo()">Register introduction</button>
+      <div class="success" id="s4"><strong>Registered.</strong> Your introduction is registered as of <span id="stamp"></span>. A confirmation email with this timestamp is on its way to you.</div>
+    </div>
+  </div>
+  <div class="spec-note"><strong>Build notes:</strong> the system records the date and time automatically and shows it on the confirmation. This timestamp matters more than any other field on the site. Confirmation email to the submitter repeats it.</div>
+</section>
+
+<!-- ═══════════ STATUS ═══════════ -->
+<section id="status" class="panel">
+  <h1>The status board</h1>
+  <p class="lede">The team's view of everything, updated by hand. A spreadsheet or simple list is enough for version 1: one row per person or company, one column for status. Shown here as a board so the flow is visible. The example names are illustrative only.</p>
+
+  <h2>Practitioner pipeline</h2>
+  <div class="board">
+    <div class="col"><h4>Enquiry</h4><div class="card"><b>J. Example</b><i>Finance · 21-30 yrs</i></div><div class="card"><b>P. Sample</b><i>Commercial · 13-20 yrs</i></div></div>
+    <div class="col"><h4>NDA signed</h4><div class="card"><b>A. Placeholder</b><i>Operations</i></div></div>
+    <div class="col"><h4>Application open</h4></div>
+    <div class="col"><h4>Verification</h4><div class="card"><b>M. Instance</b><i>Refs 1 of 2 taken</i></div></div>
+    <div class="col"><h4>Review ready</h4></div>
+    <div class="col"><h4>Member</h4><div class="card"><b>D. Specimen</b><i>Cohort #3 · profile due</i></div></div>
+    <div class="col"><h4>Active</h4><div class="card"><b>Founding five</b><i>Live</i></div></div>
+  </div>
+
+  <h2>Client pipeline</h2>
+  <div class="board">
+    <div class="col"><h4>Enquiry</h4><div class="card"><b>Example Ltd</b><i>Source: accountant referral · T05 filed</i></div></div>
+    <div class="col"><h4>Brief complete</h4></div>
+    <div class="col"><h4>Agreed</h4></div>
+    <div class="col"><h4>Matched</h4></div>
+    <div class="col"><h4>Engaged</h4><div class="card"><b>Target: first SOW</b><i>by day 90</i></div></div>
+  </div>
+
+  <h2>The rules the board enforces</h2>
+  <p style="max-width:720px; font-size:14px;">A card only ever moves one column at a time, and only when the gate between the columns has opened. A card in Verification with one reference taken stays in Verification. A client card cannot reach Matched while the L03 legal hold stands. If a card seems to need to skip a column, the process is being broken: stop and check the gate.</p>
+</section>
+
+</main>
+
+<footer>T<span>W</span>G · The Wasted Generation · Checkpoint mockup for the founding team and Joe · Confidential · July 2026</footer>
+
+<script>
+function show(e, id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  e.currentTarget.classList.add('active');
+  window.scrollTo({top: 0});
+}
+function tog(btn) { btn.parentElement.classList.toggle('open'); }
+function yrsCheck() {
+  const v = document.getElementById('yrs').value;
+  document.getElementById('yrsMsg').classList.toggle('show', v === 'low');
+}
+function rateCheck() {
+  const v = parseFloat(document.getElementById('rate').value);
+  document.getElementById('rateMsg').classList.toggle('show', !isNaN(v) && v < 500);
+}
+function srcCheck(selId, fldId) {
+  const v = document.getElementById(selId).value;
+  document.getElementById(fldId).classList.toggle('show', v === 'member');
+}
+function submitDemo(id) {
+  if (id === 's1' && document.getElementById('yrs').value === 'low') return;
+  if (id === 's2') {
+    const v = parseFloat(document.getElementById('rate').value);
+    if (!isNaN(v) && v < 500) return;
+  }
+  document.getElementById(id).classList.add('show');
+}
+function regDemo() {
+  const now = new Date();
+  document.getElementById('stamp').textContent = now.toLocaleString('en-GB', {dateStyle:'long', timeStyle:'short'});
+  document.getElementById('s4').classList.add('show');
+}
+</script>
+
+
+</body></html>
