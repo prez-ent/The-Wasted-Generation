@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { useReveal } from "@/hooks/useReveal";
 import { PageMeta } from "@/components/PageMeta";
+import { ContactForm } from "@/components/ContactForm";
 
 export default function About() {
   useReveal();
@@ -26,7 +27,6 @@ export default function About() {
                 "name": "Andrew Engledow",
                 "jobTitle": "Founder",
                 "description": "Thirty years of senior commercial experience across regulated technology markets in EMEA, APAC, and North America.",
-                "email": "andrew@engledow.co.uk",
                 "worksFor": {
                   "@id": "https://twgnetwork.com/#organization"
                 }
@@ -38,7 +38,6 @@ export default function About() {
               "name": "Andrew Engledow",
               "jobTitle": "Founder",
               "description": "Thirty years of senior commercial experience across regulated technology markets in EMEA, APAC, and North America. Deals closed north of £29 million.",
-              "email": "andrew@engledow.co.uk",
               "worksFor": {
                 "@id": "https://twgnetwork.com/#organization"
               }
@@ -81,7 +80,7 @@ export default function About() {
           <div className="reveal" style={{ maxWidth: "580px" }}>
             <p>Thirty years of senior commercial experience across regulated technology markets in EMEA, APAC, and North America. Deals closed north of £29 million. The kind of career that looks impressive on paper and that the market decided, at a certain point, to overlook.</p>
             <p>TWG was built from that experience — and from the recognition that the problem was not personal. It was structural. A generation of professionals like Andrew were being filtered out not because their capability had diminished but because the systems doing the filtering were not designed to see it.</p>
-            <p>The network exists to correct that. Andrew can be reached directly at the address below.</p>
+            <p>The network exists to correct that. Andrew can be reached directly through the form below.</p>
           </div>
         </div>
       </section>
@@ -90,9 +89,9 @@ export default function About() {
           <span className="label reveal">Contact</span>
           <h2 className="reveal" style={{ fontSize: "1.8rem" }}>Get in touch.</h2>
           <div className="reveal">
-            <p>The network team is available by email and — where helpful — by call. We do not have a ticketing system.</p>
-            <a className="contact-email" href="mailto:andrew@engledow.co.uk">andrew@engledow.co.uk</a>
+            <p>The network team is available through the form below and — where helpful — by call. We do not have a ticketing system. Messages go straight to Andrew.</p>
             <p style={{ fontSize: ".88rem", opacity: ".65" }}>We aim to respond within one working day. If something is urgent, say so in the subject line.</p>
+            <ContactForm />
             <div style={{ marginTop: "1.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <Link href="/apply" className="btn btn-amber">Apply as a practitioner</Link>
               <Link href="/register" className="btn btn-outline-navy">Register a company</Link>

@@ -21,6 +21,8 @@ import Apply from "./pages/Apply";
 import Register from "./pages/Register";
 import MembershipApplication from "./pages/MembershipApplication";
 import RegisterIntroduction from "./pages/RegisterIntroduction";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
 import SignInPage from "./pages/SignIn";
 import SignUpPage from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
@@ -77,6 +79,8 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/apply" component={Apply} />
         <Route path="/register" component={Register} />
+        <Route path="/privacy-policy" component={PrivacyPolicy} />
+        <Route path="/cookie-policy" component={CookiePolicy} />
         <Route path="/membership-application-k7x2v9q4mt" component={MembershipApplication} />
         <Route path="/register-introduction-w8n3j6r2pf" component={RegisterIntroduction} />
         {/* REQUIRED — the /*? optional wildcard matches both the bare URL and

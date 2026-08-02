@@ -4,12 +4,14 @@ import {
   practitionerInterestsTable,
   membershipApplicationsTable,
   clientEnquiriesTable,
+  contactMessagesTable,
   introductionRegistrationsTable,
 } from "@workspace/db";
 import {
   SubmitPractitionerInterestBody,
   SubmitMembershipApplicationBody,
   SubmitClientEnquiryBody,
+  SubmitContactMessageBody,
   SubmitIntroductionRegistrationBody,
 } from "@workspace/api-zod";
 import {
@@ -91,6 +93,35 @@ router.post("/submissions/practitioner-interest", async (req, res): Promise<void
     { label: "How did you hear about TWG?", value: data.source },
     { label: "Which member introduced you?", value: data.memberName?.trim() || "—" },
     { label: "One problem you solve", value: data.problem },
+    { label: "Submitted", value: formatLondonTimestamp(row.createdAt) },
+  ]);
+
+  res.status(201).json({ id: row.id });
+});
+
+router.post("/submissions/contact", async (req, res): Promise<void> => {
+  const parsed = SubmitContactMessageBody.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.issues[0]?.message ?? "Invalid submission" });
+    return;
+  }
+  const data = parsed.data;
+
+  const [row] = await db
+    .insert(contactMessagesTable)
+    .values({
+      name: data.name,
+      email: data.email,
+      subject: data.subject?.trim() || null,
+      message: data.message,
+    })
+    .returning();
+
+  await sendTeamEmail(req, `TWG website: contact message from ${data.name}`, [
+    { label: "Name", value: data.name },
+    { label: "Email", value: data.email },
+    { label: "Subject", value: data.subject?.trim() || "—" },
+    { label: "Message", value: data.message },
     { label: "Submitted", value: formatLondonTimestamp(row.createdAt) },
   ]);
 

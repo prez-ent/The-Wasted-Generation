@@ -51,45 +51,6 @@ const PRINCIPLES = [
   }
 ];
 
-const PRACTITIONERS = [
-  {
-    initials: 'JM', color: '#0C447C', name: 'J. Marshall', role: 'Fractional CFO · Regulated industries', avail: 'now', tags: ['Finance', 'Restructuring', 'M&A'], spec: 'Finance',
-    stars: 4.8, eng: 23, kpi: 96, repeat: 87,
-    bio: '30 years senior finance leadership in regulated technology and financial services. Specialises in cash management, restructuring, and M&A support for businesses between £20m and £200m revenue.',
-    terms: ['Project · 30–90 days', '£1,200–£1,800 / day', 'Remote + onsite London/SE']
-  },
-  {
-    initials: 'PR', color: '#085041', name: 'P. Rashid', role: 'Operations Director · Manufacturing & supply chain', avail: '2 weeks', tags: ['Operations', 'Supply chain'], spec: 'Operations',
-    stars: 4.9, eng: 18, kpi: 94, repeat: 78,
-    bio: 'Built and turned around operations functions across automotive, FMCG, and industrial manufacturing in EMEA and APAC. Track record of cost reduction without compromising service.',
-    terms: ['Sprint or Project', '£1,000–£1,400 / day', 'EMEA / APAC available']
-  },
-  {
-    initials: 'SK', color: '#3C3489', name: 'S. Khan', role: 'Fractional CTO · Platform & scale', avail: 'now', tags: ['Technology', 'Architecture', 'Scale-up'], spec: 'Technology',
-    stars: 4.7, eng: 14, kpi: 91, repeat: 71,
-    bio: 'Scaled engineering organisations from 10 to 200+ across two unicorns. Pragmatic about architecture trade-offs. Particularly strong on technology strategy at Series B/C inflection points.',
-    terms: ['Ongoing 2–3 days/week', '£1,400–£2,000 / day', 'UK + US time zones']
-  },
-  {
-    initials: 'EH', color: '#B87028', name: 'E. Hartley', role: 'Commercial Director · GTM transformation', avail: 'now', tags: ['Commercial', 'GTM', 'SaaS'], spec: 'Commercial',
-    stars: 4.8, eng: 21, kpi: 93, repeat: 81,
-    bio: '25 years building and turning around commercial functions. Specialises in GTM redesign, sales leadership in transition, and quota model overhauls. Strongest with £10m–£80m ARR businesses.',
-    terms: ['Sprint or Project', '£1,100–£1,600 / day', 'UK / EMEA']
-  },
-  {
-    initials: 'MD', color: '#0C447C', name: 'M. Donnelly', role: 'Fractional CFO · PE & growth', avail: '4 weeks', tags: ['Finance', 'Private equity'], spec: 'Finance',
-    stars: 4.9, eng: 31, kpi: 97, repeat: 89,
-    bio: 'Former Big Four partner with 15 years on the operator side. Specialises in CFO support during PE ownership transitions, exit preparation, and integration finance.',
-    terms: ['Project · 60–120 days', '£1,500–£2,200 / day', 'UK / US']
-  },
-  {
-    initials: 'LN', color: '#085041', name: 'L. Nakamura', role: 'Operations · Transformation lead', avail: 'now', tags: ['Operations', 'Transformation'], spec: 'Operations',
-    stars: 4.6, eng: 12, kpi: 90, repeat: 66,
-    bio: 'Specialises in operational transformation at the £20m–£150m revenue band — particularly post-acquisition integrations and process redesign in services businesses.',
-    terms: ['Project · 45–90 days', '£900–£1,300 / day', 'Remote + 2 days/week onsite']
-  }
-];
-
 export default function Network() {
   useReveal();
 
@@ -97,15 +58,6 @@ export default function Network() {
   const p = PRINCIPLES[pcSel];
 
   const [fwTab, setFwTab] = useState('prac');
-
-  const [psFilter, setPsFilter] = useState('All');
-  const [psModal, setPsModal] = useState<number | null>(null);
-
-  const filteredPractitioners = PRACTITIONERS.filter(prac => {
-    if (psFilter === 'All') return true;
-    if (psFilter === 'Available now') return prac.avail === 'now';
-    return prac.spec === psFilter;
-  });
 
   return (
     <div id="page-network">
@@ -307,80 +259,14 @@ export default function Network() {
         <div className="container-w">
           <span className="label reveal">The network</span>
           <h2 className="reveal">Curated, not collected.</h2>
-          <p className="reveal" style={{ opacity: ".72", maxWidth: "560px" }}>Every practitioner below has been verified on entry. Their 360 score is real — built across completed engagements. Register to see full profiles.</p>
-          <div style={{ marginTop: "1.5rem" }}>
-            <div className="ps-filters">
-              {['All', 'Operations', 'Technology', 'Finance', 'Commercial', 'Available now'].map(o => (
-                <div key={o} className={`ps-chip ${psFilter === o ? 'active' : ''}`} onClick={() => setPsFilter(o)} data-testid={`chip-filter-${o.replace(' ', '-').toLowerCase()}`}>{o}</div>
-              ))}
-            </div>
-            <div className="ps-grid">
-              {filteredPractitioners.length > 0 ? (
-                filteredPractitioners.map((prac, i) => (
-                  <div key={i} className="ps-card" onClick={() => setPsModal(PRACTITIONERS.indexOf(prac))} data-testid={`card-practitioner-${i}`}>
-                    <div className="ps-top">
-                      <div className="ps-avatar" style={{ background: prac.color }}>{prac.initials}</div>
-                      <div style={{ flex: 1 }}>
-                        <div className="ps-name">{prac.name}</div>
-                        <div className="ps-role">{prac.role}</div>
-                        <div className="ps-avail" style={{ color: prac.avail === 'now' ? 'var(--teal)' : 'var(--amber)' }}>
-                          <span className="ps-avail-dot" style={{ background: prac.avail === 'now' ? 'var(--teal)' : 'var(--amber)' }}></span>
-                          {prac.avail === 'now' ? 'Available now' : `Available in ${prac.avail}`}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="ps-tags">{prac.tags.map(tag => <div key={tag} className="ps-tag">{tag}</div>)}</div>
-                    <div className="ps-stats">
-                      <div className="ps-stat"><div className="ps-sv">{prac.stars} <span className="ps-star">★</span></div><div className="ps-sl">360 score</div></div>
-                      <div className="ps-stat"><div className="ps-sv">{prac.eng}</div><div className="ps-sl">Engagements</div></div>
-                      <div className="ps-stat"><div className="ps-sv">{prac.kpi}%</div><div className="ps-sl">KPI hit</div></div>
-                      <div className="ps-stat"><div className="ps-sv">{prac.repeat}%</div><div className="ps-sl">Repeat</div></div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div style={{ gridColumn: "1/-1", padding: "2rem", textAlign: "center", color: "var(--muted)" }}>No practitioners match this filter.</div>
-              )}
-            </div>
-            <div className="ps-gate">
-              <p>Full profiles — including verified outcomes, engagement history, and 360 score detail — are available to registered clients.</p>
-              <Link href="/register" className="btn btn-amber" data-testid="link-register-profiles">Register to view full profiles</Link>
-            </div>
+          <p className="reveal" style={{ opacity: ".72", maxWidth: "560px" }}>The founding cohort is forming now. Every practitioner is verified on entry — minimum eight years at senior level, verified outcome-led engagements, and a reference from a decision-maker. Only real, confirmed members appear on this site.</p>
+          <div className="ps-gate reveal" style={{ marginTop: "1.5rem" }}>
+            <p>Confirmed practitioner profiles — including verified outcomes, engagement history, and 360 score detail — will be published here as the founding cohort completes verification. Registered clients get access first.</p>
+            <Link href="/register" className="btn btn-amber" data-testid="link-register-profiles">Register to be introduced</Link>
           </div>
         </div>
       </section>
 
-      {psModal !== null && (
-        <div className="modal-overlay open" onClick={(e) => { if ((e.target as HTMLElement).classList.contains('modal-overlay')) setPsModal(null); }}>
-          <div className="modal-content">
-            <button className="modal-close" onClick={() => setPsModal(null)} data-testid="btn-modal-close">×</button>
-            <div className="ps-top" style={{ marginBottom: "1.5rem" }}>
-              <div className="ps-avatar" style={{ width: "64px", height: "64px", fontSize: "1.2rem", background: PRACTITIONERS[psModal].color }}>{PRACTITIONERS[psModal].initials}</div>
-              <div>
-                <div className="ps-name" style={{ fontSize: "1.4rem" }}>{PRACTITIONERS[psModal].name}</div>
-                <div className="ps-role" style={{ fontSize: ".9rem", marginBottom: "8px" }}>{PRACTITIONERS[psModal].role}</div>
-                <div className="ps-avail" style={{ color: PRACTITIONERS[psModal].avail === 'now' ? 'var(--teal)' : 'var(--amber)' }}>
-                  <span className="ps-avail-dot" style={{ background: PRACTITIONERS[psModal].avail === 'now' ? 'var(--teal)' : 'var(--amber)' }}></span>
-                  {PRACTITIONERS[psModal].avail === 'now' ? 'Available now' : `Available in ${PRACTITIONERS[psModal].avail}`}
-                </div>
-              </div>
-            </div>
-            <div style={{ fontSize: ".95rem", lineHeight: "1.7", marginBottom: "2rem", opacity: ".85" }}>{PRACTITIONERS[psModal].bio}</div>
-            <div style={{ display: "flex", gap: "2rem", borderTop: "1px solid var(--rule)", borderBottom: "1px solid var(--rule)", padding: "1.25rem 0", marginBottom: "2rem" }}>
-              <div><div style={{ fontFamily: "var(--serif)", fontSize: "1.8rem", color: "var(--amber)", lineHeight: "1" }}>{PRACTITIONERS[psModal].stars} ★</div><div style={{ fontSize: ".72rem", textTransform: "uppercase", letterSpacing: ".05em", color: "var(--muted)", marginTop: "4px" }}>360 score</div></div>
-              <div><div style={{ fontFamily: "var(--serif)", fontSize: "1.8rem", color: "var(--navy)", lineHeight: "1" }}>{PRACTITIONERS[psModal].kpi}%</div><div style={{ fontSize: ".72rem", textTransform: "uppercase", letterSpacing: ".05em", color: "var(--muted)", marginTop: "4px" }}>KPI delivery</div></div>
-              <div><div style={{ fontFamily: "var(--serif)", fontSize: "1.8rem", color: "var(--navy)", lineHeight: "1" }}>{PRACTITIONERS[psModal].repeat}%</div><div style={{ fontSize: ".72rem", textTransform: "uppercase", letterSpacing: ".05em", color: "var(--muted)", marginTop: "4px" }}>Repeat clients</div></div>
-            </div>
-            <div style={{ fontSize: ".7rem", textTransform: "uppercase", letterSpacing: ".08em", fontWeight: 700, marginBottom: "12px", color: "var(--navy)" }}>Engagement terms</div>
-            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-              {PRACTITIONERS[psModal].terms.map(term => <div key={term} className="ps-tag" style={{ padding: "6px 12px" }}>{term}</div>)}
-            </div>
-            <div style={{ marginTop: "2.5rem" }}>
-              <Link href="/register" className="btn btn-amber" style={{ width: "100%", textAlign: "center" }} data-testid="link-modal-register">Register to request introduction</Link>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

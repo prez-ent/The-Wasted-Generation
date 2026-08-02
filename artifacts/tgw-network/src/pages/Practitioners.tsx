@@ -55,6 +55,7 @@ export default function Practitioners() {
           <span className="label reveal">The base model explained</span>
           <h2 className="reveal">No surprises.</h2>
           <p className="reveal" style={{ maxWidth: "560px", opacity: ".75", marginBottom: "2.5rem" }}>A client engages you at £1,000 per day. They pay £1,100 — the 10% network fee is additive to your rate, charged to the client on top. You receive £1,000. The network receives £100. Your earnings are never touched. Published on our website before you join.</p>
+          <p className="reveal" style={{ maxWidth: "560px", fontSize: ".82rem", opacity: ".55", marginBottom: "2.5rem" }}>Figures are shown in pounds sterling. US pricing is available — the same model applies in dollars.</p>
           <div className="econ-grid">
             <div className="econ-box reveal"><h3>When you introduce a colleague</h3><p>You introduce a fellow practitioner into an engagement. The client pays an additional 5% directly to you. For a 40-day engagement at £900/day, that is £1,800 for a single introduction. Your colleague's rate is unaffected.</p></div>
             <div className="econ-box reveal"><h3>When you introduce a company</h3><p>You earn 5% on every day billed to that company — by any practitioner, across all contracts — for as long as the company engages through the network. The economics reward the people who build the network.</p></div>

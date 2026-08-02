@@ -99,6 +99,17 @@ export const SubmitClientEnquiryBody = zod.object({
 });
 
 /**
+ * @summary Submit a general contact message
+ */
+
+export const SubmitContactMessageBody = zod.object({
+  name: zod.string().min(1),
+  email: zod.string().email(),
+  subject: zod.string().optional(),
+  message: zod.string().min(1),
+});
+
+/**
  * @summary Register an introduction
  */
 

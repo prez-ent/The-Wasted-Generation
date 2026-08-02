@@ -726,3 +726,46 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .history-list{list-style:none;margin:0;padding:0}
 .history-list li{display:flex;gap:1rem;padding:.6rem 0;border-bottom:1px solid var(--rule);font-size:.85rem;color:var(--ink)}
 .history-date{color:var(--muted);white-space:nowrap;font-size:.78rem;padding-top:.1rem}
+
+/* ── Cookie consent banner ─────────────────────────── */
+.cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:1000;background:var(--navy);color:#fff;box-shadow:0 -4px 24px rgba(0,0,0,.25)}
+.cookie-banner-inner{max-width:1100px;margin:0 auto;padding:1.1rem 2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.cookie-banner-text{flex:1 1 380px;font-size:.85rem;line-height:1.6;opacity:.95}
+.cookie-banner-text a{color:var(--amber);text-decoration:underline}
+.cookie-banner-actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.cookie-btn{font-size:.8rem;padding:.55rem 1rem;white-space:nowrap}
+.cookie-banner .btn-outline-navy{border:1px solid rgba(255,255,255,.5);color:#fff;background:transparent}
+.cookie-banner .btn-outline-navy:hover{background:rgba(255,255,255,.1)}
+
+/* ── Legal pages ───────────────────────────────────── */
+.legal-hero{background:var(--navy);color:#fff;padding:7rem 0 3rem}
+.legal-hero h1{font-family:var(--serif);font-size:2.4rem;margin:.5rem 0 .25rem}
+.legal-updated{font-size:.82rem;opacity:.6}
+.legal-body{padding:3rem 0 5rem}
+.legal-body h2{font-family:var(--serif);font-size:1.3rem;color:var(--navy);margin:2.25rem 0 .6rem}
+.legal-body p,.legal-body li{font-size:.95rem;line-height:1.75;color:var(--ink)}
+.legal-body ul{padding-left:1.25rem;margin:.5rem 0}
+.legal-body li{margin-bottom:.5rem}
+.legal-body a{color:var(--blue);text-decoration:underline}
+.legal-note{background:var(--paper,#f6f4ef);border-left:3px solid var(--amber);padding:1rem 1.25rem;font-size:.9rem}
+.legal-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.88rem}
+.legal-table th,.legal-table td{border:1px solid var(--rule);padding:.7rem .8rem;text-align:left;vertical-align:top;line-height:1.6}
+.legal-table th{background:var(--navy);color:#fff;font-weight:600}
+
+/* ── Contact form ──────────────────────────────────── */
+.contact-form{margin:1.5rem 0;max-width:560px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:600px){.cf-row{grid-template-columns:1fr}}
+.cf-field{margin-bottom:1rem;display:flex;flex-direction:column}
+.cf-field label{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.35rem}
+.cf-optional{text-transform:none;letter-spacing:0;opacity:.7}
+.cf-field input,.cf-field textarea{border:1px solid rgba(30,45,64,.3);background:#fff;padding:.65rem .8rem;font-family:var(--sans);font-size:.92rem;color:var(--ink);resize:vertical}
+.cf-field input:focus,.cf-field textarea:focus{outline:2px solid var(--amber);outline-offset:1px}
+.cf-error{color:#b3261e;font-size:.85rem;margin-bottom:1rem}
+.contact-form-sent{background:var(--paper,#f6f4ef);border-left:3px solid var(--teal);padding:1.25rem 1.5rem;margin:1.5rem 0;max-width:560px}
+.contact-form-sent h3{color:var(--navy);margin-bottom:.4rem}
+
+/* ── Footer legal row ──────────────────────────────── */
+.footer-legal{grid-column:1/-1;display:flex;gap:1.5rem;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.12)}
+.footer-legal a{font-size:.78rem;color:rgba(255,255,255,.55);text-decoration:none}
+.footer-legal a:hover{color:#fff}

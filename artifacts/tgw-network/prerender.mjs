@@ -15,6 +15,8 @@ const ROUTES = [
   "/about",
   "/apply",
   "/register",
+  "/privacy-policy",
+  "/cookie-policy",
 ];
 
 const ROUTE_META = {
@@ -53,6 +55,14 @@ const ROUTE_META = {
   "/register": {
     title: "Submit a Brief | Find the Right Expert — TWG Network",
     description: "Start with the problem, not the person spec. Submit your brief to TWG Network and we'll match you with a senior expert who has already solved it. Response within one working day.",
+  },
+  "/privacy-policy": {
+    title: "Privacy Policy | TWG Network",
+    description: "How The Wasted Generation (TWG Network) collects, uses, and protects personal data, including your rights under UK/EU GDPR and the California Consumer Privacy Act (CCPA).",
+  },
+  "/cookie-policy": {
+    title: "Cookie Policy | TWG Network",
+    description: "The cookies used on the TWG Network website, what they do, and how to accept, decline, or change your cookie preferences.",
   },
 };
 

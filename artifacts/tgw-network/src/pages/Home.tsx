@@ -43,8 +43,8 @@ export default function Home() {
       <div className="home-hero">
         <div className="container">
           <div className="hero-eyebrow">TWG Network</div>
-          <h1><span className="hero-line">Every problem has been solved before.</span>{" "}<span className="hero-line">We connect you with the people who have already solved it.</span></h1>
-          <p className="sub">A governed network of proven practitioners, deployed against defined outcomes.</p>
+          <h1><span className="hero-line">Every business problem has been solved before.</span>{" "}<span className="hero-line">We connect you with the people who have already solved it.</span></h1>
+          <p className="sub">TWG is a curated network of proven executives, specialists, and transformation leaders. We connect organisations facing complex business challenges with practitioners who have already solved those exact problems — backed by defined outcomes, transparent pricing, and mutual accountability.</p>
           <div className="hero-btns">
             <Link href="/clients" className="btn btn-amber" data-testid="link-org-problem">My organisation has a problem</Link>
             <Link href="/practitioners" className="btn btn-outline-white" data-testid="link-practitioner">I am a practitioner</Link>
@@ -58,7 +58,7 @@ export default function Home() {
           <div className="what-grid">
             <div className="what-col reveal">
               <h3>We match. We introduce. We deploy.</h3>
-              <p>Tell us what you are trying to fix. We identify the practitioner who has solved it before and introduce you directly. No marketplace to browse. No CVs to filter. TWG does the work.</p>
+              <p>Describe your challenge, and we will identify a practitioner who has delivered the same outcome. We manage the introduction, define the scope, and align expectations before work begins. No marketplace to browse. No CVs to filter. TWG does the work.</p>
             </div>
             <div className="what-col reveal">
               <h3>Outcomes defined before anyone starts</h3>
@@ -66,7 +66,7 @@ export default function Home() {
             </div>
             <div className="what-col reveal">
               <h3>Accountability runs both ways</h3>
-              <p>Every practitioner carries a verified 360 score built from real engagements. So does every client organisation. Both sides are held to the same standard. That is what makes the outcomes real.</p>
+              <p>Both sides evaluate each other at the end of every engagement, building a permanent reputation that improves every future match. Every practitioner carries a verified 360 score. So does every client organisation. That is what makes the outcomes real.</p>
             </div>
           </div>
         </div>
@@ -76,20 +76,6 @@ export default function Home() {
         <div className="container">
           <span className="label reveal">Two pathways</span>
           <div className="pathway-grid">
-            <div className="pathway-card reveal">
-              <div style={{ height: "4px", background: "var(--teal)" }}></div>
-              <div className="pathway-body">
-                <h3>For practitioners</h3>
-                <p style={{ fontSize: ".92rem", opacity: ".8", marginBottom: "1rem" }}>You have done the work. You have earned the right to work on your terms.</p>
-                <ul>
-                  <li>Earn 100% of every day rate you bill</li>
-                  <li>Earn when you introduce colleagues and clients</li>
-                  <li>See a client's rating before you commit</li>
-                  <li>A community that works for you, not the platform</li>
-                </ul>
-                <Link href="/practitioners" className="btn btn-teal" data-testid="link-practitioners-more">Find out more</Link>
-              </div>
-            </div>
             <div className="pathway-card reveal">
               <div style={{ height: "4px", background: "var(--blue)" }}></div>
               <div className="pathway-body">
@@ -102,6 +88,20 @@ export default function Home() {
                   <li>10% — published on this page, not hidden in an invoice</li>
                 </ul>
                 <Link href="/clients" className="btn btn-blue" data-testid="link-clients-more">See how we work</Link>
+              </div>
+            </div>
+            <div className="pathway-card reveal">
+              <div style={{ height: "4px", background: "var(--teal)" }}></div>
+              <div className="pathway-body">
+                <h3>For practitioners</h3>
+                <p style={{ fontSize: ".92rem", opacity: ".8", marginBottom: "1rem" }}>You have done the work. You have earned the right to work on your terms.</p>
+                <ul>
+                  <li>Earn 100% of every day rate you bill</li>
+                  <li>Earn when you introduce colleagues and clients</li>
+                  <li>See a client's rating before you commit</li>
+                  <li>A community that works for you, not the platform</li>
+                </ul>
+                <Link href="/practitioners" className="btn btn-teal" data-testid="link-practitioners-more">Find out more</Link>
               </div>
             </div>
           </div>

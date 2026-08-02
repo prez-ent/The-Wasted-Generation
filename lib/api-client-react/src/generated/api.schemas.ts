@@ -17,6 +17,15 @@ export interface SubmissionReceipt {
   id: number;
 }
 
+export interface ContactMessageInput {
+  /** @minLength 1 */
+  name: string;
+  email: string;
+  subject?: string;
+  /** @minLength 1 */
+  message: string;
+}
+
 export interface IntroductionReceipt {
   id: number;
   registeredAt: string;

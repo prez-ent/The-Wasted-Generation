@@ -10,6 +10,7 @@ export * from "./clientEnquiryInput";
 export * from "./clientEnquiryInputCompanySize";
 export * from "./clientEnquiryInputSource";
 export * from "./clientEnquiryInputTimeline";
+export * from "./contactMessageInput";
 export * from "./documentInput";
 export * from "./documentInputKind";
 export * from "./documentRecord";

@@ -155,6 +155,8 @@ export default function Clients() {
               <h2 style={{ marginBottom: "1rem" }}>Less than a third of<br />what you are probably paying.</h2>
               <p>Traditional interim firms charge between 20 and 35 percent above the day rate. They do not publish it. You find out when you see the invoice. TWG charges 10%. For a practitioner at £1,000 per day over a 40-day engagement, that is a saving of up to £10,000 on a single brief compared with standard market rates.</p>
               <p style={{ marginTop: ".75rem" }}>That saving does not come from a lower calibre of practitioner. It comes from a model that does not need a large sales operation or a recruitment margin to sustain itself.</p>
+              <p style={{ marginTop: ".75rem", fontSize: ".88rem", opacity: ".8" }}>A 5% introduction override and a 15% overall cap may apply. For full details, see our <Link href="/pricing" data-testid="link-fee-structure">complete fee structure</Link>.</p>
+              <p style={{ marginTop: ".5rem", fontSize: ".82rem", opacity: ".6" }}>Figures are shown in pounds sterling. US pricing is available — the same fee structure applies in dollars.</p>
               <div style={{ marginTop: "1.5rem" }}>
                 <Link href="/pricing" className="btn btn-outline-navy" data-testid="link-pricing">See the full fee structure</Link>
               </div>
@@ -191,9 +193,9 @@ export default function Clients() {
       <section className="client-cta tight">
         <div className="container">
           <div style={{ background: "var(--offwhite)", padding: "2.5rem", marginBottom: "3rem", borderLeft: "3px solid var(--rule)" }}>
-            <span className="label" style={{ color: "var(--muted)" }}>Coming soon</span>
+            <span className="label" style={{ color: "var(--muted)" }}>Building our library of success stories</span>
             <h3 style={{ color: "var(--navy)", marginBottom: ".5rem", fontSize: "1.15rem" }}>What clients say</h3>
-            <p style={{ fontSize: ".9rem", opacity: ".65" }}>Case studies and client perspectives will be published here once the first engagements are complete. If you would like to speak to someone before committing, we will make that introduction directly.</p>
+            <p style={{ fontSize: ".9rem", opacity: ".65" }}>Client case studies will be published as engagements complete. In the meantime, we are happy to share relevant practitioner experience in an introductory conversation.</p>
           </div>
           <h2>Tell us what you are trying to fix.</h2>
           <p className="sub">Describe the situation. We will tell you whether we have the person and how quickly we can introduce you.</p>

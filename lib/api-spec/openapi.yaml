@@ -104,6 +104,30 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorMessage"
+  /submissions/contact:
+    post:
+      operationId: submitContactMessage
+      tags: [submissions]
+      summary: Submit a general contact message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactMessageInput"
+      responses:
+        "201":
+          description: Message stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmissionReceipt"
+        "400":
+          description: Invalid submission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
   /submissions/introduction-registration:
     post:
       operationId: submitIntroductionRegistration
@@ -563,6 +587,24 @@ components:
           type: integer
       required:
         - id
+    ContactMessageInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          format: email
+        subject:
+          type: string
+        message:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - email
+        - message
     IntroductionReceipt:
       type: object
       properties:

@@ -25,6 +25,7 @@ export default function Pricing() {
           <span className="label" style={{ color: "rgba(255,255,255,.4)" }}>Pricing</span>
           <h1><span className="hero-line">The fees. All of them.</span>{" "}<span className="hero-line">On this page.</span></h1>
           <p className="sub">No small print. No 'rates on application'. No discovery that the fee was 30% when you see the invoice.</p>
+          <p className="sub" style={{ fontSize: ".85rem", opacity: ".7", marginTop: ".75rem" }}>Figures on this page are shown in pounds sterling. US pricing is available — the same fee structure applies in dollars.</p>
         </div>
       </div>
       

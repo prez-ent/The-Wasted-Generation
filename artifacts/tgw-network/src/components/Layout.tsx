@@ -1,5 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Logo } from "./Logo";
+import { CookieConsent } from "./CookieConsent";
 import { useState, useEffect } from "react";
 import { scrollToTop } from "../hooks/useSmoothScroll";
 
@@ -27,8 +28,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, [mobileNavOpen]);
 
   const navLinks = [
-    { href: "/practitioners", label: "For Practitioners", testId: "link-practitioners" },
     { href: "/clients",       label: "For Organisations", testId: "link-clients" },
+    { href: "/practitioners", label: "For Practitioners", testId: "link-practitioners" },
     { href: "/network",       label: "The Network",       testId: "link-network" },
     { href: "/pricing",       label: "Pricing",           testId: "link-pricing" },
     { href: "/manifesto",     label: "Manifesto",         testId: "link-manifesto" },
@@ -125,8 +126,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
               The Wasted Generation<br />A governed professional network.
             </div>
           </div>
+          <div className="footer-legal">
+            <Link href="/privacy-policy" data-testid="link-footer-privacy">Privacy Policy</Link>
+            <Link href="/cookie-policy" data-testid="link-footer-cookies">Cookie Policy</Link>
+          </div>
         </div>
       </footer>
+      <CookieConsent />
     </>
   );
 }
