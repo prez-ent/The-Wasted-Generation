@@ -34,7 +34,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/pricing",       label: "Pricing",           testId: "link-pricing" },
     { href: "/manifesto",     label: "Manifesto",         testId: "link-manifesto" },
     { href: "/about",         label: "About",             testId: "link-about" },
-    { href: "/dashboard",     label: "Member area",       testId: "link-member-area" },
   ];
 
   return (

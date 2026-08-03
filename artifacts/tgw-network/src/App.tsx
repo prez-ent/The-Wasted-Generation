@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import { Switch, Route, Redirect, useLocation, Router as WouterRouter } from "wouter";
+import { Switch, Route, useLocation, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
-import { ClerkProvider, Show, useClerk } from "@clerk/react";
+import { ClerkProvider, useClerk } from "@clerk/react";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,30 +19,13 @@ import Manifesto from "./pages/Manifesto";
 import About from "./pages/About";
 import Apply from "./pages/Apply";
 import Register from "./pages/Register";
-import MembershipApplication from "./pages/MembershipApplication";
-import RegisterIntroduction from "./pages/RegisterIntroduction";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
-import SignInPage from "./pages/SignIn";
-import SignUpPage from "./pages/SignUp";
-import Dashboard from "./pages/Dashboard";
-import Team from "./pages/Team";
 
 const queryClient = new QueryClient();
 
 if (!clerkPubKey) {
   throw new Error("Missing VITE_CLERK_PUBLISHABLE_KEY");
-}
-
-function HomeRedirect() {
-  return (
-    <>
-      <Show when="signed-in">
-        <Redirect to="/dashboard" />
-      </Show>
-      <Home />
-    </>
-  );
 }
 
 // Keeps the view up-to-date when the signed-in user changes by clearing the
@@ -70,7 +53,7 @@ function Router() {
   return (
     <Layout>
       <Switch>
-        <Route path="/" component={HomeRedirect} />
+        <Route path="/" component={Home} />
         <Route path="/practitioners" component={Practitioners} />
         <Route path="/clients" component={Clients} />
         <Route path="/network" component={Network} />
@@ -81,14 +64,10 @@ function Router() {
         <Route path="/register" component={Register} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/cookie-policy" component={CookiePolicy} />
-        <Route path="/membership-application-k7x2v9q4mt" component={MembershipApplication} />
-        <Route path="/register-introduction-w8n3j6r2pf" component={RegisterIntroduction} />
-        {/* REQUIRED — the /*? optional wildcard matches both the bare URL and
-            Clerk's OAuth sub-paths (/sign-in/sso-callback, /sign-in/factor-one). */}
-        <Route path="/sign-in/*?" component={SignInPage} />
-        <Route path="/sign-up/*?" component={SignUpPage} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/team" component={Team} />
+        {/* Member area routes (sign-in, sign-up, dashboard, team, membership
+            application, introduction registration) removed from the public
+            site 2026-08-02 at the founders' request. Page components are kept
+            in src/pages so the member area can be re-enabled later. */}
         <Route component={NotFound} />
       </Switch>
     </Layout>
