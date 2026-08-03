@@ -43,7 +43,7 @@ export default function Home() {
       <div className="home-hero">
         <div className="container">
           <div className="hero-eyebrow">TWG Network</div>
-          <h1><span className="hero-line">Every business problem has been solved before.</span>{" "}<span className="hero-line">We connect you with the people who have already solved it.</span></h1>
+          <h1><span className="hero-line">Every business problem has been solved before. We connect you with the people who have already solved it.</span></h1>
           <p className="sub">TWG is a curated network of proven executives, specialists, and transformation leaders. We connect organisations facing complex business challenges with practitioners who have already solved those exact problems — backed by defined outcomes, transparent pricing, and mutual accountability.</p>
           <div className="hero-btns">
             <Link href="/clients" className="btn btn-amber" data-testid="link-org-problem">My organisation has a problem</Link>
