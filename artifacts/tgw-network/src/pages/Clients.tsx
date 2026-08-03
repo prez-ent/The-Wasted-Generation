@@ -54,7 +54,7 @@ export default function Clients() {
 
       <section style={{ background: "var(--paper)" }}>
         <div className="container">
-          <span className="label reveal">Does this sound familiar?</span>
+          <span className="label reveal">Common Reasons Organisations Contact Us</span>
           <h2 className="reveal">The situations we<br />hear most often.</h2>
           <p className="reveal" style={{ maxWidth: "560px", opacity: ".72", marginBottom: "3rem" }}>These are not generic problems. They are the specific situations coming up in early conversations. If yours looks different, tell us — that is where we start.</p>
           <div className="how-list">
@@ -97,7 +97,7 @@ export default function Clients() {
 
       <section className="how-steps">
         <div className="container">
-          <span className="label reveal">How we work</span>
+          <span className="label reveal">From Challenge to Outcome</span>
           <h2 className="reveal">Tell us what you are trying to fix.<br />We take it from there.</h2>
           <div className="how-list">
             <div className="how-item reveal"><div className="how-n">1</div><div className="how-text"><h4>Describe your problem</h4><p>Not a job description. Not a person spec. The situation — what is broken, what you have already tried, what success looks like. The brief is where the match begins, and a clear brief produces a better outcome every time.</p></div></div>

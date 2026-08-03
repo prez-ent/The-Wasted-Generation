@@ -54,7 +54,7 @@ export default function Home() {
 
       <section style={{ background: "var(--paper)" }}>
         <div className="container">
-          <span className="label reveal">What this is</span>
+          <span className="label reveal">How It Works</span>
           <div className="what-grid">
             <div className="what-col reveal">
               <h3>We match. We introduce. We deploy.</h3>
