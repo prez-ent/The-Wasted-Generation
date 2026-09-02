@@ -91,7 +91,7 @@ export default function Practitioners() {
             <summary className="economics-dropdown-summary">
               <div>
                 <span className="label">Transparent economics</span>
-                <h2>Your annual network<br />earnings.</h2>
+                <h2>Calculate your annual<br />network earnings.</h2>
                 <p>Adjust the sliders to see what you could earn — including introduction overrides.</p>
               </div>
               <span className="economics-dropdown-trigger" aria-hidden="true">
