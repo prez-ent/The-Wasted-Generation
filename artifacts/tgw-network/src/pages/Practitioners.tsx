@@ -65,20 +65,23 @@ export default function Practitioners() {
 
       {/* 2 — Entry criteria */}
       <section className="entry">
-        <div className="container">
-          <span className="label reveal">Entry criteria</span>
-          <h2 className="reveal">Is this network for you?</h2>
-          <p className="reveal" style={{ maxWidth: "580px", opacity: ".75", marginBottom: ".5rem" }}>The entry standard is high because the network's reputation rests on it.</p>
-          <div className="entry-list">
-            <div className="entry-item reveal"><div className="entry-num">1</div><div className="entry-text"><h4>At least 8 years in a senior functional role</h4><p>At a level where you owned outcomes, not contributed to them.</p></div></div>
-            <div className="entry-item reveal"><div className="entry-num">2</div><div className="entry-text"><h4>A minimum of two independent or project-based engagements</h4><p>Where success was defined upfront and you can evidence the delivery.</p></div></div>
-            <div className="entry-item reveal"><div className="entry-num">3</div><div className="entry-text"><h4>At least one verifiable reference from a decision-maker</h4><p>Someone who commissioned or sponsored your work — not a peer.</p></div></div>
-            <div className="entry-item reveal"><div className="entry-num">4</div><div className="entry-text"><h4>A completed profile describing the problems you solve</h4><p>In the client's language, not a job title.</p></div></div>
-            <div className="entry-item reveal"><div className="entry-num">5</div><div className="entry-text"><h4>Professional indemnity insurance of at least £500,000 per claim</h4><p>Required before any engagement commences.</p></div></div>
-            <div className="entry-item reveal"><div className="entry-num">6</div><div className="entry-text"><h4>A signed membership agreement</h4><p>Covering non-circumvention, rate discussion prohibition, and 360 participation.</p></div></div>
+        <div className="container entry-frame">
+          <aside className="entry-aside reveal">
+            <span className="label">Entry criteria</span>
+            <h2>Is this network for you?</h2>
+            <p className="entry-lede">The entry standard is high because the network's reputation rests on it.</p>
+            <div className="entry-aside-rule" />
+            <p className="entry-note">No age requirement. No institution requirement. No specific sector requirement. The standard is seniority of experience and evidence of delivery.</p>
+          </aside>
+          <ol className="entry-list">
+            <li className="entry-item reveal"><div className="entry-num">01</div><div className="entry-text"><h4>At least 8 years in a senior functional role</h4><p>At a level where you owned outcomes, not contributed to them.</p></div></li>
+            <li className="entry-item reveal"><div className="entry-num">02</div><div className="entry-text"><h4>A minimum of two independent or project-based engagements</h4><p>Where success was defined upfront and you can evidence the delivery.</p></div></li>
+            <li className="entry-item reveal"><div className="entry-num">03</div><div className="entry-text"><h4>At least one verifiable reference from a decision-maker</h4><p>Someone who commissioned or sponsored your work — not a peer.</p></div></li>
+            <li className="entry-item reveal"><div className="entry-num">04</div><div className="entry-text"><h4>A completed profile describing the problems you solve</h4><p>In the client's language, not a job title.</p></div></li>
+            <li className="entry-item reveal"><div className="entry-num">05</div><div className="entry-text"><h4>Professional indemnity insurance of at least £500,000 per claim</h4><p>Required before any engagement commences.</p></div></li>
+            <li className="entry-item reveal"><div className="entry-num">06</div><div className="entry-text"><h4>A signed membership agreement</h4><p>Covering non-circumvention, rate discussion prohibition, and 360 participation.</p></div></li>
+          </ol>
           </div>
-          <p className="reveal" style={{ marginTop: "2rem", fontSize: ".9rem", fontStyle: "italic", opacity: ".6" }}>No age requirement. No institution requirement. No specific sector requirement. The standard is seniority of experience and evidence of delivery.</p>
-        </div>
       </section>
 
       {/* 3 — Transparent economics (calculator) */}
