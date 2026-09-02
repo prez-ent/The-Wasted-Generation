@@ -80,7 +80,6 @@ export default function Clients() {
               </div>
             </div>
           </div>
-          <p className="reveal" style={{ fontSize: ".88rem", opacity: ".5", marginTop: "2rem", fontStyle: "italic" }}>These three are where the early conversations are pointing. As the network grows we will be specific about what we have seen and what we have solved. This is a journey.</p>
         </div>
       </section>
 
