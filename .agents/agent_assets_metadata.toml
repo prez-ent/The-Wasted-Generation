@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "cO3i6sHcdA21p-vd5P0sg"
+uri = "file://artifacts/tgw-network/public/logo.svg"
+type = "image"
+title = "TWG Network logo"
+description = "Download the TWG Network logo as an SVG vector file."
+logical_id = "47303095-2742-4eb3-9e9c-c9e38736fd19"
+content_hash = "sha256:d9e136ed9e4417c3d3020c47782554ebc9d37050e0bb99720e36dd87876eab6c"
+size = 626
+mtime_ms = 1784062054773
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:88f78cfe-6ca4-455f-93c2-f48406f98347/47303095-2742-4eb3-9e9c-c9e38736fd19/1a43b461-e7d8-443d-9ad2-9fa85fd75156"
+storage_version_token = "1788375188141865"
+content_type = "image/svg+xml"
