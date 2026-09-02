@@ -369,6 +369,31 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .client-cta h2{color:#fff;margin-bottom:.75rem}
 .client-cta .sub{color:rgba(255,255,255,.65);max-width:460px;margin:0 auto 2rem}
 
+/* ── Where we operate ──────────────────────────────── */
+.where-operate{background:var(--offwhite)}
+.where-operate-intro{max-width:660px;margin-bottom:clamp(1.75rem,4vw,2.75rem)}
+.where-operate-intro h2{margin-top:.9rem}
+.where-operate-intro p{max-width:600px;margin-top:1rem;line-height:1.75;opacity:.72}
+.where-operate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.where-operate-card{min-height:190px;padding:1.6rem 1.5rem 1.4rem;background:#fff;border:1px solid rgba(30,45,64,.1);display:flex;flex-direction:column;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.where-operate-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -24px rgba(30,45,64,.45);border-color:rgba(183,112,40,.45)}
+.where-operate-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.7rem;font-size:.68rem;letter-spacing:.14em;color:rgba(30,45,64,.36)}
+.where-operate-card-top span:last-child{font-size:1rem;color:var(--amber)}
+.where-operate-card h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--navy);margin-bottom:.55rem}
+.where-operate-card p{font-size:.84rem;line-height:1.65;opacity:.7}
+.where-operate-other{position:relative;overflow:hidden;background:var(--navy);border-color:var(--navy)}
+.where-operate-other::before{content:"";position:absolute;inset:0;background:radial-gradient(280px 170px at 88% 0%,rgba(183,112,40,.34),transparent 70%);pointer-events:none}
+.where-operate-other>*{position:relative}
+.where-operate-other .label{color:#d99f66;margin-bottom:1.7rem}
+.where-operate-other h3{color:#fff}
+.where-operate-other p{color:rgba(255,255,255,.7);opacity:1}
+@media(max-width:900px){.where-operate-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){
+  .where-operate-grid{grid-template-columns:1fr}
+  .where-operate-card{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){.where-operate-card{transition:none}}
+
 .network-hero{background:var(--offwhite);padding:6rem 0 5rem}
 .network-hero h1{font-size:clamp(2.2rem,5vw,3.0rem);color:var(--navy);max-width:900px}
 .network-hero .sub{max-width:560px;opacity:.75;margin-top:1rem;font-size:1.05rem}

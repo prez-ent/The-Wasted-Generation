@@ -206,18 +206,32 @@ export default function Clients() {
         </div>
       </section>
 
-      <section style={{ background: "var(--offwhite)" }}>
+      <section id="where-we-operate" className="where-operate">
         <div className="container">
-          <span className="label reveal">Where we operate</span>
-          <h2 className="reveal">Across the functions<br />where problems live.</h2>
-          <p className="reveal" style={{ maxWidth: "580px", opacity: ".72", marginBottom: "2rem" }}>TWG practitioners have operated at senior level across these functions. As the network grows we will be specific about what we have seen and what we have solved. Tell us your problem — that is where we start.</p>
-          <div className="six-grid" style={{ marginTop: 0 }}>
-            <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>Finance</h3><p>CFO advisory, restructuring, M&amp;A support, FP&amp;A, cash management.</p></div>
-            <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>Operations</h3><p>Transformation, cost reduction, supply chain, process design, P&amp;L ownership.</p></div>
-            <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>Technology</h3><p>Fractional CTO, platform strategy, architecture, digital transformation.</p></div>
-            <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>Commercial</h3><p>Revenue growth, GTM strategy, sales leadership, commercial structure.</p></div>
-            <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>People</h3><p>HR transformation, organisational design, leadership capability.</p></div>
-            <div className="six-item reveal" style={{ background: "var(--navy)", borderColor: "var(--navy)" }}><span className="num" style={{ fontSize: "1.4rem", color: "var(--amber)" }}>?</span><h3 style={{ color: "#fff" }}>Something else</h3><p style={{ color: "rgba(255,255,255,.6)" }}>Tell us. The most interesting matches often start here.</p></div>
+          <div className="where-operate-intro">
+            <span className="label reveal">Where we operate</span>
+            <h2 className="reveal">Across the functions<br />where problems live.</h2>
+            <p className="reveal">TWG practitioners have operated at senior level across these functions. As the network grows we will be specific about what we have seen and what we have solved. Tell us your problem — that is where we start.</p>
+          </div>
+          <div className="where-operate-grid">
+            {[
+              ["01", "Finance", "CFO advisory, restructuring, M&A support, FP&A, cash management."],
+              ["02", "Operations", "Transformation, cost reduction, supply chain, process design, P&L ownership."],
+              ["03", "Technology", "Fractional CTO, platform strategy, architecture, digital transformation."],
+              ["04", "Commercial", "Revenue growth, GTM strategy, sales leadership, commercial structure."],
+              ["05", "People", "HR transformation, organisational design, leadership capability."],
+            ].map(([number, title, text]) => (
+              <div className="where-operate-card reveal" key={number}>
+                <div className="where-operate-card-top"><span>{number}</span><span aria-hidden="true">→</span></div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            ))}
+            <div className="where-operate-card where-operate-other reveal">
+              <span className="label">Something else</span>
+              <h3>Something else</h3>
+              <p>Tell us. The most interesting matches often start here.</p>
+            </div>
           </div>
         </div>
       </section>

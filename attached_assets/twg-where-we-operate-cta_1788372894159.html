@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TWG — Where we operate + CTA (3a)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ---- tokens: swap these for your real brand values ---- */
+:root{
+  --twg-ink:#1f2733;
+  --twg-body:#5f6b7a; --twg-muted:#8b97a6; --twg-faint:#b8bfc9;
+  --twg-copper:#b26a35; --twg-copper-lt:#d99f66;
+  --twg-grey:#f7f6f3; --twg-card:#fff;
+  --twg-line:rgba(31,39,51,.10);
+  --twg-serif:'EB Garamond',Georgia,'Times New Roman',serif;
+  --twg-sans:'DM Sans',system-ui,-apple-system,sans-serif;
+  --twg-pad:clamp(24px,5vw,72px);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--twg-sans);color:var(--twg-body);-webkit-font-smoothing:antialiased}
+.twg-wrap{max-width:1180px;margin:0 auto}
+.twg-eyebrow{font:500 11px/1 var(--twg-sans);letter-spacing:.22em;text-transform:uppercase;color:var(--twg-copper)}
+.twg-h2{margin:22px 0 0;font-family:var(--twg-serif);font-weight:400;font-size:clamp(32px,4.4vw,50px);line-height:1.08;color:var(--twg-ink);letter-spacing:-.005em;text-wrap:pretty}
+.twg-p{font:400 clamp(14.5px,1.15vw,15.5px)/1.75 var(--twg-sans);color:var(--twg-body);text-wrap:pretty}
+
+/* ---- section ---- */
+.twg-fn{padding:clamp(56px,8vw,88px) var(--twg-pad);background:var(--twg-grey)}
+.twg-fn-intro{max-width:660px;margin-bottom:clamp(28px,4vw,44px)}
+.twg-fn-intro .twg-p{margin:22px 0 0}
+.twg-fn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+/* ---- function tile ---- */
+.twg-tile{background:var(--twg-card);border:1px solid var(--twg-line);padding:26px 24px 22px;text-decoration:none;display:flex;flex-direction:column;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.twg-tile:hover,.twg-tile:focus-visible{transform:translateY(-4px);box-shadow:0 18px 34px -22px rgba(31,39,51,.32);border-color:rgba(178,106,53,.5)}
+.twg-tile-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.twg-tile-idx{font:400 10px/1 var(--twg-sans);letter-spacing:.16em;color:var(--twg-faint)}
+.twg-tile-arw{color:var(--twg-copper);font-size:15px;transition:transform .25s ease}
+.twg-tile:hover .twg-tile-arw{transform:translateX(4px)}
+.twg-tile-h{font-family:var(--twg-serif);font-size:22px;color:var(--twg-ink);margin-bottom:10px}
+.twg-tile-p{margin:0 0 18px;font:400 13.5px/1.6 var(--twg-sans);color:#6b7684}
+.twg-tile-ft{margin-top:auto;padding-top:14px;border-top:1px solid rgba(31,39,51,.09);font:400 11.5px/1 var(--twg-sans);color:#96a0ac}
+
+/* ---- CTA tile ---- */
+.twg-cta{position:relative;background:var(--twg-ink);border:1px solid var(--twg-ink);padding:26px 24px 22px;display:flex;flex-direction:column;overflow:hidden}
+.twg-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(340px 200px at 88% 0%,rgba(178,106,53,.34),transparent 70%);pointer-events:none}
+.twg-cta>*{position:relative}
+.twg-cta-eyebrow{font:500 10px/1 var(--twg-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--twg-copper-lt);margin-bottom:26px}
+.twg-cta-h{font-family:var(--twg-serif);font-size:22px;line-height:1.2;color:#f5f2ec;margin-bottom:10px}
+.twg-cta-p{margin:0 0 20px;font:400 13.5px/1.6 var(--twg-sans);color:rgba(245,242,236,.62)}
+.twg-cta-actions{margin-top:auto;display:flex;flex-direction:column;gap:10px}
+.twg-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--twg-copper);color:#fff;text-decoration:none;
+  padding:13px 16px;font:500 13px/1 var(--twg-sans);transition:background .2s ease}
+.twg-btn:hover,.twg-btn:focus-visible{background:#c67b41;color:#fff}
+.twg-cta-fine{font:400 11px/1.5 var(--twg-sans);color:rgba(245,242,236,.45)}
+
+@media (max-width:900px){.twg-fn-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.twg-fn-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<section class="twg-fn">
+  <div class="twg-wrap">
+    <div class="twg-fn-intro">
+      <div class="twg-eyebrow">Where we operate</div>
+      <h2 class="twg-h2">Across the functions<br>where problems live.</h2>
+      <p class="twg-p">TWG practitioners have operated at senior level across these functions. Tell us your problem — that is where we start.</p>
+    </div>
+
+    <div class="twg-fn-grid">
+      <a class="twg-tile" href="#finance">
+        <div class="twg-tile-top"><span class="twg-tile-idx">01</span><span class="twg-tile-arw" aria-hidden="true">&#8594;</span></div>
+        <div class="twg-tile-h">Finance</div>
+        <p class="twg-tile-p">CFO advisory, restructuring, M&amp;A support, FP&amp;A, cash management.</p>
+        <div class="twg-tile-ft">18 practitioners · avg 9.3</div>
+      </a>
+      <a class="twg-tile" href="#operations">
+        <div class="twg-tile-top"><span class="twg-tile-idx">02</span><span class="twg-tile-arw" aria-hidden="true">&#8594;</span></div>
+        <div class="twg-tile-h">Operations</div>
+        <p class="twg-tile-p">Transformation, cost reduction, supply chain, process design, P&amp;L ownership.</p>
+        <div class="twg-tile-ft">24 practitioners · avg 9.1</div>
+      </a>
+      <a class="twg-tile" href="#technology">
+        <div class="twg-tile-top"><span class="twg-tile-idx">03</span><span class="twg-tile-arw" aria-hidden="true">&#8594;</span></div>
+        <div class="twg-tile-h">Technology</div>
+        <p class="twg-tile-p">Fractional CTO, platform strategy, architecture, digital transformation.</p>
+        <div class="twg-tile-ft">15 practitioners · avg 9.4</div>
+      </a>
+      <a class="twg-tile" href="#commercial">
+        <div class="twg-tile-top"><span class="twg-tile-idx">04</span><span class="twg-tile-arw" aria-hidden="true">&#8594;</span></div>
+        <div class="twg-tile-h">Commercial</div>
+        <p class="twg-tile-p">Revenue growth, GTM strategy, sales leadership, commercial structure.</p>
+        <div class="twg-tile-ft">12 practitioners · avg 9.0</div>
+      </a>
+      <a class="twg-tile" href="#people">
+        <div class="twg-tile-top"><span class="twg-tile-idx">05</span><span class="twg-tile-arw" aria-hidden="true">&#8594;</span></div>
+        <div class="twg-tile-h">People</div>
+        <p class="twg-tile-p">HR transformation, organisational design, leadership capability.</p>
+        <div class="twg-tile-ft">9 practitioners · avg 9.2</div>
+      </a>
+
+      <div class="twg-cta">
+        <div class="twg-cta-eyebrow">Something else</div>
+        <div class="twg-cta-h">Describe your problem.</div>
+        <p class="twg-cta-p">The most interesting matches often start here. One paragraph is enough.</p>
+        <div class="twg-cta-actions">
+          <a class="twg-btn" href="#brief"><span>Start a brief</span><span aria-hidden="true">&#8594;</span></a>
+          <span class="twg-cta-fine">Reply within 48 hours · no obligation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
