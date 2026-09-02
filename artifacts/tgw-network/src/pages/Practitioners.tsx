@@ -259,16 +259,35 @@ export default function Practitioners() {
       </section>
 
       {/* Process steps */}
-      <section style={{ padding: 0, background: "var(--offwhite)" }}>
-        <div className="container" style={{ paddingTop: "3.5rem", paddingBottom: "3rem" }}>
+      <section className="process-section">
+        <div className="container process-section-inner">
           <span className="label reveal">The process</span>
           <h2 className="reveal">Four steps. No surprises.</h2>
-        </div>
-        <div className="process-steps">
-          <div className="process-step reveal"><span className="step-n">One</span><h4>Express interest</h4><p>A short form. Name, specialism, experience level, how you heard about the network. No CV. Takes five minutes.</p></div>
-          <div className="process-step reveal"><span className="step-n">Two</span><h4>Full application</h4><p>If the initial screen passes, we send you the profile template and reference guidance. You complete both.</p></div>
-          <div className="process-step reveal"><span className="step-n">Three</span><h4>Assessment call</h4><p>30 minutes. A conversation, not an interview. We talk about your best engagement to date and whether the network is right for you.</p></div>
-          <div className="process-step reveal"><span className="step-n">Four</span><h4>Activation</h4><p>If the answer is yes on both sides, your profile is live within 48 hours. We make your first introductions to relevant members.</p></div>
+          <div className="process-rail">
+            <ol className="process-steps">
+              <li className="process-step reveal">
+                <span className="process-node">1</span>
+                <div className="process-step-head"><span className="process-step-icon">▤</span><h4>Express interest</h4></div>
+                <p>A short form. Name, specialism, experience level, how you heard about the network. No CV.</p>
+                <span className="process-chip">Takes five minutes</span>
+              </li>
+              <li className="process-step reveal">
+                <span className="process-node">2</span>
+                <div className="process-step-head"><span className="process-step-icon">▧</span><h4>Full application</h4></div>
+                <p>If the initial screen passes, we send you the profile template and reference guidance. You complete both.</p>
+              </li>
+              <li className="process-step reveal">
+                <span className="process-node">3</span>
+                <div className="process-step-head"><span className="process-step-icon">⌕</span><h4>Assessment call</h4></div>
+                <p>30 minutes. A conversation, not an interview. We talk about your best engagement to date and whether the network is right for you.</p>
+              </li>
+              <li className="process-step reveal">
+                <span className="process-node">4</span>
+                <div className="process-step-head"><span className="process-step-icon">✓</span><h4>Activation</h4></div>
+                <p>If the answer is yes on both sides, your profile is live within 48 hours. We make your first introductions to relevant members.</p>
+              </li>
+            </ol>
+          </div>
         </div>
       </section>
 
