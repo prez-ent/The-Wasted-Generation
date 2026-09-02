@@ -301,7 +301,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .membership-col ul li::before{content:'✓';color:var(--teal);font-weight:600;flex-shrink:0}
 .membership-col.protect ul li::before{content:'✕';color:#888}
 .entry{background:#fff}
-.entry .entry-frame{display:grid;grid-template-columns:minmax(300px,38%) 1fr;padding-top:0;padding-bottom:0}
+.entry .entry-frame{display:grid;grid-template-columns:minmax(300px,38%) 1fr;max-width:none;padding:0}
 .entry-aside{background:var(--navy);color:#fff;padding:clamp(3rem,6vw,4.5rem) clamp(2rem,4vw,3.75rem)}
 .entry-aside .label{color:var(--amber)}
 .entry-aside h2{color:#fff;margin:1.35rem 0 0;font-size:clamp(2rem,4vw,2.65rem);line-height:1.12}
