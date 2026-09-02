@@ -232,13 +232,6 @@ export default function Clients() {
           </div>
         </div>
       </section>
-      <section className="client-cta tight">
-        <div className="container">
-          <h2>Tell us what you are trying to fix.</h2>
-          <p className="sub">Describe the situation. We will tell you whether we have the person and how quickly we can introduce you.</p>
-          <Link href="/register" className="btn btn-amber" data-testid="link-send-brief">Send us a brief</Link>
-        </div>
-      </section>
     </div>
   );
 }
