@@ -307,12 +307,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .entry-num{font-family:var(--serif);font-size:1.4rem;font-weight:300;font-style:italic;color:var(--amber);flex-shrink:0;width:32px}
 .entry-text h4{font-size:.95rem;font-weight:500;color:var(--navy);margin-bottom:.25rem}
 .entry-text p{font-size:.88rem;opacity:.75}
-.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--navy)}
-.process-step{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,.1)}
-.process-step:last-child{border-right:none}
-.step-n{font-family:var(--serif);font-size:2rem;font-weight:300;font-style:italic;color:var(--amber);display:block;margin-bottom:.75rem}
-.process-step h4{font-size:.95rem;font-weight:500;color:#fff;margin-bottom:.5rem}
-.process-step p{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.55}
+.process-section{padding:0;background:#fdfcfa}
+.process-inner{max-width:1180px;margin:0 auto;padding:4rem 2rem 4.25rem}
+.process-eyebrow{font:600 .7rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
+.process-title{margin:1rem 0 0;font:700 clamp(2rem,4vw,2.75rem)/1.08 var(--serif);letter-spacing:-.025em;color:var(--navy)}
+.process-lede{margin:.75rem 0 0;font-size:1rem;color:var(--muted)}
+.process-rail{margin-top:3rem;position:relative}
+.process-rail::before{content:"";position:absolute;top:13px;left:13px;right:13px;height:1px;background:#e2ddd3}
+.process-step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0 2.5rem;position:relative;margin:0;padding:0;list-style:none}
+.process-step{padding:0;border:0}
+.process-node{width:27px;height:27px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font:600 .75rem/1 var(--sans);color:#fff}
+.process-step-head{display:flex;align-items:center;gap:.6rem;margin-top:1.6rem}
+.process-step-head svg{flex:none;color:var(--amber)}
+.process-step h3{font:600 1.05rem/1.25 var(--serif);letter-spacing:-.012em;color:var(--navy);margin:0}
+.process-step p{margin:.65rem 0 0;font-size:.88rem;line-height:1.6;color:var(--muted)}
+.process-chip{margin-top:1rem;display:inline-flex;padding:.4rem .75rem;background:#f2ece2;border-radius:4px;font:600 .65rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#8c6a45}
 .prac-cta{background:var(--teal);padding:4rem 0;text-align:center}
 .prac-cta h2{color:#fff;max-width:560px;margin:0 auto .75rem;text-wrap:balance}
 .prac-cta .sub{color:rgba(255,255,255,.72);max-width:460px;margin:0 auto 2rem}
@@ -629,8 +638,8 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .commercial-inner{gap:2rem}
   .fee-card{grid-template-columns:1fr;gap:1rem}
   /* Process steps: 2-col at tablet */
-  .process-steps{grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(255,255,255,.1)}
-  .process-step{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .process-step-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .process-rail::before{display:none}
   /* Framework */
   .pc-three{grid-template-columns:1fr 1fr}
   .fw-score-grid{grid-template-columns:1fr 1fr 1fr}
@@ -654,11 +663,11 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   section.tight{padding:2rem 0}
   h2{font-size:clamp(1.6rem,5vw,2.2rem)}
   .home-hero{padding:4rem 0 3rem}
-  .what-grid,.pathway-grid,.six-grid,.stats-grid,.econ-grid,.membership-grid,.process-steps,.commercial-inner,.governance-grid,.fee-grid,.cap-grid,.ec-wrap,.es-grid,.es-detail,.ps-grid,.ld-grid,.five-principles-row{grid-template-columns:1fr}
+  .what-grid,.pathway-grid,.six-grid,.stats-grid,.econ-grid,.membership-grid,.process-step-grid,.commercial-inner,.governance-grid,.fee-grid,.cap-grid,.ec-wrap,.es-grid,.es-detail,.ps-grid,.ld-grid,.five-principles-row{grid-template-columns:1fr}
   .stat-block{border-right:none!important;border-bottom:1px solid rgba(255,255,255,.1)!important;padding:2rem 1.5rem}
   .stat-block:nth-child(odd){border-right:none!important}
   .stat-block:last-child{border-bottom:none!important}
-  .process-step{border-right:none;border-top:1px solid rgba(255,255,255,.1);border-bottom:none}
+  .process-step{border-right:none}
   .fee-card{grid-template-columns:1fr;gap:1rem}
   .pc-three{grid-template-columns:1fr}
   .fw-score-grid{grid-template-columns:1fr 1fr}

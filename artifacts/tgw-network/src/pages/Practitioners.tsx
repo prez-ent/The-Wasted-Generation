@@ -246,16 +246,52 @@ export default function Practitioners() {
       </section>
 
       {/* Process steps */}
-      <section style={{ padding: 0, background: "var(--offwhite)" }}>
-        <div className="container" style={{ paddingTop: "3.5rem", paddingBottom: "3rem" }}>
-          <span className="label reveal">The process</span>
-          <h2 className="reveal">Four steps. No surprises.</h2>
-        </div>
-        <div className="process-steps">
-          <div className="process-step reveal"><span className="step-n">One</span><h4>Express interest</h4><p>A short form. Name, specialism, experience level, how you heard about the network. No CV. Takes five minutes.</p></div>
-          <div className="process-step reveal"><span className="step-n">Two</span><h4>Full application</h4><p>If the initial screen passes, we send you the profile template and reference guidance. You complete both.</p></div>
-          <div className="process-step reveal"><span className="step-n">Three</span><h4>Assessment call</h4><p>30 minutes. A conversation, not an interview. We talk about your best engagement to date and whether the network is right for you.</p></div>
-          <div className="process-step reveal"><span className="step-n">Four</span><h4>Activation</h4><p>If the answer is yes on both sides, your profile is live within 48 hours. We make your first introductions to relevant members.</p></div>
+      <section className="process-section">
+        <div className="process-inner">
+          <div className="process-eyebrow">The process</div>
+          <h2 className="process-title">Four steps. No surprises.</h2>
+          <p className="process-lede">Roughly a week end to end, most of it waiting on us.</p>
+
+          <div className="process-rail">
+            <ol className="process-step-grid">
+              <li className="process-step reveal">
+                <div className="process-node">1</div>
+                <div className="process-step-head">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M8 8h8M8 12h8M8 16h4" /></svg>
+                  <h3>Express interest</h3>
+                </div>
+                <p>A short form. Name, specialism, experience level, how you heard about the network. No CV.</p>
+                <span className="process-chip">5 minutes</span>
+              </li>
+              <li className="process-step reveal">
+                <div className="process-node">2</div>
+                <div className="process-step-head">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5M9 13h6M9 17h4" /></svg>
+                  <h3>Full application</h3>
+                </div>
+                <p>If the initial screen passes, we send you the profile template and reference guidance. You complete both.</p>
+                <span className="process-chip">2&ndash;3 days</span>
+              </li>
+              <li className="process-step reveal">
+                <div className="process-node">3</div>
+                <div className="process-step-head">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15.5 14.5 14 16a12 12 0 0 1-6-6l1.5-1.5a1.4 1.4 0 0 0 .3-1.5L8.6 4.4A1.4 1.4 0 0 0 7.3 3.5H5a1.5 1.5 0 0 0-1.5 1.7A16.5 16.5 0 0 0 18.8 20.5 1.5 1.5 0 0 0 20.5 19v-2.3a1.4 1.4 0 0 0-.9-1.3l-2.6-1.2a1.4 1.4 0 0 0-1.5.3z" /></svg>
+                  <h3>Assessment call</h3>
+                </div>
+                <p>A conversation, not an interview. We talk about your best engagement to date and whether the network is right for you.</p>
+                <span className="process-chip">30 minutes</span>
+              </li>
+              <li className="process-step reveal">
+                <div className="process-node">4</div>
+                <div className="process-step-head">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.5" /><path d="m9.4 9.2 1.9 1.9 3.3-3.5M8.4 14.2 7 21l5-2.4L17 21l-1.4-6.8" /></svg>
+                  <h3>Activation</h3>
+                </div>
+                <p>If the answer is yes on both sides, your profile is live within 48 hours. We make your first introductions to relevant members.</p>
+                <span className="process-chip">48 hours</span>
+              </li>
+            </ol>
+          </div>
         </div>
       </section>
 
