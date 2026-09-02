@@ -220,11 +220,15 @@ export default function Clients() {
                 <p>{text}</p>
               </div>
             ))}
-            <div className="where-operate-card where-operate-other reveal">
+          </div>
+          <div className="where-operate-cta reveal">
+            <div>
               <span className="label">Something else</span>
-              <h3>Something else?</h3>
-              <p>Tell us. The most interesting matches often start here.</p>
+              <h3>Tell us. The most interesting matches often start here.</h3>
             </div>
+            <Link href="/register" className="btn btn-amber" data-testid="link-where-operate-cta">
+              Tell us what you are trying to fix <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
       </section>
