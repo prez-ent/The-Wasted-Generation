@@ -65,41 +65,29 @@ export default function Practitioners() {
 
       {/* 2 — Entry criteria */}
       <section className="entry">
-        <div className="container entry-frame">
-          <aside className="entry-aside reveal">
-            <span className="label">Entry criteria</span>
-            <h2>Is this network for you?</h2>
-            <p className="entry-lede">The entry standard is high because the network's reputation rests on it.</p>
-            <div className="entry-aside-rule" />
-            <p className="entry-note">No age requirement. No institution requirement. No specific sector requirement. The standard is seniority of experience and evidence of delivery.</p>
-          </aside>
-          <ol className="entry-list">
-            <li className="entry-item reveal"><div className="entry-num">01</div><div className="entry-text"><h4>At least 8 years in a senior functional role</h4><p>At a level where you owned outcomes, not contributed to them.</p></div></li>
-            <li className="entry-item reveal"><div className="entry-num">02</div><div className="entry-text"><h4>A minimum of two independent or project-based engagements</h4><p>Where success was defined upfront and you can evidence the delivery.</p></div></li>
-            <li className="entry-item reveal"><div className="entry-num">03</div><div className="entry-text"><h4>At least one verifiable reference from a decision-maker</h4><p>Someone who commissioned or sponsored your work — not a peer.</p></div></li>
-            <li className="entry-item reveal"><div className="entry-num">04</div><div className="entry-text"><h4>A completed profile describing the problems you solve</h4><p>In the client's language, not a job title.</p></div></li>
-            <li className="entry-item reveal"><div className="entry-num">05</div><div className="entry-text"><h4>Professional indemnity insurance of at least £500,000 per claim</h4><p>Required before any engagement commences.</p></div></li>
-            <li className="entry-item reveal"><div className="entry-num">06</div><div className="entry-text"><h4>A signed membership agreement</h4><p>Covering non-circumvention, rate discussion prohibition, and 360 participation.</p></div></li>
-          </ol>
+        <div className="container">
+          <span className="label reveal">Entry criteria</span>
+          <h2 className="reveal">Is this network for you?</h2>
+          <p className="reveal" style={{ maxWidth: "580px", opacity: ".75", marginBottom: ".5rem" }}>The entry standard is high because the network's reputation rests on it.</p>
+          <div className="entry-list">
+            <div className="entry-item reveal"><div className="entry-num">1</div><div className="entry-text"><h4>At least 8 years in a senior functional role</h4><p>At a level where you owned outcomes, not contributed to them.</p></div></div>
+            <div className="entry-item reveal"><div className="entry-num">2</div><div className="entry-text"><h4>A minimum of two independent or project-based engagements</h4><p>Where success was defined upfront and you can evidence the delivery.</p></div></div>
+            <div className="entry-item reveal"><div className="entry-num">3</div><div className="entry-text"><h4>At least one verifiable reference from a decision-maker</h4><p>Someone who commissioned or sponsored your work — not a peer.</p></div></div>
+            <div className="entry-item reveal"><div className="entry-num">4</div><div className="entry-text"><h4>A completed profile describing the problems you solve</h4><p>In the client's language, not a job title.</p></div></div>
+            <div className="entry-item reveal"><div className="entry-num">5</div><div className="entry-text"><h4>Professional indemnity insurance of at least £500,000 per claim</h4><p>Required before any engagement commences.</p></div></div>
+            <div className="entry-item reveal"><div className="entry-num">6</div><div className="entry-text"><h4>A signed membership agreement</h4><p>Covering non-circumvention, rate discussion prohibition, and 360 participation.</p></div></div>
           </div>
+          <p className="reveal" style={{ marginTop: "2rem", fontSize: ".9rem", fontStyle: "italic", opacity: ".6" }}>No age requirement. No institution requirement. No specific sector requirement. The standard is seniority of experience and evidence of delivery.</p>
+        </div>
       </section>
 
       {/* 3 — Transparent economics (calculator) */}
-      <section className="economics-dropdown-section">
+      <section style={{ background: "var(--offwhite)" }}>
         <div className="container">
-          <details className="economics-dropdown">
-            <summary className="economics-dropdown-summary">
-              <div>
-                <span className="label">Transparent economics</span>
-                <h2>Calculate your annual<br />network earnings.</h2>
-                <p>Adjust the sliders to see what you could earn — including introduction overrides.</p>
-              </div>
-              <span className="economics-dropdown-trigger" aria-hidden="true">
-                <span className="economics-dropdown-trigger-label">Explore calculator</span>
-                <span className="economics-dropdown-icon" />
-              </span>
-            </summary>
-            <div className="ec-wrap economics-dropdown-content">
+          <span className="label reveal">Transparent economics</span>
+          <h2 className="reveal">Your annual network<br />earnings.</h2>
+          <p className="reveal" style={{ maxWidth: "560px", opacity: ".75" }}>Adjust the sliders to see what you could earn — including introduction overrides.</p>
+          <div className="ec-wrap">
             <div>
               <div className="w-slider-label">Day rate <strong>£{rate}</strong></div>
               <input type="range" min="500" max="2000" step="50" value={rate} onChange={e => setRate(+e.target.value)} data-testid="slider-rate" />
@@ -152,7 +140,6 @@ export default function Practitioners() {
               <div className="ec-vs">Your client pays {fmt(rate * 1.1)}/day. A traditional firm charging 25% on top would cost them {fmt(rate * 1.25)}/day — for the same rate.</div>
             </div>
           </div>
-          </details>
         </div>
       </section>
 
@@ -259,35 +246,16 @@ export default function Practitioners() {
       </section>
 
       {/* Process steps */}
-      <section className="process-section">
-        <div className="container process-section-inner">
+      <section style={{ padding: 0, background: "var(--offwhite)" }}>
+        <div className="container" style={{ paddingTop: "3.5rem", paddingBottom: "3rem" }}>
           <span className="label reveal">The process</span>
           <h2 className="reveal">Four steps. No surprises.</h2>
-          <div className="process-rail">
-            <ol className="process-steps">
-              <li className="process-step reveal">
-                <span className="process-node">1</span>
-                <div className="process-step-head"><span className="process-step-icon">▤</span><h4>Express interest</h4></div>
-                <p>A short form. Name, specialism, experience level, how you heard about the network. No CV.</p>
-                <span className="process-chip">Takes five minutes</span>
-              </li>
-              <li className="process-step reveal">
-                <span className="process-node">2</span>
-                <div className="process-step-head"><span className="process-step-icon">▧</span><h4>Full application</h4></div>
-                <p>If the initial screen passes, we send you the profile template and reference guidance. You complete both.</p>
-              </li>
-              <li className="process-step reveal">
-                <span className="process-node">3</span>
-                <div className="process-step-head"><span className="process-step-icon">⌕</span><h4>Assessment call</h4></div>
-                <p>30 minutes. A conversation, not an interview. We talk about your best engagement to date and whether the network is right for you.</p>
-              </li>
-              <li className="process-step reveal">
-                <span className="process-node">4</span>
-                <div className="process-step-head"><span className="process-step-icon">✓</span><h4>Activation</h4></div>
-                <p>If the answer is yes on both sides, your profile is live within 48 hours. We make your first introductions to relevant members.</p>
-              </li>
-            </ol>
-          </div>
+        </div>
+        <div className="process-steps">
+          <div className="process-step reveal"><span className="step-n">One</span><h4>Express interest</h4><p>A short form. Name, specialism, experience level, how you heard about the network. No CV. Takes five minutes.</p></div>
+          <div className="process-step reveal"><span className="step-n">Two</span><h4>Full application</h4><p>If the initial screen passes, we send you the profile template and reference guidance. You complete both.</p></div>
+          <div className="process-step reveal"><span className="step-n">Three</span><h4>Assessment call</h4><p>30 minutes. A conversation, not an interview. We talk about your best engagement to date and whether the network is right for you.</p></div>
+          <div className="process-step reveal"><span className="step-n">Four</span><h4>Activation</h4><p>If the answer is yes on both sides, your profile is live within 48 hours. We make your first introductions to relevant members.</p></div>
         </div>
       </section>
 

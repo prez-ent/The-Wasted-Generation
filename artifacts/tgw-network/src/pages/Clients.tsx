@@ -51,6 +51,7 @@ export default function Clients() {
           </div>
         </div>
       </div>
+
       <section style={{ background: "var(--paper)" }}>
         <div className="container">
           <span className="label reveal">Common Reasons Organisations Contact Us</span>
@@ -81,6 +82,7 @@ export default function Clients() {
           </div>
         </div>
       </section>
+
       <section style={{ background: "var(--navy)", padding: "5rem 0" }}>
         <div className="container">
           <div style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
@@ -91,6 +93,7 @@ export default function Clients() {
           </div>
         </div>
       </section>
+
       <section className="how-steps">
         <div className="container">
           <span className="label reveal">From Challenge to Outcome</span>
@@ -103,6 +106,7 @@ export default function Clients() {
           </div>
         </div>
       </section>
+
       <section style={{ background: "var(--paper)" }}>
         <div className="container-w">
           <span className="label reveal">Engagement formats</span>
@@ -140,6 +144,7 @@ export default function Clients() {
           </div>
         </div>
       </section>
+
       <section style={{ background: "var(--offwhite)" }}>
         <div className="container">
           <div className="commercial-inner reveal">
@@ -158,6 +163,7 @@ export default function Clients() {
           </div>
         </div>
       </section>
+
       <section className="client-360">
         <div className="container client-360-grid">
           <div className="client-360-copy">
@@ -199,37 +205,33 @@ export default function Clients() {
           </article>
         </div>
       </section>
-      <section id="where-we-operate" className="where-operate">
+
+      <section style={{ background: "var(--offwhite)" }}>
         <div className="container">
-          <div className="where-operate-intro">
-            <span className="label reveal">Where we operate</span>
-            <h2 className="reveal">Across the functions<br />where problems live.</h2>
-            <p className="reveal">TWG practitioners have operated at senior level across these functions. As the network grows we will be specific about what we have seen and what we have solved. Tell us your problem — that is where we start.</p>
+          <span className="label reveal">Where we operate</span>
+          <h2 className="reveal">Across the functions<br />where problems live.</h2>
+          <p className="reveal" style={{ maxWidth: "580px", opacity: ".72", marginBottom: "2rem" }}>TWG practitioners have operated at senior level across these functions. As the network grows we will be specific about what we have seen and what we have solved. Tell us your problem — that is where we start.</p>
+          <div className="six-grid" style={{ marginTop: 0 }}>
+            <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>Finance</h3><p>CFO advisory, restructuring, M&amp;A support, FP&amp;A, cash management.</p></div>
+            <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>Operations</h3><p>Transformation, cost reduction, supply chain, process design, P&amp;L ownership.</p></div>
+            <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>Technology</h3><p>Fractional CTO, platform strategy, architecture, digital transformation.</p></div>
+            <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>Commercial</h3><p>Revenue growth, GTM strategy, sales leadership, commercial structure.</p></div>
+            <div className="six-item reveal"><span className="num" style={{ fontSize: "1.4rem" }}>→</span><h3>People</h3><p>HR transformation, organisational design, leadership capability.</p></div>
+            <div className="six-item reveal" style={{ background: "var(--navy)", borderColor: "var(--navy)" }}><span className="num" style={{ fontSize: "1.4rem", color: "var(--amber)" }}>?</span><h3 style={{ color: "#fff" }}>Something else</h3><p style={{ color: "rgba(255,255,255,.6)" }}>Tell us. The most interesting matches often start here.</p></div>
           </div>
-          <div className="where-operate-grid">
-            {[
-              ["01", "Finance", "CFO advisory, restructuring, M&A support, FP&A, cash management."],
-              ["02", "Operations", "Transformation, cost reduction, supply chain, process design, P&L ownership."],
-              ["03", "Technology", "Fractional CTO, platform strategy, architecture, digital transformation."],
-              ["04", "Commercial", "Revenue growth, GTM strategy, sales leadership, commercial structure."],
-              ["05", "People", "HR transformation, organisational design, leadership capability."],
-            ].map(([number, title, text]) => (
-              <div className="where-operate-card reveal" key={number}>
-                <div className="where-operate-card-top"><span>{number}</span><span aria-hidden="true">→</span></div>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </div>
-            ))}
+        </div>
+      </section>
+
+      <section className="client-cta tight">
+        <div className="container">
+          <div style={{ background: "var(--offwhite)", padding: "2.5rem", marginBottom: "3rem", borderLeft: "3px solid var(--rule)" }}>
+            <span className="label" style={{ color: "var(--muted)" }}>Building our library of success stories</span>
+            <h3 style={{ color: "var(--navy)", marginBottom: ".5rem", fontSize: "1.15rem" }}>What clients say</h3>
+            <p style={{ fontSize: ".9rem", opacity: ".65" }}>Client case studies will be published as engagements complete. In the meantime, we are happy to share relevant practitioner experience in an introductory conversation.</p>
           </div>
-          <div className="where-operate-cta reveal">
-            <div>
-              <span className="label">Something else</span>
-              <h3>Tell us. The most interesting matches often start here.</h3>
-            </div>
-            <Link href="/register" className="btn btn-amber" data-testid="link-where-operate-cta">
-              Tell us what you are trying to fix <span aria-hidden="true">→</span>
-            </Link>
-          </div>
+          <h2>Tell us what you are trying to fix.</h2>
+          <p className="sub">Describe the situation. We will tell you whether we have the person and how quickly we can introduce you.</p>
+          <Link href="/register" className="btn btn-amber" data-testid="link-send-brief">Send us a brief</Link>
         </div>
       </section>
     </div>
