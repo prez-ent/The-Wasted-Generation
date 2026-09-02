@@ -165,11 +165,44 @@ export default function Clients() {
       </section>
 
       <section className="client-360">
-        <div className="container">
-          <span className="label reveal">Mutual accountability</span>
-          <h2 className="reveal">You are rated too.<br /><em style={{ color: "var(--amber)" }}>That is what makes this different.</em></h2>
-          <p className="reveal" style={{ maxWidth: "600px", opacity: ".8", marginBottom: "1rem" }}>Every practitioner in the network carries a 360 score built from real engagements, visible before any brief is accepted. So does every client organisation.</p>
-          <p className="reveal" style={{ maxWidth: "600px", opacity: ".75" }}>Your score reflects how clearly you defined the outcome at the start, how responsive you were, how you treated the practitioner, and whether you paid on time. A strong score means better practitioners choose to work with you. No other network holds organisations accountable in this way.</p>
+        <div className="container client-360-grid">
+          <div className="client-360-copy">
+            <span className="label reveal">Mutual accountability</span>
+            <h2 className="reveal">You are rated too.<br /><em>That is what makes<br />this different.</em></h2>
+            <p className="reveal">Every practitioner in the network carries a 360 score built from real engagements, visible before any brief is accepted. So does every client organisation.</p>
+            <p className="reveal client-360-closing">No other network holds organisations accountable in this way.</p>
+          </div>
+
+          <article className="client-score-card reveal" aria-label="Example verified client record">
+            <header className="client-score-header">
+              <div>
+                <span>Client record · NG-2214</span>
+                <h3>Northgate Group</h3>
+              </div>
+              <div className="client-score-verified" aria-label="Verified">Veri<br />fied</div>
+            </header>
+            <div className="client-score-body">
+              <span className="client-score-label">360 score</span>
+              <div className="client-score-summary">
+                <strong>9.2</strong>
+                <div className="client-score-bars" aria-hidden="true">
+                  {[58, 78, 66, 86, 92].map((height, index) => (
+                    <i key={index} style={{ height: `${height}%` }} />
+                  ))}
+                </div>
+              </div>
+              <dl className="client-score-metrics">
+                <div><dt>Clarity of brief</dt><dd>9.4</dd></div>
+                <div><dt>Responsiveness</dt><dd>8.8</dd></div>
+                <div><dt>Conduct</dt><dd>9.1</dd></div>
+                <div><dt>Paid on time</dt><dd>9.6</dd></div>
+              </dl>
+            </div>
+            <footer className="client-score-footer">
+              <span>34 engagements</span>
+              <span>Updated 2 days ago</span>
+            </footer>
+          </article>
         </div>
       </section>
 
