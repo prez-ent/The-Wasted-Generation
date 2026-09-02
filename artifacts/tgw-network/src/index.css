@@ -300,7 +300,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .membership-col ul li{font-size:.9rem;padding:.65rem 0;border-bottom:1px solid var(--rule);display:flex;gap:.75rem;opacity:.85}
 .membership-col ul li::before{content:'✓';color:var(--teal);font-weight:600;flex-shrink:0}
 .membership-col.protect ul li::before{content:'✕';color:#888}
-.entry{background:#fff}
+.entry{background:#fff;padding-top:0;padding-bottom:0}
 .entry .entry-frame{display:grid;grid-template-columns:minmax(300px,38%) 1fr;max-width:none;padding:0}
 .entry-aside{background:var(--navy);color:#fff;padding:clamp(3rem,6vw,4.5rem) clamp(2rem,4vw,3.75rem)}
 .entry-aside .label{color:var(--amber)}
