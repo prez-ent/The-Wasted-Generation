@@ -224,11 +224,6 @@ export default function Clients() {
 
       <section className="client-cta tight">
         <div className="container">
-          <div style={{ background: "var(--offwhite)", padding: "2.5rem", marginBottom: "3rem", borderLeft: "3px solid var(--rule)" }}>
-            <span className="label" style={{ color: "var(--muted)" }}>Building our library of success stories</span>
-            <h3 style={{ color: "var(--navy)", marginBottom: ".5rem", fontSize: "1.15rem" }}>What clients say</h3>
-            <p style={{ fontSize: ".9rem", opacity: ".65" }}>Client case studies will be published as engagements complete. In the meantime, we are happy to share relevant practitioner experience in an introductory conversation.</p>
-          </div>
           <h2>Tell us what you are trying to fix.</h2>
           <p className="sub">Describe the situation. We will tell you whether we have the person and how quickly we can introduce you.</p>
           <Link href="/register" className="btn btn-amber" data-testid="link-send-brief">Send us a brief</Link>
