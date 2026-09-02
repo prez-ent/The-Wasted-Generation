@@ -294,12 +294,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .econ-box h3{color:var(--navy);margin-bottom:.75rem;font-size:1.05rem}
 .econ-box p{font-size:.9rem;opacity:.8}
 .membership{background:var(--offwhite)}
-.membership-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
-.membership-col h3{font-size:1.1rem;color:var(--navy);border-bottom:2px solid var(--amber);padding-bottom:.5rem;margin-bottom:1rem}
-.membership-col ul{list-style:none}
-.membership-col ul li{font-size:.9rem;padding:.65rem 0;border-bottom:1px solid var(--rule);display:flex;gap:.75rem;opacity:.85}
-.membership-col ul li::before{content:'✓';color:var(--teal);font-weight:600;flex-shrink:0}
-.membership-col.protect ul li::before{content:'✕';color:#888}
+.membership-dropdowns{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.membership-dropdown{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--amber)}
+.membership-dropdown summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 1.5rem;cursor:pointer;list-style:none;font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--navy)}
+.membership-dropdown summary::-webkit-details-marker{display:none}
+.membership-dropdown summary:focus-visible{outline:2px solid var(--amber);outline-offset:-3px}
+.membership-chevron{font-family:var(--sans);font-size:1.5rem;line-height:1;font-weight:400;color:var(--amber);transition:transform .2s}
+.membership-dropdown[open] .membership-chevron{transform:rotate(45deg)}
+.membership-dropdown ul{list-style:none;padding:0 1.5rem 1.25rem}
+.membership-dropdown ul li{font-size:.9rem;padding:.65rem 0;border-top:1px solid var(--rule);display:flex;gap:.75rem;opacity:.85}
+.membership-dropdown ul li::before{content:'✓';color:var(--teal);font-weight:600;flex-shrink:0}
+.membership-dropdown.protect{border-top-color:#8b8f91}
+.membership-dropdown.protect ul li::before{content:'✕';color:#888}
 .entry{background:var(--paper)}
 .entry-list{counter-reset:entry;margin-top:2rem}
 .entry-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--rule)}
@@ -634,7 +640,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   /* Keep 2-col where already 2-col */
   .pathway-grid{grid-template-columns:1fr 1fr}
   /* Items that should go 1-col at tablet */
-  .fee-grid,.ec-wrap,.ld-grid,.membership-grid,.commercial-inner,.es-detail{grid-template-columns:1fr}
+  .fee-grid,.ec-wrap,.ld-grid,.membership-dropdowns,.commercial-inner,.es-detail{grid-template-columns:1fr}
   .commercial-inner{gap:2rem}
   .fee-card{grid-template-columns:1fr;gap:1rem}
   /* Process steps: 2-col at tablet */

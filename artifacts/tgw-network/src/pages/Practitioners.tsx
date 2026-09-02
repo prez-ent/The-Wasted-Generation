@@ -215,10 +215,10 @@ export default function Practitioners() {
       <section className="membership">
         <div className="container">
           <span className="label reveal">Membership includes</span>
-          <h2 className="reveal">What you receive.<br />What you are protected from.</h2>
-          <div className="membership-grid">
-            <div className="membership-col reveal">
-              <h3>What you receive</h3>
+          <h2 className="reveal">What you receive and what you are protected from.</h2>
+          <div className="membership-dropdowns">
+            <details className="membership-dropdown reveal">
+              <summary>What you receive <span className="membership-chevron" aria-hidden="true">+</span></summary>
               <ul>
                 <li>100% of your day rate, paid within 7 days of client payment</li>
                 <li>Platform invoices clients on your behalf — you never chase payment</li>
@@ -229,9 +229,9 @@ export default function Practitioners() {
                 <li>Non-circumvention protection with an automatic audit trail</li>
                 <li>A network team that is reachable as people, not a brand voice</li>
               </ul>
-            </div>
-            <div className="membership-col protect reveal">
-              <h3>What you are protected from</h3>
+            </details>
+            <details className="membership-dropdown protect reveal">
+              <summary>What you are protected from <span className="membership-chevron" aria-hidden="true">+</span></summary>
               <ul>
                 <li>Unilateral scope expansion — a signed amendment is required before it happens</li>
                 <li>Rate coordination risk — the network is CMA-compliant by design</li>
@@ -240,7 +240,7 @@ export default function Practitioners() {
                 <li>Late payment — the network escalates on your behalf at day 15</li>
                 <li>IR35 misclassification — every SOW has the right provisions built in</li>
               </ul>
-            </div>
+            </details>
           </div>
         </div>
       </section>
