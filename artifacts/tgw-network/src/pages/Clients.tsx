@@ -51,7 +51,6 @@ export default function Clients() {
           </div>
         </div>
       </div>
-
       <section style={{ background: "var(--paper)" }}>
         <div className="container">
           <span className="label reveal">Common Reasons Organisations Contact Us</span>
@@ -82,7 +81,6 @@ export default function Clients() {
           </div>
         </div>
       </section>
-
       <section style={{ background: "var(--navy)", padding: "5rem 0" }}>
         <div className="container">
           <div style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
@@ -93,7 +91,6 @@ export default function Clients() {
           </div>
         </div>
       </section>
-
       <section className="how-steps">
         <div className="container">
           <span className="label reveal">From Challenge to Outcome</span>
@@ -106,7 +103,6 @@ export default function Clients() {
           </div>
         </div>
       </section>
-
       <section style={{ background: "var(--paper)" }}>
         <div className="container-w">
           <span className="label reveal">Engagement formats</span>
@@ -144,7 +140,6 @@ export default function Clients() {
           </div>
         </div>
       </section>
-
       <section style={{ background: "var(--offwhite)" }}>
         <div className="container">
           <div className="commercial-inner reveal">
@@ -163,7 +158,6 @@ export default function Clients() {
           </div>
         </div>
       </section>
-
       <section className="client-360">
         <div className="container client-360-grid">
           <div className="client-360-copy">
@@ -205,7 +199,6 @@ export default function Clients() {
           </article>
         </div>
       </section>
-
       <section id="where-we-operate" className="where-operate">
         <div className="container">
           <div className="where-operate-intro">
@@ -229,13 +222,12 @@ export default function Clients() {
             ))}
             <div className="where-operate-card where-operate-other reveal">
               <span className="label">Something else</span>
-              <h3>Something else</h3>
+              <h3>Something else?</h3>
               <p>Tell us. The most interesting matches often start here.</p>
             </div>
           </div>
         </div>
       </section>
-
       <section className="client-cta tight">
         <div className="container">
           <h2>Tell us what you are trying to fix.</h2>
