@@ -332,13 +332,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .how-text h4{font-size:1rem;font-weight:500;color:var(--navy);margin-bottom:.3rem}
 .how-text p{font-size:.9rem;opacity:.75}
 .client-360{background:radial-gradient(circle at 88% 8%,rgba(165,97,53,.16),transparent 35%),linear-gradient(120deg,#182435 0%,#1d2736 62%,#24282f 100%);color:#fff;overflow:hidden}
-.client-360-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:clamp(3rem,8vw,7rem);align-items:center;padding-top:clamp(4rem,8vw,7rem);padding-bottom:clamp(4rem,8vw,7rem)}
+.client-360-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:clamp(3rem,8vw,7rem);align-items:center;padding-top:clamp(2.75rem,5vw,4.25rem);padding-bottom:clamp(2.75rem,5vw,4.25rem)}
 .client-360-copy{max-width:610px}
 .client-360 .label{color:#c58a5f}
-.client-360 h2{font-size:clamp(2.65rem,5vw,4.4rem);line-height:1.02;margin:.65rem 0 1.8rem;color:#fff}
+.client-360 h2{font-size:clamp(2.65rem,5vw,4.4rem);line-height:1.02;margin:.5rem 0 1.25rem;color:#fff}
 .client-360 h2 em{font-weight:400;color:#c9824d}
 .client-360-copy p{max-width:590px;font-size:clamp(.95rem,1.3vw,1.08rem);line-height:1.75;color:rgba(255,255,255,.72)}
-.client-360-copy .client-360-closing{margin-top:1.25rem;color:rgba(255,255,255,.6)}
+.client-360-copy .client-360-closing{margin-top:.8rem;color:rgba(255,255,255,.6)}
 .client-score-card{width:100%;max-width:440px;justify-self:center;background:#f2efe8;color:var(--ink);box-shadow:0 28px 60px rgba(0,0,0,.25);transform:rotate(-1.5deg);border-radius:5px;overflow:hidden}
 .client-score-header{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;padding:1.65rem 1.75rem 1.35rem;border-bottom:1px dashed rgba(30,45,64,.2)}
 .client-score-header span,.client-score-label{display:block;text-transform:uppercase;letter-spacing:.17em;font-size:.62rem;color:#89909a}
@@ -356,7 +356,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .client-score-metrics dd{margin:0;font-size:.88rem;color:#2b3340}
 .client-score-footer{display:flex;justify-content:space-between;gap:1rem;padding:.85rem 1.75rem;background:#e8e5dd;color:#9298a0;font-size:.65rem}
 @media(max-width:800px){
-  .client-360-grid{grid-template-columns:1fr;gap:3rem}
+  .client-360-grid{grid-template-columns:1fr;gap:2.25rem}
   .client-360-copy{max-width:660px}
   .client-score-card{max-width:480px;transform:rotate(-.7deg)}
 }
