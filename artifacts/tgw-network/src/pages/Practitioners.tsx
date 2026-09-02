@@ -85,12 +85,21 @@ export default function Practitioners() {
       </section>
 
       {/* 3 — Transparent economics (calculator) */}
-      <section style={{ background: "var(--offwhite)" }}>
+      <section className="economics-dropdown-section">
         <div className="container">
-          <span className="label reveal">Transparent economics</span>
-          <h2 className="reveal">Your annual network<br />earnings.</h2>
-          <p className="reveal" style={{ maxWidth: "560px", opacity: ".75" }}>Adjust the sliders to see what you could earn — including introduction overrides.</p>
-          <div className="ec-wrap">
+          <details className="economics-dropdown">
+            <summary className="economics-dropdown-summary">
+              <div>
+                <span className="label">Transparent economics</span>
+                <h2>Your annual network<br />earnings.</h2>
+                <p>Adjust the sliders to see what you could earn — including introduction overrides.</p>
+              </div>
+              <span className="economics-dropdown-trigger" aria-hidden="true">
+                <span className="economics-dropdown-trigger-label">Explore calculator</span>
+                <span className="economics-dropdown-icon" />
+              </span>
+            </summary>
+            <div className="ec-wrap economics-dropdown-content">
             <div>
               <div className="w-slider-label">Day rate <strong>£{rate}</strong></div>
               <input type="range" min="500" max="2000" step="50" value={rate} onChange={e => setRate(+e.target.value)} data-testid="slider-rate" />
@@ -143,6 +152,7 @@ export default function Practitioners() {
               <div className="ec-vs">Your client pays {fmt(rate * 1.1)}/day. A traditional firm charging 25% on top would cost them {fmt(rate * 1.25)}/day — for the same rate.</div>
             </div>
           </div>
+          </details>
         </div>
       </section>
 
