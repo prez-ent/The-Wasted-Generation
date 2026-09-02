@@ -335,7 +335,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
 .client-360-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:clamp(3rem,8vw,7rem);align-items:center;padding-top:clamp(2.75rem,5vw,4.25rem);padding-bottom:clamp(2.75rem,5vw,4.25rem)}
 .client-360-copy{max-width:610px}
 .client-360 .label{color:#c58a5f}
-.client-360 h2{font-size:clamp(2.65rem,5vw,4.4rem);line-height:1.02;margin:.5rem 0 1.25rem;color:#fff}
+.client-360 h2{line-height:1.12;margin:.5rem 0 1.25rem;color:#fff}
 .client-360 h2 em{font-weight:400;color:#c9824d}
 .client-360-copy p{max-width:590px;font-size:clamp(.95rem,1.3vw,1.08rem);line-height:1.75;color:rgba(255,255,255,.72)}
 .client-360-copy .client-360-closing{margin-top:.8rem;color:rgba(255,255,255,.6)}
@@ -361,7 +361,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);displ
   .client-score-card{max-width:480px;transform:rotate(-.7deg)}
 }
 @media(max-width:480px){
-  .client-360 h2{font-size:2.45rem}
   .client-score-header,.client-score-body{padding-left:1.25rem;padding-right:1.25rem}
   .client-score-footer{padding-left:1.25rem;padding-right:1.25rem}
   .client-score-summary strong{font-size:3.4rem}
